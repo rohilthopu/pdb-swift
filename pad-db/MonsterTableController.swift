@@ -24,7 +24,6 @@ class MonsterTableController: UITableViewController {
         }
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         fillMonsterData()
@@ -33,7 +32,6 @@ class MonsterTableController: UITableViewController {
             print(monster.name)
         }
 
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -72,13 +70,10 @@ class MonsterTableController: UITableViewController {
                 let json = JSON(parseJSON: data)
                 for item in json.arrayValue {
                     let card = item["card"]
-                
                     var monster:Monster = Monster()
                     monster.name = card["name"].stringValue
                     monsters.append(monster)
-                    
                 }
-                
             }
         }
     }
