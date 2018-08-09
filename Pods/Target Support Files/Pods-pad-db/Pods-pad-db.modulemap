@@ -1,0 +1,6 @@
+framework module Pods_pad_db {
+  umbrella header "Pods-pad-db-umbrella.h"
+
+  export *
+  module * { export * }
+}
