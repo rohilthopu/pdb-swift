@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M6R-v2-wOr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xde-GD-yYx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -41,13 +41,41 @@
                             <outlet property="delegate" destination="M6R-v2-wOr" id="jhi-Gm-hWU"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="WiZ-om-JAV"/>
                     <connections>
                         <outlet property="monstertable" destination="XdL-wL-AIe" id="rr8-uD-FyX"/>
+                        <outlet property="searchDisplayController" destination="vmS-05-sqt" id="97c-xX-4Kh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzD-T8-zpf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="vmS-05-sqt">
+                    <connections>
+                        <outlet property="delegate" destination="M6R-v2-wOr" id="QUX-uv-a5e"/>
+                        <outlet property="searchContentsController" destination="M6R-v2-wOr" id="PqW-cw-uNb"/>
+                        <outlet property="searchResultsDataSource" destination="M6R-v2-wOr" id="LEY-P4-geb"/>
+                        <outlet property="searchResultsDelegate" destination="M6R-v2-wOr" id="LTx-CB-xfv"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="135" y="40"/>
+            <point key="canvasLocation" x="1072.8" y="39.130434782608695"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oOf-wA-3tW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xde-GD-yYx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L8b-UE-8nv">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="M6R-v2-wOr" kind="relationship" relationship="rootViewController" id="uZp-3A-CyW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nb2-7j-zag" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="39.130434782608695"/>
         </scene>
     </scenes>
 </document>
