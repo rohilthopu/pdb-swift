@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import Kingfisher
 
 extension MonsterTableController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
@@ -21,6 +22,8 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     @IBOutlet var monstertable: UITableView!
     
     var monster_url:String = "https://storage.googleapis.com/mirubot/paddata/processed/na_cards.json"
+    var portrait_url:String = "https://storage.googleapis.com/mirubot/padimages/na/portrait/"
+    var full_url:String = "https://storage.googleapis.com/mirubot/padimages/na/full/"
     var monsters = [Monster]()
     var filteredMonsters = [Monster]()
     var monstersearch:UISearchController!
@@ -182,7 +185,6 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     
     
     // SEARCH CONTROLLER FUNCTIONS
-    
     func searchBarIsEmpty() -> Bool {
         // Returns true if the text is empty or nil
         return monstersearch.searchBar.text?.isEmpty ?? true
@@ -190,17 +192,13 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        
         filteredMonsters = monsters.filter({$0.name!.lowercased().contains(searchText.lowercased())})
-        
         monstertable.reloadData()
     }
     
     func isFiltering() -> Bool {
         return monstersearch.isActive && !searchBarIsEmpty()
     }
-    
-    
     
     //    Misc
     func uicolorFromHex(rgbValue:UInt32)->UIColor{
@@ -209,6 +207,14 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         let blue = CGFloat(rgbValue & 0xFF)/255.0
         
         return UIColor(red:red, green:green, blue:blue, alpha:1.0)
+    }
+    
+    private func getPortraitURL(id:Int) -> String {
+        return portrait_url + String(id) + ".png"
+    }
+    
+    private func getFullURL(id:Int) -> String {
+        return full_url + String(id) + ".png"
     }
     
 }
