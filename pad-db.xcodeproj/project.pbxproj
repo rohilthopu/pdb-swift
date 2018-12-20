@@ -8,23 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		78B00307211CA297001F246E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B00306211CA297001F246E /* AppDelegate.swift */; };
-		78B0030C211CA297001F246E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B0030A211CA297001F246E /* Main.storyboard */; };
 		78B0030F211CA297001F246E /* pad_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78B0030D211CA297001F246E /* pad_db.xcdatamodeld */; };
 		78B00311211CA297001F246E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78B00310211CA297001F246E /* Assets.xcassets */; };
-		78B00314211CA297001F246E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B00312211CA297001F246E /* LaunchScreen.storyboard */; };
 		78B0031C211CA2FC001F246E /* MonsterTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0031B211CA2FC001F246E /* MonsterTableController.swift */; };
+		78D6885621CB07BD001C0DEF /* GuerrillaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6885521CB07BD001C0DEF /* GuerrillaTableViewController.swift */; };
 		AAC40FF05CCDAD282B5256E7 /* Pods_pad_db.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DA29BB8DC4A4C0F3A8FFFC /* Pods_pad_db.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		78B00303211CA296001F246E /* pad-db.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pad-db.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B00306211CA297001F246E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		78B0030B211CA297001F246E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		78B0030E211CA297001F246E /* pad_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pad_db.xcdatamodel; sourceTree = "<group>"; };
 		78B00310211CA297001F246E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		78B00313211CA297001F246E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		78B00315211CA297001F246E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78B0031B211CA2FC001F246E /* MonsterTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTableController.swift; sourceTree = "<group>"; };
+		78D6885521CB07BD001C0DEF /* GuerrillaTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuerrillaTableViewController.swift; sourceTree = "<group>"; };
 		E6C443A1101AA4662E9D9211 /* Pods-pad-db.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pad-db.release.xcconfig"; path = "Pods/Target Support Files/Pods-pad-db/Pods-pad-db.release.xcconfig"; sourceTree = "<group>"; };
 		E7DA29BB8DC4A4C0F3A8FFFC /* Pods_pad_db.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pad_db.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AF30AA3F21760F9C1DD0C2 /* Pods-pad-db.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pad-db.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pad-db/Pods-pad-db.debug.xcconfig"; sourceTree = "<group>"; };
@@ -81,12 +79,11 @@
 			isa = PBXGroup;
 			children = (
 				78B00306211CA297001F246E /* AppDelegate.swift */,
-				78B0030A211CA297001F246E /* Main.storyboard */,
 				78B00310211CA297001F246E /* Assets.xcassets */,
-				78B00312211CA297001F246E /* LaunchScreen.storyboard */,
 				78B00315211CA297001F246E /* Info.plist */,
 				78B0030D211CA297001F246E /* pad_db.xcdatamodeld */,
 				78B0031B211CA2FC001F246E /* MonsterTableController.swift */,
+				78D6885521CB07BD001C0DEF /* GuerrillaTableViewController.swift */,
 			);
 			path = "pad-db";
 			sourceTree = "<group>";
@@ -125,6 +122,7 @@
 				TargetAttributes = {
 					78B00302211CA296001F246E = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -151,9 +149,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78B00314211CA297001F246E /* LaunchScreen.storyboard in Resources */,
 				78B00311211CA297001F246E /* Assets.xcassets in Resources */,
-				78B0030C211CA297001F246E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,29 +204,11 @@
 				78B0030F211CA297001F246E /* pad_db.xcdatamodeld in Sources */,
 				78B0031C211CA2FC001F246E /* MonsterTableController.swift in Sources */,
 				78B00307211CA297001F246E /* AppDelegate.swift in Sources */,
+				78D6885621CB07BD001C0DEF /* GuerrillaTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		78B0030A211CA297001F246E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				78B0030B211CA297001F246E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		78B00312211CA297001F246E /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				78B00313211CA297001F246E /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		78B00316211CA297001F246E /* Debug */ = {
@@ -355,13 +333,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5TED4Y95QE;
 				INFOPLIST_FILE = "pad-db/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Rohil-Thopu.pad-db";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -374,13 +353,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5TED4Y95QE;
 				INFOPLIST_FILE = "pad-db/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Rohil-Thopu.pad-db";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

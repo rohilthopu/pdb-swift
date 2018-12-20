@@ -140,7 +140,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
                 let json = JSON(parseJSON: data)
                 for item in json.arrayValue {
                     let card = item["card"]
-                    if !card["name"].stringValue.contains("?") && !card["name"].stringValue.contains("*") && !card["name"].stringValue.isEmpty && !card["name"].stringValue.contains("Alt.") {
+                if !card["name"].stringValue.contains("?") && !card["name"].stringValue.contains("*") && !card["name"].stringValue.isEmpty && !card["name"].stringValue.contains("Alt.") {
                         var monster:Monster = Monster()
                         monster.activeSkillID = card["active_skill_id"].intValue
                         monster.ancestorID = card["ancestory_id"].intValue
