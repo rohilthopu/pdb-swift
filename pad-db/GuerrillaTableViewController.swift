@@ -24,27 +24,61 @@ class GuerrillaTableViewController: UITableViewController {
         var group:String?
     }
 
-    var dungeons = [Guerrilla]()
+    var naDungeons = [Guerrilla]()
+    var jpDungeons = [Guerrilla]()
+    
+    var displayDungeons = [Guerrilla]()
+    
+    var showingNA = false
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.barTintColor = UIColor.gray
-        navigationItem.title = "Calendar"
+        
+        setupNavBar()
+        
 
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellid)
+        
         self.tableView.reloadData()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
         loadGuerrilla()
+    }
+    
+    
+    private func setupNavBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barTintColor = UIColor.gray
+        navigationItem.title = "Calendar"
+        
+        changeButtonLabel(server: "JP")
+        
+    }
+    
+    @objc
+    private func swapServer(sender: UIButton!) {
+        
+        if showingNA {
+            displayDungeons = jpDungeons
+            changeButtonLabel(server: "NA")
+            showingNA = false
+            self.tableView.reloadData()
+        }
+        else {
+            displayDungeons = naDungeons
+            changeButtonLabel(server: "JP")
+            showingNA = true
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func changeButtonLabel(server:String) {
+        let serverSwap = UIButton(type: .system)
+        serverSwap.setTitle(server, for: .normal)
+        serverSwap.addTarget(self, action: #selector(swapServer), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: serverSwap)
     }
     
     private func loadGuerrilla() {
@@ -56,10 +90,24 @@ class GuerrillaTableViewController: UITableViewController {
                 for item in json.arrayValue {
                     var dungeon:Guerrilla = Guerrilla()
                     dungeon.name = item["name"].stringValue
-                    dungeons.append(dungeon)
+                    dungeon.startTime = item["startTime"].stringValue
+                    dungeon.endTime = item["endTime"].stringValue
+                    dungeon.startSecs = item["startSecs"].floatValue
+                    dungeon.endSecs = item["endSecs"].floatValue
+                    dungeon.server = item["server"].stringValue
+                    dungeon.group = item["group"].stringValue
+                    if item["server"].stringValue == "NA" {
+                        naDungeons.append(dungeon)
+                    }
+                    else {
+                        jpDungeons.append(dungeon)
+                    }
                 }
             }
         }
+        
+        displayDungeons = naDungeons
+        showingNA = true
     }
 
     // MARK: - Table view data source
@@ -70,50 +118,15 @@ class GuerrillaTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dungeons.count
+        return displayDungeons.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath)
 
-        cell.textLabel!.text = dungeons[indexPath.row].name!
+        cell.textLabel!.text = displayDungeons[indexPath.row].name!
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation
