@@ -10,19 +10,25 @@ import UIKit
 import SwiftyJSON
 
 
+struct Guerrilla {
+    var name:String?
+    var startTime:String?
+    var endTime:String?
+    var startSecs:Float?
+    var endSecs:Float?
+    var server:String?
+    var group:String?
+    var dungeon_id:Int?
+    var remainingTime:Float?
+    var status:String?
+}
+
+
 class GuerrillaTableViewController: UITableViewController {
     
     let cellid = "guerrillacell"
     
-    struct Guerrilla {
-        var name:String?
-        var startTime:String?
-        var endTime:String?
-        var startSecs:Float?
-        var endSecs:Float?
-        var server:String?
-        var group:String?
-    }
+    
 
     var naDungeons = [Guerrilla]()
     var jpDungeons = [Guerrilla]()
@@ -35,12 +41,14 @@ class GuerrillaTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         setupNavBar()
-        
-
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellid)
-        
-        self.tableView.reloadData()
+    
+        tableView.register(GuerrillaCell.self, forCellReuseIdentifier: cellid)
+        tableView.rowHeight = 85
+    
+        tableView.allowsSelection = false
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,11 +57,11 @@ class GuerrillaTableViewController: UITableViewController {
     
     
     private func setupNavBar() {
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.barTintColor = UIColor.gray
-        navigationItem.title = "Calendar"
+        navigationItem.title = "NA Calendar"
         
-        changeButtonLabel(server: "JP")
+        changeButtonLabel(server: "Server")
         
     }
     
@@ -62,14 +70,14 @@ class GuerrillaTableViewController: UITableViewController {
         
         if showingNA {
             displayDungeons = jpDungeons
-            changeButtonLabel(server: "NA")
             showingNA = false
+            navigationItem.title = "JP Calendar"
             self.tableView.reloadData()
         }
         else {
             displayDungeons = naDungeons
-            changeButtonLabel(server: "JP")
             showingNA = true
+            navigationItem.title = "NA Calendar"
             self.tableView.reloadData()
         }
     }
@@ -83,7 +91,8 @@ class GuerrillaTableViewController: UITableViewController {
     
     private func loadGuerrilla() {
         let url = "https://www.pad-db.com/api/guerrilla"
-        
+        let timeInMS = Float(NSTimeIntervalSince1970)
+
         if let url = URL(string: url) {
             if let data = try? String(contentsOf: url) {
                 let json = JSON(parseJSON: data)
@@ -96,6 +105,26 @@ class GuerrillaTableViewController: UITableViewController {
                     dungeon.endSecs = item["endSecs"].floatValue
                     dungeon.server = item["server"].stringValue
                     dungeon.group = item["group"].stringValue
+                    dungeon.dungeon_id = item["dungeon_id"].intValue
+                    
+                    let endSecs = item["endSecs"].floatValue
+                    let startSecs = item["startSecs"].floatValue
+
+                    
+                    if ((timeInMS >= startSecs) && (timeInMS <= endSecs)) {
+                        dungeon.remainingTime = endSecs - timeInMS
+                        dungeon.status = "Active"
+                    }
+                    else if (timeInMS < startSecs) {
+                        dungeon.remainingTime = startSecs - timeInMS
+                        dungeon.status = "Upcoming"
+                    }
+                    else {
+                        dungeon.remainingTime = 0
+                        dungeon.status = "Ended"
+                    }
+                    
+                
                     if item["server"].stringValue == "NA" {
                         naDungeons.append(dungeon)
                     }
@@ -105,6 +134,8 @@ class GuerrillaTableViewController: UITableViewController {
                 }
             }
         }
+        
+        
         
         displayDungeons = naDungeons
         showingNA = true
@@ -122,9 +153,11 @@ class GuerrillaTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath)
-
-        cell.textLabel!.text = displayDungeons[indexPath.row].name!
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath) as! GuerrillaCell
+        
+        let dungeon = displayDungeons[indexPath.row]
+        cell.name = dungeon.name!
+        cell.group = dungeon.group!        
         return cell
     }
 

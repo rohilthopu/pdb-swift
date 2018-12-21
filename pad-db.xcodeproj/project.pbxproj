@@ -12,6 +12,7 @@
 		78B00311211CA297001F246E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78B00310211CA297001F246E /* Assets.xcassets */; };
 		78B0031C211CA2FC001F246E /* MonsterTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0031B211CA2FC001F246E /* MonsterTableController.swift */; };
 		78D6885621CB07BD001C0DEF /* GuerrillaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6885521CB07BD001C0DEF /* GuerrillaTableViewController.swift */; };
+		78D6885921CB4DAC001C0DEF /* GuerrillaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6885821CB4DAC001C0DEF /* GuerrillaCell.swift */; };
 		AAC40FF05CCDAD282B5256E7 /* Pods_pad_db.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DA29BB8DC4A4C0F3A8FFFC /* Pods_pad_db.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		78B00315211CA297001F246E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78B0031B211CA2FC001F246E /* MonsterTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTableController.swift; sourceTree = "<group>"; };
 		78D6885521CB07BD001C0DEF /* GuerrillaTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuerrillaTableViewController.swift; sourceTree = "<group>"; };
+		78D6885821CB4DAC001C0DEF /* GuerrillaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuerrillaCell.swift; sourceTree = "<group>"; };
 		E6C443A1101AA4662E9D9211 /* Pods-pad-db.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pad-db.release.xcconfig"; path = "Pods/Target Support Files/Pods-pad-db/Pods-pad-db.release.xcconfig"; sourceTree = "<group>"; };
 		E7DA29BB8DC4A4C0F3A8FFFC /* Pods_pad_db.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pad_db.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AF30AA3F21760F9C1DD0C2 /* Pods-pad-db.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pad-db.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pad-db/Pods-pad-db.debug.xcconfig"; sourceTree = "<group>"; };
@@ -78,14 +80,23 @@
 		78B00305211CA296001F246E /* pad-db */ = {
 			isa = PBXGroup;
 			children = (
+				78D6885721CB4D86001C0DEF /* Guerrilla Dungeons */,
 				78B00306211CA297001F246E /* AppDelegate.swift */,
 				78B00310211CA297001F246E /* Assets.xcassets */,
 				78B00315211CA297001F246E /* Info.plist */,
 				78B0030D211CA297001F246E /* pad_db.xcdatamodeld */,
 				78B0031B211CA2FC001F246E /* MonsterTableController.swift */,
-				78D6885521CB07BD001C0DEF /* GuerrillaTableViewController.swift */,
 			);
 			path = "pad-db";
+			sourceTree = "<group>";
+		};
+		78D6885721CB4D86001C0DEF /* Guerrilla Dungeons */ = {
+			isa = PBXGroup;
+			children = (
+				78D6885521CB07BD001C0DEF /* GuerrillaTableViewController.swift */,
+				78D6885821CB4DAC001C0DEF /* GuerrillaCell.swift */,
+			);
+			path = "Guerrilla Dungeons";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +215,7 @@
 				78B0030F211CA297001F246E /* pad_db.xcdatamodeld in Sources */,
 				78B0031C211CA2FC001F246E /* MonsterTableController.swift in Sources */,
 				78B00307211CA297001F246E /* AppDelegate.swift in Sources */,
+				78D6885921CB4DAC001C0DEF /* GuerrillaCell.swift in Sources */,
 				78D6885621CB07BD001C0DEF /* GuerrillaTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
