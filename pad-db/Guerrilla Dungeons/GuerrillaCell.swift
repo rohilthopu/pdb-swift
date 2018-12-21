@@ -53,36 +53,32 @@ class GuerrillaCell: UITableViewCell {
         self.contentView.addSubview(containerView)
         
         
+
+        
+        anchorNameContainer()
+        anchorNameLabel()
+        anchorGroupLabel()
+
+
+    }
+    
+    private func anchorNameContainer(){
         containerView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
         containerView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 25).isActive = true
         containerView.trailingAnchor.constraint(equalTo:self.contentView.trailingAnchor).isActive = true
-        
+    }
+    
+    private func anchorNameLabel(){
         nameLabel.topAnchor.constraint(equalTo:self.containerView.topAnchor).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo:self.containerView.leadingAnchor).isActive = true
         nameLabel.trailingAnchor.constraint(equalTo:self.containerView.trailingAnchor).isActive = true
-        
-        
+    }
+    
+    private func anchorGroupLabel(){
         groupLabel.topAnchor.constraint(equalTo:self.nameLabel.bottomAnchor).isActive = true
         groupLabel.leadingAnchor.constraint(equalTo:self.containerView.leadingAnchor).isActive = true
         groupLabel.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor).isActive = true
         groupLabel.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor).isActive = true
-
-//        anchorNameView()
-//        anchorGroupView()
-    }
-    
-//    private func anchorNameView(){
-//        nameView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-//        nameView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-//        nameView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-//        nameView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-//    }
-    
-    private func anchorGroupView(){
-//        groupView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-//        groupView.leftAnchor.constraint(equalTo: self.nameView.rightAnchor).isActive = true
-//        groupView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-//        groupView.topAnchor.constraint(equalTo: self.nameView.bottomAnchor).isActive = true
     }
     
     override func layoutSubviews() {
