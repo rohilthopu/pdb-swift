@@ -13,12 +13,9 @@ class GuerrillaCell: UITableViewCell {
     
 
     var name:String?
-    var startSecs:Float?
-    var endSecs:Float?
-    var server:String?
     var group:String?
     var dungeon_id:Int?
-    var remainingTime:Float?
+    var remainingTime:Double?
     var status:String?
     
     var nameLabel: UILabel = {
@@ -36,7 +33,21 @@ class GuerrillaCell: UITableViewCell {
         return textView
     }()
     
-    let containerView:UIView = {
+    var statusLabel: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = .boldSystemFont(ofSize: 12)
+        return textView
+    }()
+    
+    var remainingTimeLabel: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = .systemFont(ofSize: 12)
+        return textView
+    }()
+    
+    let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true // this will make sure its children do not go out of the boundary
@@ -51,15 +62,25 @@ class GuerrillaCell: UITableViewCell {
         containerView.addSubview(groupLabel)
         
         self.contentView.addSubview(containerView)
-        
-        
-
-        
+        self.contentView.addSubview(statusLabel)
+        self.contentView.addSubview(remainingTimeLabel)
+    
         anchorNameContainer()
         anchorNameLabel()
         anchorGroupLabel()
+        anchorStatusLabel()
+        anchorRemainingTimeLabel()
 
-
+    }
+    
+    private func anchorStatusLabel() {
+        statusLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10).isActive = true
+        statusLabel.centerYAnchor.constraint(equalTo: self.nameLabel.centerYAnchor).isActive = true
+    }
+    
+    private func anchorRemainingTimeLabel() {
+        remainingTimeLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -10).isActive = true
+        remainingTimeLabel.topAnchor.constraint(equalTo: self.statusLabel.bottomAnchor, constant: 10).isActive = true
     }
     
     private func anchorNameContainer(){
@@ -90,6 +111,36 @@ class GuerrillaCell: UITableViewCell {
         
         if let group = group {
             groupLabel.text = group
+        }
+        
+        if let status = status {
+            statusLabel.text = status
+        }
+        
+        if let remainingTime = remainingTime {
+            
+            let timeInMins = Int(remainingTime/60)
+            
+            
+            if status! == "Active" {
+                if timeInMins > 60 {
+                    let hours = timeInMins % 60
+                    remainingTimeLabel.text = String(hours) + " hours"
+                }
+                else {
+                    remainingTimeLabel.text = String(timeInMins) + " minutes"
+                }
+            }
+            
+            else if status! == "Upcoming" {
+                if timeInMins > 60 {
+                    let hours = timeInMins / 60
+                    remainingTimeLabel.text = String(hours) + " hours"
+                }
+                else {
+                    remainingTimeLabel.text = String(timeInMins) + " minutes"
+                }
+            }
         }
     }
     

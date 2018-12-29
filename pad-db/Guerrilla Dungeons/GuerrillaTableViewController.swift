@@ -19,12 +19,13 @@ struct Guerrilla {
     var server:String?
     var group:String?
     var dungeon_id:Int?
-    var remainingTime:Float?
+    var remainingTime:Double?
     var status:String?
 }
 
 
 class GuerrillaTableViewController: UITableViewController {
+
     
     let cellid = "guerrillacell"
     
@@ -43,6 +44,11 @@ class GuerrillaTableViewController: UITableViewController {
         
         
         setupNavBar()
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl!.addTarget(self, action: #selector(refreshGuerrillaList(_:)), for: .valueChanged)
+        tableView.refreshControl!.attributedTitle = NSAttributedString(string: "Reloading Guerrilla Dungeons")
+
     
         tableView.register(GuerrillaCell.self, forCellReuseIdentifier: cellid)
         tableView.rowHeight = 85
@@ -82,6 +88,16 @@ class GuerrillaTableViewController: UITableViewController {
         }
     }
     
+    @objc
+    private func refreshGuerrillaList(_ sender: Any) {
+        naDungeons.removeAll()
+        jpDungeons.removeAll()
+        loadGuerrilla()
+        tableView.refreshControl!.endRefreshing()
+        tableView.reloadData()
+ 
+    }
+    
     private func changeButtonLabel(server:String) {
         let serverSwap = UIButton(type: .system)
         serverSwap.setTitle(server, for: .normal)
@@ -91,26 +107,19 @@ class GuerrillaTableViewController: UITableViewController {
     
     private func loadGuerrilla() {
         let url = "https://www.pad-db.com/api/guerrilla"
-        let timeInMS = Float(NSTimeIntervalSince1970)
+        let timeInMS = NSDate().timeIntervalSince1970
 
         if let url = URL(string: url) {
             if let data = try? String(contentsOf: url) {
                 let json = JSON(parseJSON: data)
                 for item in json.arrayValue {
                     var dungeon:Guerrilla = Guerrilla()
-                    dungeon.name = item["name"].stringValue
-                    dungeon.startTime = item["startTime"].stringValue
-                    dungeon.endTime = item["endTime"].stringValue
-                    dungeon.startSecs = item["startSecs"].floatValue
-                    dungeon.endSecs = item["endSecs"].floatValue
-                    dungeon.server = item["server"].stringValue
-                    dungeon.group = item["group"].stringValue
-                    dungeon.dungeon_id = item["dungeon_id"].intValue
+              
                     
-                    let endSecs = item["endSecs"].floatValue
-                    let startSecs = item["startSecs"].floatValue
-
+                    let endSecs = item["endSecs"].doubleValue
+                    let startSecs = item["startSecs"].doubleValue
                     
+                                        
                     if ((timeInMS >= startSecs) && (timeInMS <= endSecs)) {
                         dungeon.remainingTime = endSecs - timeInMS
                         dungeon.status = "Active"
@@ -124,18 +133,29 @@ class GuerrillaTableViewController: UITableViewController {
                         dungeon.status = "Ended"
                     }
                     
-                
-                    if item["server"].stringValue == "NA" {
-                        naDungeons.append(dungeon)
+                    
+                    if dungeon.remainingTime! != 0 {
+                        dungeon.name = item["name"].stringValue
+                        dungeon.startTime = item["startTime"].stringValue
+                        dungeon.endTime = item["endTime"].stringValue
+                        dungeon.startSecs = item["startSecs"].floatValue
+                        dungeon.endSecs = item["endSecs"].floatValue
+                        dungeon.server = item["server"].stringValue
+                        dungeon.group = item["group"].stringValue
+                        dungeon.dungeon_id = item["dungeon_id"].intValue
+                        
+                        
+                        if item["server"].stringValue == "NA" {
+                            naDungeons.append(dungeon)
+                        }
+                        else {
+                            jpDungeons.append(dungeon)
+                        }
                     }
-                    else {
-                        jpDungeons.append(dungeon)
-                    }
+
                 }
             }
         }
-        
-        
         
         displayDungeons = naDungeons
         showingNA = true
@@ -157,7 +177,9 @@ class GuerrillaTableViewController: UITableViewController {
         
         let dungeon = displayDungeons[indexPath.row]
         cell.name = dungeon.name!
-        cell.group = dungeon.group!        
+        cell.group = dungeon.group!
+        cell.status = dungeon.status!
+        cell.remainingTime = dungeon.remainingTime!
         return cell
     }
 
