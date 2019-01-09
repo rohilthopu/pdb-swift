@@ -47,7 +47,6 @@ class GuerrillaTableViewController: UITableViewController {
         
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl!.addTarget(self, action: #selector(refreshGuerrillaList(_:)), for: .valueChanged)
-        tableView.refreshControl!.attributedTitle = NSAttributedString(string: "Reloading Guerrilla Dungeons")
 
     
         tableView.register(GuerrillaCell.self, forCellReuseIdentifier: cellid)
@@ -63,8 +62,8 @@ class GuerrillaTableViewController: UITableViewController {
     
     
     private func setupNavBar() {
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.barTintColor = UIColor.gray
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         navigationItem.title = "NA Calendar"
         
         changeButtonLabel(server: "Server")
@@ -94,6 +93,7 @@ class GuerrillaTableViewController: UITableViewController {
         jpDungeons.removeAll()
         loadGuerrilla()
         tableView.refreshControl!.endRefreshing()
+        showingNA = true
         tableView.reloadData()
  
     }

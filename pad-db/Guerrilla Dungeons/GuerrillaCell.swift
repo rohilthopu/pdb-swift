@@ -21,14 +21,14 @@ class GuerrillaCell: UITableViewCell {
     var nameLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = .boldSystemFont(ofSize: 16)
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
         return textView
     }()
     
     var groupLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = .systemFont(ofSize: 12)
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 12)
         textView.clipsToBounds = true
         return textView
     }()
@@ -36,14 +36,14 @@ class GuerrillaCell: UITableViewCell {
     var statusLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = .boldSystemFont(ofSize: 12)
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 12)
         return textView
     }()
     
     var remainingTimeLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = .systemFont(ofSize: 12)
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 12)
         return textView
     }()
     
@@ -122,26 +122,46 @@ class GuerrillaCell: UITableViewCell {
             let timeInMins = Int(remainingTime/60)
             
             
-            if status! == "Active" {
-                if timeInMins > 60 {
-                    let hours = timeInMins % 60
-                    remainingTimeLabel.text = String(hours) + " hours"
-                }
-                else {
-                    remainingTimeLabel.text = String(timeInMins) + " minutes"
-                }
-            }
-            
-            else if status! == "Upcoming" {
+            if statusLabel.text! == "Active" {
                 if timeInMins > 60 {
                     let hours = timeInMins / 60
                     remainingTimeLabel.text = String(hours) + " hours"
+                    setBGcolors()
                 }
                 else {
                     remainingTimeLabel.text = String(timeInMins) + " minutes"
+                    resetBGcolors()
+                }
+            }
+            
+            else if statusLabel.text! == "Upcoming" {
+                if timeInMins > 60 {
+                    let hours = timeInMins / 60
+                    remainingTimeLabel.text = String(hours) + " hours"
+                    resetBGcolors()
+                }
+                else {
+                    remainingTimeLabel.text = String(timeInMins) + " minutes"
+                    resetBGcolors()
                 }
             }
         }
+    }
+    
+    private func setBGcolors() {
+        if groupLabel.text!.contains("BLUE") {
+            contentView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        }
+        else if groupLabel.text!.contains("GREEN") {
+            contentView.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        }
+        else {
+            contentView.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        }
+    }
+    
+    private func resetBGcolors() {
+        contentView.backgroundColor = UIColor.white
     }
     
     required init?(coder aDecoder: NSCoder) {

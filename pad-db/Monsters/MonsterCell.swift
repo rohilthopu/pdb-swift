@@ -19,14 +19,15 @@ class MonsterCell: UITableViewCell {
     var nameLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = .boldSystemFont(ofSize: 12)
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+
         return textView
     }()
     
     var IDLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = .boldSystemFont(ofSize: 12)
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 12)
         textView.textColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         return textView
     } ()

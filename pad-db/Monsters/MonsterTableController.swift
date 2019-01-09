@@ -66,15 +66,14 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "NA Monsters"
-        navigationController?.navigationBar.barTintColor = UIColor.gray
+        navigationItem.title = "Monsters"
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         setupView()
 //        fillMonsterData()
         
         tableView.register(MonsterCell.self, forCellReuseIdentifier: cellid)
-        tableView.rowHeight = 80
+        tableView.rowHeight = 70
         
-        tableView.allowsSelection = false
 
         tableView.reloadData()
         
@@ -132,6 +131,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         self.extendedLayoutIncludesOpaqueBars = true
         
         
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -163,6 +163,20 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
             cell.monster = monsters[indexPath.row]
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = indexPath.row
+        // returns an NSManagedObject
+        
+        let currentMonster = monsters[index]
+        let monsterVC = MonsterVC()
+        monsterVC.monster = currentMonster
+                
+        let navCon = UINavigationController(rootViewController: monsterVC)
+        
+        self.present(navCon, animated: true, completion: nil)
+
     }
     
     private func fillMonsterData() {
@@ -274,15 +288,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         }
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+ 
     
     
     // SEARCH CONTROLLER FUNCTIONS
