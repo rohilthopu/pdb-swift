@@ -58,6 +58,9 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         var type1:Int?
         var type2:Int?
         var type3:Int?
+        
+        var portraitLink:String?
+        var fullLink:String?
     }
     
     override func viewDidLoad() {
@@ -69,7 +72,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
 //        fillMonsterData()
         
         tableView.register(MonsterCell.self, forCellReuseIdentifier: cellid)
-        tableView.rowHeight = 85
+        tableView.rowHeight = 80
         
         tableView.allowsSelection = false
 
@@ -102,7 +105,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         do {
             monsters = try managedContext.fetch(fetchRequest)
             monsters.reverse()
-        } catch let error as NSError {
+        } catch _ as NSError {
             print("Could not fetch.")
         }
     }
@@ -154,10 +157,10 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellid) as! MonsterCell
         if(isFiltering()) {
-            cell.name = filteredMonsters[indexPath.row].value(forKey: "name") as! String
+            cell.monster = filteredMonsters[indexPath.row]
         }
         else {
-            cell.name = monsters[indexPath.row].value(forKey: "name") as! String
+            cell.monster = monsters[indexPath.row]
         }
         return cell
     }
@@ -170,7 +173,9 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
             if let data = try? String(contentsOf: url) {
                 let json = JSON(parseJSON: data)
                 for card in json.arrayValue {
-                    if !card["name"].stringValue.contains("?") && !card["name"].stringValue.contains("*") && !card["name"].stringValue.isEmpty {
+                    
+                    let name = card["name"].stringValue
+                    if !name.contains("?") && !name.contains("*") && !name.isEmpty && !name.contains("Alt.") {
                         
                         
                             var monster:Monster = Monster()
@@ -198,6 +203,10 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
                             monster.name = card["name"].stringValue
                             monster.rarity = card["rarity"].intValue
                             monster.subAttributeID = card["subAttributeID"].intValue
+                        
+                            monster.portraitLink = getPortraitURL(id: monster.cardID!)
+                            monster.fullLink = getFullURL(id: monster.cardID!)
+                        
                             rawMonsters.append(monster)
                         
                         
@@ -209,12 +218,20 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         
         
         
-        
-        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "MonsterNA", in: managedContext)!
         
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MonsterNA")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        
+        do {
+            try managedContext.execute(deleteRequest)
+            try managedContext.save()
+        } catch {
+            print("There was an error deleting items.")
+        }
         
         for monster in rawMonsters {
             let item = NSManagedObject(entity: entity, insertInto: managedContext)
@@ -242,6 +259,8 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
             item.setValue(monster.name, forKey: "name")
             item.setValue(monster.rarity, forKey: "rarity")
             item.setValue(monster.subAttributeID, forKey: "subAttributeID")
+            item.setValue(monster.portraitLink, forKey: "portraitURL")
+            item.setValue(monster.fullLink, forKey: "fullURL")
             
             
             
