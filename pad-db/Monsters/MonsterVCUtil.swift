@@ -351,4 +351,43 @@ extension MonsterVC {
         weightedStatsLabel.topAnchor.constraint(equalTo: levelContainer.bottomAnchor, constant: 20).isActive = true
         
     }
+    
+    public func setupAwakenings() {
+        let awks = monster!.value(forKey: "awakenings") as! [Int]
+        
+        for a in awks {
+            let img = UIImageView()
+            img.translatesAutoresizingMaskIntoConstraints = false
+            img.clipsToBounds = true
+            
+            let a_img = UIImage(named: String(a + 2))
+            img.image = a_img
+            awakenings.append(img)
+        }
+        
+        for i in 0...awakenings.count - 1 {
+            
+            let skill = awakenings[i]
+            scrollView.addSubview(skill)
+            skill.widthAnchor.constraint(equalToConstant: 20).isActive = true
+            skill.heightAnchor.constraint(equalToConstant: 20).isActive = true
+            skill.topAnchor.constraint(equalTo: weightedStatsLabel.bottomAnchor, constant: 20).isActive = true
+
+            if i == 0 {
+                let maxX = self.view.frame.width
+                let a_max = awakenings.count*20 + (awakenings.count-1)*10
+                let diff = (maxX - CGFloat(a_max))/2
+                skill.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: diff).isActive = true
+            }
+            else {
+                skill.leadingAnchor.constraint(equalTo: awakenings[i-1].trailingAnchor, constant: 10).isActive = true
+            }
+            
+        }
+        
+        
+        
+        
+ 
+    }
 }

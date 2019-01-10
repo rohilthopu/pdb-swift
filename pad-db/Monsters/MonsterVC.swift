@@ -14,6 +14,11 @@ class MonsterVC: UIViewController {
     
     var monster:NSManagedObject?
     
+    let awakening_base_link:String = "http://www.puzzledragonx.com/en/img/awoken/"
+    let awakening_link_end:String = ".png"
+
+    var awakenings = [UIImageView]()
+    
     let imageContainer: UIImageView =  {
         let img = UIImageView()
         img.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
@@ -282,11 +287,9 @@ class MonsterVC: UIViewController {
     
     let scrollView:UIScrollView = {
        let view = UIScrollView()
-        
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentSize.height = 2000
+        view.contentSize.height = 1200
         view.backgroundColor = UIColor.white
-        
         
         return view
     }()
@@ -316,14 +319,15 @@ class MonsterVC: UIViewController {
         let m_id = monster!.value(forKey: "cardID") as! Int
         self.navigationItem.title = "No. " + String(m_id)
         
-    }
-    
-    override func viewWillLayoutSubviews() {
-        
         setupImageView()
         setupPortraitView()
         setupNameContainer()
         setupStatusContainer()
+        setupAwakenings()
+        
+    }
+    
+    override func viewWillLayoutSubviews() {
     }
     
     

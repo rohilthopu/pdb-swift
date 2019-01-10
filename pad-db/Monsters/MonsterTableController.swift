@@ -34,6 +34,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         var activeSkillID:Int?
         var ancestorID:Int?
         var attributeID:Int?
+        var awakenings:[Int]?
         var cardID:Int?
         var cost:Int?
         var unevomat1:Int?
@@ -65,6 +66,10 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         var fullLink:String?
     }
     
+    struct awakening:Decodable {
+        var vals:[Int]?
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -76,7 +81,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         tableView.register(MonsterCell.self, forCellReuseIdentifier: cellid)
         tableView.rowHeight = 70
         
-
+        
         tableView.reloadData()
         
         // Uncomment the following line to preserve selection between presentations
@@ -186,7 +191,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         let navCon = UINavigationController(rootViewController: monsterVC)
         
         self.present(navCon, animated: true, completion: nil)
-
+        
     }
     
     private func fillMonsterData() {
@@ -200,40 +205,44 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
                     
                     let name = card["name"].stringValue
                     if !name.contains("?") && !name.contains("*") && !name.isEmpty && !name.contains("Alt.") {
+                        var monster:Monster = Monster()
+                        monster.activeSkillID = card["activeSkillID"].intValue
+                        monster.ancestorID = card["ancestorID"].intValue
+                        monster.attributeID = card["attributeID"].intValue
                         
+                        let decoder = JSONDecoder()
+                        let vals = try! decoder.decode([Int].self, from: card["awakenings_raw"].stringValue.data(using: .utf8)!)
+                        monster.awakenings = vals
+                
                         
-                            var monster:Monster = Monster()
-                            monster.activeSkillID = card["activeSkillID"].intValue
-                            monster.ancestorID = card["ancestorID"].intValue
-                            monster.attributeID = card["attributeID"].intValue
-                            monster.cardID = card["cardID"].intValue
-                            monster.cost = card["cost"].intValue
-                            monster.unevomat1 = card["unevomat1"].intValue
-                            monster.unevomat2 = card["unevomat2"].intValue
-                            monster.unevomat3 = card["unevomat3"].intValue
-                            monster.unevomat4 = card["unevomat4"].intValue
-                            monster.unevomat5 = card["unevomat5"].intValue
-                            monster.evomat1 = card["evomat1"].intValue
-                            monster.evomat2 = card["evomat2"].intValue
-                            monster.evomat3 = card["evomat3"].intValue
-                            monster.evomat4 = card["evomat4"].intValue
-                            monster.evomat5 = card["evomat5"].intValue
-                            monster.maxATK = card["maxATK"].intValue
-                            monster.maxHP = card["maxHP"].intValue
-                            monster.maxRCV = card["maxRCV"].intValue
-                            monster.minATK = card["minATK"].intValue
-                            monster.minHP = card["minHP"].intValue
-                            monster.minRCV = card["minRCV"].intValue
-                            monster.maxXP = card["maxXP"].intValue
-                            monster.maxLevel = card["maxLevel"].intValue
-                            monster.name = card["name"].stringValue
-                            monster.rarity = card["rarity"].intValue
-                            monster.subAttributeID = card["subAttributeID"].intValue
+                        monster.cardID = card["cardID"].intValue
+                        monster.cost = card["cost"].intValue
+                        monster.unevomat1 = card["unevomat1"].intValue
+                        monster.unevomat2 = card["unevomat2"].intValue
+                        monster.unevomat3 = card["unevomat3"].intValue
+                        monster.unevomat4 = card["unevomat4"].intValue
+                        monster.unevomat5 = card["unevomat5"].intValue
+                        monster.evomat1 = card["evomat1"].intValue
+                        monster.evomat2 = card["evomat2"].intValue
+                        monster.evomat3 = card["evomat3"].intValue
+                        monster.evomat4 = card["evomat4"].intValue
+                        monster.evomat5 = card["evomat5"].intValue
+                        monster.maxATK = card["maxATK"].intValue
+                        monster.maxHP = card["maxHP"].intValue
+                        monster.maxRCV = card["maxRCV"].intValue
+                        monster.minATK = card["minATK"].intValue
+                        monster.minHP = card["minHP"].intValue
+                        monster.minRCV = card["minRCV"].intValue
+                        monster.maxXP = card["maxXP"].intValue
+                        monster.maxLevel = card["maxLevel"].intValue
+                        monster.name = card["name"].stringValue
+                        monster.rarity = card["rarity"].intValue
+                        monster.subAttributeID = card["subAttributeID"].intValue
                         
-                            monster.portraitLink = getPortraitURL(id: monster.cardID!)
-                            monster.fullLink = getFullURL(id: monster.cardID!)
+                        monster.portraitLink = getPortraitURL(id: monster.cardID!)
+                        monster.fullLink = getFullURL(id: monster.cardID!)
                         
-                            rawMonsters.append(monster)
+                        rawMonsters.append(monster)
                         
                         
                         
@@ -241,6 +250,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
                 }
             }
         }
+        
         
         
         
@@ -264,6 +274,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
             item.setValue(monster.activeSkillID, forKey: "activeSkillID")
             item.setValue(monster.ancestorID, forKey: "ancestorID")
             item.setValue(monster.attributeID, forKey: "attributeID")
+            item.setValue(monster.awakenings, forKey: "awakenings")
             item.setValue(monster.cardID, forKey: "cardID")
             item.setValue(monster.cost, forKey: "cost")
             item.setValue(monster.evomat1, forKey: "evomat1")
@@ -302,7 +313,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         }
     }
     
- 
+    
     
     
     // SEARCH CONTROLLER FUNCTIONS
