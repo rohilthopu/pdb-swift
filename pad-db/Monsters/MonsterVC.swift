@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CoreGraphics
 
 class MonsterVC: UIViewController {
     
@@ -18,7 +19,8 @@ class MonsterVC: UIViewController {
         img.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
         img.clipsToBounds = true
         img.contentMode = .scaleAspectFit
-        img.backgroundColor = UIColor.black
+        img.backgroundColor = UIColor.white
+        
         return img
     }()
     
@@ -67,6 +69,217 @@ class MonsterVC: UIViewController {
         view.clipsToBounds = true // this will make sure its children do not go out of the boundary
         return view
     }()
+    
+    
+    // labels for the status
+    
+    var levelLabel: UILabel = {
+        let textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 20)
+        return textView
+    }()
+    
+    var minLevelLabel: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        
+        return textView
+    }()
+    
+    var maxLevelLabel: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        
+        return textView
+    }()
+    
+    var label297: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        
+        return textView
+    }()
+    
+    let levelContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true // this will make sure its children do not go out of the boundary
+        return view
+    }()
+    
+    
+    
+    // hp labels
+    var HPLabel: UILabel = {
+        let textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 20)
+        return textView
+    }()
+    
+    var minHPLabel: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        
+        return textView
+    }()
+    
+    var maxHPLabel: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        
+        return textView
+    }()
+    
+    var hp297: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        
+        return textView
+    }()
+    
+    let HPContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true // this will make sure its children do not go out of the boundary
+        return view
+    }()
+    
+    
+    
+    // atk labels
+    
+    var ATKLabel: UILabel = {
+        let textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 20)
+        return textView
+    }()
+    
+    var minATKLabel: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        
+        return textView
+    }()
+    
+    var maxATKLabel: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        
+        return textView
+    }()
+    
+    var atk297: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        
+        return textView
+    }()
+    
+    let ATKContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true // this will make sure its children do not go out of the boundary
+        return view
+    }()
+    
+    
+    // rcv labels
+    
+    var RCVLabel: UILabel = {
+        let textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 20)
+        return textView
+    }()
+    
+    var minRCVLabel: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        
+        return textView
+    }()
+    
+    var maxRCVLabel: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        
+        return textView
+    }()
+    
+    var rcv297: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        
+        return textView
+    }()
+    
+    let RCVContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true // this will make sure its children do not go out of the boundary
+        return view
+    }()
+    
+    
+    // xp labels
+    
+    
+    var XPLabel: UILabel = {
+        let textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 20)
+        return textView
+    }()
+    
+    var     minXPLabel: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        
+        return textView
+    }()
+    
+    var maxXPLabel: UILabel = {
+        var textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        
+        return textView
+    }()
+    
+    let XPContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true // this will make sure its children do not go out of the boundary
+        return view
+    }()
+    
+    
+    
+    // weighted stats label
+    
+    let weightedStatsLabel: UILabel = {
+        let textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        return textView
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,107 +297,16 @@ class MonsterVC: UIViewController {
         let m_id = monster!.value(forKey: "cardID") as! Int
         self.navigationItem.title = "No. " + String(m_id)
         
-        
-        
     }
-    
-    
-    func makeBackButton() -> UIButton {
-        let backButtonImage = UIImage(named: "backbutton")?.withRenderingMode(.alwaysTemplate)
-        let backButton = UIButton(type: .custom)
-        backButton.setImage(backButtonImage, for: .normal)
-        backButton.tintColor = .blue
-        backButton.setTitle("Dismiss", for: .normal)
-        backButton.setTitleColor(.blue, for: .normal)
-        backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
-        return backButton
-    }
-    
-    @objc
-    func backButtonPressed() {
-        dismiss(animated: true, completion: nil)
-    }
-    
     
     override func viewWillLayoutSubviews() {
         setupImageView()
         setupPortraitView()
         setupNameContainer()
+        setupStatusContainer()
     }
     
     
-    private func setupImageView() {
-        
-        let url = URL(string: (monster!.value(forKey: "fullURL") as! String))
-        imageContainer.kf.setImage(with: url)
-    
-        
-        self.view.addSubview(imageContainer)
-
-        imageContainer.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-        imageContainer.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: -80).isActive = true
-        imageContainer.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-    }
-    
-    private func setupPortraitView() {
-        let url = URL(string: (monster!.value(forKey: "portraitURL") as! String))
-        portraitContainer.kf.setImage(with: url)
-        
-        self.view.addSubview(portraitContainer)
-        portraitContainer.topAnchor.constraint(equalTo: imageContainer.bottomAnchor, constant: 10).isActive = true
-        portraitContainer.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 10).isActive = true
-        portraitContainer.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        portraitContainer.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        
-        
-    }
-    
-    private func setupNameContainer() {
-        
-        let id = monster!.value(forKey: "cardID") as! Int
-        IDLabel.text = "No. " + String(id)
-        
-        nameLabel.text = monster!.value(forKey: "name") as? String
-        
-        var rarity = ""
-        let rare = monster!.value(forKey: "rarity") as! Int
-        
-        for _ in 0...rare {
-            rarity.append("*")
-        }
-        
-        rarityLabel.text = rarity
-        rarityCountLabel.text = " (" + String(rare) + ")"
-        
-        
-        
-        containerView.addSubview(IDLabel)
-        containerView.addSubview(nameLabel)
-        containerView.addSubview(rarityLabel)
-        containerView.addSubview(rarityCountLabel)
-        self.view.addSubview(containerView)
-        
-        // Container View that houses the extraneus items
-        containerView.leadingAnchor.constraint(equalTo: portraitContainer.trailingAnchor, constant: 10).isActive = true
-        containerView.topAnchor.constraint(equalTo: portraitContainer.topAnchor).isActive = true
-        containerView.heightAnchor.constraint(equalTo: portraitContainer.heightAnchor).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        
-        IDLabel.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        IDLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        nameLabel.topAnchor.constraint(equalTo: IDLabel.bottomAnchor).isActive = true
-        nameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        
-        
-        rarityLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        rarityLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
-        rarityCountLabel.leadingAnchor.constraint(equalTo: rarityLabel.trailingAnchor).isActive = true
-        rarityCountLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
-    }
-    
-    
-    
-
     /*
     // MARK: - Navigation
 

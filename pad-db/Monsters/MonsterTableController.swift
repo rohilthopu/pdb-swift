@@ -52,6 +52,8 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         var minATK:Int?
         var minHP:Int?
         var minRCV:Int?
+        var maxLevel:Int?
+        var maxXP:Int?
         var name:String?
         var rarity:Int?
         var subAttributeID:Int?
@@ -169,10 +171,18 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         let index = indexPath.row
         // returns an NSManagedObject
         
-        let currentMonster = monsters[index]
+        let currentMonster:NSManagedObject
+        
+        if isFiltering() {
+            currentMonster = filteredMonsters[index]
+        }
+        else {
+            currentMonster = monsters[index]
+        }
+        
         let monsterVC = MonsterVC()
         monsterVC.monster = currentMonster
-                
+        
         let navCon = UINavigationController(rootViewController: monsterVC)
         
         self.present(navCon, animated: true, completion: nil)
@@ -214,6 +224,8 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
                             monster.minATK = card["minATK"].intValue
                             monster.minHP = card["minHP"].intValue
                             monster.minRCV = card["minRCV"].intValue
+                            monster.maxXP = card["maxXP"].intValue
+                            monster.maxLevel = card["maxLevel"].intValue
                             monster.name = card["name"].stringValue
                             monster.rarity = card["rarity"].intValue
                             monster.subAttributeID = card["subAttributeID"].intValue
@@ -270,6 +282,8 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
             item.setValue(monster.minATK, forKey: "minATK")
             item.setValue(monster.minHP, forKey: "minHP")
             item.setValue(monster.minRCV, forKey: "minRCV")
+            item.setValue(monster.maxLevel, forKey: "maxLevel")
+            item.setValue(monster.maxXP, forKey: "maxXP")
             item.setValue(monster.name, forKey: "name")
             item.setValue(monster.rarity, forKey: "rarity")
             item.setValue(monster.subAttributeID, forKey: "subAttributeID")
