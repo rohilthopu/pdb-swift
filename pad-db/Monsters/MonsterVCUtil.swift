@@ -33,10 +33,10 @@ extension MonsterVC {
         imageContainer.kf.setImage(with: url)
         
         
-        self.view.addSubview(imageContainer)
+        scrollView.addSubview(imageContainer)
         
         imageContainer.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-        imageContainer.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        imageContainer.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         imageContainer.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }
     
@@ -44,9 +44,9 @@ extension MonsterVC {
         let url = URL(string: (monster!.value(forKey: "portraitURL") as! String))
         portraitContainer.kf.setImage(with: url)
         
-        self.view.addSubview(portraitContainer)
+        scrollView.addSubview(portraitContainer)
         portraitContainer.topAnchor.constraint(equalTo: imageContainer.bottomAnchor, constant: 10).isActive = true
-        portraitContainer.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor, constant: 10).isActive = true
+        portraitContainer.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 10).isActive = true
         portraitContainer.widthAnchor.constraint(equalToConstant: 60).isActive = true
         portraitContainer.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
@@ -78,13 +78,13 @@ extension MonsterVC {
         containerView.addSubview(nameLabel)
         containerView.addSubview(rarityLabel)
         containerView.addSubview(rarityCountLabel)
-        self.view.addSubview(containerView)
+        scrollView.addSubview(containerView)
         
         // Container View that houses the extraneus items
         containerView.leadingAnchor.constraint(equalTo: portraitContainer.trailingAnchor, constant: 10).isActive = true
         containerView.topAnchor.constraint(equalTo: portraitContainer.topAnchor).isActive = true
         containerView.heightAnchor.constraint(equalTo: portraitContainer.heightAnchor).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         
         IDLabel.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
         IDLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
@@ -122,12 +122,12 @@ extension MonsterVC {
         levelContainer.addSubview(maxLevelLabel)
         levelContainer.addSubview(label297)
         
-        self.view.addSubview(levelContainer)
+        scrollView.addSubview(levelContainer)
         
         
         // add constraints to the level container object first
         
-        levelContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 75).isActive = true
+        levelContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 75).isActive = true
         levelContainer.widthAnchor.constraint(equalToConstant: 50).isActive = true
         levelContainer.topAnchor.constraint(equalTo: portraitContainer.bottomAnchor, constant: 20).isActive = true
 
@@ -168,7 +168,7 @@ extension MonsterVC {
         HPContainer.addSubview(maxHPLabel)
         HPContainer.addSubview(hp297)
         
-        self.view.addSubview(HPContainer)
+        scrollView.addSubview(HPContainer)
         
         // add constraints to the level container object first
         
@@ -217,7 +217,7 @@ extension MonsterVC {
         ATKContainer.addSubview(maxATKLabel)
         ATKContainer.addSubview(atk297)
         
-        self.view.addSubview(ATKContainer)
+        scrollView.addSubview(ATKContainer)
         
         // add constraints to the level container object first
         
@@ -262,7 +262,7 @@ extension MonsterVC {
         RCVContainer.addSubview(maxRCVLabel)
         RCVContainer.addSubview(rcv297)
         
-        self.view.addSubview(RCVContainer)
+        scrollView.addSubview(RCVContainer)
         
         // add constraints to the level container object first
         
@@ -307,7 +307,7 @@ extension MonsterVC {
         XPContainer.addSubview(minXPLabel)
         XPContainer.addSubview(maxXPLabel)
         
-        self.view.addSubview(XPContainer)
+        scrollView.addSubview(XPContainer)
         
         // add constraints to the level container object first
         
@@ -346,11 +346,10 @@ extension MonsterVC {
         weightedStatsLabel.text = "Weighted stats: " + String(format: "%.2f", weighted)
         
         
-        self.view.addSubview(weightedStatsLabel)
+        scrollView.addSubview(weightedStatsLabel)
         
         weightedStatsLabel.leadingAnchor.constraint(equalTo: levelContainer.leadingAnchor).isActive = true
         weightedStatsLabel.topAnchor.constraint(equalTo: levelContainer.bottomAnchor, constant: 20).isActive = true
-        
         
     }
 }

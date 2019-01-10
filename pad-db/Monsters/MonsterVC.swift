@@ -280,6 +280,16 @@ class MonsterVC: UIViewController {
         return textView
     }()
     
+    let scrollView:UIScrollView = {
+       let view = UIScrollView()
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentSize.height = 2000
+        view.backgroundColor = UIColor.white
+        
+        
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -294,12 +304,22 @@ class MonsterVC: UIViewController {
         
         self.navigationController?.navigationBar.prefersLargeTitles = false
         
+        
+        self.view.addSubview(scrollView)
+        scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+
+        
+        
         let m_id = monster!.value(forKey: "cardID") as! Int
         self.navigationItem.title = "No. " + String(m_id)
         
     }
     
     override func viewWillLayoutSubviews() {
+        
         setupImageView()
         setupPortraitView()
         setupNameContainer()
