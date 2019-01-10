@@ -299,7 +299,7 @@ extension MonsterVC {
         
         minXPLabel.text = String(0)
         maxXPLabel.text = String(monster!.value(forKey: "maxXP") as! Int)
-        XPLabel.text = "rcv"
+        XPLabel.text = "xp"
         
         
         XPContainer.addSubview(XPLabel)
@@ -353,40 +353,76 @@ extension MonsterVC {
     }
     
     public func setupAwakenings() {
+        
+        let size = CGFloat(25)
+        let size_int = 25
+        
         let awks = monster!.value(forKey: "awakenings") as! [Int]
         
-        for a in awks {
-            let img = UIImageView()
-            img.translatesAutoresizingMaskIntoConstraints = false
-            img.clipsToBounds = true
-            
-            let a_img = UIImage(named: String(a + 2))
-            img.image = a_img
-            awakenings.append(img)
-        }
         
-        for i in 0...awakenings.count - 1 {
+        if awks.count > 0 {
+            for a in awks {
+                let img = UIImageView()
+                img.translatesAutoresizingMaskIntoConstraints = false
+                img.clipsToBounds = true
+                
+                let a_img = UIImage(named: String(a + 2))
+                img.image = a_img
+                awakenings.append(img)
+            }
             
-            let skill = awakenings[i]
-            scrollView.addSubview(skill)
-            skill.widthAnchor.constraint(equalToConstant: 20).isActive = true
-            skill.heightAnchor.constraint(equalToConstant: 20).isActive = true
-            skill.topAnchor.constraint(equalTo: weightedStatsLabel.bottomAnchor, constant: 20).isActive = true
+            for i in 0...awakenings.count - 1 {
+                
+                let skill = awakenings[i]
+                scrollView.addSubview(skill)
+                skill.widthAnchor.constraint(equalToConstant: size).isActive = true
+                skill.heightAnchor.constraint(equalToConstant: size).isActive = true
+                skill.topAnchor.constraint(equalTo: weightedStatsLabel.bottomAnchor, constant: 20).isActive = true
+                
+                if i == 0 {
+                    let maxX = self.view.frame.width
+                    let a_max = awakenings.count*size_int + (awakenings.count-1)*10
+                    let diff = (maxX - CGFloat(a_max))/2
+                    skill.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: diff).isActive = true
+                }
+                else {
+                    skill.leadingAnchor.constraint(equalTo: awakenings[i-1].trailingAnchor, constant: 10).isActive = true
+                }
+                
+            }
+        }
 
-            if i == 0 {
-                let maxX = self.view.frame.width
-                let a_max = awakenings.count*20 + (awakenings.count-1)*10
-                let diff = (maxX - CGFloat(a_max))/2
-                skill.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: diff).isActive = true
-            }
-            else {
-                skill.leadingAnchor.constraint(equalTo: awakenings[i-1].trailingAnchor, constant: 10).isActive = true
+        
+        let sawks = monster!.value(forKey: "superAwakenings") as! [Int]
+        
+        if sawks.count > 0 {
+            for a in sawks {
+                let img = UIImageView()
+                img.translatesAutoresizingMaskIntoConstraints = false
+                img.clipsToBounds = true
+                
+                let a_img = UIImage(named: String(a + 2))
+                img.image = a_img
+                sawakenings.append(img)
             }
             
+            for i in 0...sawakenings.count - 1 {
+                
+                let skill = sawakenings[i]
+                scrollView.addSubview(skill)
+                skill.widthAnchor.constraint(equalToConstant: size).isActive = true
+                skill.heightAnchor.constraint(equalToConstant: size).isActive = true
+                skill.topAnchor.constraint(equalTo: awakenings[0].bottomAnchor, constant: 20).isActive = true
+                
+                if i == 0 {
+                    skill.leadingAnchor.constraint(equalTo: awakenings[0].leadingAnchor).isActive = true
+                }
+                else {
+                    skill.leadingAnchor.constraint(equalTo: sawakenings[i-1].trailingAnchor, constant: 10).isActive = true
+                }
+                
+            }
         }
-        
-        
-        
         
  
     }

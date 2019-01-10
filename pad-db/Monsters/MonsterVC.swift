@@ -18,6 +18,7 @@ class MonsterVC: UIViewController {
     let awakening_link_end:String = ".png"
 
     var awakenings = [UIImageView]()
+    var sawakenings = [UIImageView]()
     
     let imageContainer: UIImageView =  {
         let img = UIImageView()

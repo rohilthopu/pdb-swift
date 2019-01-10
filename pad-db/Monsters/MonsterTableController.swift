@@ -58,16 +58,13 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         var name:String?
         var rarity:Int?
         var subAttributeID:Int?
+        var superAwakenings:[Int]?
         var type1:Int?
         var type2:Int?
         var type3:Int?
         
         var portraitLink:String?
         var fullLink:String?
-    }
-    
-    struct awakening:Decodable {
-        var vals:[Int]?
     }
     
     override func viewDidLoad() {
@@ -239,6 +236,10 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
                         monster.rarity = card["rarity"].intValue
                         monster.subAttributeID = card["subAttributeID"].intValue
                         
+                        
+                        let vals2 = try! decoder.decode([Int].self, from: card["superAwakenings_raw"].stringValue.data(using: .utf8)!)
+                        monster.superAwakenings = vals2
+                        
                         monster.portraitLink = getPortraitURL(id: monster.cardID!)
                         monster.fullLink = getFullURL(id: monster.cardID!)
                         
@@ -298,6 +299,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
             item.setValue(monster.name, forKey: "name")
             item.setValue(monster.rarity, forKey: "rarity")
             item.setValue(monster.subAttributeID, forKey: "subAttributeID")
+            item.setValue(monster.superAwakenings, forKey: "superAwakenings")
             item.setValue(monster.portraitLink, forKey: "portraitURL")
             item.setValue(monster.fullLink, forKey: "fullURL")
             
