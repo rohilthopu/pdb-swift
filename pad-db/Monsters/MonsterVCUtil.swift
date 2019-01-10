@@ -35,7 +35,7 @@ extension MonsterVC {
         
         scrollView.addSubview(imageContainer)
         
-        imageContainer.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        imageContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         imageContainer.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         imageContainer.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }
@@ -84,7 +84,7 @@ extension MonsterVC {
         containerView.leadingAnchor.constraint(equalTo: portraitContainer.trailingAnchor, constant: 10).isActive = true
         containerView.topAnchor.constraint(equalTo: portraitContainer.topAnchor).isActive = true
         containerView.heightAnchor.constraint(equalTo: portraitContainer.heightAnchor).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         
         IDLabel.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
         IDLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
@@ -127,7 +127,7 @@ extension MonsterVC {
         
         // add constraints to the level container object first
         
-        levelContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 75).isActive = true
+        levelContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 75).isActive = true
         levelContainer.widthAnchor.constraint(equalToConstant: 50).isActive = true
         levelContainer.topAnchor.constraint(equalTo: portraitContainer.bottomAnchor, constant: 20).isActive = true
 
@@ -222,7 +222,6 @@ extension MonsterVC {
         // add constraints to the level container object first
         
         ATKContainer.leadingAnchor.constraint(equalTo: HPContainer.trailingAnchor).isActive = true
-        //        HPContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         ATKContainer.topAnchor.constraint(equalTo: portraitContainer.bottomAnchor, constant: 20).isActive = true
         ATKContainer.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
