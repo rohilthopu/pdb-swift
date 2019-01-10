@@ -130,7 +130,7 @@ class GuerrillaCell: UITableViewCell {
                 }
                 else {
                     remainingTimeLabel.text = String(timeInMins) + " minutes"
-                    resetBGcolors()
+                    setBGcolors()
                 }
             }
             
