@@ -47,6 +47,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         var evomat3:Int?
         var evomat4:Int?
         var evomat5:Int?
+        var leaderSkillID:Int?
         var maxATK:Int?
         var maxHP:Int?
         var maxRCV:Int?
@@ -204,6 +205,8 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
                     if !name.contains("?") && !name.contains("*") && !name.isEmpty && !name.contains("Alt.") {
                         var monster:Monster = Monster()
                         monster.activeSkillID = card["activeSkillID"].intValue
+                        monster.leaderSkillID = card["leaderSkillID"].intValue
+                        
                         monster.ancestorID = card["ancestorID"].intValue
                         monster.attributeID = card["attributeID"].intValue
                         
@@ -240,6 +243,11 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
                         let vals2 = try! decoder.decode([Int].self, from: card["superAwakenings_raw"].stringValue.data(using: .utf8)!)
                         monster.superAwakenings = vals2
                         
+                        
+                        monster.type1 = card["type1"].intValue
+                        monster.type2 = card["type2"].intValue
+                        monster.type3 = card["type3"].intValue
+
                         monster.portraitLink = getPortraitURL(id: monster.cardID!)
                         monster.fullLink = getFullURL(id: monster.cardID!)
                         
@@ -300,6 +308,9 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
             item.setValue(monster.rarity, forKey: "rarity")
             item.setValue(monster.subAttributeID, forKey: "subAttributeID")
             item.setValue(monster.superAwakenings, forKey: "superAwakenings")
+            item.setValue(monster.type1, forKey: "type1")
+            item.setValue(monster.type2, forKey: "type2")
+            item.setValue(monster.type3, forKey: "type3")
             item.setValue(monster.portraitLink, forKey: "portraitURL")
             item.setValue(monster.fullLink, forKey: "fullURL")
             

@@ -16,16 +16,17 @@ class MonsterVC: UIViewController {
     
     let awakening_base_link:String = "http://www.puzzledragonx.com/en/img/awoken/"
     let awakening_link_end:String = ".png"
-
+    let type_base:String = "type_"
     var awakenings = [UIImageView]()
     var sawakenings = [UIImageView]()
+    var types = [UIImageView]()
     
     let imageContainer: UIImageView =  {
         let img = UIImageView()
         img.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
         img.clipsToBounds = true
         img.contentMode = .scaleAspectFit
-        img.backgroundColor = UIColor.white
+        img.backgroundColor = UIColor.black
         
         return img
     }()
@@ -49,7 +50,7 @@ class MonsterVC: UIViewController {
     var IDLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 20)
         textView.textColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         return textView
     }()
@@ -318,7 +319,7 @@ class MonsterVC: UIViewController {
         
         
         let m_id = monster!.value(forKey: "cardID") as! Int
-        self.navigationItem.title = "No. " + String(m_id)
+        self.navigationItem.title = String(m_id)
         
         setupImageView()
         setupPortraitView()
