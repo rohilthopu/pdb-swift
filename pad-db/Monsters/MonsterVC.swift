@@ -290,6 +290,24 @@ class MonsterVC: UIViewController {
         return textView
     }()
     
+    let awokenSkillLabel: UILabel = {
+        let textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        textView.clipsToBounds = true
+        textView.text = "Awoken Skill"
+        return textView
+    }()
+    
+    let sawokenSkillLabel: UILabel = {
+        let textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        textView.clipsToBounds = true
+        textView.text = "Super Awoken Skills"
+        return textView
+    }()
+    
     
     let awakeningContainer: UIView = {
         let vw = UIView()
@@ -319,6 +337,33 @@ class MonsterVC: UIViewController {
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.clipsToBounds = true
         return vw
+    }()
+    
+    let awokenNoneLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.clipsToBounds = true
+        lbl.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        lbl.text = "No Awoken Skills"
+        return lbl
+    }()
+    
+    let sawokenNoneLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.clipsToBounds = true
+        lbl.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        lbl.text = "No Super Awoken Skills"
+        return lbl
+    }()
+    
+    let evoNoneLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.clipsToBounds = true
+        lbl.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        lbl.text = "No Evolution Materials"
+        return lbl
     }()
     
     let scrollView:UIScrollView = {
@@ -362,6 +407,7 @@ class MonsterVC: UIViewController {
         setupNameContainer()
         setupStatusContainer()
         setupAwakenings()
+        setupSuperAwakenings()
         setupSkills()
         setupEvoMaterials()
         

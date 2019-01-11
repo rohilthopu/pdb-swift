@@ -24,7 +24,9 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     let cellid = "monsterid"
     var monster_url:String = "https://pad-db.com/api/monsters/na/"
     var portrait_url:String = "https://storage.googleapis.com/mirubot/padimages/na/portrait/"
-    var full_url:String = "https://storage.googleapis.com/mirubot/padimages/na/full/"
+//    var full_url:String = "https://storage.googleapis.com/mirubot/padimages/na/full/"
+    var full_url:String = "https://storage.googleapis.com/mirubot/padimages/hq_images/"
+
     var monsters = [NSManagedObject]()
     var rawMonsters = [Monster]()
     var filteredMonsters = [NSManagedObject]()
@@ -105,10 +107,13 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: "MonsterNA")
         
+        let sort = NSSortDescriptor(key: "cardID", ascending: false)
+        fetchRequest.sortDescriptors = [sort]
+        
         //3
         do {
             monsters = try managedContext.fetch(fetchRequest)
-            monsters.reverse()
+//            monsters.reverse()
         } catch _ as NSError {
             print("Could not fetch.")
         }
