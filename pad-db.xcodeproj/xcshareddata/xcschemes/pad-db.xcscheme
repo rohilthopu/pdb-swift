@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3FE3B462330EE8ADBDB5854373A56A55"
-               BuildableName = "Pods_pad_db.framework"
-               BlueprintName = "Pods-pad-db"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "78B00302211CA296001F246E"
+               BuildableName = "pad-db.app"
+               BlueprintName = "pad-db"
+               ReferencedContainer = "container:pad-db.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,6 +29,15 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "78B00302211CA296001F246E"
+            BuildableName = "pad-db.app"
+            BlueprintName = "pad-db"
+            ReferencedContainer = "container:pad-db.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -42,15 +51,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3FE3B462330EE8ADBDB5854373A56A55"
-            BuildableName = "Pods_pad_db.framework"
-            BlueprintName = "Pods-pad-db"
-            ReferencedContainer = "container:Pods.xcodeproj">
+            BlueprintIdentifier = "78B00302211CA296001F246E"
+            BuildableName = "pad-db.app"
+            BlueprintName = "pad-db"
+            ReferencedContainer = "container:pad-db.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -60,6 +70,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "78B00302211CA296001F246E"
+            BuildableName = "pad-db.app"
+            BlueprintName = "pad-db"
+            ReferencedContainer = "container:pad-db.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
