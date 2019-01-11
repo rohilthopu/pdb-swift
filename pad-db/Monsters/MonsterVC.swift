@@ -428,6 +428,7 @@ class MonsterVC: UIViewController {
         setupSkills()
         setupEvoMaterials()
         setupDevoMaterials()
+        addSeparator()
         
     }
 }

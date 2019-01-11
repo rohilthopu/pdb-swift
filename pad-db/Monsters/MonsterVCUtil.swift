@@ -655,5 +655,19 @@ extension MonsterVC {
         }
     }
     
+    public func addSeparator() {
+        let separator = UIView()
+        separator.translatesAutoresizingMaskIntoConstraints = false
+        separator.clipsToBounds = true
+        separator.layer.borderWidth = 1
+        separator.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        
+        scrollView.addSubview(separator)
+        
+        separator.topAnchor.constraint(equalTo: devoMaterialsContainer.bottomAnchor, constant: 20).isActive = true
+        separator.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20).isActive = true
+        separator.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20).isActive = true
+        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    }
     
 }
