@@ -119,6 +119,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     
     @objc
     private func refreshMonsterList(_ sender: Any) {
+        monsters.removeAll()
         clearDB()
         fillMonsterData()
         loadMonstersFromDB()
@@ -336,7 +337,6 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
             
             do {
                 try managedContext.save()
-                monsters.append(item)
             }
             catch _ as NSError {
                 print("Error saving monster in CoreData")
