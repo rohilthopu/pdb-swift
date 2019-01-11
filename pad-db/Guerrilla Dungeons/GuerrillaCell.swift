@@ -21,14 +21,14 @@ class GuerrillaCell: UITableViewCell {
     var nameLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 18)
         return textView
     }()
     
     var groupLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = UIFont(name: "Futura-CondensedMedium", size: 12)
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
         textView.clipsToBounds = true
         return textView
     }()
@@ -36,14 +36,14 @@ class GuerrillaCell: UITableViewCell {
     var statusLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = UIFont(name: "Futura-CondensedMedium", size: 12)
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
         return textView
     }()
     
     var remainingTimeLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = UIFont(name: "Futura-CondensedMedium", size: 12)
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
         return textView
     }()
     

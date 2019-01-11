@@ -36,7 +36,7 @@ class GuerrillaTableViewController: UITableViewController {
     
     var displayDungeons = [Guerrilla]()
     
-    var showingNA = false
+    var showingNA = true
 
 
     override func viewDidLoad() {
@@ -93,7 +93,6 @@ class GuerrillaTableViewController: UITableViewController {
         jpDungeons.removeAll()
         loadGuerrilla()
         tableView.refreshControl!.endRefreshing()
-        showingNA = true
         tableView.reloadData()
  
     }
@@ -157,8 +156,12 @@ class GuerrillaTableViewController: UITableViewController {
             }
         }
         
-        displayDungeons = naDungeons
-        showingNA = true
+        if showingNA {
+            displayDungeons = naDungeons
+        }
+        else {
+            displayDungeons = jpDungeons
+        }
     }
 
     // MARK: - Table view data source

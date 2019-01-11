@@ -24,9 +24,9 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     let cellid = "monsterid"
     var monster_url:String = "https://pad-db.com/api/monsters/na/"
     var portrait_url:String = "https://storage.googleapis.com/mirubot/padimages/na/portrait/"
-//    var full_url:String = "https://storage.googleapis.com/mirubot/padimages/na/full/"
+    //    var full_url:String = "https://storage.googleapis.com/mirubot/padimages/na/full/"
     var full_url:String = "https://storage.googleapis.com/mirubot/padimages/hq_images/"
-
+    
     var monsters = [NSManagedObject]()
     var rawMonsters = [Monster]()
     var filteredMonsters = [NSManagedObject]()
@@ -76,25 +76,18 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         navigationItem.title = "Monsters"
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         setupView()
-//        fillMonsterData()
         
         tableView.register(MonsterCell.self, forCellReuseIdentifier: cellid)
         tableView.rowHeight = 70
         
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl!.addTarget(self, action: #selector(refreshMonsterList(_:)), for: .valueChanged)
         
         tableView.reloadData()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //1
+    private func loadMonstersFromDB() {
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
@@ -103,20 +96,35 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         let managedContext =
             appDelegate.persistentContainer.viewContext
         
-        //2
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: "MonsterNA")
         
         let sort = NSSortDescriptor(key: "cardID", ascending: false)
         fetchRequest.sortDescriptors = [sort]
         
-        //3
         do {
             monsters = try managedContext.fetch(fetchRequest)
-//            monsters.reverse()
+            //            monsters.reverse()
         } catch _ as NSError {
             print("Could not fetch.")
         }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadMonstersFromDB()
+        
+    }
+    
+    @objc
+    private func refreshMonsterList(_ sender: Any) {
+        clearDB()
+        fillMonsterData()
+        loadMonstersFromDB()
+        tableView.refreshControl!.endRefreshing()
+        tableView.reloadData()
+        
     }
     
     private func setupView() {
@@ -139,8 +147,6 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         self.monstersearch.delegate = self
         self.monstersearch.searchBar.delegate = self
         self.extendedLayoutIncludesOpaqueBars = true
-        
-        
         
     }
     
@@ -198,11 +204,27 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         
     }
     
+    private func clearDB() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MonsterNA")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        
+        do {
+            try managedContext.execute(deleteRequest)
+            try managedContext.save()
+        } catch {
+            print("There was an error deleting items.")
+        }
+    }
+    
     private func fillMonsterData() {
         // Source: https://mrgott.com/swift-programing/33-rest-api-in-swift-4-using-urlsession-and-jsondecode
         // load the url
         
-        if let url = URL(string: monster_url) {
+        if let url = URL(string: self.monster_url) {
             if let data = try? String(contentsOf: url) {
                 let json = JSON(parseJSON: data)
                 for card in json.arrayValue {
@@ -219,7 +241,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
                         let decoder = JSONDecoder()
                         let vals = try! decoder.decode([Int].self, from: card["awakenings_raw"].stringValue.data(using: .utf8)!)
                         monster.awakenings = vals
-                
+                        
                         
                         monster.cardID = card["cardID"].intValue
                         monster.cost = card["cost"].intValue
@@ -253,13 +275,11 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
                         monster.type1 = card["type1"].intValue
                         monster.type2 = card["type2"].intValue
                         monster.type3 = card["type3"].intValue
-
-                        monster.portraitLink = getPortraitURL(id: monster.cardID!)
-                        monster.fullLink = getFullURL(id: monster.cardID!)
                         
-                        rawMonsters.append(monster)
+                        monster.portraitLink = self.getPortraitURL(id: monster.cardID!)
+                        monster.fullLink = self.getFullURL(id: monster.cardID!)
                         
-                        
+                        self.rawMonsters.append(monster)
                         
                     }
                 }
@@ -269,20 +289,12 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         
         
         
+        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "MonsterNA", in: managedContext)!
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MonsterNA")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        
-        do {
-            try managedContext.execute(deleteRequest)
-            try managedContext.save()
-        } catch {
-            print("There was an error deleting items.")
-        }
+
         
         for monster in rawMonsters {
             let item = NSManagedObject(entity: entity, insertInto: managedContext)

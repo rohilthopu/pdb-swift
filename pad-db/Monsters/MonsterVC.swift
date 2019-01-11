@@ -22,7 +22,7 @@ class MonsterVC: UIViewController {
     var sawakenings = [UIImageView]()
     var types = [UIImageView]()
     var evoImgs = [UIImageView]()
-
+    var devoImgs = [UIImageView]()
     
     let imageContainer: UIImageView =  {
         let img = UIImageView()
@@ -256,7 +256,7 @@ class MonsterVC: UIViewController {
         return textView
     }()
     
-    var     minXPLabel: UILabel = {
+    var minXPLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
@@ -278,8 +278,6 @@ class MonsterVC: UIViewController {
         view.clipsToBounds = true // this will make sure its children do not go out of the boundary
         return view
     }()
-    
-    
     
     // weighted stats label
     
@@ -339,6 +337,41 @@ class MonsterVC: UIViewController {
         return vw
     }()
     
+    let evoNoneLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.clipsToBounds = true
+        lbl.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        lbl.text = "No Evolution Materials"
+        return lbl
+    }()
+    
+    
+    let devoMaterialsLabel: UILabel = {
+        let textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        textView.clipsToBounds = true
+        textView.text = "Devolution Materials"
+        return textView
+    }()
+    
+    let devoMaterialsContainer: UIView = {
+        let vw = UIView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        vw.clipsToBounds = true
+        return vw
+    }()
+    
+    let devoNoneLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.clipsToBounds = true
+        lbl.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        lbl.text = "No Devolution Materials"
+        return lbl
+    }()
+    
     let awokenNoneLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -357,47 +390,31 @@ class MonsterVC: UIViewController {
         return lbl
     }()
     
-    let evoNoneLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.clipsToBounds = true
-        lbl.font = UIFont(name: "Futura-CondensedMedium", size: 16)
-        lbl.text = "No Evolution Materials"
-        return lbl
-    }()
+  
     
     let scrollView:UIScrollView = {
        let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentSize.height = 1200
         view.backgroundColor = UIColor.white
-        
         return view
     }()
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         self.view.backgroundColor = UIColor.white
+        
         // make a back button
-    
-        self.navigationController?.navigationBar.barTintColor = .white
+            self.navigationController?.navigationBar.barTintColor = .white
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: makeBackButton())
-        
-        
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        
-        
         self.view.addSubview(scrollView)
         scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
 
-        
         
         let m_id = monster!.value(forKey: "cardID") as! Int
         self.navigationItem.title = String(m_id)
@@ -410,21 +427,7 @@ class MonsterVC: UIViewController {
         setupSuperAwakenings()
         setupSkills()
         setupEvoMaterials()
+        setupDevoMaterials()
         
     }
-    
-    override func viewWillLayoutSubviews() {
-    }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
