@@ -407,6 +407,9 @@ extension MonsterVC {
         let awks = monster!.value(forKey: "awakenings") as! [Int]
         
         
+        var diff:CGFloat = 0
+        
+        
         if awks.count > 0 {
             for a in awks {
                 let img = UIImageView()
@@ -416,59 +419,95 @@ extension MonsterVC {
                 let a_img = UIImage(named: String(a + 2))
                 img.image = a_img
                 awakenings.append(img)
+                
+                awakeningContainer.addSubview(img)
             }
+            
+            scrollView.addSubview(awakeningContainer)
+            
+            let maxX = self.view.frame.width
+            let a_max = awakenings.count*size_int + (awakenings.count-1)*10
+            diff = (maxX - CGFloat(a_max))/2
+            
+            awakeningContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: diff).isActive = true
+            awakeningContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+            awakeningContainer.heightAnchor.constraint(equalToConstant: size).isActive = true
+            awakeningContainer.topAnchor.constraint(equalTo: weightedStatsLabel.bottomAnchor, constant: 20).isActive = true
+            
             
             for i in 0...awakenings.count - 1 {
                 
                 let skill = awakenings[i]
-                scrollView.addSubview(skill)
                 skill.widthAnchor.constraint(equalToConstant: size).isActive = true
                 skill.heightAnchor.constraint(equalToConstant: size).isActive = true
-                skill.topAnchor.constraint(equalTo: weightedStatsLabel.bottomAnchor, constant: 20).isActive = true
+                skill.topAnchor.constraint(equalTo: awakeningContainer.topAnchor).isActive = true
                 
                 if i == 0 {
-                    let maxX = self.view.frame.width
-                    let a_max = awakenings.count*size_int + (awakenings.count-1)*10
-                    let diff = (maxX - CGFloat(a_max))/2
-                    skill.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: diff).isActive = true
+                    
+                    skill.leadingAnchor.constraint(equalTo: awakeningContainer.leadingAnchor).isActive = true
                 }
                 else {
                     skill.leadingAnchor.constraint(equalTo: awakenings[i-1].trailingAnchor, constant: 10).isActive = true
                 }
                 
             }
+        
+        }
+        
+        else {
+            scrollView.addSubview(awakeningContainer)
+        
+            awakeningContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+            awakeningContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+            awakeningContainer.topAnchor.constraint(equalTo: weightedStatsLabel.bottomAnchor).isActive = true
         }
 
         
         let sawks = monster!.value(forKey: "superAwakenings") as! [Int]
-        
+
         if sawks.count > 0 {
             for a in sawks {
                 let img = UIImageView()
                 img.translatesAutoresizingMaskIntoConstraints = false
                 img.clipsToBounds = true
-                
+
                 let a_img = UIImage(named: String(a + 2))
                 img.image = a_img
                 sawakenings.append(img)
+                sawakeningContainer.addSubview(img)
             }
             
+            
+            scrollView.addSubview(sawakeningContainer)
+        
+            sawakeningContainer.leadingAnchor.constraint(equalTo: awakeningContainer.leadingAnchor).isActive = true
+            sawakeningContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+            sawakeningContainer.heightAnchor.constraint(equalToConstant: size).isActive = true
+            sawakeningContainer.topAnchor.constraint(equalTo: awakeningContainer.bottomAnchor, constant: 20).isActive = true
+
             for i in 0...sawakenings.count - 1 {
-                
+
                 let skill = sawakenings[i]
-                scrollView.addSubview(skill)
                 skill.widthAnchor.constraint(equalToConstant: size).isActive = true
                 skill.heightAnchor.constraint(equalToConstant: size).isActive = true
-                skill.topAnchor.constraint(equalTo: awakenings[0].bottomAnchor, constant: 20).isActive = true
-                
+                skill.topAnchor.constraint(equalTo: sawakeningContainer.topAnchor).isActive = true
+
                 if i == 0 {
-                    skill.leadingAnchor.constraint(equalTo: awakenings[0].leadingAnchor).isActive = true
+                    skill.leadingAnchor.constraint(equalTo: sawakeningContainer.leadingAnchor).isActive = true
                 }
                 else {
                     skill.leadingAnchor.constraint(equalTo: sawakenings[i-1].trailingAnchor, constant: 10).isActive = true
                 }
-                
+
             }
+        }
+        
+        else {
+            scrollView.addSubview(sawakeningContainer)
+            
+            sawakeningContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+            sawakeningContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+            sawakeningContainer.topAnchor.constraint(equalTo: awakeningContainer.bottomAnchor).isActive = true
         }
         
  
@@ -515,14 +554,14 @@ extension MonsterVC {
 //        evoMaterialsContainer.addSubview(evoMaterialsLabel)
 //
 //        scrollView.addSubview(evoMaterialsContainer)
-//        
+//
 //        evoMaterialsContainer.topAnchor.constraint(equalTo: sawakenings.first!.bottomAnchor).isActive = true
 //        evoMaterialsContainer.leadingAnchor.constraint(equalTo: portraitContainer.leadingAnchor).isActive = true
-//        
-//        
+//
+//
 ////        evoMaterialsContainer.widthAnchor.constraint(equalToConstant: scrollView.frame.width).isActive = true
 //        // set their constraints
-//        
+//
 //        evoMaterialsLabel.leadingAnchor.constraint(equalTo: evoMaterialsContainer.leadingAnchor).isActive = true
 //        evoMaterialsLabel.topAnchor.constraint(equalTo: evoMaterialsContainer.topAnchor).isActive = true
         

@@ -290,6 +290,21 @@ class MonsterVC: UIViewController {
         return textView
     }()
     
+    
+    let awakeningContainer: UIView = {
+        let vw = UIView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        vw.clipsToBounds = true
+        return vw
+    }()
+    
+    let sawakeningContainer: UIView = {
+        let vw = UIView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        vw.clipsToBounds = true
+        return vw
+    }()
+    
     let evoMaterialsLabel: UILabel = {
         let textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
