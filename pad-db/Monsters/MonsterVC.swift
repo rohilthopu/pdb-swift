@@ -13,6 +13,7 @@ import CoreGraphics
 class MonsterVC: UIViewController {
     
     var monster:NSManagedObject?
+    var monsters:[NSManagedObject]?
     
     let awakening_base_link:String = "http://www.puzzledragonx.com/en/img/awoken/"
     let awakening_link_end:String = ".png"
@@ -20,6 +21,8 @@ class MonsterVC: UIViewController {
     var awakenings = [UIImageView]()
     var sawakenings = [UIImageView]()
     var types = [UIImageView]()
+    var evoImgs = [UIImageView]()
+
     
     let imageContainer: UIImageView =  {
         let img = UIImageView()
@@ -287,6 +290,22 @@ class MonsterVC: UIViewController {
         return textView
     }()
     
+    let evoMaterialsLabel: UILabel = {
+        let textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        textView.clipsToBounds = true
+        textView.text = "Evolution Materials"
+        return textView
+    }()
+    
+    let evoMaterialsContainer: UIView = {
+        let vw = UIView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        vw.clipsToBounds = true
+        return vw
+    }()
+    
     let scrollView:UIScrollView = {
        let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -295,6 +314,8 @@ class MonsterVC: UIViewController {
         
         return view
     }()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -326,6 +347,8 @@ class MonsterVC: UIViewController {
         setupNameContainer()
         setupStatusContainer()
         setupAwakenings()
+        setupSkills()
+        setupEvoMaterials()
         
     }
     

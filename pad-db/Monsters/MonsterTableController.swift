@@ -185,6 +185,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         
         let monsterVC = MonsterVC()
         monsterVC.monster = currentMonster
+        monsterVC.monsters = monsters
         
         let navCon = UINavigationController(rootViewController: monsterVC)
         

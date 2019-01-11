@@ -473,4 +473,81 @@ extension MonsterVC {
         
  
     }
+    
+    public func setupSkills() {
+        // TODO
+    }
+    
+    public func setupEvoMaterials() {
+        let e1 = monster!.value(forKey: "evomat1") as! Int
+        let e2 = monster!.value(forKey: "evomat2") as! Int
+        let e3 = monster!.value(forKey: "evomat3") as! Int
+        let e4 = monster!.value(forKey: "evomat4") as! Int
+        let e5 = monster!.value(forKey: "evomat5") as! Int
+        
+        let evomats = [e1, e2, e3, e4, e5]
+        
+        // get the evo portrait images
+        for e in evomats {
+            let mat = monsters!.filter({
+                let card = $0.value(forKey: "cardID") as! Int
+                if e == card {
+                    return true
+                }
+                return false
+            }).first
+            
+            if mat != nil {
+                let link = mat!.value(forKey: "portraitURL") as! String
+                
+                let img = UIImageView()
+                img.translatesAutoresizingMaskIntoConstraints = false
+                img.clipsToBounds = true
+                img.kf.setImage(with: URL(string: link))
+                
+                evoImgs.append(img)
+            }
+            
+         
+        }
+        
+        
+//        evoMaterialsContainer.addSubview(evoMaterialsLabel)
+//
+//        scrollView.addSubview(evoMaterialsContainer)
+//        
+//        evoMaterialsContainer.topAnchor.constraint(equalTo: sawakenings.first!.bottomAnchor).isActive = true
+//        evoMaterialsContainer.leadingAnchor.constraint(equalTo: portraitContainer.leadingAnchor).isActive = true
+//        
+//        
+////        evoMaterialsContainer.widthAnchor.constraint(equalToConstant: scrollView.frame.width).isActive = true
+//        // set their constraints
+//        
+//        evoMaterialsLabel.leadingAnchor.constraint(equalTo: evoMaterialsContainer.leadingAnchor).isActive = true
+//        evoMaterialsLabel.topAnchor.constraint(equalTo: evoMaterialsContainer.topAnchor).isActive = true
+        
+//        if evoImgs.count > 0 {
+//            for i in 0...evoImgs.count-1 {
+//                let img = evoImgs[i]
+//                evoMaterialsContainer.addSubview(img)
+//                img.heightAnchor.constraint(equalToConstant: 40).isActive = true
+//                img.widthAnchor.constraint(equalToConstant: 40).isActive = true
+//                img.topAnchor.constraint(equalTo: sawakenings.first!.bottomAnchor, constant: 20).isActive = true
+//                img.centerYAnchor.constraint(equalTo: evoMaterialsLabel.centerYAnchor).isActive = true
+//
+//                if i == 0 {
+//                    img.leadingAnchor.constraint(equalTo: evoMaterialsLabel.trailingAnchor, constant: 20).isActive = true
+//                }
+//                else {
+//                    img.leadingAnchor.constraint(equalTo: evoImgs[i-1].trailingAnchor, constant: 10).isActive = true
+//                }
+//
+//            }
+//        }
+
+        
+        
+        
+
+    }
 }
