@@ -148,6 +148,21 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         monsterVC.monster = currentMonster
         monsterVC.monsters = monsters
         
+        let activeSkill = skills.filter({
+            let skillID = $0.value(forKey: "skillID") as! Int
+            let aSkill = currentMonster.value(forKey: "activeSkillID") as! Int
+            
+            if skillID == aSkill {
+                return true
+            }
+            else {
+                return false
+            }
+        }).first
+        
+        monsterVC.activeSkill = activeSkill
+        
+        
         let navCon = UINavigationController(rootViewController: monsterVC)
         
         self.present(navCon, animated: true, completion: nil)

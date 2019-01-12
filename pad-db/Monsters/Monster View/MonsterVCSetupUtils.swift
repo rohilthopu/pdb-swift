@@ -55,6 +55,20 @@ extension MonsterVC {
     
     public func setupNameContainer() {
         
+        let nameLabel = makeLabel(ofSize: 16, withText: "")
+        
+        let IDLabel: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 20)
+            textView.textColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+            return textView
+        }()
+        
+        let rarityLabel = makeLabel(ofSize: 20, withText: "")
+        
+        let rarityCountLabel = makeLabel(ofSize: 12, withText: "")
+        
         let id = monster!.value(forKey: "cardID") as! Int
         IDLabel.text = "No. " + String(id)
         
@@ -73,28 +87,28 @@ extension MonsterVC {
         rarityCountLabel.text = " (" + String(rare) + ")/ Cost " + String(cost)
         
         
-        containerView.addSubview(IDLabel)
-        containerView.addSubview(nameLabel)
-        containerView.addSubview(rarityLabel)
-        containerView.addSubview(rarityCountLabel)
+        nameContainer.addSubview(IDLabel)
+        nameContainer.addSubview(nameLabel)
+        nameContainer.addSubview(rarityLabel)
+        nameContainer.addSubview(rarityCountLabel)
         
         
-        scrollView.addSubview(containerView)
+        scrollView.addSubview(nameContainer)
         
         
         // Container View that houses the extraneus items
-        containerView.leadingAnchor.constraint(equalTo: portraitContainer.trailingAnchor, constant: 10).isActive = true
-        containerView.topAnchor.constraint(equalTo: portraitContainer.topAnchor).isActive = true
-        containerView.heightAnchor.constraint(equalTo: portraitContainer.heightAnchor).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        nameContainer.leadingAnchor.constraint(equalTo: portraitContainer.trailingAnchor, constant: 10).isActive = true
+        nameContainer.topAnchor.constraint(equalTo: portraitContainer.topAnchor).isActive = true
+        nameContainer.heightAnchor.constraint(equalTo: portraitContainer.heightAnchor).isActive = true
+        nameContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         
-        IDLabel.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        IDLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        IDLabel.topAnchor.constraint(equalTo: nameContainer.topAnchor).isActive = true
+        IDLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
         nameLabel.topAnchor.constraint(equalTo: IDLabel.bottomAnchor).isActive = true
-        nameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        nameLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
         
         
-        rarityLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        rarityLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
         rarityLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
         rarityCountLabel.leadingAnchor.constraint(equalTo: rarityLabel.trailingAnchor).isActive = true
         rarityCountLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
@@ -124,7 +138,7 @@ extension MonsterVC {
                 
                 
                 let type = types[i]
-                containerView.addSubview(type)
+                nameContainer.addSubview(type)
                 type.widthAnchor.constraint(equalToConstant: 15).isActive = true
                 type.heightAnchor.constraint(equalToConstant: 15).isActive = true
                 type.centerYAnchor.constraint(equalTo: IDLabel.centerYAnchor).isActive = true
@@ -150,6 +164,14 @@ extension MonsterVC {
     }
     
     public func setupLevelStatus() {
+        
+        // labels for the status
+        
+        let levelLabel = makeLabel(ofSize: 20, withText: noString)
+        let minLevelLabel = makeLabel(ofSize: 16, withText: noString)
+        let maxLevelLabel = makeLabel(ofSize: 16, withText: noString)
+        let label297 = makeLabel(ofSize: 16, withText: noString)
+        
         minLevelLabel.text = "1"
         maxLevelLabel.text = String(monster!.value(forKey: "maxLevel") as! Int)
         label297.text = "+297"
@@ -196,6 +218,39 @@ extension MonsterVC {
     }
     
     public func setupHPStatus() {
+        
+        // hp labels
+        let HPLabel: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 20)
+            return textView
+        }()
+        
+        let minHPLabel: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+            
+            return textView
+        }()
+        
+        let maxHPLabel: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+            
+            return textView
+        }()
+        
+        let hp297: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+            
+            return textView
+        }()
+        
         
         minHPLabel.text = String(monster!.value(forKey: "minHP") as! Int)
         maxHPLabel.text = String(monster!.value(forKey: "maxHP") as! Int)
@@ -245,6 +300,38 @@ extension MonsterVC {
     public func setupATKStatus() {
         
         
+        let ATKLabel: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 20)
+            return textView
+        }()
+        
+        let minATKLabel: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+            
+            return textView
+        }()
+        
+        let maxATKLabel: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+            
+            return textView
+        }()
+        
+        let atk297: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+            
+            return textView
+        }()
+        
+        
         minATKLabel.text = String(monster!.value(forKey: "minATK") as! Int)
         maxATKLabel.text = String(monster!.value(forKey: "maxATK") as! Int)
         
@@ -292,6 +379,40 @@ extension MonsterVC {
     
     public func setupRCVStatus() {
         
+        
+        // rcv labels
+        
+        let RCVLabel: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 20)
+            return textView
+        }()
+        
+        let minRCVLabel: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+            
+            return textView
+        }()
+        
+        let maxRCVLabel: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+            
+            return textView
+        }()
+        
+        let rcv297: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+            
+            return textView
+        }()
+        
         minRCVLabel.text = String(monster!.value(forKey: "minRCV") as! Int)
         maxRCVLabel.text = String(monster!.value(forKey: "maxRCV") as! Int)
         RCVLabel.text = "rcv"
@@ -337,6 +458,30 @@ extension MonsterVC {
     }
     
     public func setupXPStatus() {
+        
+        let XPLabel: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 20)
+            return textView
+        }()
+        
+        let minXPLabel: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+            
+            return textView
+        }()
+        
+        let maxXPLabel: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+            
+            return textView
+        }()
+        
         
         minXPLabel.text = String(0)
         maxXPLabel.text = String(monster!.value(forKey: "maxXP") as! Int)
@@ -392,7 +537,6 @@ extension MonsterVC {
     }
     
     public func setupAwakenings() {
-        
         let size = CGFloat(20)
         let size_int = 20
         
@@ -446,6 +590,14 @@ extension MonsterVC {
         }
             
         else {
+            let awokenNoneLabel: UILabel = {
+                let lbl = UILabel()
+                lbl.translatesAutoresizingMaskIntoConstraints = false
+                lbl.clipsToBounds = true
+                lbl.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+                lbl.text = "No Awoken Skills"
+                return lbl
+            }()
             awakeningContainer.addSubview(awokenNoneLabel)
             awokenNoneLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
             awokenNoneLabel.centerYAnchor.constraint(equalTo: awakeningContainer.centerYAnchor).isActive = true
@@ -500,6 +652,14 @@ extension MonsterVC {
         }
             
         else {
+            let sawokenNoneLabel: UILabel = {
+                let lbl = UILabel()
+                lbl.translatesAutoresizingMaskIntoConstraints = false
+                lbl.clipsToBounds = true
+                lbl.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+                lbl.text = "No Super Awoken Skills"
+                return lbl
+            }()
             sawakeningContainer.addSubview(sawokenNoneLabel)
             sawokenNoneLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
             sawokenNoneLabel.centerYAnchor.constraint(equalTo: sawakeningContainer.centerYAnchor).isActive = true
@@ -508,6 +668,15 @@ extension MonsterVC {
     }
     
     public func setupEvoMaterials() {
+        
+        let evoMaterialsLabel: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+            textView.clipsToBounds = true
+            textView.text = "Evolution Materials"
+            return textView
+        }()
         
         let size:CGFloat = 50
         
@@ -577,6 +746,14 @@ extension MonsterVC {
         }
             
         else {
+            let evoNoneLabel: UILabel = {
+                let lbl = UILabel()
+                lbl.translatesAutoresizingMaskIntoConstraints = false
+                lbl.clipsToBounds = true
+                lbl.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+                lbl.text = "No Evolution Materials"
+                return lbl
+            }()
             evoMaterialsLabel.removeFromSuperview()
             evoMaterialsContainer.addSubview(evoNoneLabel)
             evoNoneLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
@@ -585,6 +762,15 @@ extension MonsterVC {
     }
     
     public func setupDevoMaterials() {
+        
+        let devoMaterialsLabel: UILabel = {
+            let textView = UILabel()
+            textView.translatesAutoresizingMaskIntoConstraints = false
+            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+            textView.clipsToBounds = true
+            textView.text = "Devolution Materials"
+            return textView
+        }()
         
         let size:CGFloat = 50
         
@@ -623,9 +809,9 @@ extension MonsterVC {
         
         let separator:UIView = makeSeparator()
         devoMaterialsContainer.addSubview(separator)
-
+        
         scrollView.addSubview(devoMaterialsContainer)
-
+        
         devoMaterialsContainer.topAnchor.constraint(equalTo: evoMaterialsContainer.bottomAnchor, constant: 20).isActive = true
         devoMaterialsContainer.leadingAnchor.constraint(equalTo: portraitContainer.leadingAnchor).isActive = true
         devoMaterialsContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
@@ -658,6 +844,16 @@ extension MonsterVC {
         }
             
         else {
+            
+            let devoNoneLabel: UILabel = {
+                let lbl = UILabel()
+                lbl.translatesAutoresizingMaskIntoConstraints = false
+                lbl.clipsToBounds = true
+                lbl.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+                lbl.text = "No Devolution Materials"
+                return lbl
+            }()
+            
             devoMaterialsLabel.removeFromSuperview()
             devoMaterialsContainer.addSubview(devoNoneLabel)
             devoNoneLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
@@ -667,17 +863,47 @@ extension MonsterVC {
     
     public func setupSkills() {
         // TODO
+        setupActiveSkill()
     }
     
-    func makeSeparator() -> UIView {
-        let separator = UIView()
-        separator.translatesAutoresizingMaskIntoConstraints = false
-        separator.clipsToBounds = true
-        separator.layer.borderWidth = 1
-        separator.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        separator.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 3 / 4).isActive = true
-        return separator
+    public func setupActiveSkill() {
+        let activeSkillLabel = makeLabel(ofSize: 20, withText: "Active Skill:")
+        let separator = makeSeparator()
+        activeSkillContainer.addSubview(activeSkillLabel)
+        activeSkillContainer.addSubview(separator)
+        scrollView.addSubview(activeSkillContainer)
+        
+        activeSkillContainer.topAnchor.constraint(equalTo: devoMaterialsContainer.bottomAnchor, constant: 20).isActive = true
+        activeSkillContainer.leadingAnchor.constraint(equalTo: devoMaterialsContainer.leadingAnchor, constant: 10).isActive = true
+        activeSkillContainer.trailingAnchor.constraint(equalTo: devoMaterialsContainer.trailingAnchor).isActive = true
+        activeSkillContainer.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        separator.bottomAnchor.constraint(equalTo: activeSkillContainer.bottomAnchor).isActive = true
+        separator.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        
+        if let activeSkill = activeSkill {
+            
+            let activeSkillNameLabel = makeLabel(ofSize: 16, withText: activeSkill.value(forKey: "name") as! String)
+            
+            activeSkillContainer.addSubview(activeSkillNameLabel)
+            
+            activeSkillLabel.topAnchor.constraint(equalTo: activeSkillContainer.topAnchor).isActive = true
+            activeSkillLabel.leadingAnchor.constraint(equalTo: activeSkillContainer.leadingAnchor).isActive = true
+            
+            activeSkillNameLabel.topAnchor.constraint(equalTo: activeSkillContainer.topAnchor).isActive = true
+            activeSkillNameLabel.leadingAnchor.constraint(equalTo: activeSkillLabel.trailingAnchor, constant: 10).isActive = true
+            activeSkillNameLabel.centerYAnchor.constraint(equalTo: activeSkillLabel.centerYAnchor).isActive = true
+        }
+        else {
+            activeSkillLabel.removeFromSuperview()
+            let noneLabel = makeLabel(ofSize: 16, withText: "No Active Skill")
+            activeSkillContainer.addSubview(noneLabel)
+            
+            noneLabel.topAnchor.constraint(equalTo: activeSkillContainer.topAnchor).isActive = true
+            noneLabel.centerYAnchor.constraint(equalTo: activeSkillContainer.centerYAnchor).isActive = true
+            noneLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+            
+        }
     }
     
 }
