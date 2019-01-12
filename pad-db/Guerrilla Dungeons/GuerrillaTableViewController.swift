@@ -53,25 +53,24 @@ class GuerrillaTableViewController: UITableViewController {
         tableView.rowHeight = 85
     
         tableView.allowsSelection = false
-        tableView.reloadData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         loadGuerrilla()
+
+        tableView.reloadData()
     }
     
     
     private func setupNavBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        navigationController?.navigationBar.barTintColor = UIColor.white
         navigationItem.title = "NA Calendar"
-        
-        changeButtonLabel(server: "Server")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "world")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(swapServer))
+
+//        changeButtonLabel(server: "Server")
         
     }
     
     @objc
-    private func swapServer(sender: UIButton!) {
+    private func swapServer() {
         
         if showingNA {
             displayDungeons = jpDungeons
@@ -98,10 +97,10 @@ class GuerrillaTableViewController: UITableViewController {
     }
     
     private func changeButtonLabel(server:String) {
-        let serverSwap = UIButton(type: .system)
-        serverSwap.setTitle(server, for: .normal)
-        serverSwap.addTarget(self, action: #selector(swapServer), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: serverSwap)
+//        let serverSwap = UIButton(type: .system)
+//        serverSwap.setTitle(server, for: .normal)
+//        serverSwap.addTarget(self, action: #selector(swapServer), for: .touchUpInside)
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: serverSwap)
     }
     
     private func loadGuerrilla() {

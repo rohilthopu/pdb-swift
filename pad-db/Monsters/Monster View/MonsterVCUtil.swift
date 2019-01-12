@@ -137,12 +137,6 @@ extension MonsterVC {
                 }
             }
         }
-        
-        
-        
-        
-        
-        
     }
     
     public func setupStatusContainer() {
@@ -391,12 +385,10 @@ extension MonsterVC {
         
         weightedStatsLabel.text = "Weighted stats: " + String(format: "%.2f", weighted)
         
-        
         scrollView.addSubview(weightedStatsLabel)
         
         weightedStatsLabel.leadingAnchor.constraint(equalTo: levelContainer.leadingAnchor).isActive = true
         weightedStatsLabel.topAnchor.constraint(equalTo: levelContainer.bottomAnchor, constant: 20).isActive = true
-        
     }
     
     public func setupAwakenings() {
@@ -421,6 +413,9 @@ extension MonsterVC {
             awakeningContainer.addSubview(img)
         }
         
+        let separator = makeSeparator()
+        awakeningContainer.addSubview(separator)
+        
         scrollView.addSubview(awakeningContainer)
         
         let maxX = self.view.frame.width
@@ -431,6 +426,9 @@ extension MonsterVC {
         awakeningContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         awakeningContainer.heightAnchor.constraint(equalToConstant: 40).isActive = true
         awakeningContainer.topAnchor.constraint(equalTo: weightedStatsLabel.bottomAnchor, constant: 20).isActive = true
+        
+        separator.bottomAnchor.constraint(equalTo: awakeningContainer.bottomAnchor).isActive = true
+        separator.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         
         if awks.count > 0 {
             for i in 0...awakenings.count - 1 {
@@ -472,12 +470,17 @@ extension MonsterVC {
             sawakeningContainer.addSubview(img)
         }
         
+        let separator = makeSeparator()
+        sawakeningContainer.addSubview(separator)
         scrollView.addSubview(sawakeningContainer)
         
         sawakeningContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
         sawakeningContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         sawakeningContainer.heightAnchor.constraint(equalToConstant: 40).isActive = true
         sawakeningContainer.topAnchor.constraint(equalTo: awakeningContainer.bottomAnchor, constant: 20).isActive = true
+        
+        separator.bottomAnchor.constraint(equalTo: sawakeningContainer.bottomAnchor).isActive = true
+        separator.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         
         if sawks.count > 0 {
             for i in 0...sawakenings.count - 1 {
@@ -504,13 +507,9 @@ extension MonsterVC {
         }
     }
     
-    public func setupSkills() {
-        // TODO
-    }
-    
     public func setupEvoMaterials() {
         
-        let size:CGFloat = 40
+        let size:CGFloat = 50
         
         let e1 = monster!.value(forKey: "evomat1") as! Int
         let e2 = monster!.value(forKey: "evomat2") as! Int
@@ -544,8 +543,10 @@ extension MonsterVC {
                 evoMaterialsContainer.addSubview(img)
             }
         }
-        
+        let separator = makeSeparator()
+        evoMaterialsContainer.addSubview(separator)
         scrollView.addSubview(evoMaterialsContainer)
+        
         
         evoMaterialsContainer.topAnchor.constraint(equalTo: sawakeningContainer.bottomAnchor, constant: 20).isActive = true
         evoMaterialsContainer.leadingAnchor.constraint(equalTo: portraitContainer.leadingAnchor).isActive = true
@@ -554,7 +555,10 @@ extension MonsterVC {
         
         evoMaterialsLabel.leadingAnchor.constraint(equalTo: evoMaterialsContainer.leadingAnchor).isActive = true
         evoMaterialsLabel.topAnchor.constraint(equalTo: evoMaterialsContainer.topAnchor).isActive = true
-        evoMaterialsLabel.centerYAnchor.constraint(equalTo: evoMaterialsContainer.centerYAnchor).isActive = true
+        evoMaterialsLabel.centerYAnchor.constraint(equalTo: evoMaterialsContainer.centerYAnchor, constant: -5).isActive = true
+        
+        separator.bottomAnchor.constraint(equalTo: evoMaterialsContainer.bottomAnchor).isActive = true
+        separator.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         
         if evoImgs.count > 0 {
             for i in 0...evoImgs.count-1 {
@@ -582,7 +586,7 @@ extension MonsterVC {
     
     public func setupDevoMaterials() {
         
-        let size:CGFloat = 40
+        let size:CGFloat = 50
         
         let e1 = monster!.value(forKey: "unevomat1") as! Int
         let e2 = monster!.value(forKey: "unevomat2") as! Int
@@ -617,8 +621,11 @@ extension MonsterVC {
             }
         }
         
+        let separator:UIView = makeSeparator()
+        devoMaterialsContainer.addSubview(separator)
+
         scrollView.addSubview(devoMaterialsContainer)
-        
+
         devoMaterialsContainer.topAnchor.constraint(equalTo: evoMaterialsContainer.bottomAnchor, constant: 20).isActive = true
         devoMaterialsContainer.leadingAnchor.constraint(equalTo: portraitContainer.leadingAnchor).isActive = true
         devoMaterialsContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
@@ -628,7 +635,10 @@ extension MonsterVC {
         
         devoMaterialsLabel.leadingAnchor.constraint(equalTo: devoMaterialsContainer.leadingAnchor).isActive = true
         devoMaterialsLabel.topAnchor.constraint(equalTo: devoMaterialsContainer.topAnchor).isActive = true
-        devoMaterialsLabel.centerYAnchor.constraint(equalTo: devoMaterialsContainer.centerYAnchor).isActive = true
+        devoMaterialsLabel.centerYAnchor.constraint(equalTo: devoMaterialsContainer.centerYAnchor, constant: -5).isActive = true
+        
+        separator.bottomAnchor.constraint(equalTo: devoMaterialsContainer.bottomAnchor).isActive = true
+        separator.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         
         if devoImgs.count > 0 {
             for i in 0...devoImgs.count-1 {
@@ -655,19 +665,19 @@ extension MonsterVC {
         }
     }
     
-    public func addSeparator() {
+    public func setupSkills() {
+        // TODO
+    }
+    
+    func makeSeparator() -> UIView {
         let separator = UIView()
         separator.translatesAutoresizingMaskIntoConstraints = false
         separator.clipsToBounds = true
         separator.layer.borderWidth = 1
         separator.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        
-        scrollView.addSubview(separator)
-        
-        separator.topAnchor.constraint(equalTo: devoMaterialsContainer.bottomAnchor, constant: 20).isActive = true
-        separator.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20).isActive = true
-        separator.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20).isActive = true
         separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        separator.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 3 / 4).isActive = true
+        return separator
     }
     
 }

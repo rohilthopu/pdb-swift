@@ -16,8 +16,8 @@ class TabController: UITabBarController {
         let guerrillaVC = GuerrillaTableViewController()
         let monsterNAVC = MonsterTableController()
         
-        guerrillaVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
-        monsterNAVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        guerrillaVC.tabBarItem = UITabBarItem(title: "Events", image: UIImage(named: "calendar"), tag: 0)
+        monsterNAVC.tabBarItem = UITabBarItem(title: "Monster", image: UIImage(named: "list"), tag: 1)
         
         let tabViews = [guerrillaVC, monsterNAVC]
                 
