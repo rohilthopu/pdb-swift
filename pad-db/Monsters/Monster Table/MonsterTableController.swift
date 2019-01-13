@@ -19,6 +19,12 @@ extension MonsterTableController: UISearchResultsUpdating {
     }
 }
 
+var monsters = [NSManagedObject]()
+var skills = [NSManagedObject]()
+
+
+
+
 class MonsterTableController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
     let cellid = "monsterid"
@@ -29,13 +35,10 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     
     let skill_api_link = "https://www.pad-db.com/api/skills/na/"
 
-    
-    
-    var monsters = [NSManagedObject]()
-    var skills = [NSManagedObject]()
-
     var rawMonsters = [Monster]()
     var rawSkills = [Skill]()
+    
+   
 
     var filteredMonsters = [NSManagedObject]()
     var monstersearch:UISearchController!
@@ -55,15 +58,15 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         
 //        tableView.refreshControl = UIRefreshControl()
 //        tableView.refreshControl!.addTarget(self, action: #selector(refreshMonsterList(_:)), for: .valueChanged)
-//        
+//
+        loadMonstersFromDB()
+        loadSkillsFromDB()
         tableView.reloadData()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadMonstersFromDB()
-        loadSkillsFromDB()
         
     }
     
@@ -160,7 +163,20 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
             }
         }).first
         
+        let leaderSkill = skills.filter({
+            let skillID = $0.value(forKey: "skillID") as! Int
+            let lSkill = currentMonster.value(forKey: "leaderSkillID") as! Int
+            
+            if skillID == lSkill {
+                return true
+            }
+            else {
+                return false
+            }
+        }).first
+        
         monsterVC.activeSkill = activeSkill
+        monsterVC.leaderSkill = leaderSkill
         
         
         let navCon = UINavigationController(rootViewController: monsterVC)

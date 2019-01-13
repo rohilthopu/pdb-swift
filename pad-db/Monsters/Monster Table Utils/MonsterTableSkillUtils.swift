@@ -51,7 +51,7 @@ extension MonsterTableController {
                     skill.hpMult = item["hp_mult"].floatValue
                     skill.atkMult = item["atk_mult"].floatValue
                     skill.rcvMult = item["rcv_mult"].floatValue
-                    skill.dmgReduction = item["dmg_redcution"].doubleValue
+                    skill.dmgReduction = item["dmg_reduction"].doubleValue
                     skill.cSkill1 = item["c_skill_1"].intValue
                     skill.cSkill2 = item["c_skill_2"].intValue
                     skill.cSkill3 = item["c_skill_3"].intValue
@@ -59,7 +59,7 @@ extension MonsterTableController {
                     skill.levels = item["levels"].intValue
                     skill.minTurns = item["minTurns"].intValue
                     skill.maxTurns = item["maxTurns"].intValue
-                    
+        
                     rawSkills.append(skill)
                 }
             }

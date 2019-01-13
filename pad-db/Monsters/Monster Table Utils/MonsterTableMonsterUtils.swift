@@ -64,6 +64,7 @@ extension MonsterTableController {
             item.setValue(monster.unevomat3, forKey: "unevomat3")
             item.setValue(monster.unevomat4, forKey: "unevomat4")
             item.setValue(monster.unevomat5, forKey: "unevomat5")
+            item.setValue(monster.leaderSkillID, forKey: "leaderSkillID")
             item.setValue(monster.maxATK, forKey: "maxATK")
             item.setValue(monster.maxHP, forKey: "maxHP")
             item.setValue(monster.maxRCV, forKey: "maxRCV")

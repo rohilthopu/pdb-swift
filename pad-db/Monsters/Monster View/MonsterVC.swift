@@ -30,7 +30,7 @@ class MonsterVC: UIViewController {
     let scrollView:UIScrollView = {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentSize.height = 1200
+        view.contentSize.height = 1500
         view.backgroundColor = UIColor.white
         return view
     }()
@@ -142,6 +142,13 @@ class MonsterVC: UIViewController {
     }()
   
     let activeSkillContainer: UIView = {
+        let vw = UIView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        vw.clipsToBounds = true
+        return vw
+    }()
+    
+    let leaderSkillContainer: UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
         vw.clipsToBounds = true
