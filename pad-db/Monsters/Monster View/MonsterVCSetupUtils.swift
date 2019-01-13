@@ -674,11 +674,15 @@ extension MonsterVC {
             textView.translatesAutoresizingMaskIntoConstraints = false
             textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
             textView.clipsToBounds = true
-            textView.text = "Evolution Materials"
+            textView.text = "Evolution"
             return textView
         }()
         
         let size:CGFloat = 50
+        
+        
+        
+        
         
         let e1 = monster!.value(forKey: "evomat1") as! Int
         let e2 = monster!.value(forKey: "evomat2") as! Int
@@ -717,14 +721,14 @@ extension MonsterVC {
         scrollView.addSubview(evoMaterialsContainer)
         
         
-        evoMaterialsContainer.topAnchor.constraint(equalTo: sawakeningContainer.bottomAnchor, constant: 20).isActive = true
+        evoMaterialsContainer.topAnchor.constraint(equalTo: leaderSkillContainer.bottomAnchor, constant: 20).isActive = true
         evoMaterialsContainer.leadingAnchor.constraint(equalTo: portraitContainer.leadingAnchor).isActive = true
         evoMaterialsContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         evoMaterialsContainer.heightAnchor.constraint(equalToConstant: size).isActive = true
         
         evoMaterialsLabel.leadingAnchor.constraint(equalTo: evoMaterialsContainer.leadingAnchor).isActive = true
         evoMaterialsLabel.topAnchor.constraint(equalTo: evoMaterialsContainer.topAnchor).isActive = true
-        evoMaterialsLabel.centerYAnchor.constraint(equalTo: evoMaterialsContainer.centerYAnchor, constant: -5).isActive = true
+        evoMaterialsLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
         separator.bottomAnchor.constraint(equalTo: evoMaterialsContainer.bottomAnchor).isActive = true
         separator.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
@@ -874,7 +878,7 @@ extension MonsterVC {
         activeSkillContainer.addSubview(separator)
         scrollView.addSubview(activeSkillContainer)
         
-        activeSkillContainer.topAnchor.constraint(equalTo: devoMaterialsContainer.bottomAnchor, constant: 20).isActive = true
+        activeSkillContainer.topAnchor.constraint(equalTo: sawakeningContainer.bottomAnchor, constant: 20).isActive = true
         activeSkillContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
         activeSkillContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
         activeSkillContainer.heightAnchor.constraint(equalToConstant: 100).isActive = true

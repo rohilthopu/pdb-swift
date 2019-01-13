@@ -7,6 +7,7 @@
         <attribute name="awakenings" optional="YES" attributeType="Transformable" customClassName="[Double]" syncable="YES"/>
         <attribute name="cardID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="cost" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="evolutions" optional="YES" attributeType="Transformable" customClassName="[Double]" syncable="YES"/>
         <attribute name="evomat1" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="evomat2" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="evomat3" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -54,7 +55,7 @@
         <attribute name="skillType" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MonsterNA" positionX="-63" positionY="-18" width="128" height="555"/>
+        <element name="MonsterNA" positionX="-63" positionY="-18" width="128" height="570"/>
         <element name="SkillNA" positionX="-63" positionY="135" width="128" height="270"/>
     </elements>
 </model>

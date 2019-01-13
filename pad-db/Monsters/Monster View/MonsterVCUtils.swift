@@ -159,11 +159,7 @@ extension MonsterVC {
         pairMultView.bottomAnchor.constraint(equalTo: newView.bottomAnchor).isActive = true
         pairMultView.leadingAnchor.constraint(equalTo: newView.centerXAnchor).isActive = true
         
-        
-        
         return newView
-        
-        
     }
     
     func getSkill(forSkill id:Int) -> NSManagedObject {

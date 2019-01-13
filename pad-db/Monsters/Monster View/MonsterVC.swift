@@ -181,9 +181,9 @@ class MonsterVC: UIViewController {
         setupStatusContainer()
         setupAwakenings()
         setupSuperAwakenings()
+        setupSkills()
         setupEvoMaterials()
         setupDevoMaterials()
-        setupSkills()
         
     }
 }
