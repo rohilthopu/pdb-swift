@@ -28,6 +28,7 @@ extension MonsterTableController {
         var evomat4:Int?
         var evomat5:Int?
         var evolutions:[Int]?
+        var isUlt:Bool?
         var leaderSkillID:Int?
         var maxATK:Int?
         var maxHP:Int?

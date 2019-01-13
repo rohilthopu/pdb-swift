@@ -177,4 +177,94 @@ extension MonsterVC {
         
         return skill!
     }
+    
+    func getMonster(forID id:Int) -> NSManagedObject {
+        
+        let monster = monsters.filter({
+            let currID = $0.value(forKey: "cardID") as! Int
+            
+            if id == currID {
+                return true
+            }
+            else {
+                return false
+            }
+        }).first
+        
+        return monster!
+    }
+    
+    func makeImgView(forImg link:String, ofSize size:CGFloat) -> UIImageView {
+        let img = UIImageView()
+        img.translatesAutoresizingMaskIntoConstraints = false
+        img.clipsToBounds = true
+        img.kf.setImage(with: URL(string: link))
+        
+        img.widthAnchor.constraint(equalToConstant: size).isActive = true
+        img.heightAnchor.constraint(equalToConstant: size).isActive = true
+        
+        return img
+    }
+    
+    func makeImgView(fromIconName icon:String, ofSize size:CGFloat) -> UIImageView {
+        let img = UIImageView()
+        
+        img.translatesAutoresizingMaskIntoConstraints = false
+        img.clipsToBounds = true
+        
+        img.image = UIImage(named: icon)
+        img.heightAnchor.constraint(equalToConstant: size).isActive = true
+        img.widthAnchor.constraint(equalToConstant: size).isActive = true
+        
+        return img
+    }
+    
+    @objc
+    func openMonsterPage(sender: UITapGestureRecognizer) {
+        
+        
+        let currentMonster = getMonster(forID: sender.view!.tag)
+        
+        let monsterVC = MonsterVC()
+        monsterVC.monster = currentMonster
+
+        let activeSkill = skills.filter({
+            let skillID = $0.value(forKey: "skillID") as! Int
+            let aSkill = currentMonster.value(forKey: "activeSkillID") as! Int
+
+            if skillID == aSkill {
+                return true
+            }
+            else {
+                return false
+            }
+        }).first
+
+        let leaderSkill = skills.filter({
+            let skillID = $0.value(forKey: "skillID") as! Int
+            let lSkill = currentMonster.value(forKey: "leaderSkillID") as! Int
+
+            if skillID == lSkill {
+                return true
+            }
+            else {
+                return false
+            }
+        }).first
+
+        monsterVC.activeSkill = activeSkill
+        monsterVC.leaderSkill = leaderSkill
+
+
+        let navCon = UINavigationController(rootViewController: monsterVC)
+        self.present(navCon, animated: true, completion: nil)
+    }
+    
+    func makeTapRecognizer() -> UITapGestureRecognizer {
+        let tapRec = UITapGestureRecognizer()
+        
+        tapRec.addTarget(self, action: #selector(openMonsterPage))
+        
+        return tapRec
+    }
 }

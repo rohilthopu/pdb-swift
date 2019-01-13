@@ -149,7 +149,6 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         
         let monsterVC = MonsterVC()
         monsterVC.monster = currentMonster
-        monsterVC.monsters = monsters
         
         let activeSkill = skills.filter({
             let skillID = $0.value(forKey: "skillID") as! Int

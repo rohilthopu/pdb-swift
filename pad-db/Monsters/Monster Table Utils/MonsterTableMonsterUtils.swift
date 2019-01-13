@@ -54,6 +54,7 @@ extension MonsterTableController {
             item.setValue(monster.awakenings, forKey: "awakenings")
             item.setValue(monster.cardID, forKey: "cardID")
             item.setValue(monster.cost, forKey: "cost")
+            item.setValue(monster.evolutions, forKey: "evolutions")
             item.setValue(monster.evomat1, forKey: "evomat1")
             item.setValue(monster.evomat2, forKey: "evomat2")
             item.setValue(monster.evomat3, forKey: "evomat3")
@@ -64,6 +65,7 @@ extension MonsterTableController {
             item.setValue(monster.unevomat3, forKey: "unevomat3")
             item.setValue(monster.unevomat4, forKey: "unevomat4")
             item.setValue(monster.unevomat5, forKey: "unevomat5")
+            item.setValue(monster.isUlt, forKey: "isUlt")
             item.setValue(monster.leaderSkillID, forKey: "leaderSkillID")
             item.setValue(monster.maxATK, forKey: "maxATK")
             item.setValue(monster.maxHP, forKey: "maxHP")
@@ -117,6 +119,9 @@ extension MonsterTableController {
                         let vals = try! decoder.decode([Int].self, from: card["awakenings_raw"].stringValue.data(using: .utf8)!)
                         monster.awakenings = vals
                         
+                        let evoVals = try! decoder.decode([Int].self, from: card["evos_raw"].stringValue.data(using: .utf8)!)
+                        monster.evolutions = evoVals
+                        
                         
                         monster.cardID = card["cardID"].intValue
                         monster.cost = card["cost"].intValue
@@ -130,6 +135,7 @@ extension MonsterTableController {
                         monster.evomat3 = card["evomat3"].intValue
                         monster.evomat4 = card["evomat4"].intValue
                         monster.evomat5 = card["evomat5"].intValue
+                        monster.isUlt = card["isUlt"].boolValue
                         monster.maxATK = card["maxATK"].intValue
                         monster.maxHP = card["maxHP"].intValue
                         monster.maxRCV = card["maxRCV"].intValue

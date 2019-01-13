@@ -14,6 +14,7 @@
         <attribute name="evomat4" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="evomat5" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="fullURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isUlt" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="leaderSkillID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="maxATK" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="maxHP" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -55,7 +56,7 @@
         <attribute name="skillType" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MonsterNA" positionX="-63" positionY="-18" width="128" height="570"/>
+        <element name="MonsterNA" positionX="-63" positionY="-18" width="128" height="585"/>
         <element name="SkillNA" positionX="-63" positionY="135" width="128" height="270"/>
     </elements>
 </model>

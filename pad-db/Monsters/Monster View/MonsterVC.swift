@@ -13,7 +13,6 @@ import CoreGraphics
 class MonsterVC: UIViewController {
     
     var monster:NSManagedObject?
-    var monsters:[NSManagedObject]?
     var activeSkill:NSManagedObject?
     var leaderSkill:NSManagedObject?
     
@@ -30,7 +29,7 @@ class MonsterVC: UIViewController {
     let scrollView:UIScrollView = {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentSize.height = 1500
+        view.contentSize.height = 1800
         view.backgroundColor = UIColor.white
         return view
     }()
