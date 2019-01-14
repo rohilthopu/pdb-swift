@@ -10,7 +10,10 @@ import UIKit
 import CoreData
 import CoreGraphics
 
+
 class MonsterVC: UIViewController {
+    
+    var spacing:CGFloat = 0
     
     var monster:NSManagedObject?
     var activeSkill:NSManagedObject?
@@ -29,7 +32,6 @@ class MonsterVC: UIViewController {
     let scrollView:UIScrollView = {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.contentSize.height = 1800
         view.backgroundColor = UIColor.white
         return view
     }()
@@ -51,6 +53,13 @@ class MonsterVC: UIViewController {
         img.clipsToBounds = true
         img.contentMode = .scaleAspectFit
         return img
+    }()
+    
+    let statContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true // this will make sure its children do not go out of the boundary
+        return view
     }()
     
     let nameContainer: UIView = {
@@ -139,7 +148,7 @@ class MonsterVC: UIViewController {
         vw.clipsToBounds = true
         return vw
     }()
-  
+    
     let activeSkillContainer: UIView = {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
@@ -154,21 +163,39 @@ class MonsterVC: UIViewController {
         return vw
     }()
     
+    let saleMPContainer: UIView = {
+        let vw = UIView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        vw.clipsToBounds = true
+        return vw
+    }()
+    
+    let saleCoinContainer: UIView = {
+        let vw = UIView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        vw.clipsToBounds = true
+        return vw
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        spacing = (self.view.frame.width)/50
+        
+        
         self.view.backgroundColor = UIColor.white
+        
         
         // make a back button
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: makeBackButton())
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: makeDismissButton())
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.view.addSubview(scrollView)
-        scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        scrollView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
         
         
         let m_id = monster!.value(forKey: "cardID") as! Int
@@ -183,6 +210,8 @@ class MonsterVC: UIViewController {
         setupSkills()
         setupEvoMaterials()
         setupDevoMaterials()
+        setupSaleItems()
         
     }
+    
 }

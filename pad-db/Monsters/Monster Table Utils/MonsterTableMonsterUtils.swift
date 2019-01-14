@@ -85,6 +85,10 @@ extension MonsterTableController {
             item.setValue(monster.portraitLink, forKey: "portraitURL")
             item.setValue(monster.fullLink, forKey: "fullURL")
             
+            item.setValue(monster.sellMP, forKey: "sellMP")
+            item.setValue(monster.sellCoin, forKey: "sellCoin")
+            
+            
             
             do {
                 try managedContext.save()
@@ -159,6 +163,10 @@ extension MonsterTableController {
                         
                         monster.portraitLink = self.getPortraitURL(id: monster.cardID!)
                         monster.fullLink = self.getFullURL(id: monster.cardID!)
+                        
+                        
+                        monster.sellMP = card["sellMP"].intValue
+                        monster.sellCoin = card["sellCoin"].intValue
                         
                         self.rawMonsters.append(monster)
                     }

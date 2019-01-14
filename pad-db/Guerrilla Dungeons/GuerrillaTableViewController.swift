@@ -90,9 +90,17 @@ class GuerrillaTableViewController: UITableViewController {
     private func refreshGuerrillaList(_ sender: Any) {
         naDungeons.removeAll()
         jpDungeons.removeAll()
-        loadGuerrilla()
-        tableView.refreshControl!.endRefreshing()
         tableView.reloadData()
+        
+        DispatchQueue.global(qos: .background).async {
+            self.loadGuerrilla()
+
+            DispatchQueue.main.async {
+                self.tableView.refreshControl!.endRefreshing()
+                self.tableView.reloadData()
+            }
+        }
+
  
     }
     

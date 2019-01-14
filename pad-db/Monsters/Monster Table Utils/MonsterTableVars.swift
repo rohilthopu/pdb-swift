@@ -48,6 +48,9 @@ extension MonsterTableController {
         
         var portraitLink:String?
         var fullLink:String?
+        
+        var sellMP:Int?
+        var sellCoin:Int?
     }
     
     

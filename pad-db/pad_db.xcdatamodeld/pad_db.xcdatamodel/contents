@@ -27,6 +27,8 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="portraitURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rarity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sellCoin" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sellMP" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="subAttributeID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="superAwakenings" optional="YES" attributeType="Transformable" customClassName="[Double]" syncable="YES"/>
         <attribute name="type1" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -56,7 +58,7 @@
         <attribute name="skillType" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MonsterNA" positionX="-63" positionY="-18" width="128" height="585"/>
+        <element name="MonsterNA" positionX="-63" positionY="-18" width="128" height="615"/>
         <element name="SkillNA" positionX="-63" positionY="135" width="128" height="270"/>
     </elements>
 </model>
