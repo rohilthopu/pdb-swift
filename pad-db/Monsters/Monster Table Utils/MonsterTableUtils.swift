@@ -11,35 +11,109 @@ import UIKit
 import CoreData
 
 extension MonsterTableController {
-
+    
+    
+    @objc
+    func changeSort() {
+        if isDesc {
+            isDesc = false
+            sortMonstersAscending()
+            tableView.reloadData()
+        }
+        else {
+            isDesc = true
+            sortMonstersDescending()
+            tableView.reloadData()
+        }
+    }
+    
     @objc
     func loadLiveData() {
-        monsters.removeAll()
-        skills.removeAll()
-        clearDB()
+        tableView.refreshControl!.endRefreshing()
         tableView.reloadData()
-        let activity = UIActivityIndicatorView(style: .gray)
-        tableView.addSubview(activity)
-        activity.frame = tableView.bounds
         
-        tableView.reloadData()
-        activity.startAnimating()
+        if monsters.count == 0 {
+            let activity = UIActivityIndicatorView(style: .gray)
+            tableView.addSubview(activity)
+            activity.frame = tableView.bounds
+            activity.startAnimating()
+            getAllData(activity: activity)
+        }
+        else {
+            getNewData()
+        }
+    }
+    
+    func getNewData() {
         
         DispatchQueue.global(qos: .background).async {
-            self.getMonsterData()
-            self.getSkillData()
+            
+            self.getNewMonsterData()
+            self.getNewSkillData()
+            
             DispatchQueue.main.async {
                 self.saveMonsterData()
                 self.saveSkillData()
-                self.loadMonstersFromDB()
-                self.loadSkillsFromDB()
-                activity.stopAnimating()
-                activity.removeFromSuperview()
+                self.getAllIds()
+                self.sortMonstersDescending()
                 self.tableView.reloadData()
             }
         }
     }
     
+    func getAllData(activity: UIActivityIndicatorView) {
+        
+        DispatchQueue.global(qos: .background).async {
+            
+            self.getMonsterData()
+            self.getSkillData()
+            
+            DispatchQueue.main.async {
+                self.saveMonsterData()
+                self.saveSkillData()
+                self.getAllIds()
+                self.sortMonstersDescending()
+                activity.stopAnimating()
+                activity.removeFromSuperview()
+                
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func sortMonstersDescending() {
+        monsters.sort{
+            let first = $0.value(forKey: "cardID") as! Int
+            let second = $1.value(forKey: "cardID") as! Int
+            
+            return first > second
+        }
+    }
+    
+    func sortMonstersAscending() {
+        monsters.sort{
+            let first = $0.value(forKey: "cardID") as! Int
+            let second = $1.value(forKey: "cardID") as! Int
+            
+            return first < second
+        }
+    }
+    
+    @objc
+    func refreshMonsterList(_ sender: Any) {
+        loadLiveData()
+    }
+    
+    @objc
+    func clearDBAndReloadView() {
+        monsters.removeAll()
+        skills.removeAll()
+        tableView.reloadData()
+        clearDB()
+        
+    }
+    
+    @objc
     func clearDB() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -69,7 +143,8 @@ extension MonsterTableController {
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         filteredMonsters = monsters.filter({
             let val = $0.value(forKey: "name") as! String
-            if val.lowercased().contains(searchText.lowercased()){
+            let id = String($0.value(forKey: "cardID") as! Int)
+            if val.lowercased().contains(searchText.lowercased()) || id.contains(searchText.lowercased()) {
                 return true
             }
             else {

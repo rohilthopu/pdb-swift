@@ -22,12 +22,17 @@
 		78D1EAF921EBF2FA002D4197 /* SetupSkillUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EAF821EBF2FA002D4197 /* SetupSkillUtils.swift */; };
 		78D1EAFB21EBF31D002D4197 /* SetupEvoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EAFA21EBF31D002D4197 /* SetupEvoUtils.swift */; };
 		78D1EAFD21EC0ACA002D4197 /* SetupSaleItemUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EAFC21EC0ACA002D4197 /* SetupSaleItemUtil.swift */; };
+		78D1EB0021EC291A002D4197 /* LeaderboardTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EAFF21EC291A002D4197 /* LeaderboardTableVC.swift */; };
+		78D1EB0221EC295E002D4197 /* LeaderboardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EB0121EC295E002D4197 /* LeaderboardUtils.swift */; };
+		78D1EB0421EC2A6A002D4197 /* LeaderboardVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EB0321EC2A6A002D4197 /* LeaderboardVars.swift */; };
+		78D1EB0621EC2CFD002D4197 /* LeaderboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EB0521EC2CFD002D4197 /* LeaderboardCell.swift */; };
 		78D6885621CB07BD001C0DEF /* GuerrillaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6885521CB07BD001C0DEF /* GuerrillaTableViewController.swift */; };
 		78D6885921CB4DAC001C0DEF /* GuerrillaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6885821CB4DAC001C0DEF /* GuerrillaCell.swift */; };
 		78D6885C21E5459F001C0DEF /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6885B21E5459F001C0DEF /* TabController.swift */; };
 		78D6885E21E55613001C0DEF /* MonsterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6885D21E55613001C0DEF /* MonsterCell.swift */; };
 		78D6886421E6B357001C0DEF /* MonsterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6886321E6B357001C0DEF /* MonsterVC.swift */; };
 		78D6886621E6F431001C0DEF /* MultiplierUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6886521E6F431001C0DEF /* MultiplierUtils.swift */; };
+		78F0374B21EC5666002B7468 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78F0374A21EC5666002B7468 /* Storyboard.storyboard */; };
 		AAC40FF05CCDAD282B5256E7 /* Pods_pad_db.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DA29BB8DC4A4C0F3A8FFFC /* Pods_pad_db.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,12 +54,17 @@
 		78D1EAF821EBF2FA002D4197 /* SetupSkillUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupSkillUtils.swift; sourceTree = "<group>"; };
 		78D1EAFA21EBF31D002D4197 /* SetupEvoUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupEvoUtils.swift; sourceTree = "<group>"; };
 		78D1EAFC21EC0ACA002D4197 /* SetupSaleItemUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupSaleItemUtil.swift; sourceTree = "<group>"; };
+		78D1EAFF21EC291A002D4197 /* LeaderboardTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableVC.swift; sourceTree = "<group>"; };
+		78D1EB0121EC295E002D4197 /* LeaderboardUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardUtils.swift; sourceTree = "<group>"; };
+		78D1EB0321EC2A6A002D4197 /* LeaderboardVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardVars.swift; sourceTree = "<group>"; };
+		78D1EB0521EC2CFD002D4197 /* LeaderboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardCell.swift; sourceTree = "<group>"; };
 		78D6885521CB07BD001C0DEF /* GuerrillaTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuerrillaTableViewController.swift; sourceTree = "<group>"; };
 		78D6885821CB4DAC001C0DEF /* GuerrillaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuerrillaCell.swift; sourceTree = "<group>"; };
 		78D6885B21E5459F001C0DEF /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		78D6885D21E55613001C0DEF /* MonsterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterCell.swift; sourceTree = "<group>"; };
 		78D6886321E6B357001C0DEF /* MonsterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterVC.swift; sourceTree = "<group>"; };
 		78D6886521E6F431001C0DEF /* MultiplierUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplierUtils.swift; sourceTree = "<group>"; };
+		78F0374A21EC5666002B7468 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		E6C443A1101AA4662E9D9211 /* Pods-pad-db.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pad-db.release.xcconfig"; path = "Pods/Target Support Files/Pods-pad-db/Pods-pad-db.release.xcconfig"; sourceTree = "<group>"; };
 		E7DA29BB8DC4A4C0F3A8FFFC /* Pods_pad_db.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pad_db.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AF30AA3F21760F9C1DD0C2 /* Pods-pad-db.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pad-db.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pad-db/Pods-pad-db.debug.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +120,8 @@
 		78B00305211CA296001F246E /* pad-db */ = {
 			isa = PBXGroup;
 			children = (
+				78F0374C21ED89D9002B7468 /* Skills */,
+				78D1EAFE21EC27FF002D4197 /* Leaderboard */,
 				78D6885A21D6FF43001C0DEF /* Monsters */,
 				78D6885721CB4D86001C0DEF /* Guerrilla Dungeons */,
 				78B00306211CA297001F246E /* AppDelegate.swift */,
@@ -117,6 +129,7 @@
 				78B00315211CA297001F246E /* Info.plist */,
 				78B0030D211CA297001F246E /* pad_db.xcdatamodeld */,
 				78D6885B21E5459F001C0DEF /* TabController.swift */,
+				78F0374A21EC5666002B7468 /* Storyboard.storyboard */,
 			);
 			path = "pad-db";
 			sourceTree = "<group>";
@@ -157,6 +170,17 @@
 			path = "Monster Table Utils";
 			sourceTree = "<group>";
 		};
+		78D1EAFE21EC27FF002D4197 /* Leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				78D1EAFF21EC291A002D4197 /* LeaderboardTableVC.swift */,
+				78D1EB0121EC295E002D4197 /* LeaderboardUtils.swift */,
+				78D1EB0321EC2A6A002D4197 /* LeaderboardVars.swift */,
+				78D1EB0521EC2CFD002D4197 /* LeaderboardCell.swift */,
+			);
+			path = Leaderboard;
+			sourceTree = "<group>";
+		};
 		78D6885721CB4D86001C0DEF /* Guerrilla Dungeons */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +198,13 @@
 				78D12D4721E95E8F00F4971A /* Monster View */,
 			);
 			path = Monsters;
+			sourceTree = "<group>";
+		};
+		78F0374C21ED89D9002B7468 /* Skills */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Skills;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78B00311211CA297001F246E /* Assets.xcassets in Resources */,
+				78F0374B21EC5666002B7468 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,16 +321,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78D1EB0421EC2A6A002D4197 /* LeaderboardVars.swift in Sources */,
 				78D12D4021E94D7700F4971A /* MonsterTableSkillUtils.swift in Sources */,
 				78B0030F211CA297001F246E /* pad_db.xcdatamodeld in Sources */,
 				78D6885C21E5459F001C0DEF /* TabController.swift in Sources */,
 				78B0031C211CA2FC001F246E /* MonsterTableController.swift in Sources */,
 				78D6886621E6F431001C0DEF /* MultiplierUtils.swift in Sources */,
+				78D1EB0021EC291A002D4197 /* LeaderboardTableVC.swift in Sources */,
 				78D6886421E6B357001C0DEF /* MonsterVC.swift in Sources */,
 				78D1EAF721EBF2CA002D4197 /* SetupAwakeningUtils.swift in Sources */,
 				78B00307211CA297001F246E /* AppDelegate.swift in Sources */,
+				78D1EB0221EC295E002D4197 /* LeaderboardUtils.swift in Sources */,
 				78D12D4421E95CD600F4971A /* MonsterTableMonsterUtils.swift in Sources */,
 				78D1EAF921EBF2FA002D4197 /* SetupSkillUtils.swift in Sources */,
+				78D1EB0621EC2CFD002D4197 /* LeaderboardCell.swift in Sources */,
 				78D6885921CB4DAC001C0DEF /* GuerrillaCell.swift in Sources */,
 				78D1EAF521EBF2A7002D4197 /* SetupHeaderUtils.swift in Sources */,
 				78D1EAEF21EA97BC002D4197 /* MonsterVCUtils.swift in Sources */,
@@ -445,7 +481,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Rohil-Thopu.pad-db";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -465,7 +501,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Rohil-Thopu.pad-db";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

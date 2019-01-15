@@ -97,7 +97,7 @@ extension MonsterVC {
                 return false
             }
         }).first
-        
+                
         return monster!
     }
     

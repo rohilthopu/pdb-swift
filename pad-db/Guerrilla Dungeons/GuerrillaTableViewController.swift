@@ -60,13 +60,12 @@ class GuerrillaTableViewController: UITableViewController {
     
     
     private func setupNavBar() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.barTintColor = UIColor.white
+        if #available(iOS 11, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         navigationItem.title = "NA Calendar"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "world")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(swapServer))
-
-//        changeButtonLabel(server: "Server")
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "world")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(swapServer))        
     }
     
     @objc
@@ -100,16 +99,8 @@ class GuerrillaTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
-
- 
     }
     
-    private func changeButtonLabel(server:String) {
-//        let serverSwap = UIButton(type: .system)
-//        serverSwap.setTitle(server, for: .normal)
-//        serverSwap.addTarget(self, action: #selector(swapServer), for: .touchUpInside)
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: serverSwap)
-    }
     
     private func loadGuerrilla() {
         let url = "https://www.pad-db.com/api/guerrilla"

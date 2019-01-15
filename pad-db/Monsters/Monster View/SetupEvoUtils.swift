@@ -17,7 +17,7 @@ extension MonsterVC {
         
         let separator = makeSeparator()
         
-
+        
         let size:CGFloat = spacing * 7
         let smallSize:CGFloat = spacing * 4
         let smallerSize:CGFloat = spacing * 2
@@ -33,9 +33,9 @@ extension MonsterVC {
         evoMaterialsContainer.topAnchor.constraint(equalTo: leaderSkillContainer.bottomAnchor, constant: 20).isActive = true
         evoMaterialsContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: spacing).isActive = true
         evoMaterialsContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -spacing).isActive = true
-
-      
-
+        
+        
+        
         
         evoMaterialsLabel.centerXAnchor.constraint(equalTo: evoMaterialsContainer.centerXAnchor).isActive = true
         evoMaterialsLabel.topAnchor.constraint(equalTo: evoMaterialsContainer.topAnchor).isActive = true
@@ -46,116 +46,136 @@ extension MonsterVC {
         
         var views = [UIView]()
         
+        
         if evolutions.count > 0 {
             for i in 0...evolutions.count - 1 {
                 
-                let evo = evolutions[i]
-                
-                if evo < 10000 {
+                if monsterIDList.contains(evolutions[i]) {
+                    let evo = evolutions[i]
                     
-                    let view = makeView()
-                    let portraitImg = makeImgView(forImg: self.monster!.value(forKey: "portraitURL") as! String, ofSize: size)
-                    let plusImg = makeImgView(fromIconName: "add", ofSize: smallerSize)
-                    let equalsImg = makeImgView(fromIconName: "equal", ofSize: smallerSize)
-                    
-                    view.addSubview(portraitImg)
-                    view.addSubview(plusImg)
-                    view.addSubview(equalsImg)
-                    
-                    portraitImg.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-                    portraitImg.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-                    portraitImg.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-                    
-                    
-                    plusImg.leadingAnchor.constraint(equalTo: portraitImg.trailingAnchor, constant: spacing).isActive = true
-                    plusImg.centerYAnchor.constraint(equalTo: portraitImg.centerYAnchor).isActive = true
-                    
-                    
-                    let monster = getMonster(forID: evo)
-                    
-                    let monsterImg = makeImgView(forImg: monster.value(forKey: "portraitURL") as! String, ofSize: size)
-                    monsterImg.isUserInteractionEnabled = true
-                    monsterImg.addGestureRecognizer(makeTapRecognizer())
-                    monsterImg.tag = monster.value(forKey: "cardID") as! Int
-                    view.addSubview(monsterImg)
-       
-                    
-                    
-                    let e1 = monster.value(forKey: "evomat1") as! Int
-                    let e2 = monster.value(forKey: "evomat2") as! Int
-                    let e3 = monster.value(forKey: "evomat3") as! Int
-                    let e4 = monster.value(forKey: "evomat4") as! Int
-                    let e5 = monster.value(forKey: "evomat5") as! Int
-                    
-                    let evomats = [e1, e2, e3, e4, e5]
-                    
-                    var evoViews = [UIImageView]()
-                    
-                    for i in 0...evomats.count - 1 {
-                        let evo = evomats[i]
+                    if evo < 10000 {
                         
-                        if evo != 0 {
-                            let monster = getMonster(forID: evo)
-                            let img = makeImgView(forImg: monster.value(forKey: "portraitURL") as! String, ofSize: smallSize)
-                            img.tag = monster.value(forKey: "cardID") as! Int
-                            img.isUserInteractionEnabled = true
-                            img.addGestureRecognizer(makeTapRecognizer())
-                            evoViews.append(img)
+                        let view = makeView()
+                        let portraitImg = makeImgView(forImg: self.monster!.value(forKey: "portraitURL") as! String, ofSize: size)
+                        let plusImg = makeImgView(fromIconName: "add", ofSize: smallerSize)
+                        let equalsImg = makeImgView(fromIconName: "equal", ofSize: smallerSize)
+                        
+                        view.addSubview(portraitImg)
+                        view.addSubview(plusImg)
+                        //                    view.addSubview(equalsImg)
+                        
+                        portraitImg.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+                        portraitImg.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+                        portraitImg.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+                        
+                        
+                        plusImg.leadingAnchor.constraint(equalTo: portraitImg.trailingAnchor, constant: spacing).isActive = true
+                        plusImg.centerYAnchor.constraint(equalTo: portraitImg.centerYAnchor).isActive = true
+                        
+                        
+                        let monster = getMonster(forID: evo)
+                        
+                        let monsterImg = makeImgView(forImg: monster.value(forKey: "portraitURL") as! String, ofSize: size)
+                        monsterImg.isUserInteractionEnabled = true
+                        monsterImg.addGestureRecognizer(makeTapRecognizer())
+                        monsterImg.tag = monster.value(forKey: "cardID") as! Int
+                        //                    view.addSubview(monsterImg)
+                        
+                        
+                        
+                        let e1 = monster.value(forKey: "evomat1") as! Int
+                        let e2 = monster.value(forKey: "evomat2") as! Int
+                        let e3 = monster.value(forKey: "evomat3") as! Int
+                        let e4 = monster.value(forKey: "evomat4") as! Int
+                        let e5 = monster.value(forKey: "evomat5") as! Int
+                        
+                        let evomats = [e1, e2, e3, e4, e5]
+                        
+                        var evoViews = [UIImageView]()
+                        
+                        for i in 0...evomats.count - 1 {
+                            let evo = evomats[i]
+                            
+                            if evo != 0 {
+                                let monster = getMonster(forID: evo)
+                                let img = makeImgView(forImg: monster.value(forKey: "portraitURL") as! String, ofSize: smallSize)
+                                img.tag = monster.value(forKey: "cardID") as! Int
+                                img.isUserInteractionEnabled = true
+                                img.addGestureRecognizer(makeTapRecognizer())
+                                evoViews.append(img)
+                            }
                         }
+                        
+                        for i in 0...evoViews.count - 1 {
+                            let img = evoViews[i]
+                            
+                            view.addSubview(img)
+                            
+                            img.centerYAnchor.constraint(equalTo: portraitImg.centerYAnchor).isActive = true
+                            
+                            if i == 0 {
+                                img.leadingAnchor.constraint(equalTo: plusImg.trailingAnchor, constant: spacing).isActive = true
+                            }
+                            else {
+                                img.leadingAnchor.constraint(equalTo: evoViews[i-1].trailingAnchor, constant: spacing).isActive = true
+                            }
+                        }
+                        
+                        
+                        let equalsView = makeView()
+                        
+                        equalsView.addSubview(equalsImg)
+                        equalsView.addSubview(monsterImg)
+                        
+                        view.addSubview(equalsView)
+                        
+                        equalsView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+                        equalsView.centerYAnchor.constraint(equalTo: portraitImg.centerYAnchor).isActive = true
+                        
+                        
+                        equalsImg.leadingAnchor.constraint(equalTo: equalsView.leadingAnchor).isActive = true
+                        equalsImg.centerYAnchor.constraint(equalTo: equalsView.centerYAnchor).isActive = true
+                        
+                        monsterImg.leadingAnchor.constraint(equalTo: equalsImg.trailingAnchor, constant: spacing).isActive = true
+                        monsterImg.centerYAnchor.constraint(equalTo: equalsView.centerYAnchor).isActive = true
+                        monsterImg.trailingAnchor.constraint(equalTo: equalsView.trailingAnchor).isActive = true
+                        monsterImg.topAnchor.constraint(equalTo: equalsView.topAnchor).isActive = true
+                        monsterImg.bottomAnchor.constraint(equalTo: equalsView.bottomAnchor).isActive = true
+                        
+                        views.append(view)
+                        
+                        
                     }
-                    
-                    for i in 0...evoViews.count - 1 {
-                        let img = evoViews[i]
-                        
-                        view.addSubview(img)
-                        
-                        img.centerYAnchor.constraint(equalTo: portraitImg.centerYAnchor).isActive = true
-                        
-                        if i == 0 {
-                            img.leadingAnchor.constraint(equalTo: plusImg.trailingAnchor, constant: spacing).isActive = true
-                        }
-                        else {
-                            img.leadingAnchor.constraint(equalTo: evoViews[i-1].trailingAnchor, constant: spacing).isActive = true
-                        }
-                    }
-                    
-                    
-                    equalsImg.leadingAnchor.constraint(equalTo: evoViews.last!.trailingAnchor, constant: spacing).isActive = true
-                    equalsImg.centerYAnchor.constraint(equalTo: portraitImg.centerYAnchor).isActive = true
-                    
-                    monsterImg.leadingAnchor.constraint(equalTo: equalsImg.trailingAnchor, constant: spacing).isActive = true
-                    monsterImg.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-                    monsterImg.centerYAnchor.constraint(equalTo: portraitImg.centerYAnchor).isActive = true
-                    monsterImg.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-                    
-                    views.append(view)
-                    
-                    
                 }
+                
+                
             }
             
             evoMaterialsContainer.heightAnchor.constraint(equalToConstant:size*CGFloat(views.count + 2) + evoMaterialsLabel.frame.height).isActive = true
             
             
-            for i in 0...views.count - 1 {
-                
-                
-                let view = views[i]
-                
-                evoMaterialsContainer.addSubview(view)
-                
-                
-                view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-                view.widthAnchor.constraint(equalToConstant: 2*size + 5*smallSize + 2*smallerSize + 8*spacing).isActive = true
-                view.heightAnchor.constraint(equalToConstant: size).isActive = true
-                
-                if i == 0 {
-                    view.topAnchor.constraint(equalTo: evoMaterialsLabel.bottomAnchor, constant: 20).isActive = true
-                }
-                else {
-                    view.topAnchor.constraint(equalTo: views[i-1].bottomAnchor, constant: 10).isActive = true
+            if views.count > 0 {
+                for i in 0...views.count - 1 {
+                    
+                    
+                    let view = views[i]
+                    
+                    evoMaterialsContainer.addSubview(view)
+                    
+                    
+                    view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+                    view.widthAnchor.constraint(equalToConstant: 2*size + 5*smallSize + 2*smallerSize + 8*spacing).isActive = true
+                    view.heightAnchor.constraint(equalToConstant: size).isActive = true
+                    
+                    if i == 0 {
+                        view.topAnchor.constraint(equalTo: evoMaterialsLabel.bottomAnchor, constant: 20).isActive = true
+                    }
+                    else {
+                        view.topAnchor.constraint(equalTo: views[i-1].bottomAnchor, constant: 10).isActive = true
+                    }
                 }
             }
+            
         }
             
         else {

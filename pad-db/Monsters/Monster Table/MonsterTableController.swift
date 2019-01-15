@@ -22,7 +22,8 @@ extension MonsterTableController: UISearchResultsUpdating {
 var monsters = [NSManagedObject]()
 var skills = [NSManagedObject]()
 
-
+var monsterIDList = [Int]()
+var skillIDList = [Int]()
 
 
 class MonsterTableController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
@@ -31,64 +32,66 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     var monster_url:String = "https://pad-db.com/api/monsters/na/"
     var portrait_url:String = "https://storage.googleapis.com/mirubot/padimages/na/portrait/"
     var full_url:String = "https://storage.googleapis.com/mirubot/padimages/na/full/"
-//    var full_url:String = "https://storage.googleapis.com/mirubot/padimages/hq_images/"
-    
+    //    var full_url:String = "https://storage.googleapis.com/mirubot/padimages/hq_images/"
     let skill_api_link = "https://www.pad-db.com/api/skills/na/"
-
+    
     var rawMonsters = [Monster]()
     var rawSkills = [Skill]()
     
-   
-
     var filteredMonsters = [NSManagedObject]()
     var monstersearch:UISearchController!
+    
+    var isDesc:Bool = true
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Monsters"
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "reload")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(loadLiveData))
+        setupTableView()
         setupView()
-        
-        tableView.register(MonsterCell.self, forCellReuseIdentifier: cellid)
-        tableView.rowHeight = 70
-        
-//        tableView.refreshControl = UIRefreshControl()
-//        tableView.refreshControl!.addTarget(self, action: #selector(refreshMonsterList(_:)), for: .valueChanged)
-//
         loadMonstersFromDB()
         loadSkillsFromDB()
+        getAllIds()
+        
         tableView.reloadData()
         
     }
     
+    private func setupTableView() {
+        tableView.register(MonsterCell.self, forCellReuseIdentifier: cellid)
+        tableView.rowHeight = 70
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl!.addTarget(self, action: #selector(refreshMonsterList(_:)), for: .valueChanged)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    private func setupNavBar() {
+        if #available(iOS 11, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            
+        }
+        navigationItem.title = "Monsters"
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        
+        
+        let eraseButton = UIBarButtonItem(image: UIImage(named: "reload")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(clearDBAndReloadView))
+        
+        let sortButton = UIBarButtonItem(image: UIImage(named: "order")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(changeSort))
+        
+        let buttonItems = [eraseButton, sortButton]
+        
+        navigationItem.rightBarButtonItems = buttonItems
         
     }
     
-//    @objc
-//    private func refreshMonsterList(_ sender: Any) {
-//        tableView.refreshControl!.endRefreshing()
-//        monsters.removeAll()
-//        clearDB()
-//        fillMonsterData()
-//        getSkillData()
-//        loadMonstersFromDB()
-//        loadSkillsFromDB()
-//
-//    }
-    
     private func setupView() {
         
-        if #available(iOS 11.0, *) {
-            navigationItem.searchController = monstersearch
-        } else {
-            tableView.tableHeaderView = monstersearch.searchBar
-        }
+        setupNavBar()
         
         monstersearch = UISearchController(searchResultsController: nil)
         
@@ -109,7 +112,6 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1

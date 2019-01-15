@@ -190,7 +190,12 @@ class MonsterVC: UIViewController {
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: makeBackButton())
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: makeDismissButton())
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        if #available(iOS 11, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+        }
+        
+        
         self.view.addSubview(scrollView)
         scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
