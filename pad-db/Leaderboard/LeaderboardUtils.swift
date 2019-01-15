@@ -41,7 +41,7 @@ extension LeaderboardTableVC {
     }
     
     
-    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+    func filterContentForText(_ searchText: String, scope: String = "All") {
         filteredUsers = users.filter({
             let val = $0.user!
             if val.lowercased().contains(searchText.lowercased()){

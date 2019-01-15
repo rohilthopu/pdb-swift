@@ -38,13 +38,14 @@ extension MonsterVC {
         saleMPContainer.leadingAnchor.constraint(equalTo: devoMaterialsContainer.leadingAnchor).isActive = true
         saleMPContainer.trailingAnchor.constraint(equalTo: devoMaterialsContainer.trailingAnchor).isActive = true
         saleMPContainer.topAnchor.constraint(equalTo: devoMaterialsContainer.bottomAnchor, constant: 20).isActive = true
-        saleMPContainer.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        
         
         headerLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         headerLabel.topAnchor.constraint(equalTo: saleMPContainer.topAnchor).isActive = true
         
+        valueLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 20).isActive = true
         valueLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        valueLabel.centerYAnchor.constraint(equalTo: saleMPContainer.centerYAnchor).isActive = true
+        valueLabel.bottomAnchor.constraint(equalTo: saleMPContainer.bottomAnchor, constant: -20).isActive = true
         
         separator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         separator.bottomAnchor.constraint(equalTo: saleMPContainer.bottomAnchor).isActive = true
@@ -76,13 +77,13 @@ extension MonsterVC {
         saleCoinContainer.trailingAnchor.constraint(equalTo: devoMaterialsContainer.trailingAnchor).isActive = true
         saleCoinContainer.topAnchor.constraint(equalTo: saleMPContainer.bottomAnchor, constant: 20).isActive = true
         saleCoinContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -50).isActive = true
-        saleCoinContainer.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         headerLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         headerLabel.topAnchor.constraint(equalTo: saleCoinContainer.topAnchor).isActive = true
         
+        valueLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 20).isActive = true
         valueLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        valueLabel.centerYAnchor.constraint(equalTo: saleCoinContainer.centerYAnchor).isActive = true
+        valueLabel.bottomAnchor.constraint(equalTo: saleCoinContainer.bottomAnchor, constant: -20).isActive = true
         
         separator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         separator.bottomAnchor.constraint(equalTo: saleCoinContainer.bottomAnchor).isActive = true

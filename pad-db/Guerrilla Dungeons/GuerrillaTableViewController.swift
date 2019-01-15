@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftyJSON
-
+import CoreData
 
 struct Guerrilla {
     var name:String?
@@ -54,6 +54,8 @@ class GuerrillaTableViewController: UITableViewController {
     
         tableView.allowsSelection = false
         loadGuerrilla()
+        loadMonstersFromDB()
+        loadSkillsFromDB()
 
         tableView.reloadData()
     }
@@ -182,6 +184,53 @@ class GuerrillaTableViewController: UITableViewController {
         cell.status = dungeon.status!
         cell.remainingTime = dungeon.remainingTime!
         return cell
+    }
+    
+    func loadMonstersFromDB() {
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "MonsterNA")
+        
+        let sort = NSSortDescriptor(key: "cardID", ascending: false)
+        fetchRequest.sortDescriptors = [sort]
+        
+        do {
+            monsters = try managedContext.fetch(fetchRequest)
+        } catch _ as NSError {
+            print("Could not fetch.")
+        }
+    }
+    
+    func loadSkillsFromDB() {
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "SkillNA")
+        
+        let sort = NSSortDescriptor(key: "skillID", ascending: false)
+        fetchRequest.sortDescriptors = [sort]
+        
+        do {
+            skills = try managedContext.fetch(fetchRequest)
+        } catch _ as NSError {
+            print("Could not fetch.")
+        }
+        
     }
 
     /*

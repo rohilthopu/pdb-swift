@@ -35,8 +35,6 @@ extension MonsterVC {
         evoMaterialsContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -spacing).isActive = true
         
         
-        
-        
         evoMaterialsLabel.centerXAnchor.constraint(equalTo: evoMaterialsContainer.centerXAnchor).isActive = true
         evoMaterialsLabel.topAnchor.constraint(equalTo: evoMaterialsContainer.topAnchor).isActive = true
         
@@ -122,6 +120,7 @@ extension MonsterVC {
                         }
                         
                         
+                        
                         let equalsView = makeView()
                         
                         equalsView.addSubview(equalsImg)
@@ -129,6 +128,8 @@ extension MonsterVC {
                         
                         view.addSubview(equalsView)
                         
+
+                        equalsView.leadingAnchor.constraint(equalTo: evoViews.last!.trailingAnchor, constant: spacing).isActive = true
                         equalsView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
                         equalsView.centerYAnchor.constraint(equalTo: portraitImg.centerYAnchor).isActive = true
                         
@@ -151,9 +152,6 @@ extension MonsterVC {
                 
             }
             
-            evoMaterialsContainer.heightAnchor.constraint(equalToConstant:size*CGFloat(views.count + 2) + evoMaterialsLabel.frame.height).isActive = true
-            
-            
             if views.count > 0 {
                 for i in 0...views.count - 1 {
                     
@@ -162,10 +160,7 @@ extension MonsterVC {
                     
                     evoMaterialsContainer.addSubview(view)
                     
-                    
                     view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-                    view.widthAnchor.constraint(equalToConstant: 2*size + 5*smallSize + 2*smallerSize + 8*spacing).isActive = true
-                    view.heightAnchor.constraint(equalToConstant: size).isActive = true
                     
                     if i == 0 {
                         view.topAnchor.constraint(equalTo: evoMaterialsLabel.bottomAnchor, constant: 20).isActive = true
@@ -174,6 +169,8 @@ extension MonsterVC {
                         view.topAnchor.constraint(equalTo: views[i-1].bottomAnchor, constant: 10).isActive = true
                     }
                 }
+                
+                views.last!.bottomAnchor.constraint(equalTo: evoMaterialsContainer.bottomAnchor, constant: -20).isActive = true
             }
             
         }
@@ -181,9 +178,9 @@ extension MonsterVC {
         else {
             let noneLabel = makeLabel(ofSize: 16, withText: "This monster does not evolve")
             evoMaterialsContainer.addSubview(noneLabel)
-            evoMaterialsContainer.heightAnchor.constraint(equalToConstant: size*2).isActive = true
             noneLabel.centerXAnchor.constraint(equalTo: evoMaterialsLabel.centerXAnchor).isActive = true
-            noneLabel.centerYAnchor.constraint(equalTo: evoMaterialsContainer.centerYAnchor).isActive = true
+            noneLabel.topAnchor.constraint(equalTo: evoMaterialsLabel.bottomAnchor, constant: 20).isActive = true
+            noneLabel.bottomAnchor.constraint(equalTo: evoMaterialsContainer.bottomAnchor, constant: -20).isActive = true
         }
     }
     
@@ -212,6 +209,7 @@ extension MonsterVC {
         
         devoMaterialsLabel.centerXAnchor.constraint(equalTo: devoMaterialsContainer.centerXAnchor).isActive = true
         devoMaterialsLabel.topAnchor.constraint(equalTo: devoMaterialsContainer.topAnchor).isActive = true
+        
         
         separator.bottomAnchor.constraint(equalTo: devoMaterialsContainer.bottomAnchor).isActive = true
         separator.centerXAnchor.constraint(equalTo: devoMaterialsContainer.centerXAnchor).isActive = true
@@ -305,22 +303,46 @@ extension MonsterVC {
                 
                 devoMaterialsContainer.addSubview(view)
                 
-                
                 view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
                 view.widthAnchor.constraint(equalToConstant: 2*size + 5*smallSize + 2*smallerSize + 8*spacing).isActive = true
                 view.heightAnchor.constraint(equalToConstant: size).isActive = true
                 view.topAnchor.constraint(equalTo: devoMaterialsLabel.bottomAnchor, constant: 20).isActive = true
-                
-                
             }
+        }
+        
+        else if devolution > 0 {
+            let noneUltLabel = makeLabel(ofSize: 16, withText: "This monster cannot be devolved.")
+            let prevEvoLabel = makeLabel(ofSize: 16, withText: "Ancestor is")
+            let ancestorImg = makeImgView(forImg: getMonster(forID: devolution).value(forKey: "portraitURL") as! String, ofSize: size)
+            ancestorImg.tag = devolution
+            ancestorImg.isUserInteractionEnabled = true
+            ancestorImg.addGestureRecognizer(makeTapRecognizer())
+
+            
+            devoMaterialsContainer.addSubview(noneUltLabel)
+            devoMaterialsContainer.addSubview(prevEvoLabel)
+            devoMaterialsContainer.addSubview(ancestorImg)
+            
+            
+            noneUltLabel.topAnchor.constraint(equalTo: devoMaterialsLabel.bottomAnchor, constant: 10).isActive = true
+            noneUltLabel.centerXAnchor.constraint(equalTo: devoMaterialsContainer.centerXAnchor).isActive = true
+            
+            prevEvoLabel.topAnchor.constraint(equalTo: noneUltLabel.bottomAnchor, constant: 10).isActive = true
+            prevEvoLabel.centerXAnchor.constraint(equalTo: noneUltLabel.centerXAnchor).isActive = true
+            
+            ancestorImg.topAnchor.constraint(equalTo: prevEvoLabel.bottomAnchor, constant: 10).isActive = true
+            ancestorImg.bottomAnchor.constraint(equalTo: devoMaterialsContainer.bottomAnchor, constant: -10).isActive = true
+            ancestorImg.centerXAnchor.constraint(equalTo: noneUltLabel.centerXAnchor).isActive = true
+            
+            
         }
             
         else {
-            let noneLabel = makeLabel(ofSize: 16, withText: "This monster does not devolve")
+            let noneLabel = makeLabel(ofSize: 16, withText: "This monster does not have previous evolutions")
             devoMaterialsContainer.addSubview(noneLabel)
-            devoMaterialsContainer.heightAnchor.constraint(equalToConstant: size*2).isActive = true
+            noneLabel.topAnchor.constraint(equalTo: devoMaterialsLabel.bottomAnchor, constant: 20).isActive = true
             noneLabel.centerXAnchor.constraint(equalTo: devoMaterialsLabel.centerXAnchor).isActive = true
-            noneLabel.centerYAnchor.constraint(equalTo: devoMaterialsContainer.centerYAnchor).isActive = true
+            noneLabel.bottomAnchor.constraint(equalTo: devoMaterialsContainer.bottomAnchor, constant: -20).isActive = true
         }
     }
     

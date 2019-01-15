@@ -15,7 +15,7 @@ import CoreData
 extension MonsterTableController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
+        filterContentForText(searchController.searchBar.text!)
     }
 }
 
@@ -30,9 +30,9 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     
     let cellid = "monsterid"
     var monster_url:String = "https://pad-db.com/api/monsters/na/"
-    var portrait_url:String = "https://storage.googleapis.com/mirubot/padimages/na/portrait/"
-    var full_url:String = "https://storage.googleapis.com/mirubot/padimages/na/full/"
-    //    var full_url:String = "https://storage.googleapis.com/mirubot/padimages/hq_images/"
+    var portrait_url:String = "https://pad-db.com/static/padimages/jp/portrait/"
+    var full_url:String = "https://pad-db.com/static/padimages/jp/full/"
+    //    var full_url:String = "https://pad-db.com/static/padimages/hq_images/"
     let skill_api_link = "https://www.pad-db.com/api/skills/na/"
     
     var rawMonsters = [Monster]()
@@ -42,6 +42,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     var monstersearch:UISearchController!
     
     var isDesc:Bool = true
+    var isRefreshing:Bool = false
     
     
     
@@ -65,10 +66,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl!.addTarget(self, action: #selector(refreshMonsterList(_:)), for: .valueChanged)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
+
     
     private func setupNavBar() {
         if #available(iOS 11, *) {

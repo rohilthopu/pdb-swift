@@ -118,8 +118,8 @@ extension MonsterVC {
             multipliers[0] = skill.value(forKey: "hpMult") as! Float
             multipliers[1] = skill.value(forKey: "atkMult") as! Float
             multipliers[2] = skill.value(forKey: "rcvMult") as! Float
-            multipliers[3] = (skill.value(forKey: "dmgReduction") as! Float) * 100
-            multipliers[4] = skill.value(forKey: "dmgReduction") as! Float
+            multipliers[3] = Float((skill.value(forKey: "dmgReduction") as! Double)) * 100
+            multipliers[4] = Float(skill.value(forKey: "dmgReduction") as! Double)
         }
         
         return multipliers

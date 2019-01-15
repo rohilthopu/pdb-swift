@@ -32,17 +32,20 @@ extension MonsterTableController {
         tableView.refreshControl!.endRefreshing()
         tableView.reloadData()
         
-        if monsters.count == 0 {
+        if monsters.count == 0 && !isRefreshing {
+            isRefreshing = true
             let activity = UIActivityIndicatorView(style: .gray)
             tableView.addSubview(activity)
             activity.frame = tableView.bounds
             activity.startAnimating()
             getAllData(activity: activity)
         }
-        else {
+        else if !isRefreshing {
+            isRefreshing = true
             getNewData()
         }
     }
+    
     
     func getNewData() {
         
@@ -56,6 +59,7 @@ extension MonsterTableController {
                 self.saveSkillData()
                 self.getAllIds()
                 self.sortMonstersDescending()
+                self.isRefreshing = false
                 self.tableView.reloadData()
             }
         }
@@ -75,7 +79,7 @@ extension MonsterTableController {
                 self.sortMonstersDescending()
                 activity.stopAnimating()
                 activity.removeFromSuperview()
-                
+                self.isRefreshing = false
                 self.tableView.reloadData()
             }
         }
@@ -140,7 +144,7 @@ extension MonsterTableController {
     }
     
     
-    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+    func filterContentForText(_ searchText: String, scope: String = "All") {
         filteredMonsters = monsters.filter({
             let val = $0.value(forKey: "name") as! String
             let id = String($0.value(forKey: "cardID") as! Int)

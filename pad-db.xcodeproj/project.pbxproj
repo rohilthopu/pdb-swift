@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7888153521ED8B02004981D2 /* SkillTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7888153421ED8B02004981D2 /* SkillTableVC.swift */; };
+		7888153721ED8CAB004981D2 /* SkillTableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7888153621ED8CAB004981D2 /* SkillTableUtils.swift */; };
+		7888153921ED8D8F004981D2 /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7888153821ED8D8F004981D2 /* SkillCell.swift */; };
 		78B00307211CA297001F246E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B00306211CA297001F246E /* AppDelegate.swift */; };
 		78B0030F211CA297001F246E /* pad_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78B0030D211CA297001F246E /* pad_db.xcdatamodeld */; };
 		78B00311211CA297001F246E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78B00310211CA297001F246E /* Assets.xcassets */; };
@@ -33,10 +36,15 @@
 		78D6886421E6B357001C0DEF /* MonsterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6886321E6B357001C0DEF /* MonsterVC.swift */; };
 		78D6886621E6F431001C0DEF /* MultiplierUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6886521E6F431001C0DEF /* MultiplierUtils.swift */; };
 		78F0374B21EC5666002B7468 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78F0374A21EC5666002B7468 /* Storyboard.storyboard */; };
+		78F0782121ED97C300F0DE1B /* GeneralUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F0782021ED97C300F0DE1B /* GeneralUtils.swift */; };
+		78F0782321ED990300F0DE1B /* SkillCellUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F0782221ED990300F0DE1B /* SkillCellUtils.swift */; };
 		AAC40FF05CCDAD282B5256E7 /* Pods_pad_db.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DA29BB8DC4A4C0F3A8FFFC /* Pods_pad_db.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7888153421ED8B02004981D2 /* SkillTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableVC.swift; sourceTree = "<group>"; };
+		7888153621ED8CAB004981D2 /* SkillTableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableUtils.swift; sourceTree = "<group>"; };
+		7888153821ED8D8F004981D2 /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
 		78B00303211CA296001F246E /* pad-db.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pad-db.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B00306211CA297001F246E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78B0030E211CA297001F246E /* pad_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pad_db.xcdatamodel; sourceTree = "<group>"; };
@@ -65,6 +73,8 @@
 		78D6886321E6B357001C0DEF /* MonsterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterVC.swift; sourceTree = "<group>"; };
 		78D6886521E6F431001C0DEF /* MultiplierUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplierUtils.swift; sourceTree = "<group>"; };
 		78F0374A21EC5666002B7468 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		78F0782021ED97C300F0DE1B /* GeneralUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralUtils.swift; sourceTree = "<group>"; };
+		78F0782221ED990300F0DE1B /* SkillCellUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCellUtils.swift; sourceTree = "<group>"; };
 		E6C443A1101AA4662E9D9211 /* Pods-pad-db.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pad-db.release.xcconfig"; path = "Pods/Target Support Files/Pods-pad-db/Pods-pad-db.release.xcconfig"; sourceTree = "<group>"; };
 		E7DA29BB8DC4A4C0F3A8FFFC /* Pods_pad_db.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pad_db.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AF30AA3F21760F9C1DD0C2 /* Pods-pad-db.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pad-db.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pad-db/Pods-pad-db.debug.xcconfig"; sourceTree = "<group>"; };
@@ -203,6 +213,11 @@
 		78F0374C21ED89D9002B7468 /* Skills */ = {
 			isa = PBXGroup;
 			children = (
+				7888153421ED8B02004981D2 /* SkillTableVC.swift */,
+				7888153621ED8CAB004981D2 /* SkillTableUtils.swift */,
+				7888153821ED8D8F004981D2 /* SkillCell.swift */,
+				78F0782021ED97C300F0DE1B /* GeneralUtils.swift */,
+				78F0782221ED990300F0DE1B /* SkillCellUtils.swift */,
 			);
 			path = Skills;
 			sourceTree = "<group>";
@@ -336,13 +351,18 @@
 				78D1EAF921EBF2FA002D4197 /* SetupSkillUtils.swift in Sources */,
 				78D1EB0621EC2CFD002D4197 /* LeaderboardCell.swift in Sources */,
 				78D6885921CB4DAC001C0DEF /* GuerrillaCell.swift in Sources */,
+				78F0782321ED990300F0DE1B /* SkillCellUtils.swift in Sources */,
 				78D1EAF521EBF2A7002D4197 /* SetupHeaderUtils.swift in Sources */,
+				78F0782121ED97C300F0DE1B /* GeneralUtils.swift in Sources */,
 				78D1EAEF21EA97BC002D4197 /* MonsterVCUtils.swift in Sources */,
 				78D12D4221E95C4400F4971A /* MonsterTableVars.swift in Sources */,
 				78D1EAF321EBF261002D4197 /* SetupStatUtils.swift in Sources */,
+				7888153921ED8D8F004981D2 /* SkillCell.swift in Sources */,
 				78D12D4621E95E6900F4971A /* MonsterTableUtils.swift in Sources */,
+				7888153721ED8CAB004981D2 /* SkillTableUtils.swift in Sources */,
 				78D6885621CB07BD001C0DEF /* GuerrillaTableViewController.swift in Sources */,
 				78D1EAFD21EC0ACA002D4197 /* SetupSaleItemUtil.swift in Sources */,
+				7888153521ED8B02004981D2 /* SkillTableVC.swift in Sources */,
 				78D1EAFB21EBF31D002D4197 /* SetupEvoUtils.swift in Sources */,
 				78D6885E21E55613001C0DEF /* MonsterCell.swift in Sources */,
 			);

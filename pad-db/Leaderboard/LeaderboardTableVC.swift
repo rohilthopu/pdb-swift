@@ -11,7 +11,7 @@ import UIKit
 extension  LeaderboardTableVC: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
+        filterContentForText(searchController.searchBar.text!)
     }
 }
 
