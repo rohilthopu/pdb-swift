@@ -97,7 +97,6 @@ extension MonsterVC {
         
         if let leaderSkill = leaderSkill {
             
-            leaderSkillContainer.heightAnchor.constraint(equalToConstant: 240).isActive = true
             
             
             let multipliers = getMultipliers(leaderSkill)
@@ -108,7 +107,7 @@ extension MonsterVC {
             let nameLabel = makeLabel(ofSize: 16, withText: leaderSkill.value(forKey: "name") as! String)
             let descriptionLabel = makeLabel(ofSize: 16, withText: leaderSkill.value(forKey: "desc") as! String)
             
-            let multContainer = generateContainerForMultipliaers(multipliers, pairMults)
+            let multContainer = generateContainerForMultipliers(multipliers, pairMults)
             
             
             leaderSkillContainer.addSubview(nameLabel)
@@ -121,7 +120,7 @@ extension MonsterVC {
             nameLabel.topAnchor.constraint(equalTo: leaderSkillContainer.topAnchor).isActive = true
             nameLabel.leadingAnchor.constraint(equalTo: leaderSkillLabel.trailingAnchor, constant: 10).isActive = true
             nameLabel.centerYAnchor.constraint(equalTo: leaderSkillLabel.centerYAnchor).isActive = true
-            
+            nameLabel.trailingAnchor.constraint(equalTo: leaderSkillContainer.trailingAnchor).isActive = true
             
             descriptionLabel.topAnchor.constraint(equalTo: leaderSkillLabel.bottomAnchor, constant: 20).isActive = true
             descriptionLabel.leadingAnchor.constraint(equalTo: leaderSkillContainer.leadingAnchor, constant: 10).isActive = true
@@ -129,10 +128,10 @@ extension MonsterVC {
             descriptionLabel.lineBreakMode = .byWordWrapping
             descriptionLabel.numberOfLines = 0
             
-            multContainer.heightAnchor.constraint(equalToConstant: 120).isActive = true
-            multContainer.widthAnchor.constraint(equalToConstant: 105).isActive = true
             multContainer.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20).isActive = true
-            multContainer.centerXAnchor.constraint(equalTo: leaderSkillContainer.centerXAnchor).isActive = true
+            multContainer.leadingAnchor.constraint(equalTo: leaderSkillContainer.leadingAnchor).isActive = true
+            multContainer.trailingAnchor.constraint(equalTo: leaderSkillContainer.trailingAnchor).isActive = true
+            multContainer.bottomAnchor.constraint(equalTo: leaderSkillContainer.bottomAnchor, constant: -20).isActive = true
             
         }
         else {

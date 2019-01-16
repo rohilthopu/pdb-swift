@@ -12,19 +12,22 @@ import CoreData
 
 extension MonsterTableController {
     
-    
     @objc
     func changeSort() {
-        if isDesc {
-            isDesc = false
-            sortMonstersAscending()
-            tableView.reloadData()
+        
+        if !isRefreshing {
+            if isDesc {
+                isDesc = false
+                sortMonstersAscending()
+                tableView.reloadData()
+            }
+            else {
+                isDesc = true
+                sortMonstersDescending()
+                tableView.reloadData()
+            }
         }
-        else {
-            isDesc = true
-            sortMonstersDescending()
-            tableView.reloadData()
-        }
+        
     }
     
     @objc
@@ -46,6 +49,42 @@ extension MonsterTableController {
         }
     }
     
+    @objc
+    func refreshMonsterList(_ sender: Any) {
+        loadLiveData()
+    }
+    
+    @objc
+    func clearDBAndReloadView() {
+        
+        if !isRefreshing {
+            monsters.removeAll()
+            skills.removeAll()
+            goodSkills.removeAll()
+            tableView.reloadData()
+            clearDB()
+        }
+    }
+    
+    @objc
+    func clearDB() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MonsterNA")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        let fetchRequest2 = NSFetchRequest<NSFetchRequestResult>(entityName: "SkillNA")
+        let deleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
+        
+        
+        do {
+            try managedContext.execute(deleteRequest)
+            try managedContext.execute(deleteRequest2)
+            try managedContext.save()
+        } catch {
+            print("There was an error deleting items.")
+        }
+    }
     
     func getNewData() {
         
@@ -59,6 +98,7 @@ extension MonsterTableController {
                 self.saveSkillData()
                 self.getAllIds()
                 self.sortMonstersDescending()
+                self.sortSkillsDescending()
                 self.isRefreshing = false
                 self.tableView.reloadData()
             }
@@ -77,6 +117,7 @@ extension MonsterTableController {
                 self.saveSkillData()
                 self.getAllIds()
                 self.sortMonstersDescending()
+                self.sortSkillsDescending()
                 activity.stopAnimating()
                 activity.removeFromSuperview()
                 self.isRefreshing = false
@@ -103,46 +144,19 @@ extension MonsterTableController {
         }
     }
     
-    @objc
-    func refreshMonsterList(_ sender: Any) {
-        loadLiveData()
-    }
-    
-    @objc
-    func clearDBAndReloadView() {
-        monsters.removeAll()
-        skills.removeAll()
-        tableView.reloadData()
-        clearDB()
-        
-    }
-    
-    @objc
-    func clearDB() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MonsterNA")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        let fetchRequest2 = NSFetchRequest<NSFetchRequestResult>(entityName: "SkillNA")
-        let deleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
-        
-        
-        do {
-            try managedContext.execute(deleteRequest)
-            try managedContext.execute(deleteRequest2)
-            try managedContext.save()
-        } catch {
-            print("There was an error deleting items.")
+    func sortSkillsDescending() {
+        skills.sort{
+            let first = $0.value(forKey: "skillID") as! Int
+            let second = $1.value(forKey: "skillID") as! Int
+            
+            return first > second
         }
     }
     
-    // SEARCH CONTROLLER FUNCTIONS
     func searchBarIsEmpty() -> Bool {
         // Returns true if the text is empty or nil
         return monstersearch.searchBar.text?.isEmpty ?? true
     }
-    
     
     func filterContentForText(_ searchText: String, scope: String = "All") {
         filteredMonsters = monsters.filter({
@@ -160,15 +174,6 @@ extension MonsterTableController {
     
     func isFiltering() -> Bool {
         return monstersearch.isActive && !searchBarIsEmpty()
-    }
-    
-    //    Misc
-    func uicolorFromHex(rgbValue:UInt32)->UIColor{
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/255.0
-        let green = CGFloat((rgbValue & 0xFF00) >> 8)/255.0
-        let blue = CGFloat(rgbValue & 0xFF)/255.0
-        
-        return UIColor(red:red, green:green, blue:blue, alpha:1.0)
     }
     
     func getPortraitURL(id:Int) -> String {

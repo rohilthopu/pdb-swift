@@ -57,6 +57,13 @@ extension SkillTableVC {
                 goodSkills.append(skill)
             }
         }
+        
+        goodSkills.sort{
+            let first = $0.value(forKey: "skillID") as! Int
+            let second = $1.value(forKey: "skillID") as! Int
+            
+            return first > second
+        }
         return goodSkills
     }
     

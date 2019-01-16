@@ -16,10 +16,12 @@ extension SkillTableVC: UISearchResultsUpdating {
     }
 }
 
+var goodSkills = [NSManagedObject]()
+
+
 class SkillTableVC: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
     let cellid = "skillcell"
-    var goodSkills = [NSManagedObject]()
     var filteredSkills = [NSManagedObject]()
     var skillSearch:UISearchController!
 
@@ -42,6 +44,7 @@ class SkillTableVC: UITableViewController, UISearchControllerDelegate, UISearchB
             goodSkills = getUsefulSkills()
             tableView.reloadData()
         }
+
     }
 
     // MARK: - Table view data source

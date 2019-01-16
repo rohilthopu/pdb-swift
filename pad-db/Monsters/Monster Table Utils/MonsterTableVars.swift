@@ -53,7 +53,6 @@ extension MonsterTableController {
         var sellCoin:Int?
     }
     
-    
     struct Skill {
         var name:String?
         var description:String?
@@ -72,5 +71,4 @@ extension MonsterTableController {
         var maxTurns:Int?
 
     }
-    
 }
