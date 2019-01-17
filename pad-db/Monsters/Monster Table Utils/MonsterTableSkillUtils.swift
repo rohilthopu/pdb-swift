@@ -79,7 +79,7 @@ extension MonsterTableController {
                     
                     let id = item["skillID"].intValue
                     
-                    if !skillIDList.contains(id) {
+                    if skillIDList[id] == nil {
                         var skill:Skill = Skill()
                         skill.name = item["name"].stringValue
                         skill.description = item["description"].stringValue
@@ -114,6 +114,7 @@ extension MonsterTableController {
         
         
         for skill in rawSkills {
+        
             
             let item = NSManagedObject(entity: entity, insertInto: managedContext)
             item.setValue(skill.name, forKey: "name")
@@ -133,13 +134,14 @@ extension MonsterTableController {
             item.setValue(skill.maxTurns, forKey: "maxTurns")
             
             
-            do {
-                try managedContext.save()
-                skills.append(item)
-            }
-            catch _ as NSError {
-                print("Error saving monster in CoreData")
-            }
+            skills.append(item)
+
+        }
+        do {
+            try managedContext.save()
+        }
+        catch _ as NSError {
+            print("Error saving skills in CoreData")
         }
     }
     

@@ -48,7 +48,7 @@ extension MonsterVC {
         if evolutions.count > 0 {
             for i in 0...evolutions.count - 1 {
                 
-                if monsterIDList.contains(evolutions[i]) {
+                if monsterIDList[evolutions[i]] != nil {
                     let evo = evolutions[i]
                     
                     if evo < 10000 {

@@ -19,10 +19,10 @@ extension MonsterTableController {
         monsterIDList.removeAll()
         skillIDList.removeAll()
         for monster in monsters {
-            monsterIDList.append(monster.value(forKey: "cardID") as! Int)
+            monsterIDList[monster.value(forKey: "cardID") as! Int] = 1
         }
         for skill in skills {
-            skillIDList.append(skill.value(forKey: "skillID") as! Int)
+            skillIDList[skill.value(forKey: "skillID") as! Int] = 1
         }
     }
     
@@ -98,17 +98,19 @@ extension MonsterTableController {
             item.setValue(monster.sellMP, forKey: "sellMP")
             item.setValue(monster.sellCoin, forKey: "sellCoin")
             
-            
-            
-            do {
-                try managedContext.save()
-                monsters.append(item)
-                
-            }
-            catch _ as NSError {
-                print("Error saving monster in CoreData")
-            }
+            monsters.append(item)
+
         }
+        
+        
+        do {
+            try managedContext.save()
+            
+        }
+        catch _ as NSError {
+            print("Error saving monsters in CoreData")
+        }
+        
     }
     
     func getMonsterData() {
@@ -116,6 +118,7 @@ extension MonsterTableController {
         rawMonsters.removeAll()
         // Source: https://mrgott.com/swift-programing/33-rest-api-in-swift-4-using-urlsession-and-jsondecode
         // load the url
+        
         
         if let url = URL(string: self.monster_url) {
             if let data = try? String(contentsOf: url) {
@@ -186,6 +189,7 @@ extension MonsterTableController {
                 }
             }
         }
+                
     }
     
     func getNewMonsterData() {
@@ -201,10 +205,10 @@ extension MonsterTableController {
                     
                     let id = card["cardID"].intValue
                     
-                    if !monsterIDList.contains(id) && !monsterIDList.contains(id%100000) {
+                    if monsterIDList[id] == nil && monsterIDList[id%100000] == nil {
                         
                         let name = card["name"].stringValue
-                        if !name.contains("*") && !name.isEmpty && !name.contains("Alt."){
+                        if !name.contains("*") && !name.isEmpty && !name.contains("Alt.") {
                             var monster:Monster = Monster()
                             monster.activeSkillID = card["activeSkillID"].intValue
                             monster.leaderSkillID = card["leaderSkillID"].intValue

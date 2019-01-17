@@ -88,11 +88,21 @@ extension MonsterTableController {
     
     func getNewData() {
         
+//        getNewMonsterData()
+//        getNewSkillData()
+//        saveMonsterData()
+//        saveSkillData()
+//        getAllIds()
+//        sortMonstersDescending()
+//        sortSkillsDescending()
+//        isRefreshing = false
+//        tableView.reloadData()
+        
         DispatchQueue.global(qos: .background).async {
-            
+
             self.getNewMonsterData()
             self.getNewSkillData()
-            
+
             DispatchQueue.main.async {
                 self.saveMonsterData()
                 self.saveSkillData()
@@ -106,24 +116,42 @@ extension MonsterTableController {
     }
     
     func getAllData(activity: UIActivityIndicatorView) {
-        
-        DispatchQueue.global(qos: .background).async {
-            
-            self.getMonsterData()
-            self.getSkillData()
-            
-            DispatchQueue.main.async {
-                self.saveMonsterData()
-                self.saveSkillData()
-                self.getAllIds()
-                self.sortMonstersDescending()
-                self.sortSkillsDescending()
-                activity.stopAnimating()
-                activity.removeFromSuperview()
-                self.isRefreshing = false
-                self.tableView.reloadData()
-            }
-        }
+   
+        getMonsterData()
+        getSkillData()
+        saveMonsterData()
+        saveSkillData()
+        getAllIds()
+        sortMonstersDescending()
+        sortSkillsDescending()
+        activity.stopAnimating()
+        activity.removeFromSuperview()
+        isRefreshing = false
+        tableView.reloadData()
+
+//
+//        let startTime = DispatchTime.now()
+//        DispatchQueue.global(qos: .background).async {
+//
+//            self.getMonsterData()
+//            self.getSkillData()
+//            self.saveMonsterData()
+//            self.saveSkillData()
+//
+//            DispatchQueue.main.async {
+//
+//                self.getAllIds()
+//                self.sortMonstersDescending()
+//                self.sortSkillsDescending()
+//                activity.stopAnimating()
+//                activity.removeFromSuperview()
+//                self.isRefreshing = false
+//                self.tableView.reloadData()
+//                let endTime = DispatchTime.now()
+//                print("Elapsed time for save data: " + String(Double(endTime.uptimeNanoseconds - startTime.uptimeNanoseconds)/1000000000) + "s")
+//                print()
+//            }
+//        }
     }
     
     func sortMonstersDescending() {

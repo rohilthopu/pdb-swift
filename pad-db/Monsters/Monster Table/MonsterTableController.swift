@@ -22,8 +22,8 @@ extension MonsterTableController: UISearchResultsUpdating {
 var monsters = [NSManagedObject]()
 var skills = [NSManagedObject]()
 
-var monsterIDList = [Int]()
-var skillIDList = [Int]()
+var monsterIDList:[Int: Int] = [:]
+var skillIDList:[Int: Int] = [:]
 
 
 class MonsterTableController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
@@ -51,10 +51,27 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         
         setupTableView()
         setupView()
+
         loadMonstersFromDB()
         loadSkillsFromDB()
         getAllIds()
         
+//        monsters.removeAll()
+//        skills.removeAll()
+//        print("Getting monster data...")
+//        var startTime = DispatchTime.now()
+//        getMonsterData()
+//        getSkillData()
+//        var endTime = DispatchTime.now()
+//        print("Elapsed time for get data: " + String(Double(endTime.uptimeNanoseconds - startTime.uptimeNanoseconds)/1000000000) + "s")
+//        print()
+//
+//        saveMonsterData()
+//        saveSkillData()
+//        startTime = DispatchTime.now()
+//        endTime = DispatchTime.now()
+//        print("Elapsed time for save data: " + String(Double(endTime.uptimeNanoseconds - startTime.uptimeNanoseconds)/1000000000) + "s")
+//        print()
         tableView.reloadData()
         
     }
