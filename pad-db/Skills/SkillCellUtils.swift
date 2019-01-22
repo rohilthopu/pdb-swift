@@ -19,6 +19,7 @@ extension SkillCell {
         nameLabel.topAnchor.constraint(equalTo: nameContainer.topAnchor).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
         nameLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
+        nameLabel.adjustsFontSizeToFitWidth = true
         
         descLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10).isActive = true
         descLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
@@ -36,7 +37,7 @@ extension SkillCell {
     }
     
     func anchorNameContainer() {
-        nameContainer.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        nameContainer.topAnchor.constraint(equalTo: portraitImg.topAnchor).isActive = true
         nameContainer.leadingAnchor.constraint(equalTo: portraitImg.trailingAnchor, constant: 10).isActive = true
         nameContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
     }

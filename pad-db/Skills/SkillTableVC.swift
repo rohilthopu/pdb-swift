@@ -30,8 +30,8 @@ class SkillTableVC: UITableViewController, UISearchControllerDelegate, UISearchB
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(SkillCell.self, forCellReuseIdentifier: cellid)
-        tableView.estimatedRowHeight = 120
-        tableView.rowHeight = 80
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = 120
         setupNavBar()
         setupTableView()
         setupSearch()

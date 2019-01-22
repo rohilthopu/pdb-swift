@@ -40,7 +40,7 @@ class SkillCell: UITableViewCell {
     let descLabel:UILabel = {
         let textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = UIFont(name: "Futura-CondensedMedium", size: 14)
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 12)
         textView.clipsToBounds = true
         return textView
     }()
