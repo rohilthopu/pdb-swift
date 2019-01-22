@@ -41,9 +41,6 @@ extension MonsterVC {
         }
     }
     
-    
-
-    
     public func makeView() -> UIView {
         let vw = UIView()
         vw.translatesAutoresizingMaskIntoConstraints = false
@@ -69,7 +66,7 @@ extension MonsterVC {
     
     func getMonster(forID id:Int) -> NSManagedObject {
         
-        let monster = monsters.filter({
+        let monster = goodMonsters.filter({
             let currID = $0.value(forKey: "cardID") as! Int
             
             if id == currID {

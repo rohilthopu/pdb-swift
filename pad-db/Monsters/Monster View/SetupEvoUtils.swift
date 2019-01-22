@@ -203,8 +203,8 @@ extension MonsterVC {
         
         
         devoMaterialsContainer.topAnchor.constraint(equalTo: evoMaterialsContainer.bottomAnchor, constant: 20).isActive = true
-        devoMaterialsContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: spacing).isActive = true
-        devoMaterialsContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -spacing).isActive = true
+        devoMaterialsContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
+        devoMaterialsContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
         
         
         devoMaterialsLabel.centerXAnchor.constraint(equalTo: devoMaterialsContainer.centerXAnchor).isActive = true
@@ -219,8 +219,6 @@ extension MonsterVC {
         if devolution > 0 && isUlt {
             
             if devolution != self.monster!.value(forKey: "cardID") as! Int {
-                
-                devoMaterialsContainer.heightAnchor.constraint(equalToConstant: size*3).isActive = true
                 
                 
                 let view = makeView()
@@ -304,8 +302,7 @@ extension MonsterVC {
                 devoMaterialsContainer.addSubview(view)
                 
                 view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-                view.widthAnchor.constraint(equalToConstant: 2*size + 5*smallSize + 2*smallerSize + 8*spacing).isActive = true
-                view.heightAnchor.constraint(equalToConstant: size).isActive = true
+                view.bottomAnchor.constraint(equalTo: devoMaterialsContainer.bottomAnchor, constant: -10).isActive = true
                 view.topAnchor.constraint(equalTo: devoMaterialsLabel.bottomAnchor, constant: 20).isActive = true
             }
         }

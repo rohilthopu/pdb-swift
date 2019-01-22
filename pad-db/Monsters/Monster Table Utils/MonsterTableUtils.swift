@@ -31,36 +31,13 @@ extension MonsterTableController {
     }
     
     @objc
-    func loadLiveData() {
-        tableView.refreshControl!.endRefreshing()
-        tableView.reloadData()
-        
-        if monsters.count == 0 && !isRefreshing {
-            isRefreshing = true
-            let activity = UIActivityIndicatorView(style: .gray)
-            tableView.addSubview(activity)
-            activity.frame = tableView.bounds
-            activity.startAnimating()
-            getAllData(activity: activity)
-        }
-        else if !isRefreshing {
-            isRefreshing = true
-            getNewData()
-        }
-    }
-    
-    @objc
-    func refreshMonsterList(_ sender: Any) {
-        loadLiveData()
-    }
-    
-    @objc
     func clearDBAndReloadView() {
         
         if !isRefreshing {
             monsters.removeAll()
             skills.removeAll()
             goodSkills.removeAll()
+            goodMonsters.removeAll()
             tableView.reloadData()
             clearDB()
         }
@@ -86,76 +63,8 @@ extension MonsterTableController {
         }
     }
     
-    func getNewData() {
-        
-//        getNewMonsterData()
-//        getNewSkillData()
-//        saveMonsterData()
-//        saveSkillData()
-//        getAllIds()
-//        sortMonstersDescending()
-//        sortSkillsDescending()
-//        isRefreshing = false
-//        tableView.reloadData()
-        
-        DispatchQueue.global(qos: .background).async {
-
-            self.getNewMonsterData()
-            self.getNewSkillData()
-
-            DispatchQueue.main.async {
-                self.saveMonsterData()
-                self.saveSkillData()
-                self.getAllIds()
-                self.sortMonstersDescending()
-                self.sortSkillsDescending()
-                self.isRefreshing = false
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
-    func getAllData(activity: UIActivityIndicatorView) {
-   
-        getMonsterData()
-        getSkillData()
-        saveMonsterData()
-        saveSkillData()
-        getAllIds()
-        sortMonstersDescending()
-        sortSkillsDescending()
-        activity.stopAnimating()
-        activity.removeFromSuperview()
-        isRefreshing = false
-        tableView.reloadData()
-
-//
-//        let startTime = DispatchTime.now()
-//        DispatchQueue.global(qos: .background).async {
-//
-//            self.getMonsterData()
-//            self.getSkillData()
-//            self.saveMonsterData()
-//            self.saveSkillData()
-//
-//            DispatchQueue.main.async {
-//
-//                self.getAllIds()
-//                self.sortMonstersDescending()
-//                self.sortSkillsDescending()
-//                activity.stopAnimating()
-//                activity.removeFromSuperview()
-//                self.isRefreshing = false
-//                self.tableView.reloadData()
-//                let endTime = DispatchTime.now()
-//                print("Elapsed time for save data: " + String(Double(endTime.uptimeNanoseconds - startTime.uptimeNanoseconds)/1000000000) + "s")
-//                print()
-//            }
-//        }
-    }
-    
     func sortMonstersDescending() {
-        monsters.sort{
+        goodMonsters.sort{
             let first = $0.value(forKey: "cardID") as! Int
             let second = $1.value(forKey: "cardID") as! Int
             
@@ -164,20 +73,11 @@ extension MonsterTableController {
     }
     
     func sortMonstersAscending() {
-        monsters.sort{
+        goodMonsters.sort{
             let first = $0.value(forKey: "cardID") as! Int
             let second = $1.value(forKey: "cardID") as! Int
             
             return first < second
-        }
-    }
-    
-    func sortSkillsDescending() {
-        skills.sort{
-            let first = $0.value(forKey: "skillID") as! Int
-            let second = $1.value(forKey: "skillID") as! Int
-            
-            return first > second
         }
     }
     
@@ -187,7 +87,7 @@ extension MonsterTableController {
     }
     
     func filterContentForText(_ searchText: String, scope: String = "All") {
-        filteredMonsters = monsters.filter({
+        filteredMonsters = goodMonsters.filter({
             let val = $0.value(forKey: "name") as! String
             let id = String($0.value(forKey: "cardID") as! Int)
             if val.lowercased().contains(searchText.lowercased()) || id.contains(searchText.lowercased()) {
@@ -203,12 +103,5 @@ extension MonsterTableController {
     func isFiltering() -> Bool {
         return monstersearch.isActive && !searchBarIsEmpty()
     }
-    
-    func getPortraitURL(id:Int) -> String {
-        return portrait_url + String(id) + ".png"
-    }
-    
-    func getFullURL(id:Int) -> String {
-        return full_url + String(id) + ".png"
-    }
+
 }

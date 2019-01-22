@@ -10,157 +10,57 @@ import UIKit
 import SwiftyJSON
 import CoreData
 
-struct Guerrilla {
-    var name:String?
-    var startTime:String?
-    var endTime:String?
-    var startSecs:Float?
-    var endSecs:Float?
-    var server:String?
-    var group:String?
-    var dungeon_id:Int?
-    var remainingTime:Double?
-    var status:String?
-}
-
+var naDungeons = [Guerrilla]()
+var jpDungeons = [Guerrilla]()
+var displayDungeons = [Guerrilla]()
+var showingNA = true
+var runUpdate = true
 
 class GuerrillaTableViewController: UITableViewController {
 
-    
     let cellid = "guerrillacell"
-    
-    
+    let vc = LoadDataVC()
 
-    var naDungeons = [Guerrilla]()
-    var jpDungeons = [Guerrilla]()
     
-    var displayDungeons = [Guerrilla]()
-    
-    var showingNA = true
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        setupNavBar()
-        
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl!.addTarget(self, action: #selector(refreshGuerrillaList(_:)), for: .valueChanged)
-
-    
         tableView.register(GuerrillaCell.self, forCellReuseIdentifier: cellid)
         tableView.rowHeight = 85
-    
         tableView.allowsSelection = false
+        self.definesPresentationContext = true
+
+        setupNavBar()
         loadGuerrilla()
         loadMonstersFromDB()
         loadSkillsFromDB()
-
-        tableView.reloadData()
-    }
-    
-    
-    private func setupNavBar() {
-        if #available(iOS 11, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        navigationItem.title = "NA Calendar"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "world")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(swapServer))        
-    }
-    
-    @objc
-    private func swapServer() {
-        
-        if showingNA {
-            displayDungeons = jpDungeons
-            showingNA = false
-            navigationItem.title = "JP Calendar"
-            self.tableView.reloadData()
-        }
-        else {
-            displayDungeons = naDungeons
-            showingNA = true
-            navigationItem.title = "NA Calendar"
-            self.tableView.reloadData()
-        }
-    }
-    
-    @objc
-    private func refreshGuerrillaList(_ sender: Any) {
-        naDungeons.removeAll()
-        jpDungeons.removeAll()
+        getAllIds()
         tableView.reloadData()
         
-        DispatchQueue.global(qos: .background).async {
-            self.loadGuerrilla()
+        vc.view.backgroundColor = UIColor.black
+        vc.view.alpha = CGFloat(0.75)
+        vc.view.isOpaque = false
 
-            DispatchQueue.main.async {
-                self.tableView.refreshControl!.endRefreshing()
-                self.tableView.reloadData()
-            }
-        }
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .crossDissolve
+        vc.view.backgroundColor = UIColor.white
+        vc.view.center = self.tableView.center
+
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+
+    }
     
-    private func loadGuerrilla() {
-        let url = "https://www.pad-db.com/api/guerrilla"
-        let timeInMS = NSDate().timeIntervalSince1970
-
-        if let url = URL(string: url) {
-            if let data = try? String(contentsOf: url) {
-                let json = JSON(parseJSON: data)
-                for item in json.arrayValue {
-                    var dungeon:Guerrilla = Guerrilla()
-              
-                    
-                    let endSecs = item["endSecs"].doubleValue
-                    let startSecs = item["startSecs"].doubleValue
-                    
-                                        
-                    if ((timeInMS >= startSecs) && (timeInMS <= endSecs)) {
-                        dungeon.remainingTime = endSecs - timeInMS
-                        dungeon.status = "Active"
-                    }
-                    else if (timeInMS < startSecs) {
-                        dungeon.remainingTime = startSecs - timeInMS
-                        dungeon.status = "Upcoming"
-                    }
-                    else {
-                        dungeon.remainingTime = 0
-                        dungeon.status = "Ended"
-                    }
-                    
-                    
-                    if dungeon.remainingTime! != 0 {
-                        dungeon.name = item["name"].stringValue
-                        dungeon.startTime = item["startTime"].stringValue
-                        dungeon.endTime = item["endTime"].stringValue
-                        dungeon.startSecs = item["startSecs"].floatValue
-                        dungeon.endSecs = item["endSecs"].floatValue
-                        dungeon.server = item["server"].stringValue
-                        dungeon.group = item["group"].stringValue
-                        dungeon.dungeon_id = item["dungeon_id"].intValue
-                        
-                        
-                        if item["server"].stringValue == "NA" {
-                            naDungeons.append(dungeon)
-                        }
-                        else {
-                            jpDungeons.append(dungeon)
-                        }
-                    }
-
-                }
-            }
+    override func viewDidAppear(_ animated: Bool) {
+        if runUpdate {
+            getMonsterData()
         }
-        
-        if showingNA {
-            displayDungeons = naDungeons
-        }
-        else {
-            displayDungeons = jpDungeons
+        if runUpdate {
+            present(vc, animated: true, completion: nil)
         }
     }
 
@@ -185,62 +85,5 @@ class GuerrillaTableViewController: UITableViewController {
         cell.remainingTime = dungeon.remainingTime!
         return cell
     }
-    
-    func loadMonstersFromDB() {
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "MonsterNA")
-        
-        let sort = NSSortDescriptor(key: "cardID", ascending: false)
-        fetchRequest.sortDescriptors = [sort]
-        
-        do {
-            monsters = try managedContext.fetch(fetchRequest)
-        } catch _ as NSError {
-            print("Could not fetch.")
-        }
-    }
-    
-    func loadSkillsFromDB() {
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "SkillNA")
-        
-        let sort = NSSortDescriptor(key: "skillID", ascending: false)
-        fetchRequest.sortDescriptors = [sort]
-        
-        do {
-            skills = try managedContext.fetch(fetchRequest)
-        } catch _ as NSError {
-            print("Could not fetch.")
-        }
-        
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -52,9 +52,10 @@ extension MonsterVC {
             nameLabel.topAnchor.constraint(equalTo: activeSkillContainer.topAnchor).isActive = true
             nameLabel.leadingAnchor.constraint(equalTo: activeSkillLabel.trailingAnchor, constant: 10).isActive = true
             nameLabel.centerYAnchor.constraint(equalTo: activeSkillLabel.centerYAnchor).isActive = true
-            nameLabel.widthAnchor.constraint(equalToConstant: spacing*35).isActive = true
+            nameLabel.trailingAnchor.constraint(equalTo: turnLabel.leadingAnchor, constant: -10).isActive = true
             nameLabel.lineBreakMode = .byWordWrapping
             nameLabel.numberOfLines = 0
+            nameLabel.adjustsFontSizeToFitWidth = true
             
             
             
@@ -63,6 +64,7 @@ extension MonsterVC {
             descriptionLabel.trailingAnchor.constraint(equalTo: activeSkillContainer.trailingAnchor).isActive = true
             descriptionLabel.lineBreakMode = .byWordWrapping
             descriptionLabel.numberOfLines = 0
+            descriptionLabel.lineBreakMode = .byWordWrapping
             
             turnLabel.trailingAnchor.constraint(equalTo: activeSkillContainer.trailingAnchor).isActive = true
             turnLabel.centerYAnchor.constraint(equalTo: activeSkillLabel.centerYAnchor).isActive = true
@@ -121,16 +123,19 @@ extension MonsterVC {
             nameLabel.leadingAnchor.constraint(equalTo: leaderSkillLabel.trailingAnchor, constant: 10).isActive = true
             nameLabel.centerYAnchor.constraint(equalTo: leaderSkillLabel.centerYAnchor).isActive = true
             nameLabel.trailingAnchor.constraint(equalTo: leaderSkillContainer.trailingAnchor).isActive = true
+            nameLabel.adjustsFontSizeToFitWidth = true
+
             
-            descriptionLabel.topAnchor.constraint(equalTo: leaderSkillLabel.bottomAnchor, constant: 20).isActive = true
+            descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20).isActive = true
             descriptionLabel.leadingAnchor.constraint(equalTo: leaderSkillContainer.leadingAnchor, constant: 10).isActive = true
             descriptionLabel.trailingAnchor.constraint(equalTo: leaderSkillContainer.trailingAnchor).isActive = true
             descriptionLabel.lineBreakMode = .byWordWrapping
             descriptionLabel.numberOfLines = 0
             
+            
             multContainer.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20).isActive = true
-            multContainer.leadingAnchor.constraint(equalTo: leaderSkillContainer.leadingAnchor).isActive = true
-            multContainer.trailingAnchor.constraint(equalTo: leaderSkillContainer.trailingAnchor).isActive = true
+            multContainer.leadingAnchor.constraint(equalTo: leaderSkillContainer.leadingAnchor, constant: 20).isActive = true
+            multContainer.trailingAnchor.constraint(equalTo: leaderSkillContainer.trailingAnchor, constant: -20).isActive = true
             multContainer.bottomAnchor.constraint(equalTo: leaderSkillContainer.bottomAnchor, constant: -20).isActive = true
             
         }

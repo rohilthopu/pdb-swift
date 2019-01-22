@@ -13,14 +13,13 @@ import Kingfisher
 
 class MonsterCell: UITableViewCell {
     
-    
     var monster:NSManagedObject?
     
     var nameLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
-
+        textView.adjustsFontSizeToFitWidth = true
         return textView
     }()
     
@@ -76,19 +75,17 @@ class MonsterCell: UITableViewCell {
         // Container View that houses the extraneus items
         containerView.leadingAnchor.constraint(equalTo: portraitContainer.trailingAnchor, constant: 10).isActive = true
         containerView.topAnchor.constraint(equalTo: portraitContainer.topAnchor).isActive = true
-        containerView.heightAnchor.constraint(equalTo: portraitContainer.heightAnchor).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: portraitContainer.bottomAnchor).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
         
         IDLabel.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
         IDLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
         nameLabel.topAnchor.constraint(equalTo: IDLabel.bottomAnchor).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        
-        
+        nameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
 
     }
 
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         

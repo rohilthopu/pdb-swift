@@ -26,17 +26,20 @@ var monsterIDList:[Int: Int] = [:]
 var skillIDList:[Int: Int] = [:]
 
 
+var rawMonsters = [Monster]()
+var rawSkills = [Skill]()
+
+var goodMonsters = [NSManagedObject]()
+
+
+let cellid = "monsterid"
+var monster_url:String = "https://pad-db.com/api/monsters/na/"
+var portrait_url:String = "https://pad-db.com/static/padimages/jp/portrait/"
+var full_url:String = "https://pad-db.com/static/padimages/jp/full/"
+//    var full_url:String = "https://pad-db.com/static/padimages/hq_images/"
+let skill_api_link = "https://www.pad-db.com/api/skills/na/"
+
 class MonsterTableController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
-    
-    let cellid = "monsterid"
-    var monster_url:String = "https://pad-db.com/api/monsters/na/"
-    var portrait_url:String = "https://pad-db.com/static/padimages/jp/portrait/"
-    var full_url:String = "https://pad-db.com/static/padimages/jp/full/"
-    //    var full_url:String = "https://pad-db.com/static/padimages/hq_images/"
-    let skill_api_link = "https://www.pad-db.com/api/skills/na/"
-    
-    var rawMonsters = [Monster]()
-    var rawSkills = [Skill]()
     
     var filteredMonsters = [NSManagedObject]()
     var monstersearch:UISearchController!
@@ -44,47 +47,26 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     var isDesc:Bool = true
     var isRefreshing:Bool = false
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTableView()
         setupView()
-
-        loadMonstersFromDB()
-        loadSkillsFromDB()
-        getAllIds()
-        
-//        monsters.removeAll()
-//        skills.removeAll()
-//        print("Getting monster data...")
-//        var startTime = DispatchTime.now()
-//        getMonsterData()
-//        getSkillData()
-//        var endTime = DispatchTime.now()
-//        print("Elapsed time for get data: " + String(Double(endTime.uptimeNanoseconds - startTime.uptimeNanoseconds)/1000000000) + "s")
-//        print()
-//
-//        saveMonsterData()
-//        saveSkillData()
-//        startTime = DispatchTime.now()
-//        endTime = DispatchTime.now()
-//        print("Elapsed time for save data: " + String(Double(endTime.uptimeNanoseconds - startTime.uptimeNanoseconds)/1000000000) + "s")
-//        print()
+        filterGoodMonsters()
         tableView.reloadData()
-        
+    }
+    
+    private func filterGoodMonsters() {
+        goodMonsters = monsters.filter{
+            let name = $0.value(forKey: "name") as! String
+            return !name.contains("Alt.") && !name.contains("*")
+        }
     }
     
     private func setupTableView() {
         tableView.register(MonsterCell.self, forCellReuseIdentifier: cellid)
         tableView.rowHeight = 70
-        
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl!.addTarget(self, action: #selector(refreshMonsterList(_:)), for: .valueChanged)
     }
 
-    
     private func setupNavBar() {
         if #available(iOS 11, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -137,7 +119,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         if (isFiltering()) {
             return filteredMonsters.count
         }
-        return monsters.count
+        return goodMonsters.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -146,7 +128,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
             cell.monster = filteredMonsters[indexPath.row]
         }
         else {
-            cell.monster = monsters[indexPath.row]
+            cell.monster = goodMonsters[indexPath.row]
         }
         return cell
     }
@@ -161,7 +143,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
             currentMonster = filteredMonsters[index]
         }
         else {
-            currentMonster = monsters[index]
+            currentMonster = goodMonsters[index]
         }
         
         let monsterVC = MonsterVC()

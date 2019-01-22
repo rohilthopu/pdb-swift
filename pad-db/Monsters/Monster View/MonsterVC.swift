@@ -184,6 +184,7 @@ class MonsterVC: UIViewController {
         
         
         self.view.backgroundColor = UIColor.white
+        self.view.layer.cornerRadius = 4
         
         
         // make a back button

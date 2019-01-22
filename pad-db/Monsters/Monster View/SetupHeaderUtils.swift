@@ -41,6 +41,7 @@ extension MonsterVC {
     public func setupNameContainer() {
         
         let nameLabel = makeLabel(ofSize: 16, withText: "")
+        nameLabel.adjustsFontSizeToFitWidth = true
         
         let IDLabel: UILabel = {
             let textView = UILabel()
@@ -84,13 +85,14 @@ extension MonsterVC {
         // Container View that houses the extraneus items
         nameContainer.leadingAnchor.constraint(equalTo: portraitContainer.trailingAnchor, constant: 10).isActive = true
         nameContainer.topAnchor.constraint(equalTo: portraitContainer.topAnchor).isActive = true
-        nameContainer.heightAnchor.constraint(equalTo: portraitContainer.heightAnchor).isActive = true
+        nameContainer.bottomAnchor.constraint(equalTo: portraitContainer.bottomAnchor).isActive = true
         nameContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         
         IDLabel.topAnchor.constraint(equalTo: nameContainer.topAnchor).isActive = true
         IDLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
         nameLabel.topAnchor.constraint(equalTo: IDLabel.bottomAnchor).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
+        nameLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
         
         
         rarityLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
