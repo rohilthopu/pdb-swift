@@ -36,7 +36,6 @@ extension MonsterVC {
         
         awakeningContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
         awakeningContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        awakeningContainer.heightAnchor.constraint(equalToConstant: 40).isActive = true
         awakeningContainer.topAnchor.constraint(equalTo: statContainer.bottomAnchor, constant: 20).isActive = true
         
         separator.bottomAnchor.constraint(equalTo: awakeningContainer.bottomAnchor).isActive = true
@@ -47,6 +46,7 @@ extension MonsterVC {
                 let skill = awakenings[i]
                 
                 skill.centerYAnchor.constraint(equalTo: awakeningContainer.centerYAnchor).isActive = true
+                skill.bottomAnchor.constraint(equalTo: awakeningContainer.bottomAnchor, constant: -10).isActive = true
                 if i == 0 {
                     skill.leadingAnchor.constraint(equalTo: awakeningContainer.leadingAnchor, constant: diff).isActive = true
                 }
@@ -62,6 +62,8 @@ extension MonsterVC {
             awokenNoneLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
             awokenNoneLabel.centerYAnchor.constraint(equalTo: awakeningContainer.centerYAnchor).isActive = true
             awokenNoneLabel.trailingAnchor.constraint(lessThanOrEqualTo: awakeningContainer.trailingAnchor).isActive = true
+            awokenNoneLabel.bottomAnchor.constraint(equalTo: awakeningContainer.bottomAnchor, constant: -10).isActive = true
+
         }
     }
     
@@ -83,7 +85,6 @@ extension MonsterVC {
         
         sawakeningContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
         sawakeningContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        sawakeningContainer.heightAnchor.constraint(equalToConstant: 40).isActive = true
         sawakeningContainer.topAnchor.constraint(equalTo: awakeningContainer.bottomAnchor, constant: 20).isActive = true
         
         separator.bottomAnchor.constraint(equalTo: sawakeningContainer.bottomAnchor).isActive = true
@@ -95,6 +96,8 @@ extension MonsterVC {
                 let skill = sawakenings[i]
                 
                 skill.centerYAnchor.constraint(equalTo: sawakeningContainer.centerYAnchor).isActive = true
+                skill.bottomAnchor.constraint(equalTo: sawakeningContainer.bottomAnchor, constant: -10).isActive = true
+                
                 
                 if i == 0 {
                     skill.leadingAnchor.constraint(equalTo: awakenings[0].leadingAnchor).isActive = true
@@ -111,6 +114,7 @@ extension MonsterVC {
             sawokenNoneLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
             sawokenNoneLabel.centerYAnchor.constraint(equalTo: sawakeningContainer.centerYAnchor).isActive = true
             sawokenNoneLabel.trailingAnchor.constraint(lessThanOrEqualTo: sawakeningContainer.trailingAnchor).isActive = true
+            sawokenNoneLabel.bottomAnchor.constraint(equalTo: sawakeningContainer.bottomAnchor, constant: -10).isActive = true
         }
     }
 }

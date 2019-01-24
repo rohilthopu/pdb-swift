@@ -29,9 +29,8 @@ extension MonsterVC {
         statContainer.widthAnchor.constraint(equalToConstant: spacing*35).isActive = true
         
         
-        separator.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        separator.centerXAnchor.constraint(equalTo: statContainer.centerXAnchor).isActive = true
         separator.bottomAnchor.constraint(equalTo: statContainer.bottomAnchor).isActive = true
-//        statContainer.heightAnchor.constraint(equalToConstant: spacing*22).isActive = true
     }
     
     public func setupLevelStatus() {
@@ -395,7 +394,8 @@ extension MonsterVC {
         
         statContainer.addSubview(weightedStatsLabel)
         weightedStatsLabel.leadingAnchor.constraint(equalTo: statContainer.leadingAnchor).isActive = true
+        weightedStatsLabel.trailingAnchor.constraint(equalTo: statContainer.trailingAnchor).isActive = true
         weightedStatsLabel.topAnchor.constraint(equalTo: levelContainer.bottomAnchor, constant: 20).isActive = true
-        weightedStatsLabel.bottomAnchor.constraint(equalTo: statContainer.bottomAnchor).isActive = true
+        weightedStatsLabel.bottomAnchor.constraint(equalTo: statContainer.bottomAnchor, constant: -10).isActive = true
     }
 }

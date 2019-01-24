@@ -61,9 +61,7 @@ extension MonsterTableController {
         item.setValue(1, forKey: "monster")
         item.setValue(1, forKey: "skill")
         item.setValue(1, forKey: "dungeon")
-        
-        runUpdate = true
-        
+                
         do {
             try managedContext.execute(deleteRequest)
             try managedContext.execute(deleteRequest2)

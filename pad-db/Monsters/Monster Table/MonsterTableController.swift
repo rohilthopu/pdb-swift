@@ -58,7 +58,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     private func filterGoodMonsters() {
         goodMonsters = monsters.filter{
             let name = $0.value(forKey: "name") as! String
-            return !name.contains("Alt.") && !name.contains("*")
+            return !name.contains("Alt.") && !name.contains("*") && !name.contains("?")
         }
     }
     
