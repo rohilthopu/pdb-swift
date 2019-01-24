@@ -35,17 +35,15 @@ class SkillTableVC: UITableViewController, UISearchControllerDelegate, UISearchB
         setupNavBar()
         setupTableView()
         setupSearch()
-        goodSkills = getUsefulSkills()
+        goodSkills = filterUsableSkills()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if goodSkills.count == 0 {
-            goodSkills = getUsefulSkills()
-            tableView.reloadData()
-        }
-
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        if goodSkills.count == 0 {
+//            goodSkills = filterUsableSkills()
+//            tableView.reloadData()
+//        }
+//    }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -131,7 +129,6 @@ class SkillTableVC: UITableViewController, UISearchControllerDelegate, UISearchB
             let navCon = UINavigationController(rootViewController: monsterVC)
             self.present(navCon, animated: true, completion: nil)
         }
-        
     }
 
 }

@@ -48,7 +48,7 @@ extension SkillTableVC {
         return monster
     }
     
-    func getUsefulSkills() -> [NSManagedObject]{
+    func filterUsableSkills() -> [NSManagedObject]{
         var goodSkills = [NSManagedObject]()
         
         for skill in skills {
@@ -64,6 +64,7 @@ extension SkillTableVC {
             
             return first > second
         }
+        
         return goodSkills
     }
     

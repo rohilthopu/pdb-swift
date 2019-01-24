@@ -13,146 +13,51 @@ import CoreData
 
 class LoadDataVC: UIViewController {
     
+    let updateLabel = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let updateLabel = UILabel()
         updateLabel.translatesAutoresizingMaskIntoConstraints = false
         updateLabel.clipsToBounds = true
         updateLabel.font = UIFont(name: "Futura-CondensedMedium", size: 20)
-        updateLabel.text = "Updating Database"
+        updateLabel.text = "Checking for updates..."
         self.view.addSubview(updateLabel)
         updateLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         updateLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-
         getAllIds()
         getNewData()
-        // Do any additional setup after loading the view.
-        
         self.dismiss(animated: true, completion: nil)
-        runUpdate = false
     }
-    
-    
-    func loadGuerrilla() {
-        let url = "https://www.pad-db.com/api/guerrilla"
-        let timeInMS = NSDate().timeIntervalSince1970
-        
-        if let url = URL(string: url) {
-            if let data = try? String(contentsOf: url) {
-                let json = JSON(parseJSON: data)
-                for item in json.arrayValue {
-                    var dungeon:Guerrilla = Guerrilla()
-                    
-                    
-                    let endSecs = item["endSecs"].doubleValue
-                    let startSecs = item["startSecs"].doubleValue
-                    
-                    
-                    if ((timeInMS >= startSecs) && (timeInMS <= endSecs)) {
-                        dungeon.remainingTime = endSecs - timeInMS
-                        dungeon.status = "Active"
-                    }
-                    else if (timeInMS < startSecs) {
-                        dungeon.remainingTime = startSecs - timeInMS
-                        dungeon.status = "Upcoming"
-                    }
-                    else {
-                        dungeon.remainingTime = 0
-                        dungeon.status = "Ended"
-                    }
-                    
-                    
-                    if dungeon.remainingTime! != 0 {
-                        dungeon.name = item["name"].stringValue
-                        dungeon.startTime = item["startTime"].stringValue
-                        dungeon.endTime = item["endTime"].stringValue
-                        dungeon.startSecs = item["startSecs"].floatValue
-                        dungeon.endSecs = item["endSecs"].floatValue
-                        dungeon.server = item["server"].stringValue
-                        dungeon.group = item["group"].stringValue
-                        dungeon.dungeon_id = item["dungeon_id"].intValue
-                        
-                        
-                        if item["server"].stringValue == "NA" {
-                            naDungeons.append(dungeon)
-                        }
-                        else {
-                            jpDungeons.append(dungeon)
-                        }
-                    }
-                    
-                }
-            }
-        }
-        
-        if showingNA {
-            displayDungeons = naDungeons
-        }
-        else {
-            displayDungeons = jpDungeons
-        }
-    }
-    
-    func loadMonstersFromDB() {
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "MonsterNA")
-        
-        let sort = NSSortDescriptor(key: "cardID", ascending: false)
-        fetchRequest.sortDescriptors = [sort]
-        
-        do {
-            monsters = try managedContext.fetch(fetchRequest)
-        } catch _ as NSError {
-            print("Could not fetch.")
-        }
-    }
-    
-    func loadSkillsFromDB() {
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "SkillNA")
-        
-        let sort = NSSortDescriptor(key: "skillID", ascending: false)
-        fetchRequest.sortDescriptors = [sort]
-        
-        do {
-            skills = try managedContext.fetch(fetchRequest)
-        } catch _ as NSError {
-            print("Could not fetch.")
-        }
-        
-    }
-    
+
     func getNewData() {
-        if rawMonsters.count > monsters.count {
+        if let v = versions.first {
+            let localMonsterVersion = v.value(forKey: "monster") as! Int
+            let localSkillVersion = v.value(forKey: "skill") as! Int
+//            let localDungeonVersion = v.value(forKey: "monster") as! Int
+            
+            if newVersions["monster"]! > localMonsterVersion || monsters.count == 0 {
+                getMonsterData()
+            }
+            
+            if newVersions["skill"]! > localSkillVersion || skills.count == 0 {
+                getSkillData()
+            }
+        } else if monsters.count == 0 {
+            getMonsterData()
             getSkillData()
-            saveMonsterData()
-            saveSkillData()
-            sortMonstersDescending()
-            sortSkillsDescending()
         }
+        
+        saveMonsterData()
+        saveSkillData()
+        sortMonstersDescending()
+        sortSkillsDescending()
+        updateVersionIdentifier()
+        runUpdate = false
     }
     
     func getAllIds() {
@@ -172,15 +77,6 @@ class LoadDataVC: UIViewController {
             let second = $1.value(forKey: "cardID") as! Int
             
             return first > second
-        }
-    }
-    
-    func sortMonstersAscending() {
-        monsters.sort{
-            let first = $0.value(forKey: "cardID") as! Int
-            let second = $1.value(forKey: "cardID") as! Int
-            
-            return first < second
         }
     }
     
@@ -249,8 +145,6 @@ class LoadDataVC: UIViewController {
                     monsters.append(item)
                 }
             }
-            
-            
         }
         
         
@@ -270,12 +164,10 @@ class LoadDataVC: UIViewController {
             if let data = try? String(contentsOf: url) {
                 let json = JSON(parseJSON: data).arrayValue
                 
-                
-                
                 for card in json {
                     
                     let name = card["name"].stringValue
-                    if !name.contains("*") && !name.isEmpty && !name.contains("Alt.") {
+                    if !name.isEmpty {
                         var monster:Monster = Monster()
                         monster.activeSkillID = card["activeSkillID"].intValue
                         monster.leaderSkillID = card["leaderSkillID"].intValue
@@ -375,13 +267,9 @@ class LoadDataVC: UIViewController {
         let managedContext = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "SkillNA", in: managedContext)!
         
-        
         for skill in rawSkills {
-            
             if let id = skill.skillID {
-                
                 if skillIDList[id] == nil {
-                    
                     let item = NSManagedObject(entity: entity, insertInto: managedContext)
                     item.setValue(skill.name, forKey: "name")
                     item.setValue(skill.description, forKey: "desc")
@@ -398,8 +286,6 @@ class LoadDataVC: UIViewController {
                     item.setValue(skill.levels, forKey: "levels")
                     item.setValue(skill.minTurns, forKey: "minTurns")
                     item.setValue(skill.maxTurns, forKey: "maxTurns")
-                    
-                    
                     skills.append(item)
                 }
             }
@@ -411,6 +297,28 @@ class LoadDataVC: UIViewController {
         }
         catch _ as NSError {
             print("Error saving skills in CoreData")
+        }
+    }
+    
+    func updateVersionIdentifier() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Version", in: managedContext)!
+        if let v = versions.first {
+            v.setValue(newVersions["monster"], forKey: "monster")
+            v.setValue(newVersions["skill"], forKey: "skill")
+            v.setValue(newVersions["dungeon"], forKey: "dungeon")
+        } else {
+            let item = NSManagedObject(entity: entity, insertInto: managedContext)
+            item.setValue(newVersions["monster"], forKey: "monster")
+            item.setValue(newVersions["skill"], forKey: "skill")
+            item.setValue(newVersions["dungeon"], forKey: "dungeon")
+        }
+        do {
+            try managedContext.save()
+        }
+        catch _ as NSError {
+            print("Error saving version identifier in CoreData")
         }
     }
     

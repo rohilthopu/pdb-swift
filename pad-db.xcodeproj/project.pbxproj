@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		780751DE21F8E9DA008720D4 /* SkillPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780751DD21F8E9DA008720D4 /* SkillPageController.swift */; };
 		7888153521ED8B02004981D2 /* SkillTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7888153421ED8B02004981D2 /* SkillTableVC.swift */; };
 		7888153721ED8CAB004981D2 /* SkillTableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7888153621ED8CAB004981D2 /* SkillTableUtils.swift */; };
 		7888153921ED8D8F004981D2 /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7888153821ED8D8F004981D2 /* SkillCell.swift */; };
@@ -16,7 +17,6 @@
 		78B0030F211CA297001F246E /* pad_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78B0030D211CA297001F246E /* pad_db.xcdatamodeld */; };
 		78B00311211CA297001F246E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78B00310211CA297001F246E /* Assets.xcassets */; };
 		78B0031C211CA2FC001F246E /* MonsterTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0031B211CA2FC001F246E /* MonsterTableController.swift */; };
-		78B1943221F1393100F8A807 /* DataCollectionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1943121F1393100F8A807 /* DataCollectionUtils.swift */; };
 		78D12D4221E95C4400F4971A /* MonsterTableVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D12D4121E95C4400F4971A /* MonsterTableVars.swift */; };
 		78D12D4621E95E6900F4971A /* MonsterTableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D12D4521E95E6900F4971A /* MonsterTableUtils.swift */; };
 		78D1EAEF21EA97BC002D4197 /* MonsterVCUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EAEE21EA97BC002D4197 /* MonsterVCUtils.swift */; };
@@ -43,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		780751DD21F8E9DA008720D4 /* SkillPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillPageController.swift; sourceTree = "<group>"; };
 		7888153421ED8B02004981D2 /* SkillTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableVC.swift; sourceTree = "<group>"; };
 		7888153621ED8CAB004981D2 /* SkillTableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableUtils.swift; sourceTree = "<group>"; };
 		7888153821ED8D8F004981D2 /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 		78B00310211CA297001F246E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78B00315211CA297001F246E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78B0031B211CA2FC001F246E /* MonsterTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTableController.swift; sourceTree = "<group>"; };
-		78B1943121F1393100F8A807 /* DataCollectionUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollectionUtils.swift; sourceTree = "<group>"; };
 		78D12D4121E95C4400F4971A /* MonsterTableVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTableVars.swift; sourceTree = "<group>"; };
 		78D12D4521E95E6900F4971A /* MonsterTableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTableUtils.swift; sourceTree = "<group>"; };
 		78D1EAEE21EA97BC002D4197 /* MonsterVCUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterVCUtils.swift; sourceTree = "<group>"; };
@@ -196,7 +196,6 @@
 			children = (
 				78D6885521CB07BD001C0DEF /* GuerrillaTableViewController.swift */,
 				78D6885821CB4DAC001C0DEF /* GuerrillaCell.swift */,
-				78B1943121F1393100F8A807 /* DataCollectionUtils.swift */,
 				78AC396721F13CF10094CCA7 /* GuerrillaUtils.swift */,
 				78AC396921F1475A0094CCA7 /* LoadDataVC.swift */,
 			);
@@ -221,6 +220,7 @@
 				7888153821ED8D8F004981D2 /* SkillCell.swift */,
 				78F0782021ED97C300F0DE1B /* GeneralUtils.swift */,
 				78F0782221ED990300F0DE1B /* SkillCellUtils.swift */,
+				780751DD21F8E9DA008720D4 /* SkillPageController.swift */,
 			);
 			path = Skills;
 			sourceTree = "<group>";
@@ -353,6 +353,7 @@
 				78D1EAF921EBF2FA002D4197 /* SetupSkillUtils.swift in Sources */,
 				78D1EB0621EC2CFD002D4197 /* LeaderboardCell.swift in Sources */,
 				78D6885921CB4DAC001C0DEF /* GuerrillaCell.swift in Sources */,
+				780751DE21F8E9DA008720D4 /* SkillPageController.swift in Sources */,
 				78F0782321ED990300F0DE1B /* SkillCellUtils.swift in Sources */,
 				78D1EAF521EBF2A7002D4197 /* SetupHeaderUtils.swift in Sources */,
 				78F0782121ED97C300F0DE1B /* GeneralUtils.swift in Sources */,
@@ -366,7 +367,6 @@
 				78D6885621CB07BD001C0DEF /* GuerrillaTableViewController.swift in Sources */,
 				78D1EAFD21EC0ACA002D4197 /* SetupSaleItemUtil.swift in Sources */,
 				7888153521ED8B02004981D2 /* SkillTableVC.swift in Sources */,
-				78B1943221F1393100F8A807 /* DataCollectionUtils.swift in Sources */,
 				78D1EAFB21EBF31D002D4197 /* SetupEvoUtils.swift in Sources */,
 				78D6885E21E55613001C0DEF /* MonsterCell.swift in Sources */,
 			);

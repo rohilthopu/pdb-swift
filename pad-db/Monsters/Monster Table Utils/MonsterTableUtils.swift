@@ -47,12 +47,22 @@ extension MonsterTableController {
     func clearDB() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Version", in: managedContext)!
+
+        
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MonsterNA")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         let fetchRequest2 = NSFetchRequest<NSFetchRequestResult>(entityName: "SkillNA")
         let deleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
         
+        
+        let item = NSManagedObject(entity: entity, insertInto: managedContext)
+        item.setValue(1, forKey: "monster")
+        item.setValue(1, forKey: "skill")
+        item.setValue(1, forKey: "dungeon")
+        
+        runUpdate = true
         
         do {
             try managedContext.execute(deleteRequest)

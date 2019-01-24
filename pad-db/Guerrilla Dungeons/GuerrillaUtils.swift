@@ -13,30 +13,20 @@ import CoreData
 
 extension GuerrillaTableViewController {
     
-    func loadMonstersFromDB() {
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "MonsterNA")
-        
-        let sort = NSSortDescriptor(key: "cardID", ascending: false)
-        fetchRequest.sortDescriptors = [sort]
-        
-        do {
-            monsters = try managedContext.fetch(fetchRequest)
-        } catch _ as NSError {
-            print("Could not fetch.")
+    func checkVersion() {
+        if let url = URL(string: version_api_url) {
+            if let data = try? String(contentsOf: url) {
+                let json = JSON(parseJSON: data).arrayValue
+                for v in json {
+                    newVersions["dungeon"] = v["dungeon"].intValue
+                    newVersions["monster"] = v["monster"].intValue
+                    newVersions["skill"] = v["skill"].intValue
+                }
+            }
         }
     }
     
-    func loadSkillsFromDB() {
+    func loadFromDB() {
         
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -46,18 +36,29 @@ extension GuerrillaTableViewController {
         let managedContext =
             appDelegate.persistentContainer.viewContext
         
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "SkillNA")
+        let monsterRequest = NSFetchRequest<NSManagedObject>(entityName: "MonsterNA")
+        let monsterRequestSort = NSSortDescriptor(key: "cardID", ascending: false)
+        monsterRequest.sortDescriptors = [monsterRequestSort]
         
-        let sort = NSSortDescriptor(key: "skillID", ascending: false)
-        fetchRequest.sortDescriptors = [sort]
+        
+        
+        let skillRequest = NSFetchRequest<NSManagedObject>(entityName: "SkillNA")
+        let skillRequestSort = NSSortDescriptor(key: "skillID", ascending: false)
+        skillRequest.sortDescriptors = [skillRequestSort]
+        
+        
+        let versionRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Version")
         
         do {
-            skills = try managedContext.fetch(fetchRequest)
+            monsters = try managedContext.fetch(monsterRequest)
+            skills = try managedContext.fetch(skillRequest)
+            versions = try managedContext.fetch(versionRequest)
+            
+            
         } catch _ as NSError {
             print("Could not fetch.")
         }
-        
     }
 
     func setupNavBar() {
