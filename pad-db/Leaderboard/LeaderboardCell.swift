@@ -14,7 +14,7 @@ class LeaderboardCell: UITableViewCell {
     var user:User?
     var rank:Int?
     
-    var nameLabel: UILabel = {
+    var redditUserLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont(name: "Futura-CondensedMedium", size: 18)
@@ -48,7 +48,7 @@ class LeaderboardCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.addSubview(nameLabel)
+        contentView.addSubview(redditUserLabel)
         contentView.addSubview(scoreLabel)
         contentView.addSubview(diffLabel)
         contentView.addSubview(rankLabel)
@@ -57,13 +57,13 @@ class LeaderboardCell: UITableViewCell {
         rankLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
         rankLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         
-        nameLabel.leadingAnchor.constraint(equalTo: rankLabel.trailingAnchor, constant: 5).isActive = true
-        nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        redditUserLabel.leadingAnchor.constraint(equalTo: rankLabel.trailingAnchor, constant: 5).isActive = true
+        redditUserLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         
-        scoreLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor).isActive = true
+        scoreLabel.centerYAnchor.constraint(equalTo: redditUserLabel.centerYAnchor).isActive = true
         scoreLabel.trailingAnchor.constraint(equalTo: diffLabel.leadingAnchor, constant: -20).isActive = true
         
-        diffLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor).isActive = true
+        diffLabel.centerYAnchor.constraint(equalTo: redditUserLabel.centerYAnchor).isActive = true
         diffLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
         diffLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
@@ -73,7 +73,7 @@ class LeaderboardCell: UITableViewCell {
         
         if let user = user {
             
-            nameLabel.text = user.user!
+            redditUserLabel.text = user.user!
             scoreLabel.text = String(user.score!)
             diffLabel.text = "(" + String(user.scoreDiff!) + ")"
             

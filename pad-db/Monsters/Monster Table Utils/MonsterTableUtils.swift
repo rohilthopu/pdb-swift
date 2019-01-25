@@ -16,13 +16,13 @@ extension MonsterTableController {
     func changeSort() {
         
         if !isRefreshing {
-            if isDesc {
-                isDesc = false
+            if isDescendedSort {
+                isDescendedSort = false
                 sortMonstersAscending()
                 tableView.reloadData()
             }
             else {
-                isDesc = true
+                isDescendedSort = true
                 sortMonstersDescending()
                 tableView.reloadData()
             }
@@ -96,7 +96,7 @@ extension MonsterTableController {
     
     func searchBarIsEmpty() -> Bool {
         // Returns true if the text is empty or nil
-        return monstersearch.searchBar.text?.isEmpty ?? true
+        return monsterSearchController.searchBar.text?.isEmpty ?? true
     }
     
     func filterContentForText(_ searchText: String, scope: String = "All") {
@@ -114,7 +114,7 @@ extension MonsterTableController {
     }
     
     func isFiltering() -> Bool {
-        return monstersearch.isActive && !searchBarIsEmpty()
+        return monsterSearchController.isActive && !searchBarIsEmpty()
     }
 
 }

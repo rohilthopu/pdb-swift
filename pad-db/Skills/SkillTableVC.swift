@@ -88,13 +88,10 @@ class SkillTableVC: UITableViewController, UISearchControllerDelegate, UISearchB
         else {
             currentSkill = goodSkills[index]
         }
-        
         let monsterVC = MonsterVC()
-        
         let skillID = currentSkill.value(forKey: "skillID") as! Int
-        
         if let currentMonster = getMonster(forSkillID: skillID) {
-         
+        
             monsterVC.monster = currentMonster
             
             let activeSkill = skills.filter({

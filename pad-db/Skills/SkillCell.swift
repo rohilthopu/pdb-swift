@@ -29,7 +29,7 @@ class SkillCell: UITableViewCell {
         return view
     }()
     
-    let nameLabel:UILabel = {
+    let skillNameLabel:UILabel = {
         let textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
@@ -37,7 +37,7 @@ class SkillCell: UITableViewCell {
         return textView
     }()
     
-    let descLabel:UILabel = {
+    let skillDescriptionLabel:UILabel = {
         let textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont(name: "Futura-CondensedMedium", size: 12)
@@ -63,8 +63,8 @@ class SkillCell: UITableViewCell {
         super.layoutSubviews()
         
         if let skill = skill {
-            nameLabel.text = (skill.value(forKey: "name") as! String)
-            descLabel.text = (skill.value(forKey: "desc") as! String)
+            skillNameLabel.text = (skill.value(forKey: "name") as! String)
+            skillDescriptionLabel.text = (skill.value(forKey: "desc") as! String)
         }
         if let monster = monster {
             let url = URL(string: monster.value(forKey: "portraitURL") as! String)

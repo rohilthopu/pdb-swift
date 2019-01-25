@@ -19,8 +19,6 @@ class MonsterVC: UIViewController {
     var activeSkill:NSManagedObject?
     var leaderSkill:NSManagedObject?
     
-    let awakening_base_link:String = "http://www.puzzledragonx.com/en/img/awoken/"
-    let awakening_link_end:String = ".png"
     let type_base:String = "type_"
     var awakenings = [UIImageView]()
     var sawakenings = [UIImageView]()

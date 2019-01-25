@@ -42,9 +42,9 @@ let skill_api_link = "https://www.pad-db.com/api/skills/na/"
 class MonsterTableController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
     var filteredMonsters = [NSManagedObject]()
-    var monstersearch:UISearchController!
+    var monsterSearchController:UISearchController!
     
-    var isDesc:Bool = true
+    var isDescendedSort:Bool = true
     var isRefreshing:Bool = false
     
     override func viewDidLoad() {
@@ -90,17 +90,17 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         
         setupNavBar()
         
-        monstersearch = UISearchController(searchResultsController: nil)
+        monsterSearchController = UISearchController(searchResultsController: nil)
         
-        monstersearch.searchResultsUpdater = self
-        monstersearch.obscuresBackgroundDuringPresentation = false
-        monstersearch.searchBar.placeholder = "Search Monsters"
-        navigationItem.searchController = monstersearch
-        monstersearch.isActive = true
-        monstersearch.hidesNavigationBarDuringPresentation = false
+        monsterSearchController.searchResultsUpdater = self
+        monsterSearchController.obscuresBackgroundDuringPresentation = false
+        monsterSearchController.searchBar.placeholder = "Search Monsters"
+        navigationItem.searchController = monsterSearchController
+        monsterSearchController.isActive = true
+        monsterSearchController.hidesNavigationBarDuringPresentation = false
         self.definesPresentationContext = true
-        self.monstersearch.delegate = self
-        self.monstersearch.searchBar.delegate = self
+        self.monsterSearchController.delegate = self
+        self.monsterSearchController.searchBar.delegate = self
         self.extendedLayoutIncludesOpaqueBars = true
         
     }

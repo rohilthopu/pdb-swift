@@ -13,20 +13,20 @@ extension SkillCell {
     
     func anchorNameItems() {
         
-        nameContainer.addSubview(nameLabel)
-        nameContainer.addSubview(descLabel)
+        nameContainer.addSubview(skillNameLabel)
+        nameContainer.addSubview(skillDescriptionLabel)
         
-        nameLabel.topAnchor.constraint(equalTo: nameContainer.topAnchor).isActive = true
-        nameLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
-        nameLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
-        nameLabel.adjustsFontSizeToFitWidth = true
+        skillNameLabel.topAnchor.constraint(equalTo: nameContainer.topAnchor).isActive = true
+        skillNameLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
+        skillNameLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
+        skillNameLabel.adjustsFontSizeToFitWidth = true
         
-        descLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10).isActive = true
-        descLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
-        descLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
-        descLabel.bottomAnchor.constraint(equalTo: nameContainer.bottomAnchor).isActive = true
-        descLabel.lineBreakMode = .byWordWrapping
-        descLabel.numberOfLines = 0
+        skillDescriptionLabel.topAnchor.constraint(equalTo: skillNameLabel.bottomAnchor, constant: 10).isActive = true
+        skillDescriptionLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
+        skillDescriptionLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
+        skillDescriptionLabel.bottomAnchor.constraint(equalTo: nameContainer.bottomAnchor).isActive = true
+        skillDescriptionLabel.lineBreakMode = .byWordWrapping
+        skillDescriptionLabel.numberOfLines = 0
     }
     
     func anchorImage() {

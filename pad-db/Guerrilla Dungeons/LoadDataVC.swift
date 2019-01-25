@@ -166,7 +166,7 @@ class LoadDataVC: UIViewController {
     func getMonsterData() {
 
         
-        if let url = URL(string: monster_url) {
+        if let url = URL(string: monsterLink) {
             if let data = try? String(contentsOf: url) {
                 let json = JSON(parseJSON: data).arrayValue
                 

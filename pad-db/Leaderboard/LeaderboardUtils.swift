@@ -13,7 +13,7 @@ import SwiftyJSON
 extension LeaderboardTableVC {
     
     func downloadLeaderboardData() {
-        if let url = URL(string: link) {
+        if let url = URL(string: leaderboardLink) {
             if let data = try? String(contentsOf: url) {
                 let json = JSON(parseJSON: data)
                 for item in json.arrayValue {

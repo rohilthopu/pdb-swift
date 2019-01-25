@@ -23,7 +23,7 @@ class MonsterCell: UITableViewCell {
         return textView
     }()
     
-    var IDLabel: UILabel = {
+    var monsterIDLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont(name: "Futura-CondensedMedium", size: 12)
@@ -39,7 +39,7 @@ class MonsterCell: UITableViewCell {
         return img
     }()
     
-    let containerView: UIView = {
+    let nameContainer: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true // this will make sure its children do not go out of the boundary
@@ -60,9 +60,9 @@ class MonsterCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(portraitContainer)
-        containerView.addSubview(IDLabel)
-        containerView.addSubview(nameLabel)
-        contentView.addSubview(containerView)
+        nameContainer.addSubview(monsterIDLabel)
+        nameContainer.addSubview(nameLabel)
+        contentView.addSubview(nameContainer)
 
         
         portraitContainer.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
@@ -73,16 +73,16 @@ class MonsterCell: UITableViewCell {
         
         
         // Container View that houses the extraneus items
-        containerView.leadingAnchor.constraint(equalTo: portraitContainer.trailingAnchor, constant: 10).isActive = true
-        containerView.topAnchor.constraint(equalTo: portraitContainer.topAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: portraitContainer.bottomAnchor).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
+        nameContainer.leadingAnchor.constraint(equalTo: portraitContainer.trailingAnchor, constant: 10).isActive = true
+        nameContainer.topAnchor.constraint(equalTo: portraitContainer.topAnchor).isActive = true
+        nameContainer.bottomAnchor.constraint(equalTo: portraitContainer.bottomAnchor).isActive = true
+        nameContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
         
-        IDLabel.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        IDLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        nameLabel.topAnchor.constraint(equalTo: IDLabel.bottomAnchor).isActive = true
-        nameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        nameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        monsterIDLabel.topAnchor.constraint(equalTo: nameContainer.topAnchor).isActive = true
+        monsterIDLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: monsterIDLabel.bottomAnchor).isActive = true
+        nameLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
+        nameLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
 
     }
 
@@ -93,7 +93,7 @@ class MonsterCell: UITableViewCell {
             nameLabel.text = monster.value(forKey: "name") as? String
             
             let id = monster.value(forKey: "cardID") as! Int
-            IDLabel.text = "No. " + String(id)
+            monsterIDLabel.text = "No. " + String(id)
             // Get the portrait image using Kingfisher
             let url = URL(string: (monster.value(forKey: "portraitURL") as! String))
             portraitContainer.kf.setImage(with: url)
