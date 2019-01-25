@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		780751DE21F8E9DA008720D4 /* SkillPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780751DD21F8E9DA008720D4 /* SkillPageController.swift */; };
+		787DF38621FA7601001FB99C /* DungeonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38521FA7600001FB99C /* DungeonTableViewController.swift */; };
+		787DF38921FA7693001FB99C /* DungeonTableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38821FA7693001FB99C /* DungeonTableUtils.swift */; };
+		787DF38C21FA7785001FB99C /* Dungeon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38B21FA7785001FB99C /* Dungeon.swift */; };
+		787DF38E21FA8048001FB99C /* DungeonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38D21FA8048001FB99C /* DungeonCell.swift */; };
 		7888153521ED8B02004981D2 /* SkillTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7888153421ED8B02004981D2 /* SkillTableVC.swift */; };
 		7888153721ED8CAB004981D2 /* SkillTableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7888153621ED8CAB004981D2 /* SkillTableUtils.swift */; };
 		7888153921ED8D8F004981D2 /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7888153821ED8D8F004981D2 /* SkillCell.swift */; };
@@ -44,6 +48,10 @@
 
 /* Begin PBXFileReference section */
 		780751DD21F8E9DA008720D4 /* SkillPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillPageController.swift; sourceTree = "<group>"; };
+		787DF38521FA7600001FB99C /* DungeonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonTableViewController.swift; sourceTree = "<group>"; };
+		787DF38821FA7693001FB99C /* DungeonTableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonTableUtils.swift; sourceTree = "<group>"; };
+		787DF38B21FA7785001FB99C /* Dungeon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dungeon.swift; sourceTree = "<group>"; };
+		787DF38D21FA8048001FB99C /* DungeonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonCell.swift; sourceTree = "<group>"; };
 		7888153421ED8B02004981D2 /* SkillTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableVC.swift; sourceTree = "<group>"; };
 		7888153621ED8CAB004981D2 /* SkillTableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableUtils.swift; sourceTree = "<group>"; };
 		7888153821ED8D8F004981D2 /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
@@ -111,6 +119,41 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		787DF38321FA75C1001FB99C /* Dungeons */ = {
+			isa = PBXGroup;
+			children = (
+				787DF38A21FA7765001FB99C /* Dungeon Vars */,
+				787DF38721FA767C001FB99C /* Dungeon Utils */,
+				787DF38421FA75DA001FB99C /* Dungeon Table */,
+			);
+			path = Dungeons;
+			sourceTree = "<group>";
+		};
+		787DF38421FA75DA001FB99C /* Dungeon Table */ = {
+			isa = PBXGroup;
+			children = (
+				787DF38521FA7600001FB99C /* DungeonTableViewController.swift */,
+				787DF38D21FA8048001FB99C /* DungeonCell.swift */,
+			);
+			path = "Dungeon Table";
+			sourceTree = "<group>";
+		};
+		787DF38721FA767C001FB99C /* Dungeon Utils */ = {
+			isa = PBXGroup;
+			children = (
+				787DF38821FA7693001FB99C /* DungeonTableUtils.swift */,
+			);
+			path = "Dungeon Utils";
+			sourceTree = "<group>";
+		};
+		787DF38A21FA7765001FB99C /* Dungeon Vars */ = {
+			isa = PBXGroup;
+			children = (
+				787DF38B21FA7785001FB99C /* Dungeon.swift */,
+			);
+			path = "Dungeon Vars";
+			sourceTree = "<group>";
+		};
 		78B002FA211CA296001F246E = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +175,7 @@
 		78B00305211CA296001F246E /* pad-db */ = {
 			isa = PBXGroup;
 			children = (
+				787DF38321FA75C1001FB99C /* Dungeons */,
 				78F0374C21ED89D9002B7468 /* Skills */,
 				78D1EAFE21EC27FF002D4197 /* Leaderboard */,
 				78D6885A21D6FF43001C0DEF /* Monsters */,
@@ -340,15 +384,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				78D1EB0421EC2A6A002D4197 /* LeaderboardVars.swift in Sources */,
+				787DF38C21FA7785001FB99C /* Dungeon.swift in Sources */,
 				78B0030F211CA297001F246E /* pad_db.xcdatamodeld in Sources */,
 				78AC396A21F1475A0094CCA7 /* LoadDataVC.swift in Sources */,
 				78D6885C21E5459F001C0DEF /* TabController.swift in Sources */,
 				78B0031C211CA2FC001F246E /* MonsterTableController.swift in Sources */,
+				787DF38921FA7693001FB99C /* DungeonTableUtils.swift in Sources */,
 				78D6886621E6F431001C0DEF /* MultiplierUtils.swift in Sources */,
+				787DF38E21FA8048001FB99C /* DungeonCell.swift in Sources */,
 				78D1EB0021EC291A002D4197 /* LeaderboardTableVC.swift in Sources */,
 				78D6886421E6B357001C0DEF /* MonsterVC.swift in Sources */,
 				78D1EAF721EBF2CA002D4197 /* SetupAwakeningUtils.swift in Sources */,
 				78B00307211CA297001F246E /* AppDelegate.swift in Sources */,
+				787DF38621FA7601001FB99C /* DungeonTableViewController.swift in Sources */,
 				78D1EB0221EC295E002D4197 /* LeaderboardUtils.swift in Sources */,
 				78D1EAF921EBF2FA002D4197 /* SetupSkillUtils.swift in Sources */,
 				78D1EB0621EC2CFD002D4197 /* LeaderboardCell.swift in Sources */,

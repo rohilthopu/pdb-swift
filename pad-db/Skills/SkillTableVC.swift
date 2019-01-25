@@ -38,12 +38,9 @@ class SkillTableVC: UITableViewController, UISearchControllerDelegate, UISearchB
         goodSkills = filterUsableSkills()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        if goodSkills.count == 0 {
-//            goodSkills = filterUsableSkills()
-//            tableView.reloadData()
-//        }
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {

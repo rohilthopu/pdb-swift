@@ -38,6 +38,7 @@ extension MonsterTableController {
             skills.removeAll()
             goodSkills.removeAll()
             goodMonsters.removeAll()
+            dungeons.removeAll()
             tableView.reloadData()
             clearDB()
         }
@@ -47,7 +48,7 @@ extension MonsterTableController {
     func clearDB() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Version", in: managedContext)!
+//        let entity = NSEntityDescription.entity(forEntityName: "Version", in: managedContext)!
 
         
         
@@ -56,15 +57,19 @@ extension MonsterTableController {
         let fetchRequest2 = NSFetchRequest<NSFetchRequestResult>(entityName: "SkillNA")
         let deleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
         
+        let fetchRequest3 = NSFetchRequest<NSFetchRequestResult>(entityName: "Dungeon")
+        let deleteRequest3 = NSBatchDeleteRequest(fetchRequest: fetchRequest3)
         
-        let item = NSManagedObject(entity: entity, insertInto: managedContext)
-        item.setValue(1, forKey: "monster")
-        item.setValue(1, forKey: "skill")
-        item.setValue(1, forKey: "dungeon")
-                
+        
+//        let item = NSManagedObject(entity: entity, insertInto: managedContext)
+//        item.setValue(1, forKey: "monster")
+//        item.setValue(1, forKey: "skill")
+//        item.setValue(1, forKey: "dungeon")
+        
         do {
             try managedContext.execute(deleteRequest)
             try managedContext.execute(deleteRequest2)
+            try managedContext.execute(deleteRequest3)
             try managedContext.save()
         } catch {
             print("There was an error deleting items.")

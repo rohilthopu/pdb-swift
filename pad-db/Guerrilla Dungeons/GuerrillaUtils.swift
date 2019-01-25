@@ -50,17 +50,22 @@ extension GuerrillaTableViewController {
         let versionRequest =
             NSFetchRequest<NSManagedObject>(entityName: "Version")
         
+        let dungeonRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Dungeon")
+        let dungeonRequestSort = NSSortDescriptor(key: "dungeonID", ascending: false)
+        dungeonRequest.sortDescriptors = [dungeonRequestSort]
+        
         do {
             monsters = try managedContext.fetch(monsterRequest)
             skills = try managedContext.fetch(skillRequest)
             versions = try managedContext.fetch(versionRequest)
-            
+            dungeons = try managedContext.fetch(dungeonRequest)
             
         } catch _ as NSError {
             print("Could not fetch.")
         }
     }
-
+    
     func setupNavBar() {
         if #available(iOS 11, *) {
             navigationController?.navigationBar.prefersLargeTitles = true

@@ -21,7 +21,7 @@ class LoadDataVC: UIViewController {
         updateLabel.translatesAutoresizingMaskIntoConstraints = false
         updateLabel.clipsToBounds = true
         updateLabel.font = UIFont(name: "Futura-CondensedMedium", size: 20)
-        updateLabel.text = "Checking for updates..."
+        updateLabel.text = "Downloading data..."
         self.view.addSubview(updateLabel)
         updateLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         updateLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
@@ -38,6 +38,7 @@ class LoadDataVC: UIViewController {
         if let v = versions.first {
             let localMonsterVersion = v.value(forKey: "monster") as! Int
             let localSkillVersion = v.value(forKey: "skill") as! Int
+            let localDungeonVersion = v.value(forKey: "dungeon") as! Int
 //            let localDungeonVersion = v.value(forKey: "monster") as! Int
             
             if newVersions["monster"]! > localMonsterVersion || monsters.count == 0 {
@@ -46,6 +47,10 @@ class LoadDataVC: UIViewController {
             
             if newVersions["skill"]! > localSkillVersion || skills.count == 0 {
                 getSkillData()
+            }
+            
+            if newVersions["dungeon"]! > localDungeonVersion || dungeons.count == 0 {
+                getDungeonData()
             }
         } else if monsters.count == 0 {
             getMonsterData()
@@ -159,6 +164,7 @@ class LoadDataVC: UIViewController {
     }
     
     func getMonsterData() {
+
         
         if let url = URL(string: monster_url) {
             if let data = try? String(contentsOf: url) {
@@ -259,6 +265,38 @@ class LoadDataVC: UIViewController {
                     rawSkills.append(skill)
                 }
             }
+        }
+    }
+    
+    func getDungeonData() {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Dungeon", in: managedContext)!
+        
+        if let url = URL(string: dungeon_api_url) {
+            if let data = try? String(contentsOf: url) {
+                let json = JSON(parseJSON: data)
+                for dungeon in json.arrayValue {
+                    
+                    
+                    let item = NSManagedObject(entity: entity, insertInto: managedContext)
+                    item.setValue(dungeon["name"].stringValue, forKey: "name")
+                    item.setValue(dungeon["dungeonID"].intValue, forKey: "dungeonID")
+                    item.setValue(dungeon["dungeonType"].stringValue, forKey: "dungeonType")
+                    item.setValue(dungeon["floorCount"].intValue, forKey: "floorCount")
+                    
+                    dungeons.append(item)
+                    
+                }
+            }
+        }
+        
+        do {
+            try managedContext.save()
+        }
+        catch _ as NSError {
+            print("Error saving dungeons in CoreData")
         }
     }
     
