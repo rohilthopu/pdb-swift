@@ -31,15 +31,10 @@ var rawSkills = [Skill]()
 
 var goodMonsters = [NSManagedObject]()
 
-
-let cellid = "monsterid"
-var monster_url:String = "https://pad-db.com/api/monsters/na/"
-var portrait_url:String = "https://pad-db.com/static/padimages/jp/portrait/"
-var full_url:String = "https://pad-db.com/static/padimages/jp/full/"
-//    var full_url:String = "https://pad-db.com/static/padimages/hq_images/"
-let skill_api_link = "https://www.pad-db.com/api/skills/na/"
-
 class MonsterTableController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
+    
+    let cellid = "monsterid"
+
     
     var filteredMonsters = [NSManagedObject]()
     var monsterSearchController:UISearchController!

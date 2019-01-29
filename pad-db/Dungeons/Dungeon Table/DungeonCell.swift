@@ -36,6 +36,14 @@ class DungeonCell: UITableViewCell {
         return textView
     }()
     
+    let floorCountLabel:UILabel = {
+        let textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 12)
+        textView.clipsToBounds = true
+        return textView
+    }()
+    
     let dungeonIDLabel:UILabel = {
         let textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,6 +71,7 @@ class DungeonCell: UITableViewCell {
         if let dungeon = dungeon {
             dungeonNameLabel.text = (dungeon.value(forKey: "name") as! String)
             dungeonIDLabel.text = "No. " + String((dungeon.value(forKey: "dungeonID") as! Int))
+            floorCountLabel.text = "Floors: " + String(dungeon.value(forKey: "floorCount") as! Int)
         }
     }
     
@@ -89,15 +98,19 @@ class DungeonCell: UITableViewCell {
     
     private func anchorNameItems() {
         
+        nameContainer.addSubview(floorCountLabel)
         nameContainer.addSubview(dungeonNameLabel)
         nameContainer.addSubview(dungeonIDLabel)
         
         
+        floorCountLabel.topAnchor.constraint(equalTo: nameContainer.topAnchor).isActive = true
+        floorCountLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
+        floorCountLabel.leadingAnchor.constraint(equalTo: dungeonIDLabel.trailingAnchor).isActive = true
+        
         dungeonIDLabel.topAnchor.constraint(equalTo: nameContainer.topAnchor).isActive = true
         dungeonIDLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
-        dungeonIDLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
         
-        dungeonNameLabel.topAnchor.constraint(equalTo: dungeonIDLabel.bottomAnchor, constant: 10).isActive = true
+        dungeonNameLabel.topAnchor.constraint(equalTo: dungeonIDLabel.bottomAnchor).isActive = true
         dungeonNameLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
         dungeonNameLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
         dungeonNameLabel.bottomAnchor.constraint(equalTo: nameContainer.bottomAnchor).isActive = true

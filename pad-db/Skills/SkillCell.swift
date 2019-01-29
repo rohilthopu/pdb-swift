@@ -29,6 +29,14 @@ class SkillCell: UITableViewCell {
         return view
     }()
     
+    let skillIDLabel:UILabel = {
+        let textView = UILabel()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        textView.clipsToBounds = true
+        return textView
+    }()
+    
     let skillNameLabel:UILabel = {
         let textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,6 +71,7 @@ class SkillCell: UITableViewCell {
         super.layoutSubviews()
         
         if let skill = skill {
+            skillIDLabel.text = "No." + String(skill.value(forKey: "skillID") as! Int)
             skillNameLabel.text = (skill.value(forKey: "name") as! String)
             skillDescriptionLabel.text = (skill.value(forKey: "desc") as! String)
         }

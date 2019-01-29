@@ -13,15 +13,20 @@ extension SkillCell {
     
     func anchorNameItems() {
         
+        nameContainer.addSubview(skillIDLabel)
         nameContainer.addSubview(skillNameLabel)
         nameContainer.addSubview(skillDescriptionLabel)
         
-        skillNameLabel.topAnchor.constraint(equalTo: nameContainer.topAnchor).isActive = true
+        skillIDLabel.topAnchor.constraint(equalTo: nameContainer.topAnchor).isActive = true
+        skillIDLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
+        skillIDLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
+        
+        skillNameLabel.topAnchor.constraint(equalTo: skillIDLabel.bottomAnchor).isActive = true
         skillNameLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
         skillNameLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
         skillNameLabel.adjustsFontSizeToFitWidth = true
         
-        skillDescriptionLabel.topAnchor.constraint(equalTo: skillNameLabel.bottomAnchor, constant: 10).isActive = true
+        skillDescriptionLabel.topAnchor.constraint(equalTo: skillNameLabel.bottomAnchor, constant: 5).isActive = true
         skillDescriptionLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
         skillDescriptionLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
         skillDescriptionLabel.bottomAnchor.constraint(equalTo: nameContainer.bottomAnchor).isActive = true
@@ -37,7 +42,7 @@ extension SkillCell {
     }
     
     func anchorNameContainer() {
-        nameContainer.topAnchor.constraint(equalTo: portraitImg.topAnchor).isActive = true
+        nameContainer.centerYAnchor.constraint(equalTo: portraitImg.centerYAnchor).isActive = true
         nameContainer.leadingAnchor.constraint(equalTo: portraitImg.trailingAnchor, constant: 10).isActive = true
         nameContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
     }

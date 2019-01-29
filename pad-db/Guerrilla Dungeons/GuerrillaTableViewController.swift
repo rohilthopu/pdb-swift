@@ -16,8 +16,6 @@ var displayDungeons = [Guerrilla]()
 var showingNA = true
 var runUpdate = true
 
-let version_api_url = "https://www.pad-db.com/api/version/"
-
 var versions = [NSManagedObject]()
 var newVersions:[String: Int] = [:]
 

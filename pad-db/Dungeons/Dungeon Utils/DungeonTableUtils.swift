@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-extension DungeonTableViewController {
+extension DungeonListTableViewController {
     func setupView() {
         self.navigationItem.title = "Dungeons"
         self.navigationController?.navigationBar.prefersLargeTitles = true
