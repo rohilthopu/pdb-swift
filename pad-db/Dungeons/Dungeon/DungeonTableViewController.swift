@@ -19,7 +19,6 @@ class DungeonTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.rowHeight = 100
         self.tableView.register(DungeonFloorCell.self, forCellReuseIdentifier: cellid)
-        self.tableView.allowsSelection = false
     }
 
     // MARK: - Table view data source
@@ -37,6 +36,14 @@ class DungeonTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath) as! DungeonFloorCell
         cell.floor = dungeon_floors[indexPath.row]
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = indexPath.row
+        let currFloor = dungeon_floors[index]
+        let floorVC = DungeonFloorViewController()
+        floorVC.dungeonFloor = currFloor
+        self.navigationController?.pushViewController(floorVC, animated: true)
     }
 
 }

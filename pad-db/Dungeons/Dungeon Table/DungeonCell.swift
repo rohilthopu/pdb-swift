@@ -33,6 +33,7 @@ class DungeonCell: UITableViewCell {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
         textView.clipsToBounds = true
+        textView.adjustsFontSizeToFitWidth = true
         return textView
     }()
     
@@ -72,6 +73,9 @@ class DungeonCell: UITableViewCell {
             dungeonNameLabel.text = (dungeon.value(forKey: "name") as! String)
             dungeonIDLabel.text = "No. " + String((dungeon.value(forKey: "dungeonID") as! Int))
             floorCountLabel.text = "Floors: " + String(dungeon.value(forKey: "floorCount") as! Int)
+            
+            let imageLinkFromID = URL(string: portrait_url + String(dungeon.value(forKey: "imageID") as! Int) + pngEngding)
+            dungeonImage.kf.setImage(with: imageLinkFromID)
         }
     }
     

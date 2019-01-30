@@ -22,6 +22,7 @@ class DungeonListTableViewController: UITableViewController {
         setupView()
         self.tableView.register(DungeonCell.self, forCellReuseIdentifier: cellid)
         self.tableView.rowHeight = 100
+        
     }
 
     // MARK: - Table view data source
@@ -56,7 +57,8 @@ class DungeonListTableViewController: UITableViewController {
         
         let floorListTable = DungeonTableViewController()
         floorListTable.dungeon_floors = getFloors(for: currentDungeon)
-        
+        let titleLabel = makeLabel(ofSize: 16, withText: (currentDungeon.value(forKey: "name") as! String))
+        floorListTable.navigationItem.titleView = titleLabel
         self.navigationController?.pushViewController(floorListTable, animated: true)
         
     }

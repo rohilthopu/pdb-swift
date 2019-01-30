@@ -280,12 +280,12 @@ class LoadDataVC: UIViewController {
                 let json = JSON(parseJSON: data)
                 for dungeon in json.arrayValue {
                     
-                    
                     let item = NSManagedObject(entity: entity, insertInto: managedContext)
                     item.setValue(dungeon["name"].stringValue, forKey: "name")
                     item.setValue(dungeon["dungeonID"].intValue, forKey: "dungeonID")
                     item.setValue(dungeon["dungeonType"].stringValue, forKey: "dungeonType")
                     item.setValue(dungeon["floorCount"].intValue, forKey: "floorCount")
+                    item.setValue(dungeon["imageID"].intValue, forKey: "imageID")
                     dungeons.append(item)
                     
                 }
@@ -311,23 +311,24 @@ class LoadDataVC: UIViewController {
                 let json = JSON(parseJSON: data)
                 for floor in json.arrayValue {
                     
-                    
+                                    
                     let item = NSManagedObject(entity: entity, insertInto: managedContext)
                     item.setValue(floor["floorNumber"].intValue, forKey: "floorNumber")
                     item.setValue(floor["name"].stringValue, forKey: "name")
                     item.setValue(floor["stamina"].intValue, forKey: "stamina")
                     item.setValue(floor["waves"].intValue, forKey: "waves")
-                    item.setValue(floor["possibleDrops"].dictionaryValue, forKey: "possibleDrops")
+                    item.setValue(floor["possibleDrops"].stringValue, forKey: "possibleDrops")
                     item.setValue(floor["dungeonID"].intValue, forKey: "dungeonID")
                     item.setValue(floor["requiredDungeon"].intValue, forKey: "requiredDungeon")
-                    item.setValue(floor["encounterModifiers"].dictionaryValue, forKey: "encounterModifiers")
-                    item.setValue(floor["teamModifiers"].dictionaryValue, forKey: "teamModifiers")
+                    item.setValue(floor["encounterModifiers"].stringValue, forKey: "encounterModifiers")
+                    item.setValue(floor["teamModifiers"].stringValue, forKey: "teamModifiers")
                     item.setValue(floor["entryRequirement"].stringValue, forKey: "entryRequirement")
-                    item.setValue(floor["messages"].arrayValue, forKey: "messages")
+                    item.setValue(floor["messages"].stringValue, forKey: "messages")
                     item.setValue(floor["score"].intValue, forKey: "score")
-                    item.setValue(floor["fixedTeam"].dictionaryValue, forKey: "fixedTeam")
+                    item.setValue(floor["fixedTeam"].stringValue, forKey: "fixedTeam")
                     item.setValue(floor["enhancedType"].stringValue, forKey: "enhancedType")
                     item.setValue(floor["enhancedAttribute"].stringValue, forKey: "enhancedAttribute")
+                    item.setValue(floor["imageID"].intValue, forKey: "imageID")
 
                     floors.append(item)
                     

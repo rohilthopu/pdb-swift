@@ -17,6 +17,8 @@ var portrait_url:String = "https://pad-db.com/static/padimages/jp/portrait/"
 
 var full_url:String = "https://pad-db.com/static/padimages/jp/full/"
 
+let pngEngding:String = ".png"
+
 //    var full_url:String = "https://pad-db.com/static/padimages/hq_images/"
 
 let skill_api_link = "https://www.pad-db.com/api/skills/na/"

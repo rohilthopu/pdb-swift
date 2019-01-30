@@ -37,17 +37,6 @@ extension SkillTableVC {
         
     }
     
-    func getMonster(forSkillID id:Int) -> NSManagedObject? {
-        let monster = monsters.filter({
-            let aSkill = $0.value(forKey: "activeSkillID") as! Int
-            let lSkill = $0.value(forKey: "leaderSkillID") as! Int
-            
-            return id == aSkill || id == lSkill
-            
-        }).last
-        return monster
-    }
-    
     func filterUsableSkills() -> [NSManagedObject]{
         var goodSkills = [NSManagedObject]()
         

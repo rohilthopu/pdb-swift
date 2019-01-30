@@ -30,8 +30,9 @@ class DungeonFloorCell: UITableViewCell {
     let floorNameLabel:UILabel = {
         let textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
+        textView.font = UIFont(name: "Futura-CondensedMedium", size: 18)
         textView.clipsToBounds = true
+        textView.adjustsFontSizeToFitWidth = true
         return textView
     }()
     
@@ -43,7 +44,7 @@ class DungeonFloorCell: UITableViewCell {
         return textView
     }()
     
-    let dungeonIDLabel:UILabel = {
+    let staminaLabel:UILabel = {
         let textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont(name: "Futura-CondensedMedium", size: 12)
@@ -70,6 +71,11 @@ class DungeonFloorCell: UITableViewCell {
         if let floor = floor {
             floorNameLabel.text = (floor.value(forKey: "name") as! String)
             floorWavesLabel.text = "Waves: " + String(floor.value(forKey: "waves") as! Int)
+            
+            let imageLinkFromID = URL(string: portrait_url + String(floor.value(forKey: "imageID") as! Int) + pngEngding)
+            floorImage.kf.setImage(with: imageLinkFromID)
+            
+            staminaLabel.text = "Stamina: " + String(floor.value(forKey: "stamina") as! Int)
         }
     }
     
@@ -98,17 +104,22 @@ class DungeonFloorCell: UITableViewCell {
         
         nameContainer.addSubview(floorWavesLabel)
         nameContainer.addSubview(floorNameLabel)
+        nameContainer.addSubview(staminaLabel)
         
         
-        floorWavesLabel.topAnchor.constraint(equalTo: nameContainer.topAnchor).isActive = true
+        floorWavesLabel.topAnchor.constraint(equalTo: floorNameLabel.bottomAnchor).isActive = true
         floorWavesLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
-        floorWavesLabel.leadingAnchor.constraint(equalTo: floorNameLabel.trailingAnchor).isActive = true
+        floorWavesLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
+        
+        staminaLabel.topAnchor.constraint(equalTo: floorWavesLabel.bottomAnchor).isActive = true
+        staminaLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
+        staminaLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
+        staminaLabel.bottomAnchor.constraint(equalTo: nameContainer.bottomAnchor).isActive = true
     
         
         floorNameLabel.topAnchor.constraint(equalTo: nameContainer.topAnchor).isActive = true
         floorNameLabel.leadingAnchor.constraint(equalTo: nameContainer.leadingAnchor).isActive = true
         floorNameLabel.trailingAnchor.constraint(equalTo: nameContainer.trailingAnchor).isActive = true
-        floorNameLabel.bottomAnchor.constraint(equalTo: nameContainer.bottomAnchor).isActive = true
         floorNameLabel.adjustsFontSizeToFitWidth = true
         
     }

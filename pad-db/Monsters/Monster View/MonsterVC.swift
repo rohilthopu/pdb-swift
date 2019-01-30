@@ -181,8 +181,8 @@ class MonsterVC: UIViewController {
         spacing = (self.view.frame.width)/50
         
         
-        self.view.backgroundColor = UIColor.white
-        self.view.layer.cornerRadius = 4
+//        self.view.backgroundColor = UIColor.white
+//        self.view.layer.cornerRadius = 4
         
         
         // make a back button
