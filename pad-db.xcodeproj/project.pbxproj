@@ -22,6 +22,7 @@
 		78B0031C211CA2FC001F246E /* MonsterTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0031B211CA2FC001F246E /* MonsterTableController.swift */; };
 		78B54A6A21FF9E030076EEA7 /* DungeonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B54A6921FF9E030076EEA7 /* DungeonTableViewController.swift */; };
 		78B54A6C22011AA10076EEA7 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B54A6B22011AA10076EEA7 /* constants.swift */; };
+		78B54A6F2201263A0076EEA7 /* DungeonFloorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B54A6E2201263A0076EEA7 /* DungeonFloorCell.swift */; };
 		78D12D4221E95C4400F4971A /* MonsterTableVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D12D4121E95C4400F4971A /* MonsterTableVars.swift */; };
 		78D12D4621E95E6900F4971A /* MonsterTableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D12D4521E95E6900F4971A /* MonsterTableUtils.swift */; };
 		78D1EAEF21EA97BC002D4197 /* MonsterVCUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EAEE21EA97BC002D4197 /* MonsterVCUtils.swift */; };
@@ -65,6 +66,7 @@
 		78B0031B211CA2FC001F246E /* MonsterTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTableController.swift; sourceTree = "<group>"; };
 		78B54A6921FF9E030076EEA7 /* DungeonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonTableViewController.swift; sourceTree = "<group>"; };
 		78B54A6B22011AA10076EEA7 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		78B54A6E2201263A0076EEA7 /* DungeonFloorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonFloorCell.swift; sourceTree = "<group>"; };
 		78D12D4121E95C4400F4971A /* MonsterTableVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTableVars.swift; sourceTree = "<group>"; };
 		78D12D4521E95E6900F4971A /* MonsterTableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTableUtils.swift; sourceTree = "<group>"; };
 		78D1EAEE21EA97BC002D4197 /* MonsterVCUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterVCUtils.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		787DF38321FA75C1001FB99C /* Dungeons */ = {
 			isa = PBXGroup;
 			children = (
+				78B54A6D2201219F0076EEA7 /* Dungeon */,
 				787DF38721FA767C001FB99C /* Dungeon Utils */,
 				787DF38421FA75DA001FB99C /* Dungeon Table */,
 			);
@@ -135,7 +138,6 @@
 			children = (
 				787DF38521FA7600001FB99C /* DungeonListTableViewController.swift */,
 				787DF38D21FA8048001FB99C /* DungeonCell.swift */,
-				78B54A6921FF9E030076EEA7 /* DungeonTableViewController.swift */,
 			);
 			path = "Dungeon Table";
 			sourceTree = "<group>";
@@ -183,6 +185,15 @@
 				78B54A6B22011AA10076EEA7 /* constants.swift */,
 			);
 			path = "pad-db";
+			sourceTree = "<group>";
+		};
+		78B54A6D2201219F0076EEA7 /* Dungeon */ = {
+			isa = PBXGroup;
+			children = (
+				78B54A6921FF9E030076EEA7 /* DungeonTableViewController.swift */,
+				78B54A6E2201263A0076EEA7 /* DungeonFloorCell.swift */,
+			);
+			path = Dungeon;
 			sourceTree = "<group>";
 		};
 		78D12D4721E95E8F00F4971A /* Monster View */ = {
@@ -385,6 +396,7 @@
 				78D6885C21E5459F001C0DEF /* TabController.swift in Sources */,
 				78B0031C211CA2FC001F246E /* MonsterTableController.swift in Sources */,
 				787DF38921FA7693001FB99C /* DungeonTableUtils.swift in Sources */,
+				78B54A6F2201263A0076EEA7 /* DungeonFloorCell.swift in Sources */,
 				78D6886621E6F431001C0DEF /* MultiplierUtils.swift in Sources */,
 				787DF38E21FA8048001FB99C /* DungeonCell.swift in Sources */,
 				78D1EB0021EC291A002D4197 /* LeaderboardTableVC.swift in Sources */,

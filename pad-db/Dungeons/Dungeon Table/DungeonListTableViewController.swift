@@ -22,7 +22,6 @@ class DungeonListTableViewController: UITableViewController {
         setupView()
         self.tableView.register(DungeonCell.self, forCellReuseIdentifier: cellid)
         self.tableView.rowHeight = 100
-        self.tableView.allowsSelection = false
     }
 
     // MARK: - Table view data source
@@ -49,6 +48,17 @@ class DungeonListTableViewController: UITableViewController {
         cell.dungeon = dungeons[indexPath.row]
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = indexPath.row
+        let currentDungeon = dungeons[index]
+        
+        let floorListTable = DungeonTableViewController()
+        floorListTable.dungeon_floors = getFloors(for: currentDungeon)
+        
+        self.navigationController?.pushViewController(floorListTable, animated: true)
+        
     }
 
 }

@@ -25,3 +25,5 @@ let leaderboardLink = "https://www.pad-db.com/api/leaderboard"
 
 let dungeon_api_url = "https://www.pad-db.com/api/dungeons/"
 
+let floor_api_url = "https://www.pad-db.com/api/floors/"
+

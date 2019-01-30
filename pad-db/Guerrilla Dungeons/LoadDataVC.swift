@@ -306,7 +306,7 @@ class LoadDataVC: UIViewController {
         let managedContext = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Floor", in: managedContext)!
         
-        if let url = URL(string: dungeon_api_url) {
+        if let url = URL(string: floor_api_url) {
             if let data = try? String(contentsOf: url) {
                 let json = JSON(parseJSON: data)
                 for floor in json.arrayValue {
