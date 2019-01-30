@@ -172,9 +172,9 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         monsterVC.leaderSkill = leaderSkill
         
         
-        let navCon = UINavigationController(rootViewController: monsterVC)
-        
-        self.present(navCon, animated: true, completion: nil)
+//        let navCon = UINavigationController(rootViewController: monsterVC)
+//        self.present(navCon, animated: true, completion: nil)
+        self.navigationController?.pushViewController(monsterVC, animated: true)
         
     }
     
