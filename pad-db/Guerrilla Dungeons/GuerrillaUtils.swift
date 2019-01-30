@@ -49,6 +49,8 @@ extension GuerrillaTableViewController {
         let versionRequest = NSFetchRequest<NSManagedObject>(entityName: "Version")
         
         let dungeonRequest = NSFetchRequest<NSManagedObject>(entityName: "Dungeon")
+        let floorRequest = NSFetchRequest<NSManagedObject>(entityName: "Floor")
+        
         let dungeonRequestSort = NSSortDescriptor(key: "dungeonID", ascending: false)
         dungeonRequest.sortDescriptors = [dungeonRequestSort]
         
@@ -57,6 +59,7 @@ extension GuerrillaTableViewController {
             skills = try managedContext.fetch(skillRequest)
             versions = try managedContext.fetch(versionRequest)
             dungeons = try managedContext.fetch(dungeonRequest)
+            floors = try managedContext.fetch(floorRequest)
             
         } catch _ as NSError {
             print("Could not fetch.")

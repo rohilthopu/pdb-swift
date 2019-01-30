@@ -51,6 +51,7 @@ class LoadDataVC: UIViewController {
             
             if newVersions["dungeon"]! > localDungeonVersion || dungeons.count == 0 {
                 getDungeonData()
+                getFloorData()
             }
         } else if monsters.count == 0 {
             getMonsterData()
@@ -285,8 +286,50 @@ class LoadDataVC: UIViewController {
                     item.setValue(dungeon["dungeonID"].intValue, forKey: "dungeonID")
                     item.setValue(dungeon["dungeonType"].stringValue, forKey: "dungeonType")
                     item.setValue(dungeon["floorCount"].intValue, forKey: "floorCount")
-                    
                     dungeons.append(item)
+                    
+                }
+            }
+        }
+        
+        do {
+            try managedContext.save()
+        }
+        catch _ as NSError {
+            print("Error saving dungeons in CoreData")
+        }
+    }
+    
+    func getFloorData() {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Floor", in: managedContext)!
+        
+        if let url = URL(string: dungeon_api_url) {
+            if let data = try? String(contentsOf: url) {
+                let json = JSON(parseJSON: data)
+                for floor in json.arrayValue {
+                    
+                    
+                    let item = NSManagedObject(entity: entity, insertInto: managedContext)
+                    item.setValue(floor["floorNumber"].intValue, forKey: "floorNumber")
+                    item.setValue(floor["name"].stringValue, forKey: "name")
+                    item.setValue(floor["stamina"].intValue, forKey: "stamina")
+                    item.setValue(floor["waves"].intValue, forKey: "waves")
+                    item.setValue(floor["possibleDrops"].dictionaryValue, forKey: "possibleDrops")
+                    item.setValue(floor["dungeonID"].intValue, forKey: "dungeonID")
+                    item.setValue(floor["requiredDungeon"].intValue, forKey: "requiredDungeon")
+                    item.setValue(floor["encounterModifiers"].dictionaryValue, forKey: "encounterModifiers")
+                    item.setValue(floor["teamModifiers"].dictionaryValue, forKey: "teamModifiers")
+                    item.setValue(floor["entryRequirement"].stringValue, forKey: "entryRequirement")
+                    item.setValue(floor["messages"].arrayValue, forKey: "messages")
+                    item.setValue(floor["score"].intValue, forKey: "score")
+                    item.setValue(floor["fixedTeam"].dictionaryValue, forKey: "fixedTeam")
+                    item.setValue(floor["enhancedType"].stringValue, forKey: "enhancedType")
+                    item.setValue(floor["enhancedAttribute"].stringValue, forKey: "enhancedAttribute")
+
+                    floors.append(item)
                     
                 }
             }
@@ -357,6 +400,30 @@ class LoadDataVC: UIViewController {
         }
         catch _ as NSError {
             print("Error saving version identifier in CoreData")
+        }
+    }
+    
+    func clearDB() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MonsterNA")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        let fetchRequest2 = NSFetchRequest<NSFetchRequestResult>(entityName: "SkillNA")
+        let deleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
+        
+        let fetchRequest3 = NSFetchRequest<NSFetchRequestResult>(entityName: "Dungeon")
+        let deleteRequest3 = NSBatchDeleteRequest(fetchRequest: fetchRequest3)
+        
+        do {
+            try managedContext.execute(deleteRequest)
+            try managedContext.execute(deleteRequest2)
+            try managedContext.execute(deleteRequest3)
+            try managedContext.save()
+        } catch {
+            print("There was an error deleting items.")
         }
     }
     

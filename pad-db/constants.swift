@@ -12,7 +12,16 @@ import Foundation
 let version_api_url = "https://www.pad-db.com/api/version/"
 
 var monster_url:String = "https://pad-db.com/api/monsters/na/"
+
 var portrait_url:String = "https://pad-db.com/static/padimages/jp/portrait/"
+
 var full_url:String = "https://pad-db.com/static/padimages/jp/full/"
+
 //    var full_url:String = "https://pad-db.com/static/padimages/hq_images/"
+
 let skill_api_link = "https://www.pad-db.com/api/skills/na/"
+
+let leaderboardLink = "https://www.pad-db.com/api/leaderboard"
+
+let dungeon_api_url = "https://www.pad-db.com/api/dungeons/"
+

@@ -11,7 +11,7 @@ import CoreData
 import Kingfisher
 
 var dungeons = [NSManagedObject]()
-let dungeon_api_url = "https://www.pad-db.com/api/dungeons/"
+var floors = [NSManagedObject]()
 
 class DungeonListTableViewController: UITableViewController {
     

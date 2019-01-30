@@ -17,8 +17,6 @@ extension  LeaderboardTableVC: UISearchResultsUpdating {
 
 class LeaderboardTableVC: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate{
     
-    let leaderboardLink = "https://www.pad-db.com/api/leaderboard"
-    
     let cellid = "leadercell"
     
     var users = [User]()
