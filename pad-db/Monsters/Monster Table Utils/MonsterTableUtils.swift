@@ -60,6 +60,9 @@ extension MonsterTableController {
         let fetchRequest3 = NSFetchRequest<NSFetchRequestResult>(entityName: "Dungeon")
         let deleteRequest3 = NSBatchDeleteRequest(fetchRequest: fetchRequest3)
         
+        let fetchRequest4 = NSFetchRequest<NSFetchRequestResult>(entityName: "Floor")
+        let deleteRequest4 = NSBatchDeleteRequest(fetchRequest: fetchRequest4)
+        
         
 //        let item = NSManagedObject(entity: entity, insertInto: managedContext)
 //        item.setValue(1, forKey: "monster")
@@ -70,6 +73,7 @@ extension MonsterTableController {
             try managedContext.execute(deleteRequest)
             try managedContext.execute(deleteRequest2)
             try managedContext.execute(deleteRequest3)
+            try managedContext.execute(deleteRequest4)
             try managedContext.save()
         } catch {
             print("There was an error deleting items.")

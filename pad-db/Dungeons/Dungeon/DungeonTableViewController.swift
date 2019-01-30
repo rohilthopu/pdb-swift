@@ -20,6 +20,7 @@ class DungeonTableViewController: UITableViewController {
         self.tableView.rowHeight = 100
         self.tableView.register(DungeonFloorCell.self, forCellReuseIdentifier: cellid)
         self.tableView.allowsSelection = false
+        print(dungeon_floors.description)
         
     }
 
