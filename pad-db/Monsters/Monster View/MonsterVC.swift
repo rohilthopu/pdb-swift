@@ -186,7 +186,7 @@ class MonsterVC: UIViewController {
         
         
         // make a back button
-        self.navigationController?.navigationBar.barTintColor = .white
+//        self.navigationController?.navigationBar.barTintColor = .white
 //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: makeBackButton())
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: makeDismissButton())
         
