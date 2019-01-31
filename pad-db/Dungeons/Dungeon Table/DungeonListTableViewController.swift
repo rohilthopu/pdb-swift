@@ -13,13 +13,23 @@ import Kingfisher
 var dungeons = [NSManagedObject]()
 var floors = [NSManagedObject]()
 
-class DungeonListTableViewController: UITableViewController {
+extension DungeonListTableViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+}
+
+class DungeonListTableViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
     let cellid = "dungeoncell"
+    var filteredDungeons = [NSManagedObject]()
+    var dungeonSearch:UISearchController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupSearch()
         self.tableView.register(DungeonCell.self, forCellReuseIdentifier: cellid)
         self.tableView.rowHeight = 100
         
@@ -34,6 +44,9 @@ class DungeonListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if isFiltering() {
+            return filteredDungeons.count
+        }
         return dungeons.count
     }
     
@@ -46,14 +59,24 @@ class DungeonListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath) as! DungeonCell
         
-        cell.dungeon = dungeons[indexPath.row]
+        if isFiltering() {
+            cell.dungeon = filteredDungeons[indexPath.row]
+        } else {
+            cell.dungeon = dungeons[indexPath.row]
 
+        }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
-        let currentDungeon = dungeons[index]
+        var currentDungeon:NSManagedObject
+        
+        if isFiltering() {
+            currentDungeon = filteredDungeons[index]
+        } else {
+            currentDungeon = dungeons[index]
+        }
         
         let floorListTable = DungeonTableViewController()
         floorListTable.dungeon_floors = getFloors(for: currentDungeon)

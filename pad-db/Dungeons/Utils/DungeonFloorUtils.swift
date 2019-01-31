@@ -19,27 +19,27 @@ extension DungeonFloorViewController {
         separator.bottomAnchor.constraint(equalTo: infoContainer.bottomAnchor).isActive = true
         separator.centerXAnchor.constraint(equalTo: infoContainer.centerXAnchor).isActive = true
         
-        let infoHeader = makeLabel(ofSize: 26, withText: "Floor Information")
+        let infoHeader = makeLabel(ofSize: 20, withText: "Floor Information")
         infoContainer.addSubview(infoHeader)
         infoHeader.topAnchor.constraint(equalTo: infoContainer.topAnchor).isActive = true
         infoHeader.centerXAnchor.constraint(equalTo: infoContainer.centerXAnchor).isActive = true
         
-        let nameLabel = makeLabel(ofSize: 20, withText: dungeonFloor!.value(forKey: "name") as! String)
+        let nameLabel = makeLabel(ofSize: 16, withText: dungeonFloor!.value(forKey: "name") as! String)
         infoContainer.addSubview(nameLabel)
         nameLabel.topAnchor.constraint(equalTo: infoHeader.bottomAnchor, constant: 10).isActive = true
         nameLabel.centerXAnchor.constraint(equalTo: infoContainer.centerXAnchor).isActive = true
         
-        let staminaLabel = makeLabel(ofSize: 20, withText: "Stamina: " + String(dungeonFloor!.value(forKey: "stamina") as! Int))
+        let staminaLabel = makeLabel(ofSize: 16, withText: "Stamina: " + String(dungeonFloor!.value(forKey: "stamina") as! Int))
         infoContainer.addSubview(staminaLabel)
         staminaLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10).isActive = true
         staminaLabel.centerXAnchor.constraint(equalTo: infoContainer.centerXAnchor).isActive = true
         
-        let wavesLabel = makeLabel(ofSize: 20, withText: "Waves: " + String(dungeonFloor!.value(forKey: "waves") as! Int))
+        let wavesLabel = makeLabel(ofSize: 16, withText: "Waves: " + String(dungeonFloor!.value(forKey: "waves") as! Int))
         infoContainer.addSubview(wavesLabel)
         wavesLabel.topAnchor.constraint(equalTo: staminaLabel.bottomAnchor, constant: 10).isActive = true
         wavesLabel.centerXAnchor.constraint(equalTo: infoContainer.centerXAnchor).isActive = true
         
-        let scoreLabel = makeLabel(ofSize: 20, withText: "Score: " + String(dungeonFloor!.value(forKey: "score") as! Int))
+        let scoreLabel = makeLabel(ofSize: 16, withText: "Score: " + String(dungeonFloor!.value(forKey: "score") as! Int))
         infoContainer.addSubview(scoreLabel)
         scoreLabel.topAnchor.constraint(equalTo: wavesLabel.bottomAnchor, constant: 10).isActive = true
         scoreLabel.centerXAnchor.constraint(equalTo: infoContainer.centerXAnchor).isActive = true
@@ -62,7 +62,7 @@ extension DungeonFloorViewController {
         separator.bottomAnchor.constraint(equalTo: requiredDungeonContainer.bottomAnchor).isActive = true
         separator.centerXAnchor.constraint(equalTo: requiredDungeonContainer.centerXAnchor).isActive = true
         
-        let infoHeader = makeLabel(ofSize: 26, withText: "Required Dungeon")
+        let infoHeader = makeLabel(ofSize: 20, withText: "Required Dungeon")
         requiredDungeonContainer.addSubview(infoHeader)
         infoHeader.topAnchor.constraint(equalTo: requiredDungeonContainer.topAnchor).isActive = true
         infoHeader.centerXAnchor.constraint(equalTo: requiredDungeonContainer.centerXAnchor).isActive = true
@@ -76,15 +76,10 @@ extension DungeonFloorViewController {
                 let floorName = floor.value(forKey: "name") as! String
                 let requiredDungeonLabel = makeLabel(ofSize: 16, withText: "Dungeon: \(dungeonName)")
                 let requiredFloorLabel = makeLabel(ofSize: 16, withText: "Floor: \(floorName)")
-                let requiredLabel = makeLabel(ofSize: 18, withText: "Requires completion of")
-                requiredDungeonContainer.addSubview(requiredLabel)
                 requiredDungeonContainer.addSubview(requiredDungeonLabel)
                 requiredDungeonContainer.addSubview(requiredFloorLabel)
                 
-                requiredLabel.topAnchor.constraint(equalTo: infoHeader.bottomAnchor, constant: 20).isActive = true
-                requiredLabel.centerXAnchor.constraint(equalTo: requiredDungeonContainer.centerXAnchor).isActive = true
-                
-                requiredDungeonLabel.topAnchor.constraint(equalTo: requiredLabel.bottomAnchor, constant: 10).isActive = true
+                requiredDungeonLabel.topAnchor.constraint(equalTo: infoHeader.bottomAnchor, constant: 10).isActive = true
                 requiredDungeonLabel.centerXAnchor.constraint(equalTo: requiredDungeonContainer.centerXAnchor).isActive = true
                 
                 requiredFloorLabel.topAnchor.constraint(equalTo: requiredDungeonLabel.bottomAnchor, constant: 10).isActive = true
@@ -114,7 +109,7 @@ extension DungeonFloorViewController {
         separator.bottomAnchor.constraint(equalTo: messageContainer.bottomAnchor).isActive = true
         separator.centerXAnchor.constraint(equalTo: messageContainer.centerXAnchor).isActive = true
         
-        let infoHeader = makeLabel(ofSize: 26, withText: "Messages")
+        let infoHeader = makeLabel(ofSize: 20, withText: "Messages")
         messageContainer.addSubview(infoHeader)
         infoHeader.topAnchor.constraint(equalTo: messageContainer.topAnchor).isActive = true
         infoHeader.centerXAnchor.constraint(equalTo: messageContainer.centerXAnchor).isActive = true
@@ -151,8 +146,64 @@ extension DungeonFloorViewController {
         messageContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
         messageContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
         messageContainer.topAnchor.constraint(equalTo: requiredDungeonContainer.bottomAnchor, constant: 20).isActive = true
-        messageContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
 
+    }
+    
+    func makeFixedTeam() {
+        let separator = makeSeparator()
+        fixedTeamContainer.addSubview(separator)
+        separator.bottomAnchor.constraint(equalTo: fixedTeamContainer.bottomAnchor).isActive = true
+        separator.centerXAnchor.constraint(equalTo: fixedTeamContainer.centerXAnchor).isActive = true
+        
+        let infoHeader = makeLabel(ofSize: 20, withText: "Fixed Team")
+        fixedTeamContainer.addSubview(infoHeader)
+        infoHeader.topAnchor.constraint(equalTo: fixedTeamContainer.topAnchor).isActive = true
+        infoHeader.centerXAnchor.constraint(equalTo: fixedTeamContainer.centerXAnchor).isActive = true
+        
+        let fixedTeam = getFixedTeam(forFloor: dungeonFloor!)
+        
+        if !fixedTeam.isEmpty {
+            let teamMonsters = fixedTeam.keys
+            let teamView = makeView()
+            
+            var images = [UIImageView]()
+            for key in teamMonsters {
+                let monsterImg = makeImgView(forImg: portrait_url + key + pngEngding, ofSize: 50)
+                teamView.addSubview(monsterImg)
+                images.append(monsterImg)
+            }
+            
+            
+            for i in 0...images.count - 1 {
+                let img = images[i]
+                img.topAnchor.constraint(equalTo: teamView.topAnchor).isActive = true
+                img.bottomAnchor.constraint(equalTo: teamView.bottomAnchor).isActive = true
+                if i == 0 {
+                    img.leadingAnchor.constraint(equalTo: teamView.leadingAnchor).isActive = true
+                } else {
+                    img.leadingAnchor.constraint(equalTo: images[i-1].trailingAnchor, constant: 10).isActive = true
+                }
+            }
+            images.last?.trailingAnchor.constraint(equalTo: teamView.trailingAnchor).isActive = true
+            
+            fixedTeamContainer.addSubview(teamView)
+            teamView.topAnchor.constraint(equalTo: infoHeader.bottomAnchor, constant: 20).isActive = true
+            teamView.centerXAnchor.constraint(equalTo: fixedTeamContainer.centerXAnchor).isActive = true
+            teamView.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
+        } else {
+            let noneLabel = makeLabel(ofSize: 16, withText: "No fixed team")
+            fixedTeamContainer.addSubview(noneLabel)
+            noneLabel.topAnchor.constraint(equalTo: infoHeader.bottomAnchor, constant: 20).isActive = true
+            noneLabel.centerXAnchor.constraint(equalTo: fixedTeamContainer.centerXAnchor).isActive = true
+            noneLabel.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
+        }
+        
+        scrollView.addSubview(fixedTeamContainer)
+        fixedTeamContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
+        fixedTeamContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+        fixedTeamContainer.topAnchor.constraint(equalTo: messageContainer.bottomAnchor, constant: 20).isActive = true
+        fixedTeamContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        
     }
 
 

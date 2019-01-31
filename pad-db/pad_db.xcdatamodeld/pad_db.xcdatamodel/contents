@@ -7,6 +7,11 @@
         <attribute name="imageID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="EnemySkill" representedClassName="EnemySkill" syncable="YES" codeGenerationType="class">
+        <attribute name="effect" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="enemy_skill_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Floor" representedClassName="Floor" syncable="YES" codeGenerationType="class">
         <attribute name="dungeonID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="encounterModifiers" optional="YES" attributeType="String" syncable="YES"/>
@@ -33,6 +38,7 @@
         <attribute name="awakenings" optional="YES" attributeType="Transformable" customClassName="[Double]" syncable="YES"/>
         <attribute name="cardID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="cost" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="enemySkills" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="evolutions" optional="YES" attributeType="Transformable" customClassName="[Double]" syncable="YES"/>
         <attribute name="evomat1" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="evomat2" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -91,8 +97,9 @@
     <elements>
         <element name="Dungeon" positionX="-36" positionY="153" width="128" height="120"/>
         <element name="Floor" positionX="-54" positionY="144" width="128" height="298"/>
-        <element name="MonsterNA" positionX="-63" positionY="-18" width="128" height="615"/>
+        <element name="MonsterNA" positionX="-63" positionY="-18" width="128" height="628"/>
         <element name="SkillNA" positionX="-63" positionY="135" width="128" height="270"/>
         <element name="Version" positionX="-63" positionY="135" width="128" height="90"/>
+        <element name="EnemySkill" positionX="-45" positionY="135" width="128" height="90"/>
     </elements>
 </model>

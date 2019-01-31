@@ -39,10 +39,10 @@ class LoadDataVC: UIViewController {
             let localMonsterVersion = v.value(forKey: "monster") as! Int
             let localSkillVersion = v.value(forKey: "skill") as! Int
             let localDungeonVersion = v.value(forKey: "dungeon") as! Int
-//            let localDungeonVersion = v.value(forKey: "monster") as! Int
             
             if newVersions["monster"]! > localMonsterVersion || monsters.count == 0 {
                 getMonsterData()
+                getEnemySkillData()
             }
             
             if newVersions["skill"]! > localSkillVersion || skills.count == 0 {
@@ -148,6 +148,8 @@ class LoadDataVC: UIViewController {
                     item.setValue(monster.sellMP, forKey: "sellMP")
                     item.setValue(monster.sellCoin, forKey: "sellCoin")
                     
+                    item.setValue(monster.enemySkills, forKey: "enemySkills")
+                    
                     monsters.append(item)
                 }
             }
@@ -230,6 +232,8 @@ class LoadDataVC: UIViewController {
                         
                         monster.sellMP = card["sellMP"].intValue
                         monster.sellCoin = card["sellCoin"].intValue
+                        
+                        monster.enemySkills = card["enemySkills"].stringValue
                         
                         rawMonsters.append(monster)
                     }
@@ -341,7 +345,35 @@ class LoadDataVC: UIViewController {
             try managedContext.save()
         }
         catch _ as NSError {
-            print("Error saving dungeons in CoreData")
+            print("Error saving floors in CoreData")
+        }
+    }
+    
+    func getEnemySkillData() {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "EnemySkill", in: managedContext)!
+        
+        if let url = URL(string: enemy_skill_api_url) {
+            if let data = try? String(contentsOf: url) {
+                let json = JSON(parseJSON: data)
+                for skill in json.arrayValue {
+                    
+                    let item = NSManagedObject(entity: entity, insertInto: managedContext)
+                    item.setValue(skill["name"].stringValue, forKey: "name")
+                    item.setValue(skill["effect"].intValue, forKey: "effect")
+                    item.setValue(skill["enemy_skill_id"].intValue, forKey: "enemy_skill_id")
+                    enemySkills.append(item)
+                }
+            }
+        }
+        
+        do {
+            try managedContext.save()
+        }
+        catch _ as NSError {
+            print("Error saving enemy skills in CoreData")
         }
     }
     

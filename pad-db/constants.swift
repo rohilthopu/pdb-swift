@@ -29,3 +29,4 @@ let dungeon_api_url = "https://www.pad-db.com/api/dungeons/"
 
 let floor_api_url = "https://www.pad-db.com/api/floors/"
 
+let enemy_skill_api_url = "https://www.pad-db.com/api/enemyskills/"

@@ -1,13 +1,27 @@
 //
-//  MonsterTableVars.swift
+//  structs.swift
 //  pad-db
 //
-//  Created by Rohil Thopu on 1/11/19.
+//  Created by Rohil Thopu on 1/31/19.
 //  Copyright © 2019 Rohil Thopu. All rights reserved.
 //
 
 import Foundation
 import UIKit
+
+
+struct Guerrilla {
+    var name:String?
+    var startTime:String?
+    var endTime:String?
+    var startSecs:Float?
+    var endSecs:Float?
+    var server:String?
+    var group:String?
+    var dungeon_id:Int?
+    var remainingTime:Double?
+    var status:String?
+}
 
 struct Monster {
     var activeSkillID:Int?
@@ -50,6 +64,8 @@ struct Monster {
     
     var sellMP:Int?
     var sellCoin:Int?
+    
+    var enemySkills:String?
 }
 
 struct Skill {
@@ -70,4 +86,3 @@ struct Skill {
     var maxTurns:Int?
     
 }
-

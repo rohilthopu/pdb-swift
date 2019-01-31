@@ -21,6 +21,8 @@ extension MonsterTableController: UISearchResultsUpdating {
 
 var monsters = [NSManagedObject]()
 var skills = [NSManagedObject]()
+var enemySkills = [NSManagedObject]()
+
 
 var monsterIDList:[Int: Int] = [:]
 var skillIDList:[Int: Int] = [:]

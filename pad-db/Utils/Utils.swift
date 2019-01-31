@@ -118,3 +118,11 @@ func getFloor(forID id:Int, floorNumber num:Int) -> NSManagedObject? {
 func getMessages(forFloor floor:NSManagedObject) -> [JSON] {
     return JSON(parseJSON: floor.value(forKey: "messages") as! String).arrayValue
 }
+
+func getPossibleDrops(forFloor floor:NSManagedObject) -> [String:JSON] {
+    return JSON(parseJSON: floor.value(forKey: "possibleDrops") as! String).dictionaryValue
+}
+
+func getFixedTeam(forFloor floor:NSManagedObject) -> [String:JSON] {
+    return JSON(parseJSON: floor.value(forKey: "fixedTeam") as! String).dictionaryValue
+}

@@ -53,12 +53,17 @@ extension GuerrillaTableViewController {
         
         let floorRequest = NSFetchRequest<NSManagedObject>(entityName: "Floor")
         
+        let enemySkillRequest = NSFetchRequest<NSManagedObject>(entityName: "EnemySkills")
+
+        
         do {
             monsters = try managedContext.fetch(monsterRequest)
             skills = try managedContext.fetch(skillRequest)
             versions = try managedContext.fetch(versionRequest)
             dungeons = try managedContext.fetch(dungeonRequest)
             floors = try managedContext.fetch(floorRequest)
+            enemySkills = try managedContext.fetch(enemySkillRequest)
+
             
         } catch _ as NSError {
             print("Could not fetch.")
@@ -166,17 +171,4 @@ extension GuerrillaTableViewController {
             displayDungeons = jpDungeons
         }
     }
-}
-
-struct Guerrilla {
-    var name:String?
-    var startTime:String?
-    var endTime:String?
-    var startSecs:Float?
-    var endSecs:Float?
-    var server:String?
-    var group:String?
-    var dungeon_id:Int?
-    var remainingTime:Double?
-    var status:String?
 }

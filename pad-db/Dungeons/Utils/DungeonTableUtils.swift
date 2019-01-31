@@ -38,5 +38,35 @@ extension DungeonListTableViewController {
         textView.adjustsFontSizeToFitWidth = true
         return textView
     }
+    
+    func setupSearch() {
+        dungeonSearch = UISearchController(searchResultsController: nil)
+        dungeonSearch.searchResultsUpdater = self
+        dungeonSearch.obscuresBackgroundDuringPresentation = false
+        dungeonSearch.searchBar.placeholder = "Search Dungeons"
+        navigationItem.searchController = dungeonSearch
+        dungeonSearch.isActive = true
+        dungeonSearch.hidesNavigationBarDuringPresentation = false
+        self.definesPresentationContext = true
+        self.dungeonSearch.delegate = self
+        self.dungeonSearch.searchBar.delegate = self
+        
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredDungeons = dungeons.filter{
+            return ($0.value(forKey: "name") as! String).lowercased().contains(searchText.lowercased())
+        }
+        tableView.reloadData()
+    }
+    
+    func isFiltering() -> Bool {
+        return dungeonSearch.isActive && !searchBarIsEmpty()
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return dungeonSearch.searchBar.text?.isEmpty ?? true
+    }
 
 }
