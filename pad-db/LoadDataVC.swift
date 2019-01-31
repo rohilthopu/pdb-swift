@@ -362,7 +362,7 @@ class LoadDataVC: UIViewController {
                     
                     let item = NSManagedObject(entity: entity, insertInto: managedContext)
                     item.setValue(skill["name"].stringValue, forKey: "name")
-                    item.setValue(skill["effect"].intValue, forKey: "effect")
+                    item.setValue(skill["effect"].stringValue, forKey: "effect")
                     item.setValue(skill["enemy_skill_id"].intValue, forKey: "enemy_skill_id")
                     enemySkills.append(item)
                 }
