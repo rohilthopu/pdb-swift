@@ -36,7 +36,7 @@ var goodMonsters = [NSManagedObject]()
 class MonsterTableController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
     let cellid = "monsterid"
-
+    
     
     var filteredMonsters = [NSManagedObject]()
     var monsterSearchController:UISearchController!
@@ -63,7 +63,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         tableView.register(MonsterCell.self, forCellReuseIdentifier: cellid)
         tableView.rowHeight = 70
     }
-
+    
     private func setupNavBar() {
         if #available(iOS 11, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -172,8 +172,8 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         monsterVC.leaderSkill = leaderSkill
         
         
-//        let navCon = UINavigationController(rootViewController: monsterVC)
-//        self.present(navCon, animated: true, completion: nil)
+        //        let navCon = UINavigationController(rootViewController: monsterVC)
+        //        self.present(navCon, animated: true, completion: nil)
         self.navigationController?.pushViewController(monsterVC, animated: true)
         
     }
