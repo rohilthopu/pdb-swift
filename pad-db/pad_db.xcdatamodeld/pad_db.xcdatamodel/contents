@@ -9,7 +9,7 @@
     </entity>
     <entity name="EnemySkill" representedClassName="EnemySkill" syncable="YES" codeGenerationType="class">
         <attribute name="effect" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="enemy_skill_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="enemy_skill_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Floor" representedClassName="Floor" syncable="YES" codeGenerationType="class">
