@@ -14,14 +14,22 @@ class GuerrillaCell: UITableViewCell {
 
     var name:String?
     var group:String?
-    var dungeon_id:Int?
+    var imgLink:String?
     var remainingTime:Double?
     var status:String?
+    
+    var portraitImage: UIImageView = {
+        var imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        return imageView
+    }()
     
     var nameLabel: UILabel = {
         var textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont(name: "Futura-CondensedMedium", size: 18)
+        textView.adjustsFontSizeToFitWidth = true
         return textView
     }()
     
@@ -57,14 +65,20 @@ class GuerrillaCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        
+        self.contentView.addSubview(portraitImage)
         containerView.addSubview(nameLabel)
         containerView.addSubview(groupLabel)
         
         self.contentView.addSubview(containerView)
         self.contentView.addSubview(statusLabel)
         self.contentView.addSubview(remainingTimeLabel)
-    
+        
+        
+        portraitImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
+        portraitImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        portraitImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        portraitImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
         anchorNameContainer()
         anchorNameLabel()
         anchorGroupLabel()
@@ -84,9 +98,9 @@ class GuerrillaCell: UITableViewCell {
     }
     
     private func anchorNameContainer(){
-        containerView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
-        containerView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 25).isActive = true
-        containerView.trailingAnchor.constraint(equalTo:self.contentView.trailingAnchor).isActive = true
+        containerView.centerYAnchor.constraint(equalTo: portraitImage.centerYAnchor).isActive = true
+        containerView.leadingAnchor.constraint(equalTo: portraitImage.trailingAnchor, constant: 10).isActive = true
+        containerView.trailingAnchor.constraint(equalTo:self.contentView.trailingAnchor, constant: -75).isActive = true
     }
     
     private func anchorNameLabel(){
@@ -117,13 +131,17 @@ class GuerrillaCell: UITableViewCell {
             statusLabel.text = status
         }
         
+        if let imgLink = imgLink {
+            portraitImage.kf.setImage(with: URL(string: imgLink))
+        }
+        
         if let remainingTime = remainingTime {
             
             let timeInMins = Int(remainingTime/60)
             
             
             if statusLabel.text! == "Active" {
-                if timeInMins > 60 {
+                if timeInMins > 120 {
                     let hours = timeInMins / 60
                     remainingTimeLabel.text = String(hours) + " hours"
                     setBGcolors()
@@ -135,7 +153,7 @@ class GuerrillaCell: UITableViewCell {
             }
             
             else if statusLabel.text! == "Upcoming" {
-                if timeInMins > 60 {
+                if timeInMins > 120 {
                     let hours = timeInMins / 60
                     remainingTimeLabel.text = String(hours) + " hours"
                     resetBGcolors()

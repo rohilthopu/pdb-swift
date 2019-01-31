@@ -32,12 +32,11 @@ class GuerrillaTableViewController: UITableViewController {
         tableView.refreshControl!.addTarget(self, action: #selector(refreshGuerrillaList(_:)), for: .valueChanged)
         tableView.register(GuerrillaCell.self, forCellReuseIdentifier: cellid)
         tableView.rowHeight = 85
-        tableView.allowsSelection = false
         self.definesPresentationContext = true
         
         setupNavBar()
-        loadGuerrilla()
         loadFromDB()
+        loadGuerrilla()
         tableView.reloadData()
         
         vc.view.backgroundColor = UIColor.black
@@ -53,7 +52,6 @@ class GuerrillaTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,7 +60,6 @@ class GuerrillaTableViewController: UITableViewController {
             self.present(vc, animated: true, completion: nil)
         }
     }
-    // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -81,7 +78,26 @@ class GuerrillaTableViewController: UITableViewController {
         cell.group = dungeon.group!
         cell.status = dungeon.status!
         cell.remainingTime = dungeon.remainingTime!
+        if let imgLink = dungeon.imgLink {
+            cell.imgLink = imgLink
+        }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = indexPath.row
+        var gDungeon:Guerrilla
+        
+        gDungeon = displayDungeons[index]
+        
+        let currentDungeon = getDungeon(forID: gDungeon.dungeon_id!)
+        
+        if let currentDungeon = currentDungeon {
+            let floorListTable = DungeonTableViewController()
+            floorListTable.dungeon_floors = getFloors(for: currentDungeon)
+            floorListTable.navigationItem.title = (currentDungeon.value(forKey: "name") as! String)
+            self.navigationController?.pushViewController(floorListTable, animated: true)
+        }
     }
     
 }

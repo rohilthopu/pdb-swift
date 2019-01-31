@@ -21,6 +21,7 @@ struct Guerrilla {
     var dungeon_id:Int?
     var remainingTime:Double?
     var status:String?
+    var imgLink:String?
 }
 
 struct Monster {

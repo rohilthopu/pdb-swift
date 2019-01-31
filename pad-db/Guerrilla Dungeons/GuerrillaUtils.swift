@@ -128,7 +128,7 @@ extension GuerrillaTableViewController {
                     
                     
                     if ((timeInMS >= startSecs) && (timeInMS <= endSecs)) {
-                        dungeon.remainingTime = endSecs - timeInMS
+                        dungeon.remainingTime = (endSecs - timeInMS)
                         dungeon.status = "Active"
                     }
                     else if (timeInMS < startSecs) {
@@ -137,7 +137,6 @@ extension GuerrillaTableViewController {
                     }
                     else {
                         dungeon.remainingTime = 0
-                        dungeon.status = "Ended"
                     }
                     
                     
@@ -151,6 +150,10 @@ extension GuerrillaTableViewController {
                         dungeon.group = item["group"].stringValue
                         dungeon.dungeon_id = item["dungeon_id"].intValue
                         
+                        if let dbDungeon = getDungeon(forID: dungeon.dungeon_id!) {
+                            let imgID = dbDungeon.value(forKey: "imageID") as! Int
+                            dungeon.imgLink = portrait_url + String(imgID) + pngEngding
+                        }
                         
                         if item["server"].stringValue == "NA" {
                             naDungeons.append(dungeon)

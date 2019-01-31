@@ -107,6 +107,17 @@ func getSkill(forSkill id:Int) -> NSManagedObject {
     return skill!
 }
 
+func getFloors(for dungeon: NSManagedObject) -> [NSManagedObject] {
+    var currentFloors = floors.filter{ ($0.value(forKey: "dungeonID") as! Int) == (dungeon.value(forKey: "dungeonID") as! Int) }
+    currentFloors.sort{
+        let first = $0.value(forKey: "floorNumber") as! Int
+        let second = $1.value(forKey: "floorNumber") as! Int
+        
+        return first > second
+    }
+    return currentFloors
+}
+
 func getDungeon(forID id:Int) -> NSManagedObject? {
     return dungeons.filter{($0.value(forKey: "dungeonID") as! Int) == id}.first
 }
