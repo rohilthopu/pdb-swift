@@ -97,9 +97,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         monsterSearchController.hidesNavigationBarDuringPresentation = false
         self.definesPresentationContext = true
         self.monsterSearchController.delegate = self
-        self.monsterSearchController.searchBar.delegate = self
-        self.extendedLayoutIncludesOpaqueBars = true
-        
+        self.monsterSearchController.searchBar.delegate = self        
     }
     
     override func didReceiveMemoryWarning() {

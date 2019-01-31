@@ -285,10 +285,10 @@
 		78D6885A21D6FF43001C0DEF /* Monsters */ = {
 			isa = PBXGroup;
 			children = (
-				789EA55522038CAD004F9A68 /* Monster View Utils */,
-				78D12D4921E95F4000F4971A /* Monster Table Utils */,
 				78D12D4821E95EAD00F4971A /* Monster Table */,
+				78D12D4921E95F4000F4971A /* Monster Table Utils */,
 				78D12D4721E95E8F00F4971A /* Monster View */,
+				789EA55522038CAD004F9A68 /* Monster View Utils */,
 			);
 			path = Monsters;
 			sourceTree = "<group>";
