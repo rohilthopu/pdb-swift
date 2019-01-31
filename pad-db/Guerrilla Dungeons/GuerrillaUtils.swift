@@ -53,7 +53,7 @@ extension GuerrillaTableViewController {
         
         let floorRequest = NSFetchRequest<NSManagedObject>(entityName: "Floor")
         
-        let enemySkillRequest = NSFetchRequest<NSManagedObject>(entityName: "EnemySkills")
+        let enemySkillRequest = NSFetchRequest<NSManagedObject>(entityName: "EnemySkill")
 
         
         do {
