@@ -120,8 +120,7 @@ class SkillTableVC: UITableViewController, UISearchControllerDelegate, UISearchB
             
             monsterVC.activeSkill = activeSkill
             monsterVC.leaderSkill = leaderSkill
-            let navCon = UINavigationController(rootViewController: monsterVC)
-            self.present(navCon, animated: true, completion: nil)
+            self.navigationController?.pushViewController(monsterVC, animated: true)
         }
     }
 

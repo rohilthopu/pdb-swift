@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
-
+import SwiftyJSON
 
 func makeView() -> UIView {
     let vw = UIView()
@@ -66,7 +66,7 @@ func makeLabel(ofSize size: CGFloat, withText text: String) -> UILabel {
 
 func getMonster(forID id:Int) -> NSManagedObject {
     
-    let monster = goodMonsters.filter({
+    let monster = monsters.filter({
         let currID = $0.value(forKey: "cardID") as! Int
         
         if id == currID {
@@ -107,3 +107,14 @@ func getSkill(forSkill id:Int) -> NSManagedObject {
     return skill!
 }
 
+func getDungeon(forID id:Int) -> NSManagedObject? {
+    return dungeons.filter{($0.value(forKey: "dungeonID") as! Int) == id}.first
+}
+
+func getFloor(forID id:Int, floorNumber num:Int) -> NSManagedObject? {
+    return floors.filter{($0.value(forKey: "dungeonID") as! Int) == id && ($0.value(forKey: "floorNumber") as! Int) == num }.first
+}
+
+func getMessages(forFloor floor:NSManagedObject) -> [JSON] {
+    return JSON(parseJSON: floor.value(forKey: "messages") as! String).arrayValue
+}

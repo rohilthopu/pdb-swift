@@ -49,7 +49,7 @@ extension GuerrillaTableViewController {
         let versionRequest = NSFetchRequest<NSManagedObject>(entityName: "Version")
         
         let dungeonRequest = NSFetchRequest<NSManagedObject>(entityName: "Dungeon")
-        dungeonRequest.sortDescriptors = [NSSortDescriptor(key: "dungeonID", ascending: false)]
+        dungeonRequest.sortDescriptors = [NSSortDescriptor(key: "dungeonID", ascending: true)]
         
         let floorRequest = NSFetchRequest<NSManagedObject>(entityName: "Floor")
         

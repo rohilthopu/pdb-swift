@@ -18,6 +18,27 @@ class DungeonFloorViewController: UIViewController {
         return view
     }()
     
+    let infoContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    let requiredDungeonContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    let messageContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        return view
+    }()
+    
     var dungeonFloor:NSManagedObject?
 
     override func viewDidLoad() {
@@ -28,7 +49,10 @@ class DungeonFloorViewController: UIViewController {
         scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         scrollView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
-
+                
+        makeInfoView()
+        makeRequiredDungeonView()
+        makeDungeonMessages()
     }
 
 }

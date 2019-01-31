@@ -311,7 +311,7 @@ class LoadDataVC: UIViewController {
                 let json = JSON(parseJSON: data)
                 for floor in json.arrayValue {
                     
-                                    
+                    
                     let item = NSManagedObject(entity: entity, insertInto: managedContext)
                     item.setValue(floor["floorNumber"].intValue, forKey: "floorNumber")
                     item.setValue(floor["name"].stringValue, forKey: "name")
@@ -320,6 +320,7 @@ class LoadDataVC: UIViewController {
                     item.setValue(floor["possibleDrops"].stringValue, forKey: "possibleDrops")
                     item.setValue(floor["dungeonID"].intValue, forKey: "dungeonID")
                     item.setValue(floor["requiredDungeon"].intValue, forKey: "requiredDungeon")
+                    item.setValue(floor["requiredFloor"].intValue, forKey: "requiredFloor")
                     item.setValue(floor["encounterModifiers"].stringValue, forKey: "encounterModifiers")
                     item.setValue(floor["teamModifiers"].stringValue, forKey: "teamModifiers")
                     item.setValue(floor["entryRequirement"].stringValue, forKey: "entryRequirement")

@@ -43,6 +43,7 @@ class DungeonTableViewController: UITableViewController {
         let currFloor = dungeon_floors[index]
         let floorVC = DungeonFloorViewController()
         floorVC.dungeonFloor = currFloor
+        floorVC.navigationItem.title = (currFloor.value(forKey: "name") as! String)
         self.navigationController?.pushViewController(floorVC, animated: true)
     }
 
