@@ -103,7 +103,7 @@ extension GuerrillaTableViewController {
         tableView.reloadData()
         
         DispatchQueue.global(qos: .background).async {
-            self.loadGuerrilla()
+            loadGuerrilla()
             
             DispatchQueue.main.async {
                 self.tableView.refreshControl!.endRefreshing()
@@ -112,66 +112,4 @@ extension GuerrillaTableViewController {
         }
     }
     
-    func loadGuerrilla() {
-        let url = "https://www.pad-db.com/api/guerrilla"
-        let timeInMS = NSDate().timeIntervalSince1970
-        
-        if let url = URL(string: url) {
-            if let data = try? String(contentsOf: url) {
-                let json = JSON(parseJSON: data)
-                for item in json.arrayValue {
-                    var dungeon:Guerrilla = Guerrilla()
-                    
-                    
-                    let endSecs = item["endSecs"].doubleValue
-                    let startSecs = item["startSecs"].doubleValue
-                    
-                    
-                    if ((timeInMS >= startSecs) && (timeInMS <= endSecs)) {
-                        dungeon.remainingTime = (endSecs - timeInMS)
-                        dungeon.status = "Active"
-                    }
-                    else if (timeInMS < startSecs) {
-                        dungeon.remainingTime = startSecs - timeInMS
-                        dungeon.status = "Upcoming"
-                    }
-                    else {
-                        dungeon.remainingTime = 0
-                    }
-                    
-                    
-                    if dungeon.remainingTime! != 0 {
-                        dungeon.name = item["name"].stringValue
-                        dungeon.startTime = item["startTime"].stringValue
-                        dungeon.endTime = item["endTime"].stringValue
-                        dungeon.startSecs = item["startSecs"].floatValue
-                        dungeon.endSecs = item["endSecs"].floatValue
-                        dungeon.server = item["server"].stringValue
-                        dungeon.group = item["group"].stringValue
-                        dungeon.dungeon_id = item["dungeon_id"].intValue
-                        
-                        if let dbDungeon = getDungeon(forID: dungeon.dungeon_id!) {
-                            let imgID = dbDungeon.value(forKey: "imageID") as! Int
-                            dungeon.imgLink = portrait_url + String(imgID) + pngEngding
-                        }
-                        
-                        if item["server"].stringValue == "NA" {
-                            naDungeons.append(dungeon)
-                        }
-                        else {
-                            jpDungeons.append(dungeon)
-                        }
-                    }
-                    
-                }
-            }
-        }
-        
-        if showingNA {
-            displayDungeons = naDungeons
-        }
-        else {
-            displayDungeons = jpDungeons
-        }
-    }
 }

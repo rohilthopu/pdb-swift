@@ -10,9 +10,6 @@ import UIKit
 import CoreData
 import Kingfisher
 
-var dungeons = [NSManagedObject]()
-var floors = [NSManagedObject]()
-
 extension DungeonListTableViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {

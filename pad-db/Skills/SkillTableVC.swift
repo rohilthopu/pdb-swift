@@ -16,7 +16,6 @@ extension SkillTableVC: UISearchResultsUpdating {
     }
 }
 
-var goodSkills = [NSManagedObject]()
 
 
 class SkillTableVC: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {

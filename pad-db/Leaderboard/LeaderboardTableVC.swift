@@ -19,7 +19,6 @@ class LeaderboardTableVC: UITableViewController, UISearchControllerDelegate, UIS
     
     let cellid = "leadercell"
     
-    var users = [User]()
     var filteredUsers = [User]()
     
     var userSearch:UISearchController!
@@ -42,7 +41,7 @@ class LeaderboardTableVC: UITableViewController, UISearchControllerDelegate, UIS
         
         tableView.refreshControl?.beginRefreshing()
         DispatchQueue.global(qos: .background).async {
-            self.downloadLeaderboardData()
+            downloadLeaderboardData()
             
             DispatchQueue.main.async {
                 self.tableView.refreshControl?.endRefreshing()
@@ -67,7 +66,7 @@ class LeaderboardTableVC: UITableViewController, UISearchControllerDelegate, UIS
         tableView.reloadData()
         
         DispatchQueue.global(qos: .background).async {
-            self.downloadLeaderboardData()
+            downloadLeaderboardData()
             
             DispatchQueue.main.async {
                 self.tableView.refreshControl!.endRefreshing()

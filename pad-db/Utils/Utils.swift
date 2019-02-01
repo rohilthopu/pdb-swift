@@ -137,3 +137,15 @@ func getPossibleDrops(forFloor floor:NSManagedObject) -> [String:JSON] {
 func getFixedTeam(forFloor floor:NSManagedObject) -> [String:JSON] {
     return JSON(parseJSON: floor.value(forKey: "fixedTeam") as! String).dictionaryValue
 }
+
+func getPortraitURL(id:Int) -> String {
+    return portrait_url + String(id) + pngEngding
+}
+
+func getFullURL(id:Int) -> String {
+    return full_url + String(id) + pngEngding
+}
+
+func getClosedTama() -> String {
+    return portrait_url + String(4014) + pngEngding
+}

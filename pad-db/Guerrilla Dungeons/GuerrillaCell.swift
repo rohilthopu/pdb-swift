@@ -131,15 +131,14 @@ class GuerrillaCell: UITableViewCell {
             statusLabel.text = status
         }
         
-        if let imgLink = imgLink {
-            portraitImage.kf.setImage(with: URL(string: imgLink))
+        if let link = imgLink {
+            portraitImage.kf.setImage(with: URL(string: link))
         }
         
         if let remainingTime = remainingTime {
             
             let timeInMins = Int(remainingTime/60)
-            
-            
+    
             if statusLabel.text! == "Active" {
                 if timeInMins > 120 {
                     let hours = timeInMins / 60
@@ -188,13 +187,9 @@ class GuerrillaCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
 }

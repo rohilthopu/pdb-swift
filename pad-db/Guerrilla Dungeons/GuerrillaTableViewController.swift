@@ -10,16 +10,6 @@ import UIKit
 import SwiftyJSON
 import CoreData
 
-var naDungeons = [Guerrilla]()
-var jpDungeons = [Guerrilla]()
-var displayDungeons = [Guerrilla]()
-var showingNA = true
-var runUpdate = true
-
-var versions = [NSManagedObject]()
-var newVersions:[String: Int] = [:]
-
-
 class GuerrillaTableViewController: UITableViewController {
     
     let cellid = "guerrillacell"
@@ -36,14 +26,11 @@ class GuerrillaTableViewController: UITableViewController {
         
         setupNavBar()
         loadFromDB()
-        loadGuerrilla()
-        tableView.reloadData()
         
         vc.view.backgroundColor = UIColor.black
         vc.view.alpha = CGFloat(0.75)
         vc.view.isOpaque = false
-        
-        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .crossDissolve
         vc.view.backgroundColor = UIColor.white
         vc.view.center = self.tableView.center
@@ -86,12 +73,9 @@ class GuerrillaTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
-        var gDungeon:Guerrilla
-        
-        gDungeon = displayDungeons[index]
-        
+        let gDungeon = displayDungeons[index]
         let currentDungeon = getDungeon(forID: gDungeon.dungeon_id!)
-        
+
         if let currentDungeon = currentDungeon {
             let floorListTable = DungeonTableViewController()
             floorListTable.dungeon_floors = getFloors(for: currentDungeon)

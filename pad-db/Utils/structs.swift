@@ -9,6 +9,13 @@
 import Foundation
 import UIKit
 
+struct User {
+    var user:String?
+    var score:Int?
+    var scoreUp:Bool?
+    var scoreDown:Bool?
+    var scoreDiff:Int?
+}
 
 struct Guerrilla {
     var name:String?

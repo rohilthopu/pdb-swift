@@ -284,7 +284,7 @@ extension MonsterVC {
         minRCVLabel.text = String(monster!.value(forKey: "minRCV") as! Int)
         maxRCVLabel.text = String(monster!.value(forKey: "maxRCV") as! Int)
         RCVLabel.text = "rcv"
-        rcv297.text = String((monster!.value(forKey: "maxRCV") as! Int) + 495)
+        rcv297.text = String((monster!.value(forKey: "maxRCV") as! Int) + 297)
         
         RCVContainer.addSubview(RCVLabel)
         RCVContainer.addSubview(minRCVLabel)

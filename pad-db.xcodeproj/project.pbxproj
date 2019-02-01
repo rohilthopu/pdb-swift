@@ -18,6 +18,13 @@
 		789EA54D22023199004F9A68 /* DungeonFloorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA54C22023199004F9A68 /* DungeonFloorUtils.swift */; };
 		789EA55022023238004F9A68 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA54F22023238004F9A68 /* Utils.swift */; };
 		789EA55422038C75004F9A68 /* structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA55322038C75004F9A68 /* structs.swift */; };
+		789EA5582203AE40004F9A68 /* DownloadLeaderboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA5572203AE40004F9A68 /* DownloadLeaderboardData.swift */; };
+		789EA55A2203AE77004F9A68 /* DownloadMonsterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA5592203AE77004F9A68 /* DownloadMonsterData.swift */; };
+		789EA55C2203AEE2004F9A68 /* DownloadSkillData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA55B2203AEE2004F9A68 /* DownloadSkillData.swift */; };
+		789EA55E2203AF27004F9A68 /* DownloadDungeonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA55D2203AF27004F9A68 /* DownloadDungeonData.swift */; };
+		789EA5602203AF64004F9A68 /* DownloadVersionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA55F2203AF64004F9A68 /* DownloadVersionIdentifier.swift */; };
+		789EA5622203B01C004F9A68 /* DownloadGuerrillaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA5612203B01C004F9A68 /* DownloadGuerrillaData.swift */; };
+		789EA5642204A404004F9A68 /* GlobalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA5632204A404004F9A68 /* GlobalVars.swift */; };
 		78AC396821F13CF10094CCA7 /* GuerrillaUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AC396721F13CF10094CCA7 /* GuerrillaUtils.swift */; };
 		78AC396A21F1475A0094CCA7 /* LoadDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AC396921F1475A0094CCA7 /* LoadDataVC.swift */; };
 		78B00307211CA297001F246E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B00306211CA297001F246E /* AppDelegate.swift */; };
@@ -37,7 +44,6 @@
 		78D1EAFD21EC0ACA002D4197 /* SetupSaleItemUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EAFC21EC0ACA002D4197 /* SetupSaleItemUtil.swift */; };
 		78D1EB0021EC291A002D4197 /* LeaderboardTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EAFF21EC291A002D4197 /* LeaderboardTableVC.swift */; };
 		78D1EB0221EC295E002D4197 /* LeaderboardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EB0121EC295E002D4197 /* LeaderboardUtils.swift */; };
-		78D1EB0421EC2A6A002D4197 /* LeaderboardVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EB0321EC2A6A002D4197 /* LeaderboardVars.swift */; };
 		78D1EB0621EC2CFD002D4197 /* LeaderboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EB0521EC2CFD002D4197 /* LeaderboardCell.swift */; };
 		78D6885621CB07BD001C0DEF /* GuerrillaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6885521CB07BD001C0DEF /* GuerrillaTableViewController.swift */; };
 		78D6885921CB4DAC001C0DEF /* GuerrillaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6885821CB4DAC001C0DEF /* GuerrillaCell.swift */; };
@@ -62,6 +68,13 @@
 		789EA54C22023199004F9A68 /* DungeonFloorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonFloorUtils.swift; sourceTree = "<group>"; };
 		789EA54F22023238004F9A68 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		789EA55322038C75004F9A68 /* structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = structs.swift; sourceTree = "<group>"; };
+		789EA5572203AE40004F9A68 /* DownloadLeaderboardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadLeaderboardData.swift; sourceTree = "<group>"; };
+		789EA5592203AE77004F9A68 /* DownloadMonsterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadMonsterData.swift; sourceTree = "<group>"; };
+		789EA55B2203AEE2004F9A68 /* DownloadSkillData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadSkillData.swift; sourceTree = "<group>"; };
+		789EA55D2203AF27004F9A68 /* DownloadDungeonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadDungeonData.swift; sourceTree = "<group>"; };
+		789EA55F2203AF64004F9A68 /* DownloadVersionIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVersionIdentifier.swift; sourceTree = "<group>"; };
+		789EA5612203B01C004F9A68 /* DownloadGuerrillaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadGuerrillaData.swift; sourceTree = "<group>"; };
+		789EA5632204A404004F9A68 /* GlobalVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVars.swift; sourceTree = "<group>"; };
 		78AC396721F13CF10094CCA7 /* GuerrillaUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuerrillaUtils.swift; sourceTree = "<group>"; };
 		78AC396921F1475A0094CCA7 /* LoadDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDataVC.swift; sourceTree = "<group>"; };
 		78B00303211CA296001F246E /* pad-db.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pad-db.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,7 +96,6 @@
 		78D1EAFC21EC0ACA002D4197 /* SetupSaleItemUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupSaleItemUtil.swift; sourceTree = "<group>"; };
 		78D1EAFF21EC291A002D4197 /* LeaderboardTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableVC.swift; sourceTree = "<group>"; };
 		78D1EB0121EC295E002D4197 /* LeaderboardUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardUtils.swift; sourceTree = "<group>"; };
-		78D1EB0321EC2A6A002D4197 /* LeaderboardVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardVars.swift; sourceTree = "<group>"; };
 		78D1EB0521EC2CFD002D4197 /* LeaderboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardCell.swift; sourceTree = "<group>"; };
 		78D6885521CB07BD001C0DEF /* GuerrillaTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuerrillaTableViewController.swift; sourceTree = "<group>"; };
 		78D6885821CB4DAC001C0DEF /* GuerrillaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuerrillaCell.swift; sourceTree = "<group>"; };
@@ -168,6 +180,9 @@
 			isa = PBXGroup;
 			children = (
 				789EA54F22023238004F9A68 /* Utils.swift */,
+				78B54A6B22011AA10076EEA7 /* constants.swift */,
+				789EA55322038C75004F9A68 /* structs.swift */,
+				789EA5632204A404004F9A68 /* GlobalVars.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -185,6 +200,19 @@
 				78D1EAFC21EC0ACA002D4197 /* SetupSaleItemUtil.swift */,
 			);
 			path = "Monster View Utils";
+			sourceTree = "<group>";
+		};
+		789EA5562203AE0F004F9A68 /* Data Download Utils */ = {
+			isa = PBXGroup;
+			children = (
+				789EA5572203AE40004F9A68 /* DownloadLeaderboardData.swift */,
+				789EA5592203AE77004F9A68 /* DownloadMonsterData.swift */,
+				789EA55B2203AEE2004F9A68 /* DownloadSkillData.swift */,
+				789EA55D2203AF27004F9A68 /* DownloadDungeonData.swift */,
+				789EA55F2203AF64004F9A68 /* DownloadVersionIdentifier.swift */,
+				789EA5612203B01C004F9A68 /* DownloadGuerrillaData.swift */,
+			);
+			path = "Data Download Utils";
 			sourceTree = "<group>";
 		};
 		78B002FA211CA296001F246E = {
@@ -208,6 +236,7 @@
 		78B00305211CA296001F246E /* pad-db */ = {
 			isa = PBXGroup;
 			children = (
+				789EA5562203AE0F004F9A68 /* Data Download Utils */,
 				789EA54E2202322A004F9A68 /* Utils */,
 				787DF38321FA75C1001FB99C /* Dungeons */,
 				78F0374C21ED89D9002B7468 /* Skills */,
@@ -220,8 +249,6 @@
 				78B0030D211CA297001F246E /* pad_db.xcdatamodeld */,
 				78D6885B21E5459F001C0DEF /* TabController.swift */,
 				78F0374A21EC5666002B7468 /* Storyboard.storyboard */,
-				78B54A6B22011AA10076EEA7 /* constants.swift */,
-				789EA55322038C75004F9A68 /* structs.swift */,
 				78AC396921F1475A0094CCA7 /* LoadDataVC.swift */,
 			);
 			path = "pad-db";
@@ -266,7 +293,6 @@
 			children = (
 				78D1EAFF21EC291A002D4197 /* LeaderboardTableVC.swift */,
 				78D1EB0121EC295E002D4197 /* LeaderboardUtils.swift */,
-				78D1EB0321EC2A6A002D4197 /* LeaderboardVars.swift */,
 				78D1EB0521EC2CFD002D4197 /* LeaderboardCell.swift */,
 			);
 			path = Leaderboard;
@@ -419,16 +445,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78D1EB0421EC2A6A002D4197 /* LeaderboardVars.swift in Sources */,
 				78B0030F211CA297001F246E /* pad_db.xcdatamodeld in Sources */,
 				78AC396A21F1475A0094CCA7 /* LoadDataVC.swift in Sources */,
 				78B54A6C22011AA10076EEA7 /* constants.swift in Sources */,
+				789EA5602203AF64004F9A68 /* DownloadVersionIdentifier.swift in Sources */,
+				789EA55C2203AEE2004F9A68 /* DownloadSkillData.swift in Sources */,
 				78D6885C21E5459F001C0DEF /* TabController.swift in Sources */,
 				789EA55022023238004F9A68 /* Utils.swift in Sources */,
 				789EA54B22022F60004F9A68 /* DungeonFloorViewController.swift in Sources */,
 				78B0031C211CA2FC001F246E /* MonsterTableController.swift in Sources */,
+				789EA5582203AE40004F9A68 /* DownloadLeaderboardData.swift in Sources */,
+				789EA55E2203AF27004F9A68 /* DownloadDungeonData.swift in Sources */,
 				789EA55422038C75004F9A68 /* structs.swift in Sources */,
+				789EA5642204A404004F9A68 /* GlobalVars.swift in Sources */,
 				787DF38921FA7693001FB99C /* DungeonTableUtils.swift in Sources */,
+				789EA5622203B01C004F9A68 /* DownloadGuerrillaData.swift in Sources */,
 				78B54A6F2201263A0076EEA7 /* DungeonFloorCell.swift in Sources */,
 				78D6886621E6F431001C0DEF /* MultiplierUtils.swift in Sources */,
 				787DF38E21FA8048001FB99C /* DungeonCell.swift in Sources */,
@@ -442,6 +473,7 @@
 				78D1EAF921EBF2FA002D4197 /* SetupSkillUtils.swift in Sources */,
 				78D1EB0621EC2CFD002D4197 /* LeaderboardCell.swift in Sources */,
 				78D6885921CB4DAC001C0DEF /* GuerrillaCell.swift in Sources */,
+				789EA55A2203AE77004F9A68 /* DownloadMonsterData.swift in Sources */,
 				780751DE21F8E9DA008720D4 /* SkillPageController.swift in Sources */,
 				78F0782321ED990300F0DE1B /* SkillCellUtils.swift in Sources */,
 				78D1EAF521EBF2A7002D4197 /* SetupHeaderUtils.swift in Sources */,
