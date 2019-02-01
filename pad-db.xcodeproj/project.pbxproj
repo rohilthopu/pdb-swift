@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		780751DE21F8E9DA008720D4 /* SkillPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780751DD21F8E9DA008720D4 /* SkillPageController.swift */; };
 		787DF38621FA7601001FB99C /* DungeonListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38521FA7600001FB99C /* DungeonListTableViewController.swift */; };
 		787DF38921FA7693001FB99C /* DungeonTableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38821FA7693001FB99C /* DungeonTableUtils.swift */; };
 		787DF38E21FA8048001FB99C /* DungeonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38D21FA8048001FB99C /* DungeonCell.swift */; };
@@ -57,7 +56,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		780751DD21F8E9DA008720D4 /* SkillPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillPageController.swift; sourceTree = "<group>"; };
 		787DF38521FA7600001FB99C /* DungeonListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonListTableViewController.swift; sourceTree = "<group>"; };
 		787DF38821FA7693001FB99C /* DungeonTableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonTableUtils.swift; sourceTree = "<group>"; };
 		787DF38D21FA8048001FB99C /* DungeonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonCell.swift; sourceTree = "<group>"; };
@@ -139,13 +137,31 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7805127C2204E2FB00B2B3D6 /* Skill Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7888153621ED8CAB004981D2 /* SkillTableUtils.swift */,
+				78F0782221ED990300F0DE1B /* SkillCellUtils.swift */,
+			);
+			path = "Skill Utils";
+			sourceTree = "<group>";
+		};
+		7805127D2204E30C00B2B3D6 /* Skill Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7888153821ED8D8F004981D2 /* SkillCell.swift */,
+				7888153421ED8B02004981D2 /* SkillTableVC.swift */,
+			);
+			path = "Skill Controllers";
+			sourceTree = "<group>";
+		};
 		787DF38321FA75C1001FB99C /* Dungeons */ = {
 			isa = PBXGroup;
 			children = (
+				787DF38421FA75DA001FB99C /* Dungeon Table */,
 				789EA54922022F3C004F9A68 /* DungeonFloor */,
 				78B54A6D2201219F0076EEA7 /* Dungeon */,
 				787DF38721FA767C001FB99C /* Utils */,
-				787DF38421FA75DA001FB99C /* Dungeon Table */,
 			);
 			path = Dungeons;
 			sourceTree = "<group>";
@@ -179,6 +195,8 @@
 		789EA54E2202322A004F9A68 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				78D6885B21E5459F001C0DEF /* TabController.swift */,
+				78AC396921F1475A0094CCA7 /* LoadDataVC.swift */,
 				789EA54F22023238004F9A68 /* Utils.swift */,
 				78B54A6B22011AA10076EEA7 /* constants.swift */,
 				789EA55322038C75004F9A68 /* structs.swift */,
@@ -247,9 +265,7 @@
 				78B00310211CA297001F246E /* Assets.xcassets */,
 				78B00315211CA297001F246E /* Info.plist */,
 				78B0030D211CA297001F246E /* pad_db.xcdatamodeld */,
-				78D6885B21E5459F001C0DEF /* TabController.swift */,
 				78F0374A21EC5666002B7468 /* Storyboard.storyboard */,
-				78AC396921F1475A0094CCA7 /* LoadDataVC.swift */,
 			);
 			path = "pad-db";
 			sourceTree = "<group>";
@@ -322,11 +338,8 @@
 		78F0374C21ED89D9002B7468 /* Skills */ = {
 			isa = PBXGroup;
 			children = (
-				7888153421ED8B02004981D2 /* SkillTableVC.swift */,
-				7888153621ED8CAB004981D2 /* SkillTableUtils.swift */,
-				7888153821ED8D8F004981D2 /* SkillCell.swift */,
-				78F0782221ED990300F0DE1B /* SkillCellUtils.swift */,
-				780751DD21F8E9DA008720D4 /* SkillPageController.swift */,
+				7805127D2204E30C00B2B3D6 /* Skill Controllers */,
+				7805127C2204E2FB00B2B3D6 /* Skill Utils */,
 			);
 			path = Skills;
 			sourceTree = "<group>";
@@ -474,7 +487,6 @@
 				78D1EB0621EC2CFD002D4197 /* LeaderboardCell.swift in Sources */,
 				78D6885921CB4DAC001C0DEF /* GuerrillaCell.swift in Sources */,
 				789EA55A2203AE77004F9A68 /* DownloadMonsterData.swift in Sources */,
-				780751DE21F8E9DA008720D4 /* SkillPageController.swift in Sources */,
 				78F0782321ED990300F0DE1B /* SkillCellUtils.swift in Sources */,
 				78D1EAF521EBF2A7002D4197 /* SetupHeaderUtils.swift in Sources */,
 				78D1EAEF21EA97BC002D4197 /* MonsterVCUtils.swift in Sources */,
