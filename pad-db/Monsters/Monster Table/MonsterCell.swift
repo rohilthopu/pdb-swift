@@ -31,7 +31,7 @@ class MonsterCell: UITableViewCell {
         return textView
     } ()
     
-    let portraitContainer: UIImageView = {
+    var portraitContainer: UIImageView = {
         let img = UIImageView()
         img.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
         img.clipsToBounds = true
@@ -95,8 +95,12 @@ class MonsterCell: UITableViewCell {
             let id = monster.value(forKey: "cardID") as! Int
             monsterIDLabel.text = "No. " + String(id)
             // Get the portrait image using Kingfisher
+            
             let url = URL(string: (monster.value(forKey: "portraitURL") as! String))
+            
+            portraitContainer.kf.indicatorType = .activity
             portraitContainer.kf.setImage(with: url)
+          
 
         }
         
