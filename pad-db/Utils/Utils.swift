@@ -18,7 +18,6 @@ func makeView() -> UIView {
     return vw
 }
 
-
 func makeSeparator() -> UIView {
     let separator = UIView()
     separator.translatesAutoresizingMaskIntoConstraints = false
@@ -146,6 +145,4 @@ func getFullURL(id:Int) -> String {
     return full_url + String(id) + pngEngding
 }
 
-func getClosedTama() -> String {
-    return portrait_url + String(4014) + pngEngding
-}
+

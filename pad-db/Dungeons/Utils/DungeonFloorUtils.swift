@@ -202,8 +202,145 @@ extension DungeonFloorViewController {
         fixedTeamContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
         fixedTeamContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
         fixedTeamContainer.topAnchor.constraint(equalTo: messageContainer.bottomAnchor, constant: 20).isActive = true
-        fixedTeamContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         
+    }
+    
+    func makePossibleDrops() {
+        
+        let header = makeLabel(ofSize: 20, withText: "Possible Drops")
+        possibleDropContainer.addSubview(header)
+        header.topAnchor.constraint(equalTo: possibleDropContainer.topAnchor).isActive = true
+        header.centerXAnchor.constraint(equalTo: possibleDropContainer.centerXAnchor).isActive = true
+        
+        
+        let separator = makeSeparator()
+        possibleDropContainer.addSubview(separator)
+        separator.bottomAnchor.constraint(equalTo: possibleDropContainer.bottomAnchor).isActive = true
+        separator.centerXAnchor.constraint(equalTo: possibleDropContainer.centerXAnchor).isActive = true
+        
+        let possibleDrops = getPossibleDrops(forFloor: dungeonFloor!)
+
+        var dropViews = [UIView]()
+
+        if !possibleDrops.isEmpty {
+            for key in possibleDrops.keys {
+                let monster = getMonster(forID: Int(key)!)
+                let rarity = possibleDrops[key]!.stringValue
+
+                let dropView = makeView()
+
+                let img = makeImgView(forImg: monster.value(forKey: "portraitURL") as! String, ofSize: 50)
+                let nameLabel = makeLabel(ofSize: 16, withText: monster.value(forKey: "name") as! String)
+                let rarityLabel = makeLabel(ofSize: 16, withText: rarity)
+                
+                img.isUserInteractionEnabled = true
+                img.addGestureRecognizer(makeTapRecognizer())
+                img.tag = monster.value(forKey: "cardID") as! Int
+
+
+                dropView.addSubview(img)
+                dropView.addSubview(nameLabel)
+                dropView.addSubview(rarityLabel)
+
+                img.leadingAnchor.constraint(equalTo: dropView.leadingAnchor).isActive = true
+                img.topAnchor.constraint(equalTo: dropView.topAnchor).isActive = true
+                img.bottomAnchor.constraint(equalTo: dropView.bottomAnchor).isActive = true
+                
+
+                nameLabel.leadingAnchor.constraint(equalTo: img.trailingAnchor, constant: 10).isActive = true
+                nameLabel.trailingAnchor.constraint(equalTo: rarityLabel.leadingAnchor, constant: -10).isActive = true
+                nameLabel.centerYAnchor.constraint(equalTo: img.centerYAnchor).isActive = true
+                nameLabel.adjustsFontSizeToFitWidth = true
+
+                rarityLabel.trailingAnchor.constraint(equalTo: dropView.trailingAnchor).isActive = true
+                rarityLabel.centerYAnchor.constraint(equalTo: img.centerYAnchor).isActive = true
+                rarityLabel.textAlignment = .right
+
+                dropViews.append(dropView)
+            }
+
+            for i in 0...dropViews.count - 1 {
+                let view = dropViews[i]
+                possibleDropContainer.addSubview(view)
+                view.leadingAnchor.constraint(equalTo: possibleDropContainer.leadingAnchor).isActive = true
+                view.trailingAnchor.constraint(equalTo: possibleDropContainer.trailingAnchor).isActive = true
+                view.centerXAnchor.constraint(equalTo: possibleDropContainer.centerXAnchor).isActive = true
+
+                if i == 0 {
+                    view.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20).isActive = true
+                } else if i == dropViews.count - 1 {
+                    view.topAnchor.constraint(equalTo: dropViews[i-1].bottomAnchor, constant: 10).isActive = true
+                    view.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
+                } else {
+                    view.topAnchor.constraint(equalTo: dropViews[i-1].bottomAnchor, constant: 10).isActive = true
+                }
+            }
+        } else {
+            let noneLabel = makeLabel(ofSize: 16, withText: "No monster drops")
+            possibleDropContainer.addSubview(noneLabel)
+            noneLabel.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20).isActive = true
+            noneLabel.centerXAnchor.constraint(equalTo: possibleDropContainer.centerXAnchor).isActive = true
+            noneLabel.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
+        }
+
+
+        
+        scrollView.addSubview(possibleDropContainer)
+        
+        possibleDropContainer.topAnchor.constraint(equalTo: fixedTeamContainer.bottomAnchor, constant: 20).isActive = true
+        possibleDropContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
+        possibleDropContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+        possibleDropContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -50).isActive = true
+        
+    }
+    
+    @objc
+    func openMonsterPage(sender: UITapGestureRecognizer) {
+        
+        let currentMonster = getMonster(forID: sender.view!.tag)
+        
+        let monsterVC = MonsterVC()
+        monsterVC.monster = currentMonster
+        
+        let activeSkill = skills.filter({
+            let skillID = $0.value(forKey: "skillID") as! Int
+            let aSkill = currentMonster.value(forKey: "activeSkillID") as! Int
+            
+            if skillID == aSkill {
+                return true
+            }
+            else {
+                return false
+            }
+        }).first
+        
+        let leaderSkill = skills.filter({
+            let skillID = $0.value(forKey: "skillID") as! Int
+            let lSkill = currentMonster.value(forKey: "leaderSkillID") as! Int
+            
+            if skillID == lSkill {
+                return true
+            }
+            else {
+                return false
+            }
+        }).first
+        
+        monsterVC.activeSkill = activeSkill
+        monsterVC.leaderSkill = leaderSkill
+        
+        
+        //        let navCon = UINavigationController(rootViewController: monsterVC)
+        //        self.present(navCon, animated: true, completion: nil)
+        self.navigationController?.pushViewController(monsterVC, animated: true)
+    }
+    
+    func makeTapRecognizer() -> UITapGestureRecognizer {
+        let tapRec = UITapGestureRecognizer()
+        
+        tapRec.addTarget(self, action: #selector(openMonsterPage))
+        
+        return tapRec
     }
 
 

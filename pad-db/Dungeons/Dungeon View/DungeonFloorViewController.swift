@@ -46,6 +46,13 @@ class DungeonFloorViewController: UIViewController {
         return view
     }()
     
+    let possibleDropContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        return view
+    }()
+    
     var dungeonFloor:NSManagedObject?
 
     override func viewDidLoad() {
@@ -61,6 +68,7 @@ class DungeonFloorViewController: UIViewController {
         makeRequiredDungeonView()
         makeDungeonMessages()
         makeFixedTeam()
+        makePossibleDrops()
     }
 
 }
