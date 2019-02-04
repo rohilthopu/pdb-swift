@@ -283,8 +283,6 @@ extension DungeonFloorViewController {
             noneLabel.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
         }
 
-
-        
         scrollView.addSubview(possibleDropContainer)
         
         possibleDropContainer.topAnchor.constraint(equalTo: fixedTeamContainer.bottomAnchor, constant: 20).isActive = true
@@ -298,7 +296,6 @@ extension DungeonFloorViewController {
     func openMonsterPage(sender: UITapGestureRecognizer) {
         
         let currentMonster = getMonster(forID: sender.view!.tag)
-        
         let monsterVC = MonsterVC()
         monsterVC.monster = currentMonster
         
@@ -329,17 +326,12 @@ extension DungeonFloorViewController {
         monsterVC.activeSkill = activeSkill
         monsterVC.leaderSkill = leaderSkill
         
-        
-        //        let navCon = UINavigationController(rootViewController: monsterVC)
-        //        self.present(navCon, animated: true, completion: nil)
         self.navigationController?.pushViewController(monsterVC, animated: true)
     }
     
     func makeTapRecognizer() -> UITapGestureRecognizer {
         let tapRec = UITapGestureRecognizer()
-        
         tapRec.addTarget(self, action: #selector(openMonsterPage))
-        
         return tapRec
     }
 
