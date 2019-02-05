@@ -89,4 +89,25 @@ extension MonsterVC {
         
         return tapRec
     }
+    
+    @objc
+    func openDungeonPage(sender: UITapGestureRecognizer) {
+        let currentDungeon:NSManagedObject = getDungeon(forID: sender.view!.tag)!
+    
+        
+        let floorListTable = DungeonTableViewController()
+        floorListTable.dungeon_floors = getFloors(for: currentDungeon)
+        //        let titleLabel = makeLabel(ofSize: 16, withText: (currentDungeon.value(forKey: "name") as! String))
+        //        floorListTable.navigationItem.titleView = titleLabel
+        floorListTable.navigationItem.title = (currentDungeon.value(forKey: "name") as! String)
+        self.navigationController?.pushViewController(floorListTable, animated: true)
+    }
+    
+    func makeTapRecognizerDungeon() -> UITapGestureRecognizer {
+        let tapRec = UITapGestureRecognizer()
+        
+        tapRec.addTarget(self, action: #selector(openDungeonPage))
+        
+        return tapRec
+    }
 }

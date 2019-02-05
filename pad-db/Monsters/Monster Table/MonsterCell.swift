@@ -97,8 +97,6 @@ class MonsterCell: UITableViewCell {
             // Get the portrait image using Kingfisher
             
             let url = URL(string: (monster.value(forKey: "portraitURL") as! String))
-            
-            portraitContainer.kf.indicatorType = .activity
             portraitContainer.kf.setImage(with: url)
           
 

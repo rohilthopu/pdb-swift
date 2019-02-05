@@ -37,6 +37,7 @@ func makeImgView(forImg link:String, ofSize size:CGFloat) -> UIImageView {
     
     img.widthAnchor.constraint(equalToConstant: size).isActive = true
     img.heightAnchor.constraint(equalToConstant: size).isActive = true
+    img.layer.cornerRadius = 3
     
     return img
 }

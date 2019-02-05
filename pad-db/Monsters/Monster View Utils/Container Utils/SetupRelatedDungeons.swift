@@ -23,13 +23,18 @@ extension MonsterVC {
         relatedDungeonContainer.addSubview(separator)
         separator.bottomAnchor.constraint(equalTo: relatedDungeonContainer.bottomAnchor).isActive = true
         separator.centerXAnchor.constraint(equalTo: relatedDungeonContainer.centerXAnchor).isActive = true
-                
+        
         if !relatedDungeons.isEmpty {
             var allViews = [UILabel?]()
             for dungeon in relatedDungeons {
                 let label = makeLabel(ofSize: 12, withText: (dungeon.value(forKey: "name") as! String))
                 label.adjustsFontSizeToFitWidth = true
                 label.textAlignment = .center
+                label.isUserInteractionEnabled = true
+                label.addGestureRecognizer(makeTapRecognizerDungeon())
+                label.tag = dungeon.value(forKey: "dungeonID") as! Int
+                label.layer.borderWidth = 0.25
+                label.layer.cornerRadius = 3
                 allViews.append(label)
             }
             
@@ -72,16 +77,17 @@ extension MonsterVC {
                     v2.bottomAnchor.constraint(equalTo: pView.bottomAnchor).isActive = true
                 }
                 
+                // a bit of a dank solution to deal with only one pair set
                 if i == 0 && pairs.count == 1 {
                     pView.topAnchor.constraint(equalTo: pairContainer.topAnchor).isActive = true
                     pView.bottomAnchor.constraint(equalTo: pairContainer.bottomAnchor).isActive = true
                 } else if i == 0 {
                     pView.topAnchor.constraint(equalTo: pairContainer.topAnchor).isActive = true
                 } else if pair == pairs.last! {
-                    pView.topAnchor.constraint(equalTo: pairs[i-1].0!.bottomAnchor, constant: 10).isActive = true
+                    pView.topAnchor.constraint(equalTo: pairs[i-1].0!.bottomAnchor, constant: 15).isActive = true
                     pView.bottomAnchor.constraint(equalTo: pairContainer.bottomAnchor).isActive = true
                 } else {
-                    pView.topAnchor.constraint(equalTo: pairs[i-1].0!.bottomAnchor, constant: 10).isActive = true
+                    pView.topAnchor.constraint(equalTo: pairs[i-1].0!.bottomAnchor, constant: 15).isActive = true
                 }
                 
             }
