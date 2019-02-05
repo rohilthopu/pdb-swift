@@ -34,7 +34,6 @@ func makeImgView(forImg link:String, ofSize size:CGFloat) -> UIImageView {
     img.translatesAutoresizingMaskIntoConstraints = false
     img.clipsToBounds = true
     img.kf.setImage(with: URL(string: link))
-    
     img.widthAnchor.constraint(equalToConstant: size).isActive = true
     img.heightAnchor.constraint(equalToConstant: size).isActive = true
     img.layer.cornerRadius = 3
@@ -44,10 +43,8 @@ func makeImgView(forImg link:String, ofSize size:CGFloat) -> UIImageView {
 
 func makeImgView(fromIconName icon:String, ofSize size:CGFloat) -> UIImageView {
     let img = UIImageView()
-    
     img.translatesAutoresizingMaskIntoConstraints = false
     img.clipsToBounds = true
-    
     img.image = UIImage(named: icon)
     img.heightAnchor.constraint(equalToConstant: size).isActive = true
     img.widthAnchor.constraint(equalToConstant: size).isActive = true
@@ -65,57 +62,31 @@ func makeLabel(ofSize size: CGFloat, withText text: String) -> UILabel {
 }
 
 func getMonster(forID id:Int) -> NSManagedObject {
-    
-    let monster = monsters.filter({
-        let currID = $0.value(forKey: "cardID") as! Int
-        
-        if id == currID {
-            return true
-        }
-        else {
-            return false
-        }
-    }).first
-    
-    return monster!
+    return monsters.filter({
+        return id == $0.value(forKey: "cardID") as! Int
+    }).first!
 }
 
 func getMonster(forSkillID id:Int) -> NSManagedObject? {
-    let monster = monsters.filter({
+    return monsters.filter({
         let aSkill = $0.value(forKey: "activeSkillID") as! Int
         let lSkill = $0.value(forKey: "leaderSkillID") as! Int
-        
         return id == aSkill || id == lSkill
-        
     }).last
-    return monster
 }
 
 func getSkill(forSkill id:Int) -> NSManagedObject {
-    
-    let skill = skills.filter({
-        let currID = $0.value(forKey: "skillID") as! Int
-        
-        if id == currID {
-            return true
-        }
-        else {
-            return false
-        }
-    }).first
-    
-    return skill!
+    return skills.filter({
+        return id == $0.value(forKey: "skillID") as! Int
+    }).first!
 }
 
 func getFloors(for dungeon: NSManagedObject) -> [NSManagedObject] {
-    var currentFloors = floors.filter{ ($0.value(forKey: "dungeonID") as! Int) == (dungeon.value(forKey: "dungeonID") as! Int) }
-    currentFloors.sort{
+    return floors.filter{ ($0.value(forKey: "dungeonID") as! Int) == (dungeon.value(forKey: "dungeonID") as! Int) }.sorted {
         let first = $0.value(forKey: "floorNumber") as! Int
         let second = $1.value(forKey: "floorNumber") as! Int
-        
         return first > second
     }
-    return currentFloors
 }
 
 func getDungeon(forID id:Int) -> NSManagedObject? {
@@ -152,7 +123,7 @@ func getRelatedDungeons(forMonster monster:NSManagedObject) -> [NSManagedObject]
         if let _ = drops[id.description] {
             let d = dungeons.filter{
                 return $0.value(forKey: "dungeonID") as! Int == floor.value(forKey: "dungeonID") as! Int
-            }.first!
+                }.first!
             
             if !relatedDungeons.contains(d) {
                 relatedDungeons.append(d)
