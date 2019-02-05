@@ -27,6 +27,8 @@ class GuerrillaTableViewController: UITableViewController {
         setupNavBar()
         loadFromDB()
         loadGuerrilla()
+        
+        displayDungeons = naDungeons
     
         vc.view.backgroundColor = UIColor.black
         vc.view.alpha = CGFloat(0.75)
@@ -39,7 +41,10 @@ class GuerrillaTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
+        print(currGroupNA)
+        updateGuerrillaViewNA()
+        updateGuerrillaViewJP()
+        self.tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,8 +52,6 @@ class GuerrillaTableViewController: UITableViewController {
             checkVersion()
             self.present(vc, animated: true, completion: nil)
         }
-        updateGuerrillaViewNA()
-        updateGuerrillaViewJP()
         self.tableView.reloadData()
     }
     

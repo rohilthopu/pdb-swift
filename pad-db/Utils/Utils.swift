@@ -167,11 +167,23 @@ func checkVersion() {
 func updateGuerrillaViewNA() {
     if currGroupNA != "None" {
         naDungeons = allGuerrillaDungeons.filter{ $0.group!.lowercased() == currGroupNA.lowercased() && $0.server! == "NA" }
+    } else {
+        naDungeons = allGuerrillaDungeons.filter{$0.server! == "NA" }
+    }
+    
+    if showingNA {
+        displayDungeons = naDungeons
     }
 }
 
 func updateGuerrillaViewJP() {
     if currGroupJP != "None" {
         jpDungeons = allGuerrillaDungeons.filter{ $0.group!.lowercased() == currGroupJP.lowercased() && $0.server! == "JP" }
+    } else {
+        jpDungeons = allGuerrillaDungeons.filter{$0.server! == "JP" }
+    }
+    
+    if !showingNA {
+        displayDungeons = jpDungeons
     }
 }

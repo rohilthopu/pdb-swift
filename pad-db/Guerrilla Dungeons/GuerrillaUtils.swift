@@ -76,13 +76,13 @@ extension GuerrillaTableViewController {
     func swapServer() {
         
         if showingNA {
-            updateGuerrillaViewJP()
+            displayDungeons = jpDungeons
             showingNA = false
             navigationItem.title = "JP Calendar"
             self.tableView.reloadData()
         }
         else {
-            updateGuerrillaViewNA()
+            displayDungeons = naDungeons
             showingNA = true
             navigationItem.title = "NA Calendar"
             self.tableView.reloadData()

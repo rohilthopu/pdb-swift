@@ -49,15 +49,10 @@ func loadGuerrilla() {
                     dungeon.imgLink = getPortraitURL(id: item["image_id"].intValue)
                     allGuerrillaDungeons.append(dungeon)
                 }
-                
             }
         }
     }
     
-    if showingNA {
-        updateGuerrillaViewNA()
-    }
-    else {
-        updateGuerrillaViewJP()
-    }
+    updateGuerrillaViewNA()
+    updateGuerrillaViewJP()
 }

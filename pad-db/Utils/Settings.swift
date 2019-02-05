@@ -33,17 +33,6 @@ final class SettingsViewController: QuickTableViewController {
         ]
     }
     
-    // MARK: - Actions
-    private func showAlert(_ sender: Row) {
-        // ...
-    }
-    
-    private func didToggleSelection() -> (Row) -> Void {
-        return { [weak self] row in
-            // ...
-        }
-    }
-    
     private func didSelectNAGroup() -> (Row) -> Void {
         return { [weak self] row in
             if let option = row as? OptionRowCompatible {
