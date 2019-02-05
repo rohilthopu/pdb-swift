@@ -19,6 +19,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootViewController = TabController()
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
+        if let gr = getNAGroup() {
+            currGroupNA = gr
+        } else {
+            UserDefaults.standard.set("None", forKey: "nagroup")
+        }
+        
+        if let gr = getJPGroup() {
+            currGroupJP = gr
+        } else {
+            UserDefaults.standard.set("None", forKey: "jpgroup")
+        }
+        
         return true
     }
 

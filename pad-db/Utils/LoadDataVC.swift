@@ -66,7 +66,6 @@ class LoadDataVC: UIViewController {
         saveMonsterData()
         saveSkillData()
         updateVersionIdentifier()
-        loadGuerrilla()
         runUpdate = false
     }
     

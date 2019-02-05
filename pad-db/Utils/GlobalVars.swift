@@ -12,6 +12,8 @@ import CoreData
 
 var naDungeons = [Guerrilla]()
 var jpDungeons = [Guerrilla]()
+
+var allGuerrillaDungeons = [Guerrilla]()
 var displayDungeons = [Guerrilla]()
 var showingNA = true
 var runUpdate = true
@@ -41,3 +43,5 @@ var goodSkills = [NSManagedObject]()
 var dungeons = [NSManagedObject]()
 var floors = [NSManagedObject]()
 
+var currGroupNA = ""
+var currGroupJP = ""

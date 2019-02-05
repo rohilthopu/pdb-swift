@@ -26,7 +26,8 @@ class GuerrillaTableViewController: UITableViewController {
         
         setupNavBar()
         loadFromDB()
-        
+        loadGuerrilla()
+    
         vc.view.backgroundColor = UIColor.black
         vc.view.alpha = CGFloat(0.75)
         vc.view.isOpaque = false
@@ -46,6 +47,9 @@ class GuerrillaTableViewController: UITableViewController {
             checkVersion()
             self.present(vc, animated: true, completion: nil)
         }
+        updateGuerrillaViewNA()
+        updateGuerrillaViewJP()
+        self.tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -75,7 +79,7 @@ class GuerrillaTableViewController: UITableViewController {
         let index = indexPath.row
         let gDungeon = displayDungeons[index]
         let currentDungeon = getDungeon(forID: gDungeon.dungeon_id!)
-
+        
         if let currentDungeon = currentDungeon {
             let floorListTable = DungeonTableViewController()
             floorListTable.dungeon_floors = getFloors(for: currentDungeon)

@@ -37,7 +37,6 @@ func loadGuerrilla() {
                     dungeon.remainingTime = 0
                 }
                 
-                
                 if dungeon.remainingTime! != 0 {
                     dungeon.name = item["name"].stringValue
                     dungeon.startTime = item["startTime"].stringValue
@@ -47,15 +46,8 @@ func loadGuerrilla() {
                     dungeon.server = item["server"].stringValue
                     dungeon.group = item["group"].stringValue
                     dungeon.dungeon_id = item["dungeon_id"].intValue
-                    
                     dungeon.imgLink = getPortraitURL(id: item["image_id"].intValue)
-                    
-                    if item["server"].stringValue == "NA" {
-                        naDungeons.append(dungeon)
-                    }
-                    else {
-                        jpDungeons.append(dungeon)
-                    }
+                    allGuerrillaDungeons.append(dungeon)
                 }
                 
             }
@@ -63,9 +55,9 @@ func loadGuerrilla() {
     }
     
     if showingNA {
-        displayDungeons = naDungeons
+        updateGuerrillaViewNA()
     }
     else {
-        displayDungeons = jpDungeons
+        updateGuerrillaViewJP()
     }
 }

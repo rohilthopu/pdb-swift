@@ -13,37 +13,27 @@ import QuickTableViewController
 final class SettingsViewController: QuickTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.barTintColor = .white
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: makeBackButton())
+        self.navigationItem.title = "Settings"
         
         tableContents = [
-            Section(title: "Switch", rows: [
-                SwitchRow(text: "Setting 1", switchValue: true, action: { _ in }),
-                SwitchRow(text: "Setting 2", switchValue: false, action: { _ in })
-                ]),
+            RadioSection(title: "Group NA", options: [
+                OptionRow(text: "Red", isSelected: isUserSelectedGroup(forGroup: "Red"), action: didSelectNAGroup()),
+                OptionRow(text: "Blue", isSelected: isUserSelectedGroup(forGroup: "Blue"), action: didSelectNAGroup()),
+                OptionRow(text: "Green", isSelected: isUserSelectedGroup(forGroup: "Green"), action: didSelectNAGroup()),
+                OptionRow(text: "None", isSelected: isUserSelectedGroup(forGroup: "None"), action: didSelectNAGroup())
+                ], footer: "Groups are determined by your starter dragon color."),
             
-            Section(title: "Tap Action", rows: [
-                TapActionRow(text: "Tap action", action: { [weak self] in self?.showAlert($0) })
-                ]),
-            
-            Section(title: "Navigation", rows: [
-                NavigationRow(text: "CellStyle.default", detailText: .none, icon: .named("gear")),
-                NavigationRow(text: "CellStyle", detailText: .subtitle(".subtitle"), icon: .named("globe")),
-                NavigationRow(text: "CellStyle", detailText: .value1(".value1"), icon: .named("time"), action: { _ in }),
-                NavigationRow(text: "CellStyle", detailText: .value2(".value2"))
-                ], footer: "UITableViewCellStyle.Value2 hides the image view."),
-            
-            RadioSection(title: "Radio Buttons", options: [
-                OptionRow(text: "Option 1", isSelected: true, action: didToggleSelection()),
-                OptionRow(text: "Option 2", isSelected: false, action: didToggleSelection()),
-                OptionRow(text: "Option 3", isSelected: false, action: didToggleSelection())
-                ], footer: "See RadioSection for more details.")
+            RadioSection(title: "Group JP", options: [
+                OptionRow(text: "Red", isSelected: isUserSelectedGroupJP(forGroup: "Red"), action: didSelectJPGroup()),
+                OptionRow(text: "Blue", isSelected: isUserSelectedGroupJP(forGroup: "Blue"), action: didSelectJPGroup()),
+                OptionRow(text: "Green", isSelected: isUserSelectedGroupJP(forGroup: "Green"), action: didSelectJPGroup()),
+                OptionRow(text: "None", isSelected: isUserSelectedGroupJP(forGroup: "None"), action: didSelectJPGroup()),
+
+                ], footer: "Groups are determined by your starter dragon color."),
         ]
     }
     
     // MARK: - Actions
-    
     private func showAlert(_ sender: Row) {
         // ...
     }
@@ -51,6 +41,28 @@ final class SettingsViewController: QuickTableViewController {
     private func didToggleSelection() -> (Row) -> Void {
         return { [weak self] row in
             // ...
+        }
+    }
+    
+    private func didSelectNAGroup() -> (Row) -> Void {
+        return { [weak self] row in
+            if let option = row as? OptionRowCompatible {
+                if option.isSelected {
+                    UserDefaults.standard.set(option.text, forKey: "nagroup")
+                    currGroupNA = option.text
+                }
+            }
+        }
+    }
+    
+    private func didSelectJPGroup() -> (Row) -> Void {
+        return { [weak self] row in
+            if let option = row as? OptionRowCompatible {
+                if option.isSelected {
+                    UserDefaults.standard.set(option.text, forKey: "jpgroup")
+                    currGroupJP = option.text
+                }
+            }
         }
     }
     
@@ -67,4 +79,11 @@ final class SettingsViewController: QuickTableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    private func isUserSelectedGroup(forGroup group:String) -> Bool {
+        return UserDefaults.standard.string(forKey: "nagroup") == group
+    }
+    
+    private func isUserSelectedGroupJP(forGroup group:String) -> Bool {
+        return UserDefaults.standard.string(forKey: "jpgroup") == group
+    }
 }

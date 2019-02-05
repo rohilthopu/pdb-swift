@@ -13,19 +13,6 @@ import CoreData
 
 extension GuerrillaTableViewController {
     
-    func checkVersion() {
-        if let url = URL(string: version_api_url) {
-            if let data = try? String(contentsOf: url) {
-                let json = JSON(parseJSON: data).arrayValue
-                for v in json {
-                    newVersions["dungeon"] = v["dungeon"].intValue
-                    newVersions["monster"] = v["monster"].intValue
-                    newVersions["skill"] = v["skill"].intValue
-                }
-            }
-        }
-    }
-    
     func loadFromDB() {
         
         guard let appDelegate =
@@ -82,21 +69,20 @@ extension GuerrillaTableViewController {
     @objc
     func showSettings() {
         let settings = SettingsViewController()
-        let navCon = UINavigationController(rootViewController: settings)
-        self.present(navCon, animated: true)
+        self.navigationController?.pushViewController(settings, animated: true)
     }
     
     @objc
     func swapServer() {
         
         if showingNA {
-            displayDungeons = jpDungeons
+            updateGuerrillaViewJP()
             showingNA = false
             navigationItem.title = "JP Calendar"
             self.tableView.reloadData()
         }
         else {
-            displayDungeons = naDungeons
+            updateGuerrillaViewNA()
             showingNA = true
             navigationItem.title = "NA Calendar"
             self.tableView.reloadData()

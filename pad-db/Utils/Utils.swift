@@ -142,4 +142,36 @@ func getFullURL(id:Int) -> String {
     return full_url + String(id) + pngEngding
 }
 
+func getNAGroup() -> String? {
+    return UserDefaults.standard.string(forKey: "nagroup")
+}
 
+func getJPGroup() -> String? {
+    return UserDefaults.standard.string(forKey: "jpgroup")
+}
+
+
+func checkVersion() {
+    if let url = URL(string: version_api_url) {
+        if let data = try? String(contentsOf: url) {
+            let json = JSON(parseJSON: data).arrayValue
+            for v in json {
+                newVersions["dungeon"] = v["dungeon"].intValue
+                newVersions["monster"] = v["monster"].intValue
+                newVersions["skill"] = v["skill"].intValue
+            }
+        }
+    }
+}
+
+func updateGuerrillaViewNA() {
+    if currGroupNA != "None" {
+        naDungeons = allGuerrillaDungeons.filter{ $0.group!.lowercased() == currGroupNA.lowercased() && $0.server! == "NA" }
+    }
+}
+
+func updateGuerrillaViewJP() {
+    if currGroupJP != "None" {
+        jpDungeons = allGuerrillaDungeons.filter{ $0.group!.lowercased() == currGroupJP.lowercased() && $0.server! == "JP" }
+    }
+}
