@@ -33,10 +33,10 @@ extension MonsterVC {
             for skill in eSkills {
                 
                 let sView = makeView()
-                let name = makeLabel(ofSize: 16, withText: skill.value(forKey: "name") as! String)
+                let name = makeLabel(ofSize: 18, withText: skill.value(forKey: "name") as! String)
                 
                 if !name.text!.contains("ERROR") && !name.text!.contains("None") {
-                    let effect = makeLabel(ofSize: 14, withText: skill.value(forKey: "effect") as! String)
+                    let effect = makeLabel(ofSize: 16, withText: skill.value(forKey: "effect") as! String)
                     
                     sView.addSubview(name)
                     sView.addSubview(effect)
