@@ -216,6 +216,7 @@ class MonsterVC: UIViewController {
         setupAwakenings()
         setupSuperAwakenings()
         setupSkills()
+        setupEnemySkills()
         setupEvoMaterials()
         setupDevoMaterials()
         setupRelatedDungeons()

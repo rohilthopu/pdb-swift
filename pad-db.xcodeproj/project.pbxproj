@@ -25,6 +25,7 @@
 		789EA5602203AF64004F9A68 /* DownloadVersionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA55F2203AF64004F9A68 /* DownloadVersionIdentifier.swift */; };
 		789EA5622203B01C004F9A68 /* DownloadGuerrillaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA5612203B01C004F9A68 /* DownloadGuerrillaData.swift */; };
 		789EA5642204A404004F9A68 /* GlobalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA5632204A404004F9A68 /* GlobalVars.swift */; };
+		78A64674220A10870043429F /* setupEnemySkills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A64673220A10870043429F /* setupEnemySkills.swift */; };
 		78AC396821F13CF10094CCA7 /* GuerrillaUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AC396721F13CF10094CCA7 /* GuerrillaUtils.swift */; };
 		78AC396A21F1475A0094CCA7 /* LoadDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AC396921F1475A0094CCA7 /* LoadDataVC.swift */; };
 		78B00307211CA297001F246E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B00306211CA297001F246E /* AppDelegate.swift */; };
@@ -75,6 +76,7 @@
 		789EA55F2203AF64004F9A68 /* DownloadVersionIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVersionIdentifier.swift; sourceTree = "<group>"; };
 		789EA5612203B01C004F9A68 /* DownloadGuerrillaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadGuerrillaData.swift; sourceTree = "<group>"; };
 		789EA5632204A404004F9A68 /* GlobalVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVars.swift; sourceTree = "<group>"; };
+		78A64673220A10870043429F /* setupEnemySkills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setupEnemySkills.swift; sourceTree = "<group>"; };
 		78AC396721F13CF10094CCA7 /* GuerrillaUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuerrillaUtils.swift; sourceTree = "<group>"; };
 		78AC396921F1475A0094CCA7 /* LoadDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDataVC.swift; sourceTree = "<group>"; };
 		78B00303211CA296001F246E /* pad-db.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pad-db.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +169,7 @@
 				78D1EAFA21EBF31D002D4197 /* SetupEvoUtils.swift */,
 				78D1EAFC21EC0ACA002D4197 /* SetupSaleItemUtil.swift */,
 				7828D0732208E3CD0004E6CD /* SetupRelatedDungeons.swift */,
+				78A64673220A10870043429F /* setupEnemySkills.swift */,
 			);
 			path = "Container Utils";
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				78D1EAEF21EA97BC002D4197 /* MonsterVCUtils.swift in Sources */,
 				78AC396821F13CF10094CCA7 /* GuerrillaUtils.swift in Sources */,
 				78B54A6A21FF9E030076EEA7 /* DungeonTableViewController.swift in Sources */,
+				78A64674220A10870043429F /* setupEnemySkills.swift in Sources */,
 				78D1EAF321EBF261002D4197 /* SetupStatUtils.swift in Sources */,
 				7888153921ED8D8F004981D2 /* SkillCell.swift in Sources */,
 				78D12D4621E95E6900F4971A /* MonsterTableUtils.swift in Sources */,
