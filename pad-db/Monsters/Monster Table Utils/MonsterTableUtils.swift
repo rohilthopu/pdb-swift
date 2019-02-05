@@ -48,7 +48,6 @@ extension MonsterTableController {
     func clearDB() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
-//        let entity = NSEntityDescription.entity(forEntityName: "Version", in: managedContext)!
 
         
         
@@ -63,17 +62,16 @@ extension MonsterTableController {
         let fetchRequest4 = NSFetchRequest<NSFetchRequestResult>(entityName: "Floor")
         let deleteRequest4 = NSBatchDeleteRequest(fetchRequest: fetchRequest4)
         
+        let fetchRequest5 = NSFetchRequest<NSFetchRequestResult>(entityName: "EnemySkill")
+        let deleteRequest5 = NSBatchDeleteRequest(fetchRequest: fetchRequest5)
         
-//        let item = NSManagedObject(entity: entity, insertInto: managedContext)
-//        item.setValue(1, forKey: "monster")
-//        item.setValue(1, forKey: "skill")
-//        item.setValue(1, forKey: "dungeon")
         
         do {
             try managedContext.execute(deleteRequest)
             try managedContext.execute(deleteRequest2)
             try managedContext.execute(deleteRequest3)
             try managedContext.execute(deleteRequest4)
+            try managedContext.execute(deleteRequest5)
             try managedContext.save()
         } catch {
             print("There was an error deleting items.")
