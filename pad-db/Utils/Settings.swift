@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import QuickTableViewController
+import CoreData
 
 final class SettingsViewController: QuickTableViewController {
     override func viewDidLoad() {
@@ -28,8 +29,11 @@ final class SettingsViewController: QuickTableViewController {
                 OptionRow(text: "Blue", isSelected: isUserSelectedGroupJP(forGroup: "Blue"), action: didSelectJPGroup()),
                 OptionRow(text: "Green", isSelected: isUserSelectedGroupJP(forGroup: "Green"), action: didSelectJPGroup()),
                 OptionRow(text: "None", isSelected: isUserSelectedGroupJP(forGroup: "None"), action: didSelectJPGroup()),
-
                 ], footer: "Groups are determined by your starter dragon color."),
+            
+            Section(title: "Wipe database", rows: [
+                TapActionRow(text: "Delete everrrythingggg", action: { [weak self] in self?.clearDB($0) })
+                ]),
         ]
     }
     
@@ -74,5 +78,49 @@ final class SettingsViewController: QuickTableViewController {
     
     private func isUserSelectedGroupJP(forGroup group:String) -> Bool {
         return UserDefaults.standard.string(forKey: "jpgroup") == group
+    }
+    
+    func clearDB(_ sender: Row) {
+        
+        monsters.removeAll()
+        skills.removeAll()
+        goodSkills.removeAll()
+        goodMonsters.removeAll()
+        dungeons.removeAll()
+        wipeDatabase()
+        
+    }
+    
+    func wipeDatabase() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MonsterNA")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        let fetchRequest2 = NSFetchRequest<NSFetchRequestResult>(entityName: "SkillNA")
+        let deleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
+        
+        let fetchRequest3 = NSFetchRequest<NSFetchRequestResult>(entityName: "Dungeon")
+        let deleteRequest3 = NSBatchDeleteRequest(fetchRequest: fetchRequest3)
+        
+        let fetchRequest4 = NSFetchRequest<NSFetchRequestResult>(entityName: "Floor")
+        let deleteRequest4 = NSBatchDeleteRequest(fetchRequest: fetchRequest4)
+        
+        let fetchRequest5 = NSFetchRequest<NSFetchRequestResult>(entityName: "EnemySkill")
+        let deleteRequest5 = NSBatchDeleteRequest(fetchRequest: fetchRequest5)
+        
+        
+        do {
+            try managedContext.execute(deleteRequest)
+            try managedContext.execute(deleteRequest2)
+            try managedContext.execute(deleteRequest3)
+            try managedContext.execute(deleteRequest4)
+            try managedContext.execute(deleteRequest5)
+            try managedContext.save()
+        } catch {
+            print("There was an error deleting items.")
+        }
     }
 }

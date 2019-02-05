@@ -66,6 +66,7 @@ class LoadDataVC: UIViewController {
         saveMonsterData()
         saveSkillData()
         updateVersionIdentifier()
+        loadFromDB()
         runUpdate = false
     }
     

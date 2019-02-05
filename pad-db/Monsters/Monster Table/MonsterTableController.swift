@@ -28,7 +28,6 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     var monsterSearchController:UISearchController!
     
     var isDescendedSort:Bool = true
-    var isRefreshing:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +35,10 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         setupView()
         filterGoodMonsters()
         tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
     }
     
     private func filterGoodMonsters() {
@@ -58,11 +61,9 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         
         
-        let eraseButton = UIBarButtonItem(image: UIImage(named: "reload")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(clearDBAndReloadView))
-        
         let sortButton = UIBarButtonItem(image: UIImage(named: "order")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(changeSort))
         
-        let buttonItems = [eraseButton, sortButton]
+        let buttonItems = [sortButton]
         
         navigationItem.rightBarButtonItems = buttonItems
         

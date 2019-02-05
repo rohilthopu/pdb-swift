@@ -93,11 +93,8 @@ func saveSkillData() {
                 item.setValue(skill.levels, forKey: "levels")
                 item.setValue(skill.minTurns, forKey: "minTurns")
                 item.setValue(skill.maxTurns, forKey: "maxTurns")
-                skills.append(item)
             }
         }
-        
-        
     }
     do {
         try managedContext.save()
