@@ -29,8 +29,9 @@ class LoadDataVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        getAllIds()
         getNewData()
+        getAllIds()
+
         self.dismiss(animated: true, completion: nil)
     }
 

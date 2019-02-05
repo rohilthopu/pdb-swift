@@ -137,6 +137,24 @@ func getFixedTeam(forFloor floor:NSManagedObject) -> [String:JSON] {
     return JSON(parseJSON: floor.value(forKey: "fixedTeam") as! String).dictionaryValue
 }
 
+func getRelatedDungeons(forMonster monster:NSManagedObject) -> [NSManagedObject] {
+    var relatedDungeons = [NSManagedObject]()
+    let id = monster.value(forKey: "cardID") as! Int
+    for floor in floors {
+        let drops = getPossibleDrops(forFloor: floor)
+        if let _ = drops[id.description] {
+            let d = dungeons.filter{
+                return $0.value(forKey: "dungeonID") as! Int == floor.value(forKey: "dungeonID") as! Int
+            }.first!
+            
+            if !relatedDungeons.contains(d) {
+                relatedDungeons.append(d)
+            }
+        }
+    }
+    return relatedDungeons
+}
+
 func getPortraitURL(id:Int) -> String {
     return portrait_url + String(id) + pngEngding
 }

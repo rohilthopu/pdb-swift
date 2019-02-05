@@ -175,20 +175,17 @@ class MonsterVC: UIViewController {
         return vw
     }()
     
+    let relatedDungeonContainer: UIView = {
+        let vw = UIView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        vw.clipsToBounds = true
+        return vw
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         spacing = (self.view.frame.width)/50
-        
-        
-//        self.view.backgroundColor = UIColor.white
-//        self.view.layer.cornerRadius = 4
-        
-        
-        // make a back button
-//        self.navigationController?.navigationBar.barTintColor = .white
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: makeBackButton())
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: makeDismissButton())
         
         if #available(iOS 11, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -214,8 +211,8 @@ class MonsterVC: UIViewController {
         setupSkills()
         setupEvoMaterials()
         setupDevoMaterials()
+        setupRelatedDungeons()
         setupSaleItems()
-        
     }
     
 }
