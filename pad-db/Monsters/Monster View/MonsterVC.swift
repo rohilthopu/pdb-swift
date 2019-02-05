@@ -182,6 +182,13 @@ class MonsterVC: UIViewController {
         return vw
     }()
     
+    let enemySkillContainer: UIView = {
+        let vw = UIView()
+        vw.translatesAutoresizingMaskIntoConstraints = false
+        vw.clipsToBounds = true
+        return vw
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -213,6 +220,7 @@ class MonsterVC: UIViewController {
         setupDevoMaterials()
         setupRelatedDungeons()
         setupSaleItems()
+        
     }
     
 }

@@ -138,6 +138,12 @@ func getFixedTeam(forFloor floor:NSManagedObject) -> [String:JSON] {
     return JSON(parseJSON: floor.value(forKey: "fixedTeam") as! String).dictionaryValue
 }
 
+func getEnemySkills(forMonster monster:NSManagedObject) -> [NSManagedObject] {
+    let eSkillsRaw = monster.value(forKey: "enemySkills") as! String
+    let eSkills = JSON(parseJSON: eSkillsRaw).arrayValue.map{$0.intValue}
+    return enemySkills.filter { eSkills.contains($0.value(forKey: "enemy_skill_id") as! Int) }
+}
+
 func getRelatedDungeons(forMonster monster:NSManagedObject) -> [NSManagedObject] {
     var relatedDungeons = [NSManagedObject]()
     let id = monster.value(forKey: "cardID") as! Int

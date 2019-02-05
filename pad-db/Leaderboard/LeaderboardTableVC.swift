@@ -52,11 +52,6 @@ class LeaderboardTableVC: UITableViewController, UISearchControllerDelegate, UIS
         
         
         tableView.reloadData()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     
@@ -85,7 +80,12 @@ class LeaderboardTableVC: UITableViewController, UISearchControllerDelegate, UIS
         userSearch.searchResultsUpdater = self
         userSearch.obscuresBackgroundDuringPresentation = false
         userSearch.searchBar.placeholder = "Search Users"
-        navigationItem.searchController = userSearch
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = userSearch
+        } else {
+            // Fallback on earlier versions
+            self.tableView.tableHeaderView = userSearch.searchBar
+        }
         userSearch.isActive = false
         userSearch.hidesNavigationBarDuringPresentation = false
         self.definesPresentationContext = true
@@ -96,7 +96,9 @@ class LeaderboardTableVC: UITableViewController, UISearchControllerDelegate, UIS
     }
     
     private func setupNavBar() {
-        navigationController?.navigationBar.prefersLargeTitles = true
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         navigationItem.title = "Karma Leaderboard"
     }

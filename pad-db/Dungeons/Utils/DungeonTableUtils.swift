@@ -13,7 +13,9 @@ import CoreData
 extension DungeonListTableViewController {
     func setupView() {
         self.navigationItem.title = "Dungeons"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+        }
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
     }
     
@@ -33,7 +35,12 @@ extension DungeonListTableViewController {
         dungeonSearch.searchResultsUpdater = self
         dungeonSearch.obscuresBackgroundDuringPresentation = false
         dungeonSearch.searchBar.placeholder = "Search Dungeons"
-        navigationItem.searchController = dungeonSearch
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = dungeonSearch
+        } else {
+            // Fallback on earlier versions
+            self.tableView.tableHeaderView = dungeonSearch.searchBar
+        }
         dungeonSearch.isActive = true
         dungeonSearch.hidesNavigationBarDuringPresentation = false
         self.definesPresentationContext = true

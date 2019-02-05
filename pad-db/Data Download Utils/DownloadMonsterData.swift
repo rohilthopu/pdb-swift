@@ -149,8 +149,7 @@ func getMonsterData() {
                     monster.sellMP = card["sellMP"].intValue
                     monster.sellCoin = card["sellCoin"].intValue
                     
-                    monster.enemySkills = card["enemySkills"].stringValue
-                    
+                    monster.enemySkills = card["enemy_skills"].stringValue                    
                     rawMonsters.append(monster)
                 }
             }

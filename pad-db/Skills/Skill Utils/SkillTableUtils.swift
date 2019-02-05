@@ -12,7 +12,11 @@ import CoreData
 
 extension SkillTableVC {
     func setupNavBar() {
-        navigationController?.navigationBar.prefersLargeTitles = true
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        } else {
+            // Fallback on earlier versions
+        }
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         navigationItem.title = "Skill"
     }
@@ -27,7 +31,12 @@ extension SkillTableVC {
         skillSearch.searchResultsUpdater = self
         skillSearch.obscuresBackgroundDuringPresentation = false
         skillSearch.searchBar.placeholder = "Search Skills"
-        navigationItem.searchController = skillSearch
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = skillSearch
+        } else {
+            // Fallback on earlier versions
+            self.tableView.tableHeaderView = skillSearch.searchBar
+        }
         skillSearch.isActive = true
         skillSearch.hidesNavigationBarDuringPresentation = false
         self.definesPresentationContext = true

@@ -53,7 +53,6 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     private func setupNavBar() {
         if #available(iOS 11, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
-            
         }
         navigationItem.title = "Monsters"
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
@@ -78,7 +77,12 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         monsterSearchController.searchResultsUpdater = self
         monsterSearchController.obscuresBackgroundDuringPresentation = false
         monsterSearchController.searchBar.placeholder = "Search Monsters"
-        navigationItem.searchController = monsterSearchController
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = monsterSearchController
+        } else {
+            // Fallback on earlier versions
+            self.tableView.tableHeaderView = monsterSearchController.searchBar
+        }
         monsterSearchController.isActive = true
         monsterSearchController.hidesNavigationBarDuringPresentation = false
         self.definesPresentationContext = true
