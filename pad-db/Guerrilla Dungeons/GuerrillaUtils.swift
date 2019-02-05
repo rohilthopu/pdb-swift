@@ -71,7 +71,19 @@ extension GuerrillaTableViewController {
         }
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         navigationItem.title = "NA Calendar"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "world")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(swapServer))
+        let server = UIBarButtonItem(image: UIImage(named: "world")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(swapServer))
+        let settings = UIBarButtonItem(image: UIImage(named: "settings")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(showSettings))
+        
+        let items = [server, settings]
+        
+        navigationItem.rightBarButtonItems = items
+    }
+    
+    @objc
+    func showSettings() {
+        let settings = SettingsViewController()
+        let navCon = UINavigationController(rootViewController: settings)
+        self.present(navCon, animated: true)
     }
     
     @objc

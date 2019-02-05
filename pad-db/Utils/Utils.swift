@@ -123,10 +123,11 @@ func getRelatedDungeons(forMonster monster:NSManagedObject) -> [NSManagedObject]
         if let _ = drops[id.description] {
             let d = dungeons.filter{
                 return $0.value(forKey: "dungeonID") as! Int == floor.value(forKey: "dungeonID") as! Int
-                }.first!
-            
-            if !relatedDungeons.contains(d) {
-                relatedDungeons.append(d)
+                }.first
+            if let d = d {
+                if !relatedDungeons.contains(d) {
+                    relatedDungeons.append(d)
+                }
             }
         }
     }

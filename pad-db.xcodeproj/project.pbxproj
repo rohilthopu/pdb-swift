@@ -26,6 +26,7 @@
 		789EA5622203B01C004F9A68 /* DownloadGuerrillaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA5612203B01C004F9A68 /* DownloadGuerrillaData.swift */; };
 		789EA5642204A404004F9A68 /* GlobalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA5632204A404004F9A68 /* GlobalVars.swift */; };
 		78A64674220A10870043429F /* setupEnemySkills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A64673220A10870043429F /* setupEnemySkills.swift */; };
+		78A64676220A2B1C0043429F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A64675220A2B1C0043429F /* Settings.swift */; };
 		78AC396821F13CF10094CCA7 /* GuerrillaUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AC396721F13CF10094CCA7 /* GuerrillaUtils.swift */; };
 		78AC396A21F1475A0094CCA7 /* LoadDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AC396921F1475A0094CCA7 /* LoadDataVC.swift */; };
 		78B00307211CA297001F246E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B00306211CA297001F246E /* AppDelegate.swift */; };
@@ -77,6 +78,7 @@
 		789EA5612203B01C004F9A68 /* DownloadGuerrillaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadGuerrillaData.swift; sourceTree = "<group>"; };
 		789EA5632204A404004F9A68 /* GlobalVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVars.swift; sourceTree = "<group>"; };
 		78A64673220A10870043429F /* setupEnemySkills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setupEnemySkills.swift; sourceTree = "<group>"; };
+		78A64675220A2B1C0043429F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		78AC396721F13CF10094CCA7 /* GuerrillaUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuerrillaUtils.swift; sourceTree = "<group>"; };
 		78AC396921F1475A0094CCA7 /* LoadDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDataVC.swift; sourceTree = "<group>"; };
 		78B00303211CA296001F246E /* pad-db.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pad-db.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,6 +222,7 @@
 				78B54A6B22011AA10076EEA7 /* constants.swift */,
 				789EA55322038C75004F9A68 /* structs.swift */,
 				789EA5632204A404004F9A68 /* GlobalVars.swift */,
+				78A64675220A2B1C0043429F /* Settings.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -440,11 +443,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-pad-db/Pods-pad-db-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/QuickTableViewController/QuickTableViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QuickTableViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +490,7 @@
 				78D6885C21E5459F001C0DEF /* TabController.swift in Sources */,
 				789EA55022023238004F9A68 /* Utils.swift in Sources */,
 				789EA54B22022F60004F9A68 /* DungeonFloorViewController.swift in Sources */,
+				78A64676220A2B1C0043429F /* Settings.swift in Sources */,
 				78B0031C211CA2FC001F246E /* MonsterTableController.swift in Sources */,
 				789EA5582203AE40004F9A68 /* DownloadLeaderboardData.swift in Sources */,
 				789EA55E2203AF27004F9A68 /* DownloadDungeonData.swift in Sources */,

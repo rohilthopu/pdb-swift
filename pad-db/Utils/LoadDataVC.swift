@@ -58,12 +58,13 @@ class LoadDataVC: UIViewController {
         } else if monsters.count == 0 {
             getMonsterData()
             getSkillData()
+            getDungeonData()
+            getFloorData()
+            getEnemySkillData()
         }
         
         saveMonsterData()
         saveSkillData()
-        sortMonstersDescending()
-        sortSkillsDescending()
         updateVersionIdentifier()
         loadGuerrilla()
         runUpdate = false
@@ -79,23 +80,4 @@ class LoadDataVC: UIViewController {
             skillIDList[skill.value(forKey: "skillID") as! Int] = 1
         }
     }
-    
-    func sortMonstersDescending() {
-        monsters.sort{
-            let first = $0.value(forKey: "cardID") as! Int
-            let second = $1.value(forKey: "cardID") as! Int
-            
-            return first > second
-        }
-    }
-    
-    func sortSkillsDescending() {
-        skills.sort{
-            let first = $0.value(forKey: "skillID") as! Int
-            let second = $1.value(forKey: "skillID") as! Int
-            
-            return first > second
-        }
-    }
-    
 }

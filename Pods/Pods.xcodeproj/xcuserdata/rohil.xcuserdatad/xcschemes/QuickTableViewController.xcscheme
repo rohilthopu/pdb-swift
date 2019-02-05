@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8FE258F016A81942488CF13FB9A03B60"
-               BuildableName = "Pods_pad_db.framework"
-               BlueprintName = "Pods-pad-db"
+               BlueprintIdentifier = "C4D19C28FC1D12D65F918DBAAF782ABC"
+               BuildableName = "QuickTableViewController.framework"
+               BlueprintName = "QuickTableViewController"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8FE258F016A81942488CF13FB9A03B60"
-            BuildableName = "Pods_pad_db.framework"
-            BlueprintName = "Pods-pad-db"
+            BlueprintIdentifier = "C4D19C28FC1D12D65F918DBAAF782ABC"
+            BuildableName = "QuickTableViewController.framework"
+            BlueprintName = "QuickTableViewController"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -22,7 +22,7 @@ extension MonsterVC {
         let smallSize:CGFloat = spacing * 4
         let smallerSize:CGFloat = spacing * 2
         
-        let evolutions = monster!.value(forKey: "evolutions") as! [Int]
+        let evolutions = (monster!.value(forKey: "evolutions") as! [Int])
         
         
         evoMaterialsContainer.addSubview(evoMaterialsLabel)
@@ -48,9 +48,8 @@ extension MonsterVC {
         if evolutions.count > 0 {
             for i in 0...evolutions.count - 1 {
                 
-                if monsterIDList[evolutions[i]] != nil {
+                if monsterIDList[evolutions[i]] != nil && evolutions[i] < 10000 {
                     let evo = evolutions[i]
-                    
                     
                     let view = makeView()
                     let portraitImg = makeImgView(forImg: self.monster!.value(forKey: "portraitURL") as! String, ofSize: size)
@@ -115,8 +114,6 @@ extension MonsterVC {
                         }
                     }
                     
-                    
-                    
                     let equalsView = makeView()
                     
                     equalsView.addSubview(equalsImg)
@@ -140,22 +137,14 @@ extension MonsterVC {
                     monsterImg.bottomAnchor.constraint(equalTo: equalsView.bottomAnchor).isActive = true
                     
                     views.append(view)
-                    
-                    
-                    
                 }
-                
-                
             }
             
             if views.count > 0 {
                 for i in 0...views.count - 1 {
-                    
-                    
+            
                     let view = views[i]
-                    
                     evoMaterialsContainer.addSubview(view)
-                    
                     view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
                     
                     if i == 0 {
@@ -165,10 +154,8 @@ extension MonsterVC {
                         view.topAnchor.constraint(equalTo: views[i-1].bottomAnchor, constant: 10).isActive = true
                     }
                 }
-                
                 views.last!.bottomAnchor.constraint(equalTo: evoMaterialsContainer.bottomAnchor, constant: -20).isActive = true
             }
-            
         }
             
         else {
@@ -202,10 +189,8 @@ extension MonsterVC {
         devoMaterialsContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
         devoMaterialsContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
         
-        
         devoMaterialsLabel.centerXAnchor.constraint(equalTo: devoMaterialsContainer.centerXAnchor).isActive = true
         devoMaterialsLabel.topAnchor.constraint(equalTo: devoMaterialsContainer.topAnchor).isActive = true
-        
         
         separator.bottomAnchor.constraint(equalTo: devoMaterialsContainer.bottomAnchor).isActive = true
         separator.centerXAnchor.constraint(equalTo: devoMaterialsContainer.centerXAnchor).isActive = true
@@ -215,7 +200,6 @@ extension MonsterVC {
         if devolution > 0 && isUlt {
             
             if devolution != self.monster!.value(forKey: "cardID") as! Int {
-                
                 
                 let view = makeView()
                 let portraitImg = makeImgView(forImg: self.monster!.value(forKey: "portraitURL") as! String, ofSize: size)
@@ -243,8 +227,6 @@ extension MonsterVC {
                 monsterImg.isUserInteractionEnabled = true
                 
                 monsterImg.addGestureRecognizer(makeTapRecognizer())
-                
-                
                 
                 view.addSubview(monsterImg)
                 monsterImg.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true

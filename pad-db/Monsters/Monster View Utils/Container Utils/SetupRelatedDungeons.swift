@@ -27,7 +27,7 @@ extension MonsterVC {
         if !relatedDungeons.isEmpty {
             var allViews = [UILabel?]()
             for dungeon in relatedDungeons {
-                let label = makeLabel(ofSize: 12, withText: (dungeon.value(forKey: "name") as! String))
+                let label = makeLabel(ofSize: 14, withText: (dungeon.value(forKey: "name") as! String))
                 label.adjustsFontSizeToFitWidth = true
                 label.textAlignment = .center
                 label.isUserInteractionEnabled = true
@@ -63,7 +63,7 @@ extension MonsterVC {
                 pView.addSubview(v1)
                 
                 v1.leadingAnchor.constraint(equalTo: pView.leadingAnchor).isActive = true
-                v1.trailingAnchor.constraint(equalTo: pView.centerXAnchor, constant: -10).isActive = true
+                v1.trailingAnchor.constraint(equalTo: pView.centerXAnchor, constant: -5).isActive = true
                 v1.topAnchor.constraint(equalTo: pView.topAnchor).isActive = true
                 v1.bottomAnchor.constraint(equalTo: pView.bottomAnchor).isActive = true
                 
@@ -71,7 +71,7 @@ extension MonsterVC {
                 // not guaranteed to exist, so need to check for optionals
                 if let v2 = pair.1 {
                     pView.addSubview(v2)
-                    v2.leadingAnchor.constraint(equalTo: pView.centerXAnchor, constant: 10).isActive = true
+                    v2.leadingAnchor.constraint(equalTo: pView.centerXAnchor, constant: 5).isActive = true
                     v2.trailingAnchor.constraint(equalTo: pView.trailingAnchor).isActive = true
                     v2.topAnchor.constraint(equalTo: pView.topAnchor).isActive = true
                     v2.bottomAnchor.constraint(equalTo: pView.bottomAnchor).isActive = true

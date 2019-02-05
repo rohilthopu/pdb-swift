@@ -1,20 +1,24 @@
 PODS:
   - Kingfisher (5.1.0)
+  - QuickTableViewController (1.1.0)
   - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
   - Kingfisher (~> 5.0)
+  - QuickTableViewController
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Kingfisher
+    - QuickTableViewController
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Kingfisher: fcec238063d17404fca89bf0a850583211c4cbf6
+  QuickTableViewController: 129e71fc37a69991aff02bc946723d51a13d6aa5
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 5c45ba09f197631c97d59e15b87d1ec74ed333f9
+PODFILE CHECKSUM: 5a58a60d98151a680e38614ff029d654f9f755ed
 
 COCOAPODS: 1.5.3

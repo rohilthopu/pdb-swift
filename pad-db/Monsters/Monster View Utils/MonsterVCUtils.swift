@@ -11,36 +11,7 @@ import UIKit
 import CoreData
 
 extension MonsterVC {
-    
-    func makeBackButton() -> UIButton {
-        let backButtonImage = UIImage(named: "down-arrow")
-        let backButton = UIButton(type: .custom)
-        backButton.setImage(backButtonImage, for: .normal)
-        backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
-        return backButton
-    }
-    
-    func makeDismissButton() -> UIButton {
-        let backButtonImage = UIImage(named: "leave-all")
-        let backButton = UIButton(type: .custom)
-        backButton.setImage(backButtonImage, for: .normal)
-        backButton.addTarget(self, action: #selector(self.dismissAll), for: .touchUpInside)
-        return backButton
-    }
-    
-    @objc
-    func backButtonPressed() {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @objc
-    func dismissAll() {
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            appDelegate.window?.rootViewController?.dismiss(animated: true, completion: nil)
-            (appDelegate.window?.rootViewController as? UINavigationController)?.popToRootViewController(animated: true)
-        }
-    }
-    
+
     @objc
     func openMonsterPage(sender: UITapGestureRecognizer) {
         
@@ -76,17 +47,12 @@ extension MonsterVC {
         monsterVC.activeSkill = activeSkill
         monsterVC.leaderSkill = leaderSkill
         
-        
-//        let navCon = UINavigationController(rootViewController: monsterVC)
-//        self.present(navCon, animated: true, completion: nil)
         self.navigationController?.pushViewController(monsterVC, animated: true)
     }
     
     func makeTapRecognizer() -> UITapGestureRecognizer {
         let tapRec = UITapGestureRecognizer()
-        
         tapRec.addTarget(self, action: #selector(openMonsterPage))
-        
         return tapRec
     }
     
