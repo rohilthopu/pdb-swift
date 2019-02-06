@@ -45,8 +45,11 @@ class GuerrillaTableViewController: UITableViewController {
             checkVersion()
             self.present(vc, animated: true, completion: nil)
         }
-        updateGuerrillaViewNA()
-        updateGuerrillaViewJP()
+        
+        if changeGroup {
+            updateGuerrillaViewNA()
+            updateGuerrillaViewJP()
+        }
         self.tableView.reloadData()
     }
     
@@ -85,5 +88,4 @@ class GuerrillaTableViewController: UITableViewController {
             self.navigationController?.pushViewController(floorListTable, animated: true)
         }
     }
-    
 }

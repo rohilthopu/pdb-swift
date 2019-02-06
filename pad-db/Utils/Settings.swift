@@ -43,6 +43,7 @@ final class SettingsViewController: QuickTableViewController {
                 if option.isSelected {
                     UserDefaults.standard.set(option.text, forKey: "nagroup")
                     currGroupNA = option.text
+                    changeGroup = true
                 }
             }
         }
@@ -54,6 +55,7 @@ final class SettingsViewController: QuickTableViewController {
                 if option.isSelected {
                     UserDefaults.standard.set(option.text, forKey: "jpgroup")
                     currGroupJP = option.text
+                    changeGroup = true
                 }
             }
         }

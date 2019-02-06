@@ -45,3 +45,4 @@ var floors = [NSManagedObject]()
 
 var currGroupNA = ""
 var currGroupJP = ""
+var changeGroup = false
