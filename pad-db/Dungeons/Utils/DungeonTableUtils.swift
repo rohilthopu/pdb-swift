@@ -16,7 +16,7 @@ extension DungeonListTableViewController {
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
         }
-        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
     }
     
     func makeLabel(ofSize size: CGFloat, withText text: String) -> UILabel {
@@ -35,6 +35,8 @@ extension DungeonListTableViewController {
         dungeonSearch.searchResultsUpdater = self
         dungeonSearch.obscuresBackgroundDuringPresentation = false
         dungeonSearch.searchBar.placeholder = "Search Dungeons"
+        dungeonSearch.searchBar.barStyle = UIBarStyle.blackTranslucent
+
         if #available(iOS 11.0, *) {
             navigationItem.searchController = dungeonSearch
         } else {

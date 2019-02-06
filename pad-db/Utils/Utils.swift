@@ -11,6 +11,24 @@ import UIKit
 import CoreData
 import SwiftyJSON
 
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
+    }
+}
+
 func makeView() -> UIView {
     let vw = UIView()
     vw.translatesAutoresizingMaskIntoConstraints = false
@@ -244,16 +262,16 @@ func getNewData() {
         let localSkillVersion = v.value(forKey: "skill") as! Int
         let localDungeonVersion = v.value(forKey: "dungeon") as! Int
         
-        if newVersions["monster"]! > localMonsterVersion || monsters.count == 0 {
+        if newVersions["monster"]! > localMonsterVersion || newVersions["skill"]! > localSkillVersion || newVersions["dungeon"]! > localDungeonVersion || monsters.count == 0 {
+            // force rebuild for now. saves effort and guarantees most recent data
+            goodSkills.removeAll()
+            goodMonsters.removeAll()
+            
+            wipeDatabase()
+            
             getMonsterData()
             getEnemySkillData()
-        }
-        
-        if newVersions["skill"]! > localSkillVersion || skills.count == 0 {
             getSkillData()
-        }
-        
-        if newVersions["dungeon"]! > localDungeonVersion || dungeons.count == 0 {
             getDungeonData()
             getFloorData()
         }
@@ -279,5 +297,37 @@ func getAllIds() {
     }
     for skill in skills {
         skillIDList[skill.value(forKey: "skillID") as! Int] = 1
+    }
+}
+
+func wipeDatabase() {
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
+    let managedContext = appDelegate.persistentContainer.viewContext
+    
+    
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MonsterNA")
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    let fetchRequest2 = NSFetchRequest<NSFetchRequestResult>(entityName: "SkillNA")
+    let deleteRequest2 = NSBatchDeleteRequest(fetchRequest: fetchRequest2)
+    
+    let fetchRequest3 = NSFetchRequest<NSFetchRequestResult>(entityName: "Dungeon")
+    let deleteRequest3 = NSBatchDeleteRequest(fetchRequest: fetchRequest3)
+    
+    let fetchRequest4 = NSFetchRequest<NSFetchRequestResult>(entityName: "Floor")
+    let deleteRequest4 = NSBatchDeleteRequest(fetchRequest: fetchRequest4)
+    
+    let fetchRequest5 = NSFetchRequest<NSFetchRequestResult>(entityName: "EnemySkill")
+    let deleteRequest5 = NSBatchDeleteRequest(fetchRequest: fetchRequest5)
+    
+    
+    do {
+        try managedContext.execute(deleteRequest)
+        try managedContext.execute(deleteRequest2)
+        try managedContext.execute(deleteRequest3)
+        try managedContext.execute(deleteRequest4)
+        try managedContext.execute(deleteRequest5)
+        try managedContext.save()
+    } catch {
+        print("There was an error deleting items.")
     }
 }

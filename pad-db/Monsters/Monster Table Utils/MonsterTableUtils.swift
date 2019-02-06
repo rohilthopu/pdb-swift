@@ -14,20 +14,16 @@ extension MonsterTableController {
     
     @objc
     func changeSort() {
-        
-        
-            if isDescendedSort {
-                isDescendedSort = false
-                sortMonstersAscending()
-                tableView.reloadData()
-            }
-            else {
-                isDescendedSort = true
-                sortMonstersDescending()
-                tableView.reloadData()
-            }
-        
-        
+        if isDescendedSort {
+            isDescendedSort = false
+            sortMonstersAscending()
+            tableView.reloadData()
+        }
+        else {
+            isDescendedSort = true
+            sortMonstersDescending()
+            tableView.reloadData()
+        }
     }
     
     func sortMonstersDescending() {

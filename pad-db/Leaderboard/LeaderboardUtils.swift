@@ -18,6 +18,20 @@ extension LeaderboardTableVC {
         return userSearch.searchBar.text?.isEmpty ?? true
     }
     
+    @objc
+    func changeSort() {
+        if isDescending {
+            isDescending = false
+            users.sort(by: { $0.score! < $1.score! })
+            tableView.reloadData()
+        }
+        else {
+            isDescending = true
+            users.sort(by: { $0.score! > $1.score! })
+            tableView.reloadData()
+        }
+    }
+    
     
     func filterContentForText(_ searchText: String, scope: String = "All") {
         filteredUsers = users.filter({

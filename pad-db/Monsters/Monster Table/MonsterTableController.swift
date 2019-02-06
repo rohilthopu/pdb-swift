@@ -61,15 +61,8 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
             navigationController?.navigationBar.prefersLargeTitles = true
         }
         navigationItem.title = "Monsters"
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        
-        
-        let sortButton = UIBarButtonItem(image: UIImage(named: "order")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(changeSort))
-        
-        let buttonItems = [sortButton]
-        
-        navigationItem.rightBarButtonItems = buttonItems
-        
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "order")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(changeSort))
     }
     
     private func setupView() {
@@ -81,6 +74,8 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         monsterSearchController.searchResultsUpdater = self
         monsterSearchController.obscuresBackgroundDuringPresentation = false
         monsterSearchController.searchBar.placeholder = "Search Monsters"
+        monsterSearchController.searchBar.barStyle = UIBarStyle.blackTranslucent
+
         if #available(iOS 11.0, *) {
             navigationItem.searchController = monsterSearchController
         } else {

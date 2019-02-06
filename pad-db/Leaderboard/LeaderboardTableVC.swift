@@ -23,6 +23,7 @@ class LeaderboardTableVC: UITableViewController, UISearchControllerDelegate, UIS
     
     var userSearch:UISearchController!
     
+    var isDescending:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,19 +40,12 @@ class LeaderboardTableVC: UITableViewController, UISearchControllerDelegate, UIS
         setupNavBar()
         setupView()
         
-        tableView.refreshControl?.beginRefreshing()
-        DispatchQueue.global(qos: .background).async {
-            downloadLeaderboardData()
-            
-            DispatchQueue.main.async {
-                self.tableView.refreshControl?.endRefreshing()
-                self.tableView.reloadData()
-            }
-        }
-        
-        
-        
-        tableView.reloadData()
+        downloadLeaderboardData()
+        self.tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
     }
     
     
@@ -59,19 +53,10 @@ class LeaderboardTableVC: UITableViewController, UISearchControllerDelegate, UIS
     private func refreshLeaderboardList(_ sender: Any) {
         users.removeAll()
         tableView.reloadData()
-        
-        DispatchQueue.global(qos: .background).async {
-            downloadLeaderboardData()
-            
-            DispatchQueue.main.async {
-                self.tableView.refreshControl!.endRefreshing()
-                self.tableView.reloadData()
-            }
-        }
-        
-        
+        downloadLeaderboardData()
+        tableView.refreshControl?.endRefreshing()
+        self.tableView.reloadData()
     }
-    
     
     private func setupView() {
         
@@ -80,6 +65,7 @@ class LeaderboardTableVC: UITableViewController, UISearchControllerDelegate, UIS
         userSearch.searchResultsUpdater = self
         userSearch.obscuresBackgroundDuringPresentation = false
         userSearch.searchBar.placeholder = "Search Users"
+        userSearch.searchBar.barStyle = UIBarStyle.blackTranslucent
         if #available(iOS 11.0, *) {
             navigationItem.searchController = userSearch
         } else {
@@ -99,26 +85,21 @@ class LeaderboardTableVC: UITableViewController, UISearchControllerDelegate, UIS
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
         navigationItem.title = "Karma Leaderboard"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "order")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(changeSort))
     }
     
-    // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        
         if isFiltering() {
             return filteredUsers.count
         }
         return users.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath) as! LeaderboardCell
@@ -132,8 +113,4 @@ class LeaderboardTableVC: UITableViewController, UISearchControllerDelegate, UIS
         cell.rank = indexPath.row + 1
         return cell
     }
-    
-    
-    
-    
 }
