@@ -46,24 +46,8 @@ extension SkillTableVC {
         
     }
     
-    func filterUsableSkills() -> [NSManagedObject]{
-        var goodSkills = [NSManagedObject]()
-        
-        for skill in skills {
-            let c = skill.value(forKey: "cSkill1") as! Int
-            if c != -1 {
-                goodSkills.append(skill)
-            }
-        }
-        
-        goodSkills.sort{
-            let first = $0.value(forKey: "skillID") as! Int
-            let second = $1.value(forKey: "skillID") as! Int
-            
-            return first > second
-        }
-        
-        return goodSkills
+    func filterUsableSkills() -> [NSManagedObject] {
+        return skills.filter{ $0.value(forKey: "cSkill1") as! Int != -1 }
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {

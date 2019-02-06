@@ -23,12 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             currGroupNA = gr
         } else {
             UserDefaults.standard.set("None", forKey: "nagroup")
+            currGroupNA = "None"
         }
         
         if let gr = getJPGroup() {
             currGroupJP = gr
         } else {
             UserDefaults.standard.set("None", forKey: "jpgroup")
+            currGroupJP = "None"
         }
         
         return true

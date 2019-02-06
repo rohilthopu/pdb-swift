@@ -38,6 +38,9 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        if goodMonsters.count == 0 {
+            filterGoodMonsters()
+        }
         self.tableView.reloadData()
     }
     

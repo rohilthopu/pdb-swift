@@ -14,8 +14,6 @@ class GuerrillaTableViewController: UITableViewController {
     
     let cellid = "guerrillacell"
     let vc = LoadDataVC()
-    let vc2 = UIViewController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.refreshControl = UIRefreshControl()
@@ -39,7 +37,6 @@ class GuerrillaTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
         self.tableView.reloadData()
     }
     

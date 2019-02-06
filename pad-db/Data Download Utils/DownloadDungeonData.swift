@@ -70,9 +70,6 @@ func getFloorData() {
                 item.setValue(floor["enhancedType"].stringValue, forKey: "enhancedType")
                 item.setValue(floor["enhancedAttribute"].stringValue, forKey: "enhancedAttribute")
                 item.setValue(floor["imageID"].intValue, forKey: "imageID")
-                
-                floors.append(item)
-                
             }
         }
     }

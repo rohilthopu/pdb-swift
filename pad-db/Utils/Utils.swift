@@ -236,3 +236,48 @@ func getEvoList(forMonster monster:NSManagedObject) -> [Int] {
     return JSON(parseJSON: monster.value(forKey: "evolutions") as! String).arrayValue.map{ $0.intValue }
 
 }
+
+func getNewData() {
+    
+    if let v = versions.first {
+        let localMonsterVersion = v.value(forKey: "monster") as! Int
+        let localSkillVersion = v.value(forKey: "skill") as! Int
+        let localDungeonVersion = v.value(forKey: "dungeon") as! Int
+        
+        if newVersions["monster"]! > localMonsterVersion || monsters.count == 0 {
+            getMonsterData()
+            getEnemySkillData()
+        }
+        
+        if newVersions["skill"]! > localSkillVersion || skills.count == 0 {
+            getSkillData()
+        }
+        
+        if newVersions["dungeon"]! > localDungeonVersion || dungeons.count == 0 {
+            getDungeonData()
+            getFloorData()
+        }
+    } else if monsters.count == 0 {
+        // this would be a first run type of scenario, or if a db rebuild failed
+        getMonsterData()
+        getEnemySkillData()
+        getSkillData()
+        getDungeonData()
+        getFloorData()
+    }
+    updateVersionIdentifier()
+    loadFromDB()
+    getAllIds()
+    runUpdate = false
+}
+
+func getAllIds() {
+    monsterIDList.removeAll()
+    skillIDList.removeAll()
+    for monster in monsters {
+        monsterIDList[monster.value(forKey: "cardID") as! Int] = 1
+    }
+    for skill in skills {
+        skillIDList[skill.value(forKey: "skillID") as! Int] = 1
+    }
+}

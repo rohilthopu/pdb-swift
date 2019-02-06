@@ -13,7 +13,7 @@ extension MonsterVC {
     
     public func setupImageView() {
         
-        let url = URL(string: (monster!.value(forKey: "fullURL") as! String))
+        let url = URL(string: getFullURL(id: monster!.value(forKey: "cardID") as! Int))
         imageContainer.kf.setImage(with: url)
         
         

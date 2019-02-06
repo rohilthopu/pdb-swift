@@ -33,7 +33,7 @@ final class SettingsViewController: QuickTableViewController {
             
             Section(title: "Wipe database", rows: [
                 TapActionRow(text: "Delete everrrythingggg", action: { [weak self] in self?.clearDB($0) })
-                ]),
+                ], footer: "Deletes all database items and rebuilds it with the most recent data."),
         ]
     }
     
@@ -84,10 +84,24 @@ final class SettingsViewController: QuickTableViewController {
         
         monsters.removeAll()
         skills.removeAll()
+        dungeons.removeAll()
+        enemySkills.removeAll()
+        floors.removeAll()
         goodSkills.removeAll()
         goodMonsters.removeAll()
-        dungeons.removeAll()
+
         wipeDatabase()
+        
+        let vc = LoadDataVC()
+        vc.view.backgroundColor = UIColor.black
+        vc.view.alpha = CGFloat(0.75)
+        vc.view.isOpaque = false
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        vc.view.backgroundColor = UIColor.white
+        vc.view.center = self.tableView.center
+        checkVersion()
+        self.present(vc, animated: true, completion: nil)
         
     }
     

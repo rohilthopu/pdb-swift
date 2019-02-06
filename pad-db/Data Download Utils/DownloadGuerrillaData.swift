@@ -57,4 +57,10 @@ func loadGuerrilla() {
     
     updateGuerrillaViewNA()
     updateGuerrillaViewJP()
+    
+    if showingNA {
+        displayDungeons = naDungeons
+    } else {
+        displayDungeons = jpDungeons
+    }
 }

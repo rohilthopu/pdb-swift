@@ -229,7 +229,7 @@ extension DungeonFloorViewController {
 
                 let dropView = makeView()
 
-                let img = makeImgView(forImg: monster.value(forKey: "portraitURL") as! String, ofSize: 50)
+                let img = makeImgView(forImg: getPortraitURL(id: monster.value(forKey: "cardID") as! Int), ofSize: 50)
                 let nameLabel = makeLabel(ofSize: 16, withText: monster.value(forKey: "name") as! String)
                 let rarityLabel = makeLabel(ofSize: 16, withText: rarity)
                 

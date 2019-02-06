@@ -66,7 +66,7 @@ func getMonsterData() {
                     item.setValue(card["sellMP"].intValue, forKey: "sellMP")
                     item.setValue(card["sellCoin"].intValue, forKey: "sellCoin")
                     
-                    item.setValue(card["enemySkills"].stringValue, forKey: "enemySkills")
+                    item.setValue(card["enemy_skills"].stringValue, forKey: "enemySkills")
                 }
             }
         }
