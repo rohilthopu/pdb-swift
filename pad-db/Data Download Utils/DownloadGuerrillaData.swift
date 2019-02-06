@@ -14,6 +14,8 @@ func loadGuerrilla() {
     let url = "https://www.pad-db.com/api/guerrilla"
     let timeInMS = NSDate().timeIntervalSince1970
     
+    allGuerrillaDungeons.removeAll()
+    
     if let url = URL(string: url) {
         if let data = try? String(contentsOf: url) {
             let json = JSON(parseJSON: data)

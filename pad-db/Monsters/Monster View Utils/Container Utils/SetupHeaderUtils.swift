@@ -26,7 +26,7 @@ extension MonsterVC {
     
     public func setupPortraitView() {
         
-        let url = URL(string: (monster!.value(forKey: "portraitURL") as! String))
+        let url = URL(string: getPortraitURL(id:(monster!.value(forKey: "cardID") as! Int)))
         portraitContainer.kf.setImage(with: url)
         
         scrollView.addSubview(portraitContainer)
@@ -34,7 +34,6 @@ extension MonsterVC {
         portraitContainer.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 10).isActive = true
         portraitContainer.widthAnchor.constraint(equalToConstant: 60).isActive = true
         portraitContainer.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        
         
     }
     

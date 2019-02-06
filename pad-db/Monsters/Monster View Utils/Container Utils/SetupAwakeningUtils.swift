@@ -14,8 +14,7 @@ extension MonsterVC {
         let size = CGFloat(20)
         let size_int = 20
         
-        let awks = monster!.value(forKey: "awakenings") as! [Int]
-        
+        let awks = getAwakenings(forMonster: monster!)
         
         var diff:CGFloat = 0
         
@@ -71,7 +70,7 @@ extension MonsterVC {
         
         let size = CGFloat(20)
         
-        let sawks = monster!.value(forKey: "superAwakenings") as! [Int]
+        let sawks = getSuperAwakenings(forMonster: monster!)
         
         for a in sawks {
             let img = makeImgView(fromIconName:  String(a + 2), ofSize: size)

@@ -76,7 +76,7 @@ class SkillCell: UITableViewCell {
             skillDescriptionLabel.text = (skill.value(forKey: "desc") as! String)
         }
         if let monster = monster {
-            let url = URL(string: monster.value(forKey: "portraitURL") as! String)            
+            let url = URL(string: getPortraitURL(id: monster.value(forKey: "cardID") as! Int))
             portraitImg.kf.setImage(with: url)
         }
     }

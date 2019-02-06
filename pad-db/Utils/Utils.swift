@@ -150,7 +150,6 @@ func getJPGroup() -> String? {
     return UserDefaults.standard.string(forKey: "jpgroup")
 }
 
-
 func checkVersion() {
     if let url = URL(string: version_api_url) {
         if let data = try? String(contentsOf: url) {
@@ -223,4 +222,17 @@ func loadFromDB() {
     } catch _ as NSError {
         print("Could not fetch.")
     }
+}
+
+func getAwakenings(forMonster monster:NSManagedObject) -> [Int] {
+    return JSON(parseJSON: monster.value(forKey: "awakenings") as! String).arrayValue.map{ $0.intValue }
+}
+
+func getSuperAwakenings(forMonster monster:NSManagedObject) -> [Int] {
+    return JSON(parseJSON: monster.value(forKey: "superAwakenings") as! String).arrayValue.map{ $0.intValue }
+}
+
+func getEvoList(forMonster monster:NSManagedObject) -> [Int] {
+    return JSON(parseJSON: monster.value(forKey: "evolutions") as! String).arrayValue.map{ $0.intValue }
+
 }

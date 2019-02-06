@@ -62,9 +62,6 @@ class LoadDataVC: UIViewController {
             getFloorData()
             getEnemySkillData()
         }
-        
-        saveMonsterData()
-        saveSkillData()
         updateVersionIdentifier()
         loadFromDB()
         runUpdate = false

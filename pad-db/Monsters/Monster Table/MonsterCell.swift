@@ -95,13 +95,9 @@ class MonsterCell: UITableViewCell {
             let id = monster.value(forKey: "cardID") as! Int
             monsterIDLabel.text = "No. " + String(id)
             // Get the portrait image using Kingfisher
-            
-            let url = URL(string: (monster.value(forKey: "portraitURL") as! String))
+            let url = URL(string: getPortraitURL(id: (monster.value(forKey: "cardID") as! Int)))
             portraitContainer.kf.setImage(with: url)
-          
-
         }
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

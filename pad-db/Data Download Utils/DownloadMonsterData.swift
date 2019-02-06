@@ -11,79 +11,11 @@ import UIKit
 import SwiftyJSON
 import CoreData
 
-func saveMonsterData() {
+func getMonsterData() {
     
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
     let managedContext = appDelegate.persistentContainer.viewContext
     let entity = NSEntityDescription.entity(forEntityName: "MonsterNA", in: managedContext)!
-    
-    
-    for monster in rawMonsters {
-        
-        if let id = monster.cardID {
-            if monsterIDList[id] == nil {
-                
-                let item = NSManagedObject(entity: entity, insertInto: managedContext)
-                item.setValue(monster.activeSkillID, forKey: "activeSkillID")
-                item.setValue(monster.ancestorID, forKey: "ancestorID")
-                item.setValue(monster.attributeID, forKey: "attributeID")
-                item.setValue(monster.awakenings, forKey: "awakenings")
-                item.setValue(monster.cardID, forKey: "cardID")
-                item.setValue(monster.cost, forKey: "cost")
-                item.setValue(monster.evolutions, forKey: "evolutions")
-                item.setValue(monster.evomat1, forKey: "evomat1")
-                item.setValue(monster.evomat2, forKey: "evomat2")
-                item.setValue(monster.evomat3, forKey: "evomat3")
-                item.setValue(monster.evomat4, forKey: "evomat4")
-                item.setValue(monster.evomat5, forKey: "evomat5")
-                item.setValue(monster.unevomat1, forKey: "unevomat1")
-                item.setValue(monster.unevomat2, forKey: "unevomat2")
-                item.setValue(monster.unevomat3, forKey: "unevomat3")
-                item.setValue(monster.unevomat4, forKey: "unevomat4")
-                item.setValue(monster.unevomat5, forKey: "unevomat5")
-                item.setValue(monster.isUlt, forKey: "isUlt")
-                item.setValue(monster.leaderSkillID, forKey: "leaderSkillID")
-                item.setValue(monster.maxATK, forKey: "maxATK")
-                item.setValue(monster.maxHP, forKey: "maxHP")
-                item.setValue(monster.maxRCV, forKey: "maxRCV")
-                item.setValue(monster.minATK, forKey: "minATK")
-                item.setValue(monster.minHP, forKey: "minHP")
-                item.setValue(monster.minRCV, forKey: "minRCV")
-                item.setValue(monster.maxLevel, forKey: "maxLevel")
-                item.setValue(monster.maxXP, forKey: "maxXP")
-                item.setValue(monster.name, forKey: "name")
-                item.setValue(monster.rarity, forKey: "rarity")
-                item.setValue(monster.subAttributeID, forKey: "subAttributeID")
-                item.setValue(monster.superAwakenings, forKey: "superAwakenings")
-                item.setValue(monster.type1, forKey: "type1")
-                item.setValue(monster.type2, forKey: "type2")
-                item.setValue(monster.type3, forKey: "type3")
-                item.setValue(monster.portraitLink, forKey: "portraitURL")
-                item.setValue(monster.fullLink, forKey: "fullURL")
-                
-                item.setValue(monster.sellMP, forKey: "sellMP")
-                item.setValue(monster.sellCoin, forKey: "sellCoin")
-                
-                item.setValue(monster.enemySkills, forKey: "enemySkills")
-                
-                monsters.append(item)
-            }
-        }
-    }
-    
-    
-    do {
-        try managedContext.save()
-        
-    }
-    catch _ as NSError {
-        print("Error saving monsters in CoreData")
-    }
-    
-}
-
-func getMonsterData() {
-    
     
     if let url = URL(string: monster_url) {
         if let data = try? String(contentsOf: url) {
@@ -93,67 +25,57 @@ func getMonsterData() {
                 
                 let name = card["name"].stringValue
                 if !name.isEmpty {
-                    var monster:Monster = Monster()
-                    monster.activeSkillID = card["activeSkillID"].intValue
-                    monster.leaderSkillID = card["leaderSkillID"].intValue
+
+                    let item = NSManagedObject(entity: entity, insertInto: managedContext)
+                    item.setValue(card["activeSkillID"].intValue, forKey: "activeSkillID")
+                    item.setValue(card["ancestorID"].intValue, forKey: "ancestorID")
+                    item.setValue(card["attributeID"].int, forKey: "attributeID")
                     
-                    monster.ancestorID = card["ancestorID"].intValue
-                    monster.attributeID = card["attributeID"].intValue
+                    item.setValue(card["awakenings_raw"].stringValue, forKey: "awakenings")
+                    item.setValue(card["cardID"].intValue, forKey: "cardID")
+                    item.setValue(card["cost"].intValue, forKey: "cost")
+                    item.setValue(card["evos_raw"].stringValue, forKey: "evolutions")
+                    item.setValue(card["evomat1"].intValue, forKey: "evomat1")
+                    item.setValue(card["evomat2"].intValue, forKey: "evomat2")
+                    item.setValue(card["evomat3"].intValue, forKey: "evomat3")
+                    item.setValue(card["evomat4"].intValue, forKey: "evomat4")
+                    item.setValue(card["evomat5"].intValue, forKey: "evomat5")
+                    item.setValue(card["unevomat1"].intValue, forKey: "unevomat1")
+                    item.setValue(card["unevomat2"].intValue, forKey: "unevomat2")
+                    item.setValue(card["unevomat3"].intValue, forKey: "unevomat3")
+                    item.setValue(card["unevomat4"].intValue, forKey: "unevomat4")
+                    item.setValue(card["unevomat5"].intValue, forKey: "unevomat5")
+                    item.setValue(card["isUlt"].boolValue, forKey: "isUlt")
+                    item.setValue(card["leaderSkillID"].intValue, forKey: "leaderSkillID")
+                    item.setValue(card["maxATK"].intValue, forKey: "maxATK")
+                    item.setValue(card["maxHP"].intValue, forKey: "maxHP")
+                    item.setValue(card["maxRCV"].intValue, forKey: "maxRCV")
+                    item.setValue(card["minATK"].intValue, forKey: "minATK")
+                    item.setValue(card["minHP"].intValue, forKey: "minHP")
+                    item.setValue(card["minRCV"].intValue, forKey: "minRCV")
+                    item.setValue(card["maxLevel"].intValue, forKey: "maxLevel")
+                    item.setValue(card["maxXP"].intValue, forKey: "maxXP")
+                    item.setValue(card["name"].stringValue, forKey: "name")
+                    item.setValue(card["rarity"].intValue, forKey: "rarity")
+                    item.setValue(card["subAttributeID"].intValue, forKey: "subAttributeID")
+                    item.setValue(card["superAwakenings_raw"].stringValue, forKey: "superAwakenings")
+                    item.setValue(card["type1"].intValue, forKey: "type1")
+                    item.setValue(card["type2"].intValue, forKey: "type2")
+                    item.setValue(card["type3"].intValue, forKey: "type3")
                     
-                    let decoder = JSONDecoder()
-                    let vals = try! decoder.decode([Int].self, from: card["awakenings_raw"].stringValue.data(using: .utf8)!)
-                    monster.awakenings = vals
+                    item.setValue(card["sellMP"].intValue, forKey: "sellMP")
+                    item.setValue(card["sellCoin"].intValue, forKey: "sellCoin")
                     
-                    let evoVals = try! decoder.decode([Int].self, from: card["evos_raw"].stringValue.data(using: .utf8)!)
-                    monster.evolutions = evoVals
-                    
-                    
-                    monster.cardID = card["cardID"].intValue
-                    monster.cost = card["cost"].intValue
-                    monster.unevomat1 = card["unevomat1"].intValue
-                    monster.unevomat2 = card["unevomat2"].intValue
-                    monster.unevomat3 = card["unevomat3"].intValue
-                    monster.unevomat4 = card["unevomat4"].intValue
-                    monster.unevomat5 = card["unevomat5"].intValue
-                    monster.evomat1 = card["evomat1"].intValue
-                    monster.evomat2 = card["evomat2"].intValue
-                    monster.evomat3 = card["evomat3"].intValue
-                    monster.evomat4 = card["evomat4"].intValue
-                    monster.evomat5 = card["evomat5"].intValue
-                    monster.isUlt = card["isUlt"].boolValue
-                    monster.maxATK = card["maxATK"].intValue
-                    monster.maxHP = card["maxHP"].intValue
-                    monster.maxRCV = card["maxRCV"].intValue
-                    monster.minATK = card["minATK"].intValue
-                    monster.minHP = card["minHP"].intValue
-                    monster.minRCV = card["minRCV"].intValue
-                    monster.maxXP = card["maxXP"].intValue
-                    monster.maxLevel = card["maxLevel"].intValue
-                    monster.name = card["name"].stringValue
-                    monster.rarity = card["rarity"].intValue
-                    monster.subAttributeID = card["subAttributeID"].intValue
-                    
-                    
-                    let vals2 = try! decoder.decode([Int].self, from: card["superAwakenings_raw"].stringValue.data(using: .utf8)!)
-                    monster.superAwakenings = vals2
-                    
-                    
-                    monster.type1 = card["type1"].intValue
-                    monster.type2 = card["type2"].intValue
-                    monster.type3 = card["type3"].intValue
-                    
-                    monster.portraitLink = getPortraitURL(id: monster.cardID!)
-                    monster.fullLink = getFullURL(id: monster.cardID!)
-                    
-                    
-                    monster.sellMP = card["sellMP"].intValue
-                    monster.sellCoin = card["sellCoin"].intValue
-                    
-                    monster.enemySkills = card["enemy_skills"].stringValue                    
-                    rawMonsters.append(monster)
+                    item.setValue(card["enemySkills"].stringValue, forKey: "enemySkills")
                 }
             }
         }
+    }
+    do {
+        try managedContext.save()
+    }
+    catch _ as NSError {
+        print("Error saving monsters in CoreData")
     }
     
 }
