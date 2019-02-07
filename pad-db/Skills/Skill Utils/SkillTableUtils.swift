@@ -51,13 +51,14 @@ extension SkillTableVC {
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        
+        let searchTextAsTokenList = getTokenList(forSearchQuery: searchText)
         filteredSkills = goodSkills.filter({
-            let val = $0.value(forKey: "name") as! String
+            let val = getTokenList(forSearchQuery: $0.value(forKey: "name") as! String)
             let skillID = $0.value(forKey: "skillID") as! Int
             let id = String(skillID)
-            let desc = $0.value(forKey: "desc") as! String
-            let searchQuery = searchText.lowercased()
-            return val.lowercased().contains(searchQuery) || id.contains(searchQuery) || desc.lowercased().contains(searchQuery)
+            let desc = getTokenList(forSearchQuery: $0.value(forKey: "desc") as! String)
+            return searchTextAsTokenList.isSubset(of: val) || id.contains(searchText.lowercased()) || searchTextAsTokenList.isSubset(of: desc)
         })
         tableView.reloadData()
     }

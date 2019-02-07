@@ -331,3 +331,7 @@ func wipeDatabase() {
         print("There was an error deleting items.")
     }
 }
+
+func getTokenList(forSearchQuery text:String) -> Set<String> {
+    return Set(text.lowercased().split(separator: " ").map{ String($0) })
+}
