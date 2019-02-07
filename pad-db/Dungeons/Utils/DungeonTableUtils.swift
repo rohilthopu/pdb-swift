@@ -47,14 +47,14 @@ extension DungeonListTableViewController {
         dungeonSearch.hidesNavigationBarDuringPresentation = false
         self.definesPresentationContext = true
         self.dungeonSearch.delegate = self
-        self.dungeonSearch.searchBar.delegate = self
-//        self.extendedLayoutIncludesOpaqueBars = true
-        
+        self.dungeonSearch.searchBar.delegate = self        
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        let searchTextAsTokens = getTokenList(forSearchQuery: searchText)
         filteredDungeons = dungeons.filter{
-            return ($0.value(forKey: "name") as! String).lowercased().contains(searchText.lowercased())
+            let nameToken = getTokenList(forSearchQuery: $0.value(forKey: "name") as! String)
+            return searchTextAsTokens.isSubset(of: nameToken)
         }
         tableView.reloadData()
     }
