@@ -57,8 +57,8 @@ extension SkillTableVC {
             let val = getTokenList(forSearchQuery: $0.value(forKey: "name") as! String)
             let skillID = $0.value(forKey: "skillID") as! Int
             let id = String(skillID)
-            let desc = getTokenList(forSearchQuery: $0.value(forKey: "desc") as! String)
-            return searchTextAsTokenList.isSubset(of: val) || id.contains(searchText.lowercased()) || searchTextAsTokenList.isSubset(of: desc)
+            let desc = ($0.value(forKey: "desc") as! String).lowercased()
+            return searchTextAsTokenList.isSubset(of: val) || id.contains(searchText.lowercased()) || desc.contains(searchText.lowercased())
         })
         tableView.reloadData()
     }
@@ -68,7 +68,6 @@ extension SkillTableVC {
     }
     
     func searchBarIsEmpty() -> Bool {
-        // Returns true if the text is empty or nil
         return skillSearch.searchBar.text?.isEmpty ?? true
     }
 }
