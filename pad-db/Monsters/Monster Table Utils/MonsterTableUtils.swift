@@ -51,9 +51,9 @@ extension MonsterTableController {
     
     func filterContentForText(_ searchText: String, scope: String = "All") {
         
-        let tokenText:Set = Set(searchText.lowercased().split(separator: " ").map{$0})
+        let tokenText = getTokenList(forSearchQuery: searchText)
         filteredMonsters = goodMonsters.filter({
-            let val = Set(($0.value(forKey: "name") as! String).lowercased().split(separator: " ").map{$0})
+            let val = getTokenList(forSearchQuery: $0.value(forKey: "name") as! String)
             let id = String($0.value(forKey: "cardID") as! Int)
             return tokenText.isSubset(of: val) || id == searchText.lowercased()
         })
