@@ -94,7 +94,6 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
@@ -160,9 +159,6 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
         monsterVC.activeSkill = activeSkill
         monsterVC.leaderSkill = leaderSkill
         
-        
-        //        let navCon = UINavigationController(rootViewController: monsterVC)
-        //        self.present(navCon, animated: true, completion: nil)
         self.navigationController?.pushViewController(monsterVC, animated: true)
         
     }
