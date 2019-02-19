@@ -72,12 +72,12 @@ func getFloorData() {
                 item.setValue(floor["imageID"].intValue, forKey: "imageID")
             }
         }
-    }
-    
-    do {
-        try managedContext.save()
-    }
-    catch _ as NSError {
-        print("Error saving floors in CoreData")
+        
+        do {
+            try managedContext.save()
+        }
+        catch _ as NSError {
+            print("Error saving floors in CoreData")
+        }
     }
 }

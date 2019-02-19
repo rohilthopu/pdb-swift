@@ -224,7 +224,7 @@ extension DungeonFloorViewController {
 
         if !possibleDrops.isEmpty {
             for key in possibleDrops.keys {
-                let monster = getMonster(forID: Int(key)!)
+                let monster = getMonster(forID: Int(key)!)!
                 let rarity = possibleDrops[key]!.stringValue
 
                 let dropView = makeView()
@@ -295,38 +295,39 @@ extension DungeonFloorViewController {
     @objc
     func openMonsterPage(sender: UITapGestureRecognizer) {
         
-        let currentMonster = getMonster(forID: sender.view!.tag)
-        let monsterVC = MonsterVC()
-        monsterVC.monster = currentMonster
-        
-        let activeSkill = skills.filter({
-            let skillID = $0.value(forKey: "skillID") as! Int
-            let aSkill = currentMonster.value(forKey: "activeSkillID") as! Int
+        if let currentMonster = getMonster(forID: sender.view!.tag) {
+            let monsterVC = MonsterVC()
+            monsterVC.monster = currentMonster
             
-            if skillID == aSkill {
-                return true
-            }
-            else {
-                return false
-            }
-        }).first
-        
-        let leaderSkill = skills.filter({
-            let skillID = $0.value(forKey: "skillID") as! Int
-            let lSkill = currentMonster.value(forKey: "leaderSkillID") as! Int
+            let activeSkill = skills.filter({
+                let skillID = $0.value(forKey: "skillID") as! Int
+                let aSkill = currentMonster.value(forKey: "activeSkillID") as! Int
+                
+                if skillID == aSkill {
+                    return true
+                }
+                else {
+                    return false
+                }
+            }).first
             
-            if skillID == lSkill {
-                return true
-            }
-            else {
-                return false
-            }
-        }).first
-        
-        monsterVC.activeSkill = activeSkill
-        monsterVC.leaderSkill = leaderSkill
-        
-        self.navigationController?.pushViewController(monsterVC, animated: true)
+            let leaderSkill = skills.filter({
+                let skillID = $0.value(forKey: "skillID") as! Int
+                let lSkill = currentMonster.value(forKey: "leaderSkillID") as! Int
+                
+                if skillID == lSkill {
+                    return true
+                }
+                else {
+                    return false
+                }
+            }).first
+            
+            monsterVC.activeSkill = activeSkill
+            monsterVC.leaderSkill = leaderSkill
+            
+            self.navigationController?.pushViewController(monsterVC, animated: true)
+        }
     }
     
     func makeTapRecognizer() -> UITapGestureRecognizer {

@@ -70,12 +70,12 @@ func getMonsterData() {
                 }
             }
         }
-    }
-    do {
-        try managedContext.save()
-    }
-    catch _ as NSError {
-        print("Error saving monsters in CoreData")
+        do {
+            try managedContext.save()
+        }
+        catch _ as NSError {
+            print("Error saving monsters in CoreData")
+        }
     }
     
 }

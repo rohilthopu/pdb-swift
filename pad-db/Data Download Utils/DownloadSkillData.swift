@@ -39,13 +39,12 @@ func getSkillData() {
                 item.setValue(skill["maxTurns"].intValue, forKey: "maxTurns")
             }
         }
-    }
-    
-    do {
-        try managedContext.save()
-    }
-    catch _ as NSError {
-        print("Error saving skills in CoreData")
+        do {
+            try managedContext.save()
+        }
+        catch _ as NSError {
+            print("Error saving skills in CoreData")
+        }
     }
 }
 
@@ -65,12 +64,11 @@ func getEnemySkillData() {
                 item.setValue(skill["enemy_skill_id"].intValue, forKey: "enemy_skill_id")
             }
         }
-    }
-    
-    do {
-        try managedContext.save()
-    }
-    catch _ as NSError {
-        print("Error saving enemy skills in CoreData")
+        do {
+            try managedContext.save()
+        }
+        catch _ as NSError {
+            print("Error saving enemy skills in CoreData")
+        }
     }
 }

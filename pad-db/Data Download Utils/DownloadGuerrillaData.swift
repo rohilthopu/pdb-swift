@@ -53,10 +53,10 @@ func loadGuerrilla() {
                 }
             }
         }
+        updateGuerrillaViewNA()
+        updateGuerrillaViewJP()
+
     }
-    
-    updateGuerrillaViewNA()
-    updateGuerrillaViewJP()
     
     if showingNA {
         displayDungeons = naDungeons
@@ -64,3 +64,5 @@ func loadGuerrilla() {
         displayDungeons = jpDungeons
     }
 }
+
+
