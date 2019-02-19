@@ -33,46 +33,50 @@ extension MonsterVC {
         separator.centerXAnchor.constraint(equalTo: activeSkillContainer.centerXAnchor).isActive = true
         
         if let activeSkill = activeSkill {
+            
+            if !((activeSkill.value(forKey: "name") as! String) == "None") {
+                
+                let minTurns = "Min: " + String(activeSkill.value(forKey: "minTurns") as! Int) + "/"
+                let maxTurns = "Max: " + String(activeSkill.value(forKey: "maxTurns") as! Int)
+                let turns = minTurns + maxTurns
+                
+                
+                let nameLabel = makeLabel(ofSize: 18, withText: activeSkill.value(forKey: "name") as! String)
+                let descriptionLabel = makeLabel(ofSize: 16, withText: activeSkill.value(forKey: "desc") as! String)
+                let turnLabel = makeLabel(ofSize: 14, withText: turns)
+                activeSkillContainer.addSubview(nameLabel)
+                activeSkillContainer.addSubview(descriptionLabel)
+                activeSkillContainer.addSubview(turnLabel)
+                
+                
+                
+                nameLabel.topAnchor.constraint(equalTo: activeSkillLabel.bottomAnchor, constant: 20).isActive = true
+                nameLabel.leadingAnchor.constraint(equalTo: activeSkillContainer.leadingAnchor).isActive = true
+                nameLabel.trailingAnchor.constraint(equalTo: activeSkillContainer.trailingAnchor).isActive = true
+                
+                descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20).isActive = true
+                descriptionLabel.leadingAnchor.constraint(equalTo: activeSkillContainer.leadingAnchor, constant: 20).isActive = true
+                descriptionLabel.trailingAnchor.constraint(equalTo: activeSkillContainer.trailingAnchor, constant: -20).isActive = true
+                descriptionLabel.bottomAnchor.constraint(equalTo: activeSkillContainer.bottomAnchor, constant: -20).isActive = true
+                descriptionLabel.lineBreakMode = .byWordWrapping
+                descriptionLabel.numberOfLines = 0
+                
+                turnLabel.topAnchor.constraint(equalTo: activeSkillContainer.topAnchor).isActive = true
+                turnLabel.leadingAnchor.constraint(equalTo: activeSkillLabel.trailingAnchor).isActive = true
+                turnLabel.trailingAnchor.constraint(equalTo: activeSkillContainer.trailingAnchor).isActive = true
+                turnLabel.centerYAnchor.constraint(equalTo: activeSkillLabel.centerYAnchor).isActive = true
+                turnLabel.textAlignment = .right
+            }
+            
+            else {
+                let noneLabel = makeLabel(ofSize: 16, withText: "No Active Skill")
+                activeSkillContainer.addSubview(noneLabel)
+                noneLabel.topAnchor.constraint(equalTo: activeSkillLabel.bottomAnchor, constant: 20).isActive = true
+                noneLabel.bottomAnchor.constraint(equalTo: activeSkillContainer.bottomAnchor, constant: -20).isActive = true
+                noneLabel.centerXAnchor.constraint(equalTo: activeSkillContainer.centerXAnchor).isActive = true
+                
+            }
 
-            
-            let minTurns = "Min: " + String(activeSkill.value(forKey: "minTurns") as! Int) + "/"
-            let maxTurns = "Max: " + String(activeSkill.value(forKey: "maxTurns") as! Int)
-            let turns = minTurns + maxTurns
-            
-            
-            let nameLabel = makeLabel(ofSize: 18, withText: activeSkill.value(forKey: "name") as! String)
-            let descriptionLabel = makeLabel(ofSize: 16, withText: activeSkill.value(forKey: "desc") as! String)
-            let turnLabel = makeLabel(ofSize: 14, withText: turns)
-            activeSkillContainer.addSubview(nameLabel)
-            activeSkillContainer.addSubview(descriptionLabel)
-            activeSkillContainer.addSubview(turnLabel)
-            
-
-            
-            nameLabel.topAnchor.constraint(equalTo: activeSkillLabel.bottomAnchor, constant: 20).isActive = true
-            nameLabel.leadingAnchor.constraint(equalTo: activeSkillContainer.leadingAnchor).isActive = true
-            nameLabel.trailingAnchor.constraint(equalTo: activeSkillContainer.trailingAnchor).isActive = true
-            
-            descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20).isActive = true
-            descriptionLabel.leadingAnchor.constraint(equalTo: activeSkillContainer.leadingAnchor, constant: 20).isActive = true
-            descriptionLabel.trailingAnchor.constraint(equalTo: activeSkillContainer.trailingAnchor, constant: -20).isActive = true
-            descriptionLabel.bottomAnchor.constraint(equalTo: activeSkillContainer.bottomAnchor, constant: -20).isActive = true
-            descriptionLabel.lineBreakMode = .byWordWrapping
-            descriptionLabel.numberOfLines = 0
-            
-            turnLabel.topAnchor.constraint(equalTo: activeSkillContainer.topAnchor).isActive = true
-            turnLabel.leadingAnchor.constraint(equalTo: activeSkillLabel.trailingAnchor).isActive = true
-            turnLabel.trailingAnchor.constraint(equalTo: activeSkillContainer.trailingAnchor).isActive = true
-            turnLabel.centerYAnchor.constraint(equalTo: activeSkillLabel.centerYAnchor).isActive = true
-            turnLabel.textAlignment = .right
-        }
-        else {
-            let noneLabel = makeLabel(ofSize: 16, withText: "No Active Skill")
-            activeSkillContainer.addSubview(noneLabel)
-            noneLabel.topAnchor.constraint(equalTo: activeSkillLabel.bottomAnchor, constant: 20).isActive = true
-            noneLabel.bottomAnchor.constraint(equalTo: activeSkillContainer.bottomAnchor, constant: -20).isActive = true
-            noneLabel.centerXAnchor.constraint(equalTo: activeSkillContainer.centerXAnchor).isActive = true
-            
         }
     }
     
@@ -96,52 +100,54 @@ extension MonsterVC {
         
         if let leaderSkill = leaderSkill {
             
+            if !((leaderSkill.value(forKey: "name") as! String) == "None"){
+                
+                let multipliers = getMultipliers(leaderSkill)
+                let pairMults = getPairMultipliers(multipliersSet: multipliers)
+                
+                
+                
+                let nameLabel = makeLabel(ofSize: 18, withText: leaderSkill.value(forKey: "name") as! String)
+                let descriptionLabel = makeLabel(ofSize: 16, withText: leaderSkill.value(forKey: "desc") as! String)
+                
+                let multContainer = generateContainerForMultipliers(multipliers, pairMults)
+                
+                
+                leaderSkillContainer.addSubview(nameLabel)
+                leaderSkillContainer.addSubview(descriptionLabel)
+                leaderSkillContainer.addSubview(multContainer)
+                
+                
+                nameLabel.topAnchor.constraint(equalTo: leaderSkillLabel.bottomAnchor, constant: 20).isActive = true
+                nameLabel.centerXAnchor.constraint(equalTo: leaderSkillContainer.centerXAnchor).isActive = true
+                nameLabel.leadingAnchor.constraint(equalTo: leaderSkillContainer.leadingAnchor).isActive = true
+                nameLabel.trailingAnchor.constraint(equalTo: leaderSkillContainer.trailingAnchor).isActive = true
+                nameLabel.lineBreakMode = .byWordWrapping
+                nameLabel.numberOfLines = 0
+                
+                
+                descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20).isActive = true
+                descriptionLabel.leadingAnchor.constraint(equalTo: leaderSkillContainer.leadingAnchor, constant: 20).isActive = true
+                descriptionLabel.trailingAnchor.constraint(equalTo: leaderSkillContainer.trailingAnchor, constant: -20).isActive = true
+                descriptionLabel.lineBreakMode = .byWordWrapping
+                descriptionLabel.numberOfLines = 0
+                
+                
+                multContainer.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20).isActive = true
+                multContainer.leadingAnchor.constraint(equalTo: leaderSkillContainer.leadingAnchor, constant: 20).isActive = true
+                multContainer.trailingAnchor.constraint(equalTo: leaderSkillContainer.trailingAnchor, constant: -20).isActive = true
+                multContainer.bottomAnchor.constraint(equalTo: leaderSkillContainer.bottomAnchor, constant: -20).isActive = true
+            }
             
-            
-            let multipliers = getMultipliers(leaderSkill)
-            let pairMults = getPairMultipliers(multipliersSet: multipliers)
-            
-            
-            
-            let nameLabel = makeLabel(ofSize: 18, withText: leaderSkill.value(forKey: "name") as! String)
-            let descriptionLabel = makeLabel(ofSize: 16, withText: leaderSkill.value(forKey: "desc") as! String)
-            
-            let multContainer = generateContainerForMultipliers(multipliers, pairMults)
-            
-            
-            leaderSkillContainer.addSubview(nameLabel)
-            leaderSkillContainer.addSubview(descriptionLabel)
-            leaderSkillContainer.addSubview(multContainer)
-            
-            
-            nameLabel.topAnchor.constraint(equalTo: leaderSkillLabel.bottomAnchor, constant: 20).isActive = true
-            nameLabel.centerXAnchor.constraint(equalTo: leaderSkillContainer.centerXAnchor).isActive = true
-            nameLabel.leadingAnchor.constraint(equalTo: leaderSkillContainer.leadingAnchor).isActive = true
-            nameLabel.trailingAnchor.constraint(equalTo: leaderSkillContainer.trailingAnchor).isActive = true
-            nameLabel.lineBreakMode = .byWordWrapping
-            nameLabel.numberOfLines = 0
-
-            
-            descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20).isActive = true
-            descriptionLabel.leadingAnchor.constraint(equalTo: leaderSkillContainer.leadingAnchor, constant: 20).isActive = true
-            descriptionLabel.trailingAnchor.constraint(equalTo: leaderSkillContainer.trailingAnchor, constant: -20).isActive = true
-            descriptionLabel.lineBreakMode = .byWordWrapping
-            descriptionLabel.numberOfLines = 0
-            
-            
-            multContainer.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20).isActive = true
-            multContainer.leadingAnchor.constraint(equalTo: leaderSkillContainer.leadingAnchor, constant: 20).isActive = true
-            multContainer.trailingAnchor.constraint(equalTo: leaderSkillContainer.trailingAnchor, constant: -20).isActive = true
-            multContainer.bottomAnchor.constraint(equalTo: leaderSkillContainer.bottomAnchor, constant: -20).isActive = true
-            
-        }
-        else {
-            let noneLabel = makeLabel(ofSize: 16, withText: "No Leader Skill")
-            leaderSkillContainer.addSubview(noneLabel)
-            
-            noneLabel.topAnchor.constraint(equalTo: leaderSkillLabel.bottomAnchor, constant: 20).isActive = true
-            noneLabel.centerXAnchor.constraint(equalTo: leaderSkillContainer.centerXAnchor).isActive = true
-            noneLabel.bottomAnchor.constraint(equalTo: leaderSkillContainer.bottomAnchor, constant: -20).isActive = true
+            else {
+                let noneLabel = makeLabel(ofSize: 16, withText: "No Leader Skill")
+                leaderSkillContainer.addSubview(noneLabel)
+                
+                noneLabel.topAnchor.constraint(equalTo: leaderSkillLabel.bottomAnchor, constant: 20).isActive = true
+                noneLabel.centerXAnchor.constraint(equalTo: leaderSkillContainer.centerXAnchor).isActive = true
+                noneLabel.bottomAnchor.constraint(equalTo: leaderSkillContainer.bottomAnchor, constant: -20).isActive = true
+                
+            }
             
         }
     }

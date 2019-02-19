@@ -238,7 +238,6 @@ func getEvoList(forMonster monster:NSManagedObject) -> [Int] {
 }
 
 func getNewData() {
-    if !newVersions.isEmpty {
         if let v = versions.first {
             let localMonsterVersion = v.value(forKey: "monster") as! Int
             let localSkillVersion = v.value(forKey: "skill") as! Int
@@ -257,8 +256,7 @@ func getNewData() {
         }
         updateVersionIdentifier()
         loadFromDB()
-        getAllIds()
-    }
+    
     runUpdate = false
 }
 
@@ -268,17 +266,6 @@ func getData() {
     getSkillData()
     getDungeonData()
     getFloorData()
-}
-
-func getAllIds() {
-    monsterIDList.removeAll()
-    skillIDList.removeAll()
-    for monster in monsters {
-        monsterIDList[monster.value(forKey: "cardID") as! Int] = 1
-    }
-    for skill in skills {
-        skillIDList[skill.value(forKey: "skillID") as! Int] = 1
-    }
 }
 
 func wipeDatabase() {

@@ -26,11 +26,6 @@ var monsters = [NSManagedObject]()
 var skills = [NSManagedObject]()
 var enemySkills = [NSManagedObject]()
 
-
-var monsterIDList:[Int: Int] = [:]
-var skillIDList:[Int: Int] = [:]
-
-
 var rawMonsters = [Monster]()
 var rawSkills = [Skill]()
 
