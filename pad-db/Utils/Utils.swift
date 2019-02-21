@@ -61,6 +61,18 @@ func makeLabel(ofSize size: CGFloat, withText text: String) -> UILabel {
     return textView
 }
 
+func makeHeader(forContainer container:UIView, withHeader header:UILabel, withSeparator separator:UIView) {
+    container.addSubview(header)
+    header.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
+    header.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
+    
+    let separator = makeSeparator()
+    container.addSubview(separator)
+    separator.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
+    separator.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
+    
+}
+
 func getMonster(forID id:Int) -> NSManagedObject? {
     return monsters.filter({
         return id == $0.value(forKey: "cardID") as! Int
@@ -107,6 +119,18 @@ func getPossibleDrops(forFloor floor:NSManagedObject) -> [String:JSON] {
 
 func getFixedTeam(forFloor floor:NSManagedObject) -> [String:JSON] {
     return JSON(parseJSON: floor.value(forKey: "fixedTeam") as! String).dictionaryValue
+}
+
+func getAwakenings(forMonster monster:NSManagedObject) -> [Int] {
+    return JSON(parseJSON: monster.value(forKey: "awakenings") as! String).arrayValue.map{ $0.intValue }
+}
+
+func getSuperAwakenings(forMonster monster:NSManagedObject) -> [Int] {
+    return JSON(parseJSON: monster.value(forKey: "superAwakenings") as! String).arrayValue.map{ $0.intValue }
+}
+
+func getEvoList(forMonster monster:NSManagedObject) -> [Int] {
+    return JSON(parseJSON: monster.value(forKey: "evolutions") as! String).arrayValue.map{ $0.intValue }
 }
 
 func getEnemySkills(forMonster monster:NSManagedObject) -> [NSManagedObject] {
@@ -169,7 +193,6 @@ func updateGuerrillaViewNA() {
     } else {
         naDungeons = allGuerrillaDungeons.filter{$0.server! == "NA" }
     }
-    
     if showingNA {
         displayDungeons = naDungeons
     }
@@ -181,7 +204,6 @@ func updateGuerrillaViewJP() {
     } else {
         jpDungeons = allGuerrillaDungeons.filter{$0.server! == "JP" }
     }
-    
     if !showingNA {
         displayDungeons = jpDungeons
     }
@@ -208,9 +230,10 @@ func loadFromDB() {
     let dungeonRequest = NSFetchRequest<NSManagedObject>(entityName: "Dungeon")
     dungeonRequest.sortDescriptors = [NSSortDescriptor(key: "dungeonID", ascending: false)]
     
-    let floorRequest = NSFetchRequest<NSManagedObject>(entityName: "Floor")
+    let floorRequest = NSFetchRequest<Floor>(entityName: "Floor")
     let enemySkillRequest = NSFetchRequest<NSManagedObject>(entityName: "EnemySkill")
     
+    let encounterRequest = NSFetchRequest<EncounterSet>(entityName: "EncounterSet")
     
     do {
         monsters = try managedContext.fetch(monsterRequest)
@@ -219,55 +242,12 @@ func loadFromDB() {
         dungeons = try managedContext.fetch(dungeonRequest)
         floors = try managedContext.fetch(floorRequest)
         enemySkills = try managedContext.fetch(enemySkillRequest)
+        encounterSets = try managedContext.fetch(encounterRequest)
     } catch _ as NSError {
         print("Could not fetch.")
     }
 }
 
-func getAwakenings(forMonster monster:NSManagedObject) -> [Int] {
-    return JSON(parseJSON: monster.value(forKey: "awakenings") as! String).arrayValue.map{ $0.intValue }
-}
-
-func getSuperAwakenings(forMonster monster:NSManagedObject) -> [Int] {
-    return JSON(parseJSON: monster.value(forKey: "superAwakenings") as! String).arrayValue.map{ $0.intValue }
-}
-
-func getEvoList(forMonster monster:NSManagedObject) -> [Int] {
-    return JSON(parseJSON: monster.value(forKey: "evolutions") as! String).arrayValue.map{ $0.intValue }
-    
-}
-
-func getNewData() {
-    if let v = versions.first {
-        let localMonsterVersion = v.value(forKey: "monster") as! Int
-        let localSkillVersion = v.value(forKey: "skill") as! Int
-        let localDungeonVersion = v.value(forKey: "dungeon") as! Int
-        
-        if newVersions["monster"]! > localMonsterVersion || newVersions["skill"]! > localSkillVersion || newVersions["dungeon"]! > localDungeonVersion || monsters.count == 0 {
-            // force rebuild for now. saves effort and guarantees most recent data
-            goodSkills.removeAll()
-            goodMonsters.removeAll()
-            wipeDatabase()
-            getData()
-        }
-    } else if monsters.count == 0 {
-        // this would be a first run type of scenario, or if a db rebuild failed
-        getData()
-    }
-    updateVersionIdentifier()
-    loadFromDB()
-    
-    runUpdate = false
-}
-
-func getData() {
-    getMonsterData()
-    getEnemySkillData()
-    getSkillData()
-    getDungeonData()
-    getFloorData()
-    getEncounterData()
-}
 
 func wipeDatabase() {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }

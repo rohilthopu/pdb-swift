@@ -11,6 +11,8 @@ import CoreData
 
 class DungeonFloorViewController: UIViewController {
     
+    var dungeonFloor:NSManagedObject?
+    
     let scrollView:UIScrollView = {
         let view = UIScrollView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -53,8 +55,13 @@ class DungeonFloorViewController: UIViewController {
         return view
     }()
     
-    var dungeonFloor:NSManagedObject?
-
+    let encounterContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

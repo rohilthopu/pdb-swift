@@ -9,24 +9,19 @@
 import Foundation
 import UIKit
 import CoreData
+import SwiftyJSON
 
 extension DungeonFloorViewController {
 
     func makeInfoView() {
         
         let separator = makeSeparator()
-        infoContainer.addSubview(separator)
-        separator.bottomAnchor.constraint(equalTo: infoContainer.bottomAnchor).isActive = true
-        separator.centerXAnchor.constraint(equalTo: infoContainer.centerXAnchor).isActive = true
-        
-        let infoHeader = makeLabel(ofSize: 20, withText: "Floor Information")
-        infoContainer.addSubview(infoHeader)
-        infoHeader.topAnchor.constraint(equalTo: infoContainer.topAnchor).isActive = true
-        infoHeader.centerXAnchor.constraint(equalTo: infoContainer.centerXAnchor).isActive = true
+        let header = makeLabel(ofSize: 20, withText: "Floor Information")
+        makeHeader(forContainer: infoContainer, withHeader: header, withSeparator: separator)
         
         let nameLabel = makeLabel(ofSize: 16, withText: dungeonFloor!.value(forKey: "name") as! String)
         infoContainer.addSubview(nameLabel)
-        nameLabel.topAnchor.constraint(equalTo: infoHeader.bottomAnchor, constant: 10).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 10).isActive = true
         nameLabel.centerXAnchor.constraint(equalTo: infoContainer.centerXAnchor).isActive = true
         
         let staminaLabel = makeLabel(ofSize: 16, withText: "Stamina: " + String(dungeonFloor!.value(forKey: "stamina") as! Int))
@@ -58,15 +53,9 @@ extension DungeonFloorViewController {
     func makeRequiredDungeonView() {
         
         let separator = makeSeparator()
-        requiredDungeonContainer.addSubview(separator)
-        separator.bottomAnchor.constraint(equalTo: requiredDungeonContainer.bottomAnchor).isActive = true
-        separator.centerXAnchor.constraint(equalTo: requiredDungeonContainer.centerXAnchor).isActive = true
-        
-        let infoHeader = makeLabel(ofSize: 20, withText: "Required Dungeon")
-        requiredDungeonContainer.addSubview(infoHeader)
-        infoHeader.topAnchor.constraint(equalTo: requiredDungeonContainer.topAnchor).isActive = true
-        infoHeader.centerXAnchor.constraint(equalTo: requiredDungeonContainer.centerXAnchor).isActive = true
-        
+        let header = makeLabel(ofSize: 20, withText: "Required Dungeon")
+        makeHeader(forContainer: requiredDungeonContainer, withHeader: header, withSeparator: separator)
+    
         
         let dungeonID = dungeonFloor!.value(forKey: "requiredDungeon") as! Int
         let floorID = dungeonFloor!.value(forKey: "requiredFloor") as! Int
@@ -79,7 +68,7 @@ extension DungeonFloorViewController {
                 requiredDungeonContainer.addSubview(requiredDungeonLabel)
                 requiredDungeonContainer.addSubview(requiredFloorLabel)
                 
-                requiredDungeonLabel.topAnchor.constraint(equalTo: infoHeader.bottomAnchor, constant: 10).isActive = true
+                requiredDungeonLabel.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 10).isActive = true
                 requiredDungeonLabel.centerXAnchor.constraint(equalTo: requiredDungeonContainer.centerXAnchor).isActive = true
                 
                 requiredFloorLabel.topAnchor.constraint(equalTo: requiredDungeonLabel.bottomAnchor, constant: 10).isActive = true
@@ -90,7 +79,7 @@ extension DungeonFloorViewController {
         } else {
             let noneLabel = makeLabel(ofSize: 16, withText: "No required dungeon completion")
             requiredDungeonContainer.addSubview(noneLabel)
-            noneLabel.topAnchor.constraint(equalTo: infoHeader.bottomAnchor, constant: 20).isActive = true
+            noneLabel.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20).isActive = true
             noneLabel.centerXAnchor.constraint(equalTo: requiredDungeonContainer.centerXAnchor).isActive = true
             noneLabel.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
         }
@@ -151,14 +140,8 @@ extension DungeonFloorViewController {
     
     func makeFixedTeam() {
         let separator = makeSeparator()
-        fixedTeamContainer.addSubview(separator)
-        separator.bottomAnchor.constraint(equalTo: fixedTeamContainer.bottomAnchor).isActive = true
-        separator.centerXAnchor.constraint(equalTo: fixedTeamContainer.centerXAnchor).isActive = true
-        
-        let infoHeader = makeLabel(ofSize: 20, withText: "Fixed Team")
-        fixedTeamContainer.addSubview(infoHeader)
-        infoHeader.topAnchor.constraint(equalTo: fixedTeamContainer.topAnchor).isActive = true
-        infoHeader.centerXAnchor.constraint(equalTo: fixedTeamContainer.centerXAnchor).isActive = true
+        let header = makeLabel(ofSize: 20, withText: "Fixed Team")
+        makeHeader(forContainer: fixedTeamContainer, withHeader: header, withSeparator: separator)
         
         let fixedTeam = getFixedTeam(forFloor: dungeonFloor!)
         
@@ -187,13 +170,13 @@ extension DungeonFloorViewController {
             images.last?.trailingAnchor.constraint(equalTo: teamView.trailingAnchor).isActive = true
             
             fixedTeamContainer.addSubview(teamView)
-            teamView.topAnchor.constraint(equalTo: infoHeader.bottomAnchor, constant: 20).isActive = true
+            teamView.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20).isActive = true
             teamView.centerXAnchor.constraint(equalTo: fixedTeamContainer.centerXAnchor).isActive = true
             teamView.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
         } else {
             let noneLabel = makeLabel(ofSize: 16, withText: "No fixed team")
             fixedTeamContainer.addSubview(noneLabel)
-            noneLabel.topAnchor.constraint(equalTo: infoHeader.bottomAnchor, constant: 20).isActive = true
+            noneLabel.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20).isActive = true
             noneLabel.centerXAnchor.constraint(equalTo: fixedTeamContainer.centerXAnchor).isActive = true
             noneLabel.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
         }
@@ -207,16 +190,12 @@ extension DungeonFloorViewController {
     
     func makePossibleDrops() {
         
-        let header = makeLabel(ofSize: 20, withText: "Possible Drops")
-        possibleDropContainer.addSubview(header)
-        header.topAnchor.constraint(equalTo: possibleDropContainer.topAnchor).isActive = true
-        header.centerXAnchor.constraint(equalTo: possibleDropContainer.centerXAnchor).isActive = true
         
         
         let separator = makeSeparator()
-        possibleDropContainer.addSubview(separator)
-        separator.bottomAnchor.constraint(equalTo: possibleDropContainer.bottomAnchor).isActive = true
-        separator.centerXAnchor.constraint(equalTo: possibleDropContainer.centerXAnchor).isActive = true
+        let header = makeLabel(ofSize: 20, withText: "Possible Drops")
+
+        makeHeader(forContainer: possibleDropContainer, withHeader: header, withSeparator: separator)
         
         let possibleDrops = getPossibleDrops(forFloor: dungeonFloor!)
 
@@ -292,6 +271,22 @@ extension DungeonFloorViewController {
         
     }
     
+    func makeEncounters() {
+        if let floor = dungeonFloor {
+            let encounters = getEncounters(forFloor: floor)
+            let header = makeLabel(ofSize: 20, withText: "Encounters")
+            let separator = makeSeparator()
+            makeHeader(forContainer: encounterContainer, withHeader: header, withSeparator: separator)
+        }
+    }
+    
+    func getEncounters(forFloor floor:NSManagedObject) -> [Dictionary<String, JSON>] {
+        let dFloor = floor as! Floor
+        return encounterSets.filter {
+            return $0.dungeonID == dFloor.dungeonID && $0.floorNumber == dFloor.floorNumber
+            }.map{ JSON(parseJSON: $0.encounterData!).dictionaryValue }
+    }
+
     @objc
     func openMonsterPage(sender: UITapGestureRecognizer) {
         
@@ -335,6 +330,6 @@ extension DungeonFloorViewController {
         tapRec.addTarget(self, action: #selector(openMonsterPage))
         return tapRec
     }
-
+    
 
 }
