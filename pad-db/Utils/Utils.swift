@@ -234,28 +234,28 @@ func getSuperAwakenings(forMonster monster:NSManagedObject) -> [Int] {
 
 func getEvoList(forMonster monster:NSManagedObject) -> [Int] {
     return JSON(parseJSON: monster.value(forKey: "evolutions") as! String).arrayValue.map{ $0.intValue }
-
+    
 }
 
 func getNewData() {
-        if let v = versions.first {
-            let localMonsterVersion = v.value(forKey: "monster") as! Int
-            let localSkillVersion = v.value(forKey: "skill") as! Int
-            let localDungeonVersion = v.value(forKey: "dungeon") as! Int
-            
-            if newVersions["monster"]! > localMonsterVersion || newVersions["skill"]! > localSkillVersion || newVersions["dungeon"]! > localDungeonVersion || monsters.count == 0 {
-                // force rebuild for now. saves effort and guarantees most recent data
-                goodSkills.removeAll()
-                goodMonsters.removeAll()
-                wipeDatabase()
-                getData()
-            }
-        } else if monsters.count == 0 {
-            // this would be a first run type of scenario, or if a db rebuild failed
+    if let v = versions.first {
+        let localMonsterVersion = v.value(forKey: "monster") as! Int
+        let localSkillVersion = v.value(forKey: "skill") as! Int
+        let localDungeonVersion = v.value(forKey: "dungeon") as! Int
+        
+        if newVersions["monster"]! > localMonsterVersion || newVersions["skill"]! > localSkillVersion || newVersions["dungeon"]! > localDungeonVersion || monsters.count == 0 {
+            // force rebuild for now. saves effort and guarantees most recent data
+            goodSkills.removeAll()
+            goodMonsters.removeAll()
+            wipeDatabase()
             getData()
         }
-        updateVersionIdentifier()
-        loadFromDB()
+    } else if monsters.count == 0 {
+        // this would be a first run type of scenario, or if a db rebuild failed
+        getData()
+    }
+    updateVersionIdentifier()
+    loadFromDB()
     
     runUpdate = false
 }
@@ -266,6 +266,7 @@ func getData() {
     getSkillData()
     getDungeonData()
     getFloorData()
+    getEncounterData()
 }
 
 func wipeDatabase() {
@@ -287,6 +288,9 @@ func wipeDatabase() {
     let fetchRequest5 = NSFetchRequest<NSFetchRequestResult>(entityName: "EnemySkill")
     let deleteRequest5 = NSBatchDeleteRequest(fetchRequest: fetchRequest5)
     
+    let fetchRequest6 = NSFetchRequest<NSFetchRequestResult>(entityName: "EncounterSet")
+    let deleteRequest6 = NSBatchDeleteRequest(fetchRequest: fetchRequest6)
+    
     
     do {
         try managedContext.execute(deleteRequest)
@@ -294,6 +298,7 @@ func wipeDatabase() {
         try managedContext.execute(deleteRequest3)
         try managedContext.execute(deleteRequest4)
         try managedContext.execute(deleteRequest5)
+        try managedContext.execute(deleteRequest6)
         try managedContext.save()
     } catch {
         print("There was an error deleting items.")

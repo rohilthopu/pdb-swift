@@ -50,8 +50,6 @@ func getFloorData() {
         if let data = try? String(contentsOf: url) {
             let json = JSON(parseJSON: data)
             for floor in json.arrayValue {
-                
-                
                 let item = NSManagedObject(entity: entity, insertInto: managedContext)
                 item.setValue(floor["floorNumber"].intValue, forKey: "floorNumber")
                 item.setValue(floor["name"].stringValue, forKey: "name")

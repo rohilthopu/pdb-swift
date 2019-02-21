@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7828280C220D06BD0089F1F9 /* pad_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7828280A220D06BD0089F1F9 /* pad_db.xcdatamodeld */; };
 		7828D0742208E3CD0004E6CD /* SetupRelatedDungeons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828D0732208E3CD0004E6CD /* SetupRelatedDungeons.swift */; };
+		7846563D221F427700B5B593 /* DownloadEncounterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7846563C221F427700B5B593 /* DownloadEncounterData.swift */; };
 		787DF38621FA7601001FB99C /* DungeonListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38521FA7600001FB99C /* DungeonListTableViewController.swift */; };
 		787DF38921FA7693001FB99C /* DungeonTableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38821FA7693001FB99C /* DungeonTableUtils.swift */; };
 		787DF38E21FA8048001FB99C /* DungeonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38D21FA8048001FB99C /* DungeonCell.swift */; };
@@ -61,6 +62,8 @@
 /* Begin PBXFileReference section */
 		7828280B220D06BD0089F1F9 /* pad_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pad_db.xcdatamodel; sourceTree = "<group>"; };
 		7828D0732208E3CD0004E6CD /* SetupRelatedDungeons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRelatedDungeons.swift; sourceTree = "<group>"; };
+		7846563C221F427700B5B593 /* DownloadEncounterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadEncounterData.swift; sourceTree = "<group>"; };
+		7846563E221F42A900B5B593 /* pad_db 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "pad_db 2.xcdatamodel"; sourceTree = "<group>"; };
 		787DF38521FA7600001FB99C /* DungeonListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonListTableViewController.swift; sourceTree = "<group>"; };
 		787DF38821FA7693001FB99C /* DungeonTableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonTableUtils.swift; sourceTree = "<group>"; };
 		787DF38D21FA8048001FB99C /* DungeonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonCell.swift; sourceTree = "<group>"; };
@@ -246,6 +249,7 @@
 				789EA55D2203AF27004F9A68 /* DownloadDungeonData.swift */,
 				789EA55F2203AF64004F9A68 /* DownloadVersionIdentifier.swift */,
 				789EA5612203B01C004F9A68 /* DownloadGuerrillaData.swift */,
+				7846563C221F427700B5B593 /* DownloadEncounterData.swift */,
 			);
 			path = "Data Download Utils";
 			sourceTree = "<group>";
@@ -494,6 +498,7 @@
 				789EA5582203AE40004F9A68 /* DownloadLeaderboardData.swift in Sources */,
 				789EA55E2203AF27004F9A68 /* DownloadDungeonData.swift in Sources */,
 				789EA55422038C75004F9A68 /* structs.swift in Sources */,
+				7846563D221F427700B5B593 /* DownloadEncounterData.swift in Sources */,
 				789EA5642204A404004F9A68 /* GlobalVars.swift in Sources */,
 				787DF38921FA7693001FB99C /* DungeonTableUtils.swift in Sources */,
 				789EA5622203B01C004F9A68 /* DownloadGuerrillaData.swift in Sources */,
@@ -715,9 +720,10 @@
 		7828280A220D06BD0089F1F9 /* pad_db.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				7846563E221F42A900B5B593 /* pad_db 2.xcdatamodel */,
 				7828280B220D06BD0089F1F9 /* pad_db.xcdatamodel */,
 			);
-			currentVersion = 7828280B220D06BD0089F1F9 /* pad_db.xcdatamodel */;
+			currentVersion = 7846563E221F42A900B5B593 /* pad_db 2.xcdatamodel */;
 			path = pad_db.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
