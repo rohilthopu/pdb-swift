@@ -132,7 +132,9 @@ class GuerrillaCell: UITableViewCell {
         }
         
         if let link = imgLink {
-            portraitImage.kf.setImage(with: URL(string: link))
+            if let url = URL(string: link) {
+                portraitImage.kf.setImage(with: url)
+            }
         }
         
         if let remainingTime = remainingTime {

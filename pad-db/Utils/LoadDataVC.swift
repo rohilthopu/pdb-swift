@@ -29,7 +29,11 @@ class LoadDataVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        getNewData()
+        if !newVersions.isEmpty {
+            getNewData()
+        } else {
+            runUpdate = false
+        }
         self.dismiss(animated: true, completion: nil)
     }
 }
