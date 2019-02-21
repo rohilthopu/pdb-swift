@@ -66,7 +66,6 @@ func makeHeader(forContainer container:UIView, withHeader header:UILabel, withSe
     header.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
     header.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
     
-    let separator = makeSeparator()
     container.addSubview(separator)
     separator.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
     separator.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
