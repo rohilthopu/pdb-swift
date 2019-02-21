@@ -25,7 +25,7 @@ func getEncounterData() {
                 item.setValue(floor["floor_number"].intValue, forKey: "floorNumber")
                 item.setValue(floor["encounter_data"].stringValue, forKey: "encounterData")
                 item.setValue(floor["dungeon_id"].intValue, forKey: "dungeonID")
-                item.setValue(floor["wave_number"], forKey: "wave")
+                item.setValue(floor["wave_number"].intValue, forKey: "wave")
             }
         }
         

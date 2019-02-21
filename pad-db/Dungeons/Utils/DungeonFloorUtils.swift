@@ -12,7 +12,7 @@ import CoreData
 import SwiftyJSON
 
 extension DungeonFloorViewController {
-
+    
     func makeInfoView() {
         
         let separator = makeSeparator()
@@ -39,7 +39,7 @@ extension DungeonFloorViewController {
         scoreLabel.topAnchor.constraint(equalTo: wavesLabel.bottomAnchor, constant: 10).isActive = true
         scoreLabel.centerXAnchor.constraint(equalTo: infoContainer.centerXAnchor).isActive = true
         
-    
+        
         scoreLabel.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
         
         scrollView.addSubview(infoContainer)
@@ -55,7 +55,7 @@ extension DungeonFloorViewController {
         let separator = makeSeparator()
         let header = makeLabel(ofSize: 20, withText: "Required Dungeon")
         makeHeader(forContainer: requiredDungeonContainer, withHeader: header, withSeparator: separator)
-    
+        
         
         let dungeonID = dungeonFloor!.value(forKey: "requiredDungeon") as! Int
         let floorID = dungeonFloor!.value(forKey: "requiredFloor") as! Int
@@ -89,7 +89,7 @@ extension DungeonFloorViewController {
         requiredDungeonContainer.topAnchor.constraint(equalTo: infoContainer.bottomAnchor, constant: 20).isActive = true
         requiredDungeonContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
         requiredDungeonContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
-
+        
     }
     
     func makeDungeonMessages() {
@@ -135,7 +135,7 @@ extension DungeonFloorViewController {
         messageContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
         messageContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
         messageContainer.topAnchor.constraint(equalTo: requiredDungeonContainer.bottomAnchor, constant: 20).isActive = true
-
+        
     }
     
     func makeFixedTeam() {
@@ -194,20 +194,20 @@ extension DungeonFloorViewController {
         
         let separator = makeSeparator()
         let header = makeLabel(ofSize: 20, withText: "Possible Drops")
-
+        
         makeHeader(forContainer: possibleDropContainer, withHeader: header, withSeparator: separator)
         
         let possibleDrops = getPossibleDrops(forFloor: dungeonFloor!)
-
+        
         var dropViews = [UIView]()
-
+        
         if !possibleDrops.isEmpty {
             for key in possibleDrops.keys {
                 let monster = getMonster(forID: Int(key)!)!
                 let rarity = possibleDrops[key]!.stringValue
-
+                
                 let dropView = makeView()
-
+                
                 let img = makeImgView(forImg: getPortraitURL(id: monster.value(forKey: "cardID") as! Int), ofSize: 50)
                 let nameLabel = makeLabel(ofSize: 16, withText: monster.value(forKey: "name") as! String)
                 let rarityLabel = makeLabel(ofSize: 16, withText: rarity)
@@ -215,36 +215,36 @@ extension DungeonFloorViewController {
                 img.isUserInteractionEnabled = true
                 img.addGestureRecognizer(makeTapRecognizer())
                 img.tag = monster.value(forKey: "cardID") as! Int
-
-
+                
+                
                 dropView.addSubview(img)
                 dropView.addSubview(nameLabel)
                 dropView.addSubview(rarityLabel)
-
+                
                 img.leadingAnchor.constraint(equalTo: dropView.leadingAnchor).isActive = true
                 img.topAnchor.constraint(equalTo: dropView.topAnchor).isActive = true
                 img.bottomAnchor.constraint(equalTo: dropView.bottomAnchor).isActive = true
                 
-
+                
                 nameLabel.leadingAnchor.constraint(equalTo: img.trailingAnchor, constant: 10).isActive = true
                 nameLabel.trailingAnchor.constraint(equalTo: rarityLabel.leadingAnchor, constant: -10).isActive = true
                 nameLabel.centerYAnchor.constraint(equalTo: img.centerYAnchor).isActive = true
                 nameLabel.adjustsFontSizeToFitWidth = true
-
+                
                 rarityLabel.trailingAnchor.constraint(equalTo: dropView.trailingAnchor).isActive = true
                 rarityLabel.centerYAnchor.constraint(equalTo: img.centerYAnchor).isActive = true
                 rarityLabel.textAlignment = .right
-
+                
                 dropViews.append(dropView)
             }
-
+            
             for i in 0...dropViews.count - 1 {
                 let view = dropViews[i]
                 possibleDropContainer.addSubview(view)
                 view.leadingAnchor.constraint(equalTo: possibleDropContainer.leadingAnchor).isActive = true
                 view.trailingAnchor.constraint(equalTo: possibleDropContainer.trailingAnchor).isActive = true
                 view.centerXAnchor.constraint(equalTo: possibleDropContainer.centerXAnchor).isActive = true
-
+                
                 if i == 0 {
                     view.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20).isActive = true
                 } else if i == dropViews.count - 1 {
@@ -261,32 +261,108 @@ extension DungeonFloorViewController {
             noneLabel.centerXAnchor.constraint(equalTo: possibleDropContainer.centerXAnchor).isActive = true
             noneLabel.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
         }
-
+        
         scrollView.addSubview(possibleDropContainer)
         
         possibleDropContainer.topAnchor.constraint(equalTo: fixedTeamContainer.bottomAnchor, constant: 20).isActive = true
         possibleDropContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
         possibleDropContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
-        possibleDropContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -50).isActive = true
         
     }
     
     func makeEncounters() {
-        if let floor = dungeonFloor {
-            let encounters = getEncounters(forFloor: floor)
-            let header = makeLabel(ofSize: 20, withText: "Encounters")
-            let separator = makeSeparator()
-            makeHeader(forContainer: encounterContainer, withHeader: header, withSeparator: separator)
+        let header = makeLabel(ofSize: 20, withText: "Possible Encounters")
+        let separator = makeSeparator()
+        makeHeader(forContainer: encounterContainer, withHeader: header, withSeparator: separator)
+        
+        
+        
+        
+        var waveContainers = [UIView]()
+        
+        for i in 0...(dungeonFloor!.value(forKey: "waves") as! Int) {
+            
+            let waveContainer = makeView()
+            
+            let encounters = getEncounters(forFloor: dungeonFloor!, wave: i)
+            
+            var eContainers = [UIView]()
+            
+            for encounter in encounters {
+                // make a container to hold each encounter item
+                let con = makeView()
+                // I can force unwrap here because I can guarantee the data existence on the server side
+                let cardID = encounter["card_id"]!.intValue
+                let portraitImage = makeImgView(forImg: getPortraitURL(id: cardID), ofSize: 50)
+ 
+                let waveLabel = makeLabel(ofSize: 16, withText: "Wave \(i)")
+                
+                con.addSubview(waveLabel)
+                waveLabel.leadingAnchor.constraint(equalTo: con.leadingAnchor).isActive = true
+                waveLabel.topAnchor.constraint(equalTo: con.topAnchor).isActive = true
+                waveLabel.trailingAnchor.constraint(equalTo: con.trailingAnchor).isActive = true
+                
+                con.addSubview(portraitImage)
+                portraitImage.topAnchor.constraint(equalTo: waveLabel.bottomAnchor, constant: 20).isActive = true
+                portraitImage.leadingAnchor.constraint(equalTo: con.leadingAnchor).isActive = true
+                portraitImage.trailingAnchor.constraint(equalTo: con.trailingAnchor).isActive = true
+                portraitImage.bottomAnchor.constraint(equalTo: con.bottomAnchor).isActive = true
+                
+                eContainers.append(con)
+                
+            }
+            
+            for j in 0...eContainers.count - 1 {
+                
+                let view = eContainers[j]
+                waveContainer.addSubview(view)
+                view.leadingAnchor.constraint(equalTo: waveContainer.leadingAnchor).isActive = true
+                view.trailingAnchor.constraint(equalTo: waveContainer.trailingAnchor).isActive = true
+                if j == 0 {
+                    view.topAnchor.constraint(equalTo: waveContainer.topAnchor).isActive = true
+                } else if j == eContainers.count - 1 {
+                    view.topAnchor.constraint(equalTo: eContainers[j-1].bottomAnchor, constant: 10).isActive = true
+                    view.bottomAnchor.constraint(equalTo: waveContainer.bottomAnchor).isActive = true
+                } else {
+                    view.topAnchor.constraint(equalTo: eContainers[j-1].bottomAnchor, constant: 10).isActive = true
+                }
+            }
+            
+            waveContainers.append(waveContainer)
         }
+        
+        
+        for i in 0...waveContainers.count - 1 {
+            let view = waveContainers[i]
+            encounterContainer.addSubview(view)
+            view.leadingAnchor.constraint(equalTo: encounterContainer.leadingAnchor).isActive = true
+            view.trailingAnchor.constraint(equalTo: encounterContainer.trailingAnchor).isActive = true
+            
+            if i == 0 {
+                view.topAnchor.constraint(equalTo: encounterContainer.topAnchor).isActive = true
+            } else if i == waveContainers.count - 1 {
+                view.topAnchor.constraint(equalTo: waveContainers[i-1].bottomAnchor, constant: 10).isActive = true
+                view.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
+            } else {
+                view.topAnchor.constraint(lessThanOrEqualTo: waveContainers[i-1].bottomAnchor, constant: 10).isActive = true
+            }
+        }
+        
+        
+        scrollView.addSubview(encounterContainer)
+        encounterContainer.topAnchor.constraint(equalTo: possibleDropContainer.bottomAnchor, constant: 20).isActive = true
+        encounterContainer.leadingAnchor.constraint(lessThanOrEqualTo: self.view.leadingAnchor, constant: 10).isActive = true
+        encounterContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
+        encounterContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20).isActive = true
     }
     
-    func getEncounters(forFloor floor:NSManagedObject) -> [Dictionary<String, JSON>] {
+    func getEncounters(forFloor floor:NSManagedObject, wave waveNumber:Int) -> [Dictionary<String, JSON>] {
         let dFloor = floor as! Floor
         return encounterSets.filter {
-            return $0.dungeonID == dFloor.dungeonID && $0.floorNumber == dFloor.floorNumber
+            return $0.dungeonID == dFloor.dungeonID && $0.floorNumber == dFloor.floorNumber && $0.wave == waveNumber
             }.map{ JSON(parseJSON: $0.encounterData!).dictionaryValue }
     }
-
+    
     @objc
     func openMonsterPage(sender: UITapGestureRecognizer) {
         
@@ -331,5 +407,5 @@ extension DungeonFloorViewController {
         return tapRec
     }
     
-
+    
 }
