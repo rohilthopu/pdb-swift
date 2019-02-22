@@ -286,7 +286,6 @@ extension DungeonFloorViewController {
                 con.addSubview(portraitImage)
                 portraitImage.topAnchor.constraint(equalTo: con.topAnchor).isActive = true
                 portraitImage.leadingAnchor.constraint(equalTo: con.leadingAnchor).isActive = true
-                portraitImage.bottomAnchor.constraint(equalTo: con.bottomAnchor).isActive = true
                 
                 if let monster = getMonster(forID: cardID) {
                     let nameLabel = makeLabel(ofSize: 16, withText: monster.value(forKey: "name") as! String)
@@ -302,8 +301,89 @@ extension DungeonFloorViewController {
                     nameLabel.leadingAnchor.constraint(equalTo: portraitImage.trailingAnchor, constant: 10).isActive = true
                     nameLabel.trailingAnchor.constraint(equalTo: con.trailingAnchor).isActive = true
                     
+                    
+                    let enemySkillContainer = makeView()
+                    let eSkills = getEnemySkills(forMonster: monster)
+                    let enemySkillHeader = makeLabel(ofSize: 20, withText: "Enemy Skills")
+                    let enemySkillSeparator = makeSeparator()
+                    
+                    enemySkillContainer.addSubview(enemySkillHeader)
+                    enemySkillContainer.addSubview(enemySkillSeparator)
+                    makeHeader(forContainer: enemySkillContainer, withHeader: enemySkillHeader, withSeparator: enemySkillSeparator)
+                    
+                    if eSkills.count > 0 {
+                        // make a bunch of containers
+                        var skillViews = [UIView]()
+                        
+                        for skill in eSkills {
+                            
+                            let sView = makeView()
+                            let name = makeLabel(ofSize: 18, withText: skill.value(forKey: "name") as! String)
+                            
+                            if !name.text!.contains("ERROR") && !name.text!.contains("None") {
+                                let effect = makeLabel(ofSize: 16, withText: skill.value(forKey: "effect") as! String)
+                                
+                                sView.addSubview(name)
+                                sView.addSubview(effect)
+                                
+                                name.topAnchor.constraint(equalTo: sView.topAnchor).isActive = true
+                                name.leadingAnchor.constraint(equalTo: sView.leadingAnchor).isActive = true
+                                name.trailingAnchor.constraint(equalTo: sView.trailingAnchor).isActive = true
+                                name.adjustsFontSizeToFitWidth = true
+                                
+                                effect.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 20).isActive = true
+                                effect.leadingAnchor.constraint(equalTo: sView.leadingAnchor, constant: 20).isActive = true
+                                effect.trailingAnchor.constraint(equalTo: sView.trailingAnchor).isActive = true
+                                effect.bottomAnchor.constraint(equalTo: sView.bottomAnchor).isActive = true
+                                effect.lineBreakMode = .byWordWrapping
+                                effect.numberOfLines = 0
+                                
+                                skillViews.append(sView)
+                            }
+                        }
+                        
+                        if skillViews.count == 1 {
+                            let skillView = skillViews[0]
+                            enemySkillContainer.addSubview(skillView)
+                            skillView.topAnchor.constraint(equalTo: enemySkillHeader.bottomAnchor, constant: 20).isActive = true
+                            skillView.bottomAnchor.constraint(equalTo: enemySkillSeparator.topAnchor, constant: -20).isActive = true
+                            skillView.leadingAnchor.constraint(equalTo: enemySkillContainer.leadingAnchor).isActive = true
+                            skillView.trailingAnchor.constraint(equalTo: enemySkillContainer.trailingAnchor).isActive = true
+                        } else {
+                            for i in 0...skillViews.count - 1 {
+                                let skillView = skillViews[i]
+                                enemySkillContainer.addSubview(skillView)
+                                skillView.leadingAnchor.constraint(equalTo: enemySkillContainer.leadingAnchor).isActive = true
+                                skillView.trailingAnchor.constraint(equalTo: enemySkillContainer.trailingAnchor).isActive = true
+                                
+                                if i == 0 {
+                                    skillView.topAnchor.constraint(equalTo: enemySkillHeader.bottomAnchor, constant: 20).isActive = true
+                                } else if i == skillViews.count - 1 {
+                                    skillView.topAnchor.constraint(equalTo: skillViews[i-1].bottomAnchor, constant: 20).isActive = true
+                                    skillView.bottomAnchor.constraint(equalTo: enemySkillSeparator.topAnchor, constant: -20).isActive = true
+                                } else {
+                                    skillView.topAnchor.constraint(equalTo: skillViews[i-1].bottomAnchor, constant: 20).isActive = true
+                                }
+                            }
+                        }
+                        
+                    } else {
+                        let noEnemySkillsLabel = makeLabel(ofSize: 16, withText: "No enemy skills")
+                        enemySkillContainer.addSubview(noEnemySkillsLabel)
+                        noEnemySkillsLabel.topAnchor.constraint(equalTo: enemySkillHeader.bottomAnchor, constant: 20).isActive = true
+                        noEnemySkillsLabel.centerXAnchor.constraint(equalTo: enemySkillContainer.centerXAnchor).isActive = true
+                        noEnemySkillsLabel.bottomAnchor.constraint(equalTo: enemySkillSeparator.topAnchor, constant: -20).isActive = true
+                    }
+                    
+                    con.addSubview(enemySkillContainer)
+                    enemySkillContainer.topAnchor.constraint(equalTo: portraitImage.bottomAnchor, constant: 20).isActive = true
+                    enemySkillContainer.leadingAnchor.constraint(equalTo: con.leadingAnchor, constant: 10).isActive = true
+                    enemySkillContainer.trailingAnchor.constraint(equalTo: con.trailingAnchor, constant: -10).isActive = true
+                    enemySkillContainer.bottomAnchor.constraint(equalTo: con.bottomAnchor).isActive = true
+                    
                 } else {
                     let nameLabel = makeLabel(ofSize: 16, withText: "No data")
+                    con.addSubview(nameLabel)
                     nameLabel.leadingAnchor.constraint(equalTo: portraitImage.trailingAnchor, constant: 10).isActive = true
                     nameLabel.trailingAnchor.constraint(equalTo: con.trailingAnchor).isActive = true
                     nameLabel.centerYAnchor.constraint(equalTo: portraitImage.centerYAnchor).isActive = true
@@ -312,15 +392,14 @@ extension DungeonFloorViewController {
                 eContainers.append(con)
             }
         } else {
-            
-            let noneLabel = makeLabel(ofSize: 16, withText: "No Data for Wave \(waveNumber!)")
+            let noWaveDataLabel = makeLabel(ofSize: 16, withText: "No Data for Wave \(waveNumber!)")
             let con = makeView()
-            con.addSubview(noneLabel)
+            con.addSubview(noWaveDataLabel)
             
-            noneLabel.topAnchor.constraint(equalTo: con.topAnchor).isActive = true
-            noneLabel.leadingAnchor.constraint(equalTo: con.leadingAnchor, constant: 20).isActive = true
-            noneLabel.trailingAnchor.constraint(equalTo: con.trailingAnchor).isActive = true
-            noneLabel.bottomAnchor.constraint(equalTo: con.bottomAnchor).isActive = true
+            noWaveDataLabel.topAnchor.constraint(equalTo: con.topAnchor).isActive = true
+            noWaveDataLabel.leadingAnchor.constraint(equalTo: con.leadingAnchor, constant: 20).isActive = true
+            noWaveDataLabel.trailingAnchor.constraint(equalTo: con.trailingAnchor).isActive = true
+            noWaveDataLabel.bottomAnchor.constraint(equalTo: con.bottomAnchor).isActive = true
             eContainers.append(con)
         }
         
@@ -344,7 +423,7 @@ extension DungeonFloorViewController {
                 if i == 0 {
                     con.topAnchor.constraint(equalTo: waveContainer.topAnchor).isActive = true
                 } else if i == eContainers.count - 1 {
-                    con.topAnchor.constraint(equalTo: eContainers[i-1].bottomAnchor, constant: 10).isActive = true
+                    con.topAnchor.constraint(equalTo: eContainers[i-1].bottomAnchor, constant: 20).isActive = true
                     con.bottomAnchor.constraint(equalTo: waveContainer.bottomAnchor).isActive = true
                 } else {
                     con.topAnchor.constraint(equalTo: eContainers[i-1].bottomAnchor, constant: 10).isActive = true
@@ -362,7 +441,7 @@ extension DungeonFloorViewController {
         
         scrollView.addSubview(encounterContainer)
         encounterContainer.topAnchor.constraint(equalTo: fixedTeamContainer.bottomAnchor, constant: 20).isActive = true
-        encounterContainer.leadingAnchor.constraint(lessThanOrEqualTo: self.view.leadingAnchor, constant: 10).isActive = true
+        encounterContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
         encounterContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
         encounterContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -50).isActive = true
     }

@@ -27,7 +27,6 @@ extension MonsterVC {
         
         if eSkills.count > 0 {
             // make a bunch of containers
-            
             var skillViews = [UIView]()
             
             for skill in eSkills {
