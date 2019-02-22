@@ -288,6 +288,27 @@ extension DungeonFloorViewController {
                 portraitImage.leadingAnchor.constraint(equalTo: con.leadingAnchor).isActive = true
                 portraitImage.bottomAnchor.constraint(equalTo: con.bottomAnchor).isActive = true
                 
+                if let monster = getMonster(forID: cardID) {
+                    let nameLabel = makeLabel(ofSize: 16, withText: monster.value(forKey: "name") as! String)
+                    let idLabel = makeLabel(ofSize: 16, withText: "No.\(cardID)")
+                    con.addSubview(nameLabel)
+                    con.addSubview(idLabel)
+                    
+                    idLabel.topAnchor.constraint(equalTo: portraitImage.topAnchor).isActive = true
+                    idLabel.leadingAnchor.constraint(equalTo: portraitImage.trailingAnchor, constant: 10).isActive = true
+                    idLabel.trailingAnchor.constraint(equalTo: con.trailingAnchor).isActive = true
+                    
+                    nameLabel.topAnchor.constraint(equalTo: idLabel.bottomAnchor, constant: 10).isActive = true
+                    nameLabel.leadingAnchor.constraint(equalTo: portraitImage.trailingAnchor, constant: 10).isActive = true
+                    nameLabel.trailingAnchor.constraint(equalTo: con.trailingAnchor).isActive = true
+                    
+                } else {
+                    let nameLabel = makeLabel(ofSize: 16, withText: "No data")
+                    nameLabel.leadingAnchor.constraint(equalTo: portraitImage.trailingAnchor, constant: 10).isActive = true
+                    nameLabel.trailingAnchor.constraint(equalTo: con.trailingAnchor).isActive = true
+                    nameLabel.centerYAnchor.constraint(equalTo: portraitImage.centerYAnchor).isActive = true
+                }
+                
                 eContainers.append(con)
             }
         } else {
