@@ -182,7 +182,7 @@ extension DungeonFloorViewController {
         scrollView.addSubview(fixedTeamContainer)
         fixedTeamContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
         fixedTeamContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
-        fixedTeamContainer.topAnchor.constraint(equalTo: messageContainer.bottomAnchor, constant: 20).isActive = true
+        fixedTeamContainer.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20).isActive = true
         
     }
     
@@ -271,118 +271,92 @@ extension DungeonFloorViewController {
         let separator = makeSeparator()
         makeHeader(forContainer: encounterContainer, withHeader: header, withSeparator: separator)
         
-        var waveContainers = [UIView]()
+        let waveContainer = makeView()
+        var eContainers = [UIView]()
+        let encounters = getEncounters(forFloor: dungeonFloor!, wave: waveNumber!)
         
-        
-        for i in 0...(dungeonFloor!.value(forKey: "waves") as! Int) - 1 {
-            let waveContainer = makeView()
-
-            var eContainers = [UIView]()
-            let encounters = getEncounters(forFloor: dungeonFloor!, wave: i)
-            let waveLabel = makeLabel(ofSize: 16, withText: "Wave \(i+1)")
-            
-            waveContainer.addSubview(waveLabel)
-            waveLabel.leadingAnchor.constraint(equalTo: waveContainer.leadingAnchor).isActive = true
-            waveLabel.topAnchor.constraint(equalTo: waveContainer.topAnchor).isActive = true
-            waveLabel.trailingAnchor.constraint(equalTo: waveContainer.trailingAnchor).isActive = true
-            
-            if encounters.count > 0 {
-                for encounter in encounters {
-                    // make a container to hold each encounter item
-                    let con = makeView()
-                    // I can force unwrap here because I can guarantee the data existence on the server side
-                    let cardID = encounter["card_id"]!.intValue
-                    let portraitImage = makeImgView(forImg: getPortraitURL(id: cardID), ofSize: 50)
-                    
-                    con.addSubview(portraitImage)
-                    portraitImage.topAnchor.constraint(equalTo: con.topAnchor).isActive = true
-                    portraitImage.leadingAnchor.constraint(equalTo: con.leadingAnchor).isActive = true
-                    portraitImage.bottomAnchor.constraint(equalTo: con.bottomAnchor).isActive = true
-                    
-                    eContainers.append(con)
-                }
-            } else {
-                
-                let noneLabel = makeLabel(ofSize: 16, withText: "No Data for Wave \(i+1)")
+        if encounters.count > 0 {
+            for encounter in encounters {
+                // make a container to hold each encounter item
                 let con = makeView()
-                con.addSubview(noneLabel)
+                // I can force unwrap here because I can guarantee the data existence on the server side
+                let cardID = encounter["card_id"]!.intValue
+                let portraitImage = makeImgView(forImg: getPortraitURL(id: cardID), ofSize: 60)
                 
-                noneLabel.topAnchor.constraint(equalTo: con.topAnchor).isActive = true
-                noneLabel.leadingAnchor.constraint(equalTo: con.leadingAnchor, constant: 20).isActive = true
-                noneLabel.trailingAnchor.constraint(equalTo: con.trailingAnchor).isActive = true
-                noneLabel.bottomAnchor.constraint(equalTo: con.bottomAnchor).isActive = true
+                con.addSubview(portraitImage)
+                portraitImage.topAnchor.constraint(equalTo: con.topAnchor).isActive = true
+                portraitImage.leadingAnchor.constraint(equalTo: con.leadingAnchor).isActive = true
+                portraitImage.bottomAnchor.constraint(equalTo: con.bottomAnchor).isActive = true
+                
                 eContainers.append(con)
             }
+        } else {
             
+            let noneLabel = makeLabel(ofSize: 16, withText: "No Data for Wave \(waveNumber!)")
+            let con = makeView()
+            con.addSubview(noneLabel)
             
-            if eContainers.count == 1 {
-                let con = eContainers[0]
+            noneLabel.topAnchor.constraint(equalTo: con.topAnchor).isActive = true
+            noneLabel.leadingAnchor.constraint(equalTo: con.leadingAnchor, constant: 20).isActive = true
+            noneLabel.trailingAnchor.constraint(equalTo: con.trailingAnchor).isActive = true
+            noneLabel.bottomAnchor.constraint(equalTo: con.bottomAnchor).isActive = true
+            eContainers.append(con)
+        }
+        
+        
+        if eContainers.count == 1 {
+            let con = eContainers[0]
+            waveContainer.addSubview(con)
+            con.leadingAnchor.constraint(equalTo: waveContainer.leadingAnchor).isActive = true
+            con.trailingAnchor.constraint(equalTo: waveContainer.trailingAnchor).isActive = true
+            con.bottomAnchor.constraint(equalTo: waveContainer.bottomAnchor).isActive = true
+            con.topAnchor.constraint(equalTo: waveContainer.topAnchor).isActive = true
+            
+        } else {
+            
+            for i in 0...eContainers.count - 1 {
+                
+                let con = eContainers[i]
                 waveContainer.addSubview(con)
                 con.leadingAnchor.constraint(equalTo: waveContainer.leadingAnchor).isActive = true
                 con.trailingAnchor.constraint(equalTo: waveContainer.trailingAnchor).isActive = true
-                con.bottomAnchor.constraint(equalTo: waveContainer.bottomAnchor).isActive = true
-                con.topAnchor.constraint(equalTo: waveLabel.bottomAnchor, constant: 10).isActive = true
-                
-            } else {
-                
-                for j in 0...eContainers.count - 1 {
-        
-                    let con = eContainers[j]
-                    waveContainer.addSubview(con)
-                    con.leadingAnchor.constraint(equalTo: waveContainer.leadingAnchor).isActive = true
-                    con.trailingAnchor.constraint(equalTo: waveContainer.trailingAnchor).isActive = true
-                    if j == 0 {
-                        con.topAnchor.constraint(equalTo: waveLabel.bottomAnchor, constant: 10).isActive = true
-                    } else if j == eContainers.count - 1 {
-                        con.topAnchor.constraint(equalTo: eContainers[j-1].bottomAnchor, constant: 10).isActive = true
-                        con.bottomAnchor.constraint(equalTo: waveContainer.bottomAnchor).isActive = true
-                    } else {
-                        con.topAnchor.constraint(equalTo: eContainers[j-1].bottomAnchor, constant: 10).isActive = true
-                    }
-                }
-            }
-            waveContainers.append(waveContainer)
-        }
-        
-        
-        if waveContainers.count == 1 {
-            let waveContainer = waveContainers[0]
-            encounterContainer.addSubview(waveContainer)
-            waveContainer.leadingAnchor.constraint(equalTo: encounterContainer.leadingAnchor).isActive = true
-            waveContainer.trailingAnchor.constraint(equalTo: encounterContainer.trailingAnchor).isActive = true
-            waveContainer.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20).isActive = true
-            waveContainer.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
-        } else {
-            for i in 0...waveContainers.count - 1 {
-                let waveContainer = waveContainers[i]
-                encounterContainer.addSubview(waveContainer)
-                waveContainer.leadingAnchor.constraint(equalTo: encounterContainer.leadingAnchor).isActive = true
-                waveContainer.trailingAnchor.constraint(equalTo: encounterContainer.trailingAnchor).isActive = true
-                
                 if i == 0 {
-                    waveContainer.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20).isActive = true
-                } else if i == waveContainers.count - 1 {
-                    waveContainer.topAnchor.constraint(equalTo: waveContainers[i-1].bottomAnchor, constant: 10).isActive = true
-                    waveContainer.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -50).isActive = true
+                    con.topAnchor.constraint(equalTo: waveContainer.topAnchor).isActive = true
+                } else if i == eContainers.count - 1 {
+                    con.topAnchor.constraint(equalTo: eContainers[i-1].bottomAnchor, constant: 10).isActive = true
+                    con.bottomAnchor.constraint(equalTo: waveContainer.bottomAnchor).isActive = true
                 } else {
-                    waveContainer.topAnchor.constraint(equalTo: waveContainers[i-1].bottomAnchor, constant: 10).isActive = true
+                    con.topAnchor.constraint(equalTo: eContainers[i-1].bottomAnchor, constant: 10).isActive = true
                 }
             }
         }
+        
+        
+        encounterContainer.addSubview(waveContainer)
+        waveContainer.leadingAnchor.constraint(equalTo: encounterContainer.leadingAnchor).isActive = true
+        waveContainer.trailingAnchor.constraint(equalTo: encounterContainer.trailingAnchor).isActive = true
+        waveContainer.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20).isActive = true
+        waveContainer.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
+        
         
         scrollView.addSubview(encounterContainer)
-        encounterContainer.topAnchor.constraint(equalTo: possibleDropContainer.bottomAnchor, constant: 20).isActive = true
+        encounterContainer.topAnchor.constraint(equalTo: fixedTeamContainer.bottomAnchor, constant: 20).isActive = true
         encounterContainer.leadingAnchor.constraint(lessThanOrEqualTo: self.view.leadingAnchor, constant: 10).isActive = true
         encounterContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
         encounterContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -50).isActive = true
     }
     
-    func getEncounters(forFloor floor:NSManagedObject, wave waveNumber:Int) -> [[String: JSON]] {
+    private func getEncounters(forFloor floor:NSManagedObject, wave waveNumber:Int) -> [[String: JSON]] {
         let results = encounterSets.filter {
-            return ($0.value(forKey: "dungeonID") as! Int) == (floor.value(forKey: "dungeonID") as! Int) && ($0.value(forKey: "floorNumber") as! Int) == (floor.value(forKey: "floorNumber") as! Int) && ($0.value(forKey: "wave") as! Int) == waveNumber
-            }
-        return JSON(parseJSON: results.first?.value(forKey: "encounterData") as! String).arrayValue.map {
+            return ($0.value(forKey: "dungeonID") as! Int) == (floor.value(forKey: "dungeonID") as! Int) && ($0.value(forKey: "floorNumber") as! Int) == (floor.value(forKey: "floorNumber") as! Int) && ($0.value(forKey: "wave") as! Int) == waveNumber - 1
+        }
+        
+        if results.count == 0 {
+            return []
+        } else {
+            return JSON(parseJSON: results.first?.value(forKey: "encounterData") as! String).arrayValue.map {
                 $0.dictionaryValue
+            }
         }
     }
     

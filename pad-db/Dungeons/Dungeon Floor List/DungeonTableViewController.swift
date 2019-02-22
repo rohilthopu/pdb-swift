@@ -39,11 +39,9 @@ class DungeonTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let index = indexPath.row
-        let currFloor = dungeon_floors[index]
-        let floorVC = DungeonFloorViewController()
-        floorVC.dungeonFloor = currFloor
-        floorVC.navigationItem.title = (currFloor.value(forKey: "name") as! String)
+        let floorVC = DungeonWaveTable()
+        floorVC.floor =  dungeon_floors[indexPath.row]
+        floorVC.navigationItem.title = "Enemy Waves"
         self.navigationController?.pushViewController(floorVC, animated: true)
     }
 

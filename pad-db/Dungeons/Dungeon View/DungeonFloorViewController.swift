@@ -12,6 +12,7 @@ import CoreData
 class DungeonFloorViewController: UIViewController {
     
     var dungeonFloor:NSManagedObject?
+    var waveNumber:Int?
     
     let scrollView:UIScrollView = {
         let view = UIScrollView()
@@ -71,11 +72,11 @@ class DungeonFloorViewController: UIViewController {
         scrollView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         scrollView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
                 
-        makeInfoView()
-        makeRequiredDungeonView()
-        makeDungeonMessages()
+//        makeInfoView()
+//        makeRequiredDungeonView()
+//        makeDungeonMessages()
         makeFixedTeam()
-        makePossibleDrops()
+//        makePossibleDrops()
         makeEncounters()
     }
 
