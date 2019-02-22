@@ -268,8 +268,9 @@ extension DungeonFloorViewController {
     
     func makeEncounters() {
         let header = makeLabel(ofSize: 20, withText: "Possible Encounters")
-        let separator = makeSeparator()
-        makeHeader(forContainer: encounterContainer, withHeader: header, withSeparator: separator)
+        encounterContainer.addSubview(header)
+        header.topAnchor.constraint(equalTo: encounterContainer.topAnchor).isActive = true
+        header.centerXAnchor.constraint(equalTo: encounterContainer.centerXAnchor).isActive = true
         
         let waveContainer = makeView()
         var eContainers = [UIView]()
@@ -397,8 +398,7 @@ extension DungeonFloorViewController {
             con.addSubview(noWaveDataLabel)
             
             noWaveDataLabel.topAnchor.constraint(equalTo: con.topAnchor).isActive = true
-            noWaveDataLabel.leadingAnchor.constraint(equalTo: con.leadingAnchor, constant: 20).isActive = true
-            noWaveDataLabel.trailingAnchor.constraint(equalTo: con.trailingAnchor).isActive = true
+            noWaveDataLabel.centerXAnchor.constraint(equalTo: con.centerXAnchor).isActive = true
             noWaveDataLabel.bottomAnchor.constraint(equalTo: con.bottomAnchor).isActive = true
             eContainers.append(con)
         }
@@ -431,12 +431,11 @@ extension DungeonFloorViewController {
             }
         }
         
-        
         encounterContainer.addSubview(waveContainer)
         waveContainer.leadingAnchor.constraint(equalTo: encounterContainer.leadingAnchor).isActive = true
         waveContainer.trailingAnchor.constraint(equalTo: encounterContainer.trailingAnchor).isActive = true
         waveContainer.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20).isActive = true
-        waveContainer.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
+        waveContainer.bottomAnchor.constraint(equalTo: encounterContainer.bottomAnchor).isActive = true
         
         
         scrollView.addSubview(encounterContainer)
