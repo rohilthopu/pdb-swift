@@ -37,7 +37,7 @@ var goodSkills = [NSManagedObject]()
 
 var dungeons = [NSManagedObject]()
 var floors = [NSManagedObject]()
-var encounterSets = [EncounterSet]()
+var encounterSets = [NSManagedObject]()
 
 var currGroupNA = ""
 var currGroupJP = ""

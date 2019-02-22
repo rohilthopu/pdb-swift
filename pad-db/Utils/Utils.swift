@@ -229,10 +229,10 @@ func loadFromDB() {
     let dungeonRequest = NSFetchRequest<NSManagedObject>(entityName: "Dungeon")
     dungeonRequest.sortDescriptors = [NSSortDescriptor(key: "dungeonID", ascending: false)]
     
-    let floorRequest = NSFetchRequest<Floor>(entityName: "Floor")
+    let floorRequest = NSFetchRequest<NSManagedObject>(entityName: "Floor")
     let enemySkillRequest = NSFetchRequest<NSManagedObject>(entityName: "EnemySkill")
     
-    let encounterRequest = NSFetchRequest<EncounterSet>(entityName: "EncounterSet")
+    let encounterRequest = NSFetchRequest<NSManagedObject>(entityName: "EncounterSet")
     
     do {
         monsters = try managedContext.fetch(monsterRequest)

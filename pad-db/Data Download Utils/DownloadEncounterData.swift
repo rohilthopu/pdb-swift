@@ -22,7 +22,7 @@ func getEncounterData() {
             let json = JSON(parseJSON: data)
             for floor in json.arrayValue {
                 let item = NSManagedObject(entity: entity, insertInto: managedContext)
-                item.setValue(floor["floor_number"].intValue, forKey: "floorNumber")
+                item.setValue(floor["floor_id"].intValue, forKey: "floorNumber")
                 item.setValue(floor["encounter_data"].stringValue, forKey: "encounterData")
                 item.setValue(floor["dungeon_id"].intValue, forKey: "dungeonID")
                 item.setValue(floor["wave_number"].intValue, forKey: "wave")
