@@ -39,13 +39,10 @@ class LoadDataVC: UIViewController {
     
     private func getNewData() {
         if let v = versions.first {
-            if isNewVersion(currentVersion: v) {
+            if isNewVersion(currentVersion: v) || isMissingData() {
                 // force rebuild for now. saves effort and guarantees most recent data
                 getData()
             }
-        } else if isMissingData() {
-            // this would be a first run type of scenario, I added a new api endpoint, or if a db rebuild failed
-            getData()
         }
         updateVersionIdentifier()
         loadFromDB()
