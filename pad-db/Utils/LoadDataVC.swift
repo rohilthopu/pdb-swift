@@ -37,35 +37,44 @@ class LoadDataVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func getNewData() {
+    private func getNewData() {
         if let v = versions.first {
-            let localMonsterVersion = v.value(forKey: "monster") as! Int
-            let localSkillVersion = v.value(forKey: "skill") as! Int
-            let localDungeonVersion = v.value(forKey: "dungeon") as! Int
-            
-            if newVersions["monster"]! > localMonsterVersion || newVersions["skill"]! > localSkillVersion || newVersions["dungeon"]! > localDungeonVersion || monsters.count == 0 {
+            if isNewVersion(currentVersion: v) {
                 // force rebuild for now. saves effort and guarantees most recent data
-                goodSkills.removeAll()
-                goodMonsters.removeAll()
-                wipeDatabase()
                 getData()
             }
-        } else if monsters.count == 0 {
-            // this would be a first run type of scenario, or if a db rebuild failed
+        } else if isMissingData() {
+            // this would be a first run type of scenario, I added a new api endpoint, or if a db rebuild failed
             getData()
         }
         updateVersionIdentifier()
         loadFromDB()
-        
         runUpdate = false
     }
     
-    func getData() {
+    private func getData() {
+        goodSkills.removeAll()
+        goodMonsters.removeAll()
+        
+        wipeDatabase()
+        
         getMonsterData()
         getEnemySkillData()
         getSkillData()
         getDungeonData()
         getFloorData()
         getEncounterData()
+    }
+    
+    private func isNewVersion(currentVersion v:NSManagedObject) -> Bool {
+        let localMonsterVersion = v.value(forKey: "monster") as! Int
+        let localSkillVersion = v.value(forKey: "skill") as! Int
+        let localDungeonVersion = v.value(forKey: "dungeon") as! Int
+        
+        return newVersions["monster"]! > localMonsterVersion || newVersions["skill"]! > localSkillVersion || newVersions["dungeon"]! > localDungeonVersion || monsters.count == 0
+    }
+    
+    private func isMissingData() -> Bool {
+        return monsters.isEmpty || skills.isEmpty || enemySkills.isEmpty || dungeons.isEmpty || floors.isEmpty || encounterSets.isEmpty
     }
 }

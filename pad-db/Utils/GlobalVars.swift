@@ -26,9 +26,6 @@ var monsters = [NSManagedObject]()
 var skills = [NSManagedObject]()
 var enemySkills = [NSManagedObject]()
 
-var rawMonsters = [Monster]()
-var rawSkills = [Skill]()
-
 var goodMonsters = [NSManagedObject]()
 
 var users = [User]()
