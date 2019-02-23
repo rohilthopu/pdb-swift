@@ -269,8 +269,8 @@ extension DungeonFloorViewController {
     func makeEncounters() {
         let header = makeLabel(ofSize: 20, withText: "Possible Encounters")
         encounterContainer.addSubview(header)
-        header.topAnchor.constraint(equalTo: encounterContainer.topAnchor).isActive = true
-        header.centerXAnchor.constraint(equalTo: encounterContainer.centerXAnchor).isActive = true
+        header.setTop(to: .top, of: encounterContainer, withSpacing: 0)
+        header.setCenterX(to: encounterContainer)
         
         let waveContainer = makeView()
         var eContainers = [UIView]()
@@ -285,8 +285,8 @@ extension DungeonFloorViewController {
                 let portraitImage = makeImgView(forImg: getPortraitURL(id: cardID), ofSize: 60)
                 
                 con.addSubview(portraitImage)
-                portraitImage.topAnchor.constraint(equalTo: con.topAnchor).isActive = true
-                portraitImage.leadingAnchor.constraint(equalTo: con.leadingAnchor).isActive = true
+                portraitImage.setTop(to: .top, of: con, withSpacing: 0)
+                portraitImage.setLeft(to: .leading, of: con, withSpacing: 0)
                 
                 if let monster = getMonster(forID: cardID) {
                     let nameLabel = makeLabel(ofSize: 16, withText: monster.value(forKey: "name") as! String)
@@ -294,13 +294,13 @@ extension DungeonFloorViewController {
                     con.addSubview(nameLabel)
                     con.addSubview(idLabel)
                     
-                    idLabel.topAnchor.constraint(equalTo: portraitImage.topAnchor).isActive = true
-                    idLabel.leadingAnchor.constraint(equalTo: portraitImage.trailingAnchor, constant: 10).isActive = true
-                    idLabel.trailingAnchor.constraint(equalTo: con.trailingAnchor).isActive = true
+                    idLabel.setTop(to: .top, of: portraitImage, withSpacing: 0)
+                    idLabel.setLeft(to: .trailing, of: portraitImage, withSpacing: 10)
+                    idLabel.setRight(to: con, withSpacing: 0)
                     
-                    nameLabel.topAnchor.constraint(equalTo: idLabel.bottomAnchor, constant: 10).isActive = true
-                    nameLabel.leadingAnchor.constraint(equalTo: portraitImage.trailingAnchor, constant: 10).isActive = true
-                    nameLabel.trailingAnchor.constraint(equalTo: con.trailingAnchor).isActive = true
+                    nameLabel.setTop(to: .bottom, of: idLabel, withSpacing: 10)
+                    nameLabel.setLeft(to: .trailing, of: portraitImage, withSpacing: 10)
+                    nameLabel.setRight(to: con, withSpacing: 0)
                     
                     
                     let enemySkillContainer = makeView()
@@ -403,7 +403,6 @@ extension DungeonFloorViewController {
             eContainers.append(con)
         }
         
-        
         if eContainers.count == 1 {
             let con = eContainers[0]
             waveContainer.addSubview(con)
@@ -436,7 +435,6 @@ extension DungeonFloorViewController {
         waveContainer.trailingAnchor.constraint(equalTo: encounterContainer.trailingAnchor).isActive = true
         waveContainer.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20).isActive = true
         waveContainer.bottomAnchor.constraint(equalTo: encounterContainer.bottomAnchor).isActive = true
-        
         
         scrollView.addSubview(encounterContainer)
         encounterContainer.topAnchor.constraint(equalTo: fixedTeamContainer.bottomAnchor, constant: 20).isActive = true

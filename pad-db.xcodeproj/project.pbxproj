@@ -14,6 +14,7 @@
 		784656452220886A00B5B593 /* DungeonWaveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784656442220886A00B5B593 /* DungeonWaveCell.swift */; };
 		7846564722209CE900B5B593 /* DatabaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7846564622209CE900B5B593 /* DatabaseUtils.swift */; };
 		7846564922209D1100B5B593 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7846564822209D1100B5B593 /* ViewUtils.swift */; };
+		7846564B2220E8D300B5B593 /* ConstraintWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7846564A2220E8D300B5B593 /* ConstraintWrapper.swift */; };
 		787DF38621FA7601001FB99C /* DungeonListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38521FA7600001FB99C /* DungeonListTableViewController.swift */; };
 		787DF38921FA7693001FB99C /* DungeonTableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38821FA7693001FB99C /* DungeonTableUtils.swift */; };
 		787DF38E21FA8048001FB99C /* DungeonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38D21FA8048001FB99C /* DungeonCell.swift */; };
@@ -72,6 +73,7 @@
 		784656442220886A00B5B593 /* DungeonWaveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonWaveCell.swift; sourceTree = "<group>"; };
 		7846564622209CE900B5B593 /* DatabaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUtils.swift; sourceTree = "<group>"; };
 		7846564822209D1100B5B593 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
+		7846564A2220E8D300B5B593 /* ConstraintWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintWrapper.swift; sourceTree = "<group>"; };
 		787DF38521FA7600001FB99C /* DungeonListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonListTableViewController.swift; sourceTree = "<group>"; };
 		787DF38821FA7693001FB99C /* DungeonTableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonTableUtils.swift; sourceTree = "<group>"; };
 		787DF38D21FA8048001FB99C /* DungeonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonCell.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				789EA54F22023238004F9A68 /* Utils.swift */,
 				7846564622209CE900B5B593 /* DatabaseUtils.swift */,
 				7846564822209D1100B5B593 /* ViewUtils.swift */,
+				7846564A2220E8D300B5B593 /* ConstraintWrapper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				789EA55422038C75004F9A68 /* structs.swift in Sources */,
 				7846563D221F427700B5B593 /* DownloadEncounterData.swift in Sources */,
 				789EA5642204A404004F9A68 /* GlobalVars.swift in Sources */,
+				7846564B2220E8D300B5B593 /* ConstraintWrapper.swift in Sources */,
 				787DF38921FA7693001FB99C /* DungeonTableUtils.swift in Sources */,
 				789EA5622203B01C004F9A68 /* DownloadGuerrillaData.swift in Sources */,
 				78B54A6F2201263A0076EEA7 /* DungeonFloorCell.swift in Sources */,
