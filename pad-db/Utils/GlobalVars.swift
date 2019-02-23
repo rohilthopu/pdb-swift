@@ -21,7 +21,6 @@ var runUpdate = true
 var versions = [NSManagedObject]()
 var newVersions:[String: Int] = [:]
 
-
 var monsters = [NSManagedObject]()
 var skills = [NSManagedObject]()
 var enemySkills = [NSManagedObject]()
