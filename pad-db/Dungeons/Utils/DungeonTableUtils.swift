@@ -51,10 +51,9 @@ extension DungeonListTableViewController {
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        let searchTextAsTokens = getTokenList(forSearchQuery: searchText)
         filteredDungeons = dungeons.filter{
-            let nameToken = getTokenList(forSearchQuery: $0.value(forKey: "name") as! String)
-            return searchTextAsTokens.isSubset(of: nameToken)
+            let name = $0.value(forKey: "name") as! String
+            return name.lowercased().contains(searchText.lowercased())
         }
         tableView.reloadData()
     }
