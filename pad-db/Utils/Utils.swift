@@ -117,9 +117,7 @@ func checkVersion() {
         if let data = try? String(contentsOf: url) {
             let json = JSON(parseJSON: data).arrayValue
             for v in json {
-                newVersions["dungeon"] = v["dungeon"].intValue
                 newVersions["monster"] = v["monster"].intValue
-                newVersions["skill"] = v["skill"].intValue
             }
         }
     }

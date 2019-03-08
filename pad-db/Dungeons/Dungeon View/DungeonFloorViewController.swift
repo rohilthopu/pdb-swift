@@ -76,7 +76,7 @@ class DungeonFloorViewController: UIViewController {
 //        makeRequiredDungeonView()
 //        makeDungeonMessages()
         makeFixedTeam()
-//        makePossibleDrops()
+        makePossibleDrops()
         makeEncounters()
     }
 

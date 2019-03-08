@@ -277,6 +277,7 @@ extension DungeonFloorViewController {
         let encounters = getEncounters(forFloor: dungeonFloor!, wave: waveNumber!)
         
         if encounters.count > 0 {
+            
             for encounter in encounters {
                 // make a container to hold each encounter item
                 let con = makeView()
@@ -437,7 +438,7 @@ extension DungeonFloorViewController {
         waveContainer.bottomAnchor.constraint(equalTo: encounterContainer.bottomAnchor).isActive = true
         
         scrollView.addSubview(encounterContainer)
-        encounterContainer.topAnchor.constraint(equalTo: fixedTeamContainer.bottomAnchor, constant: 20).isActive = true
+        encounterContainer.topAnchor.constraint(equalTo: possibleDropContainer.bottomAnchor, constant: 20).isActive = true
         encounterContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
         encounterContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
         encounterContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -50).isActive = true

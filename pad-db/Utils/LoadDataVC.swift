@@ -64,11 +64,8 @@ class LoadDataVC: UIViewController {
     }
     
     private func isNewVersion(currentVersion v:NSManagedObject) -> Bool {
-        let localMonsterVersion = v.value(forKey: "monster") as! Int
-        let localSkillVersion = v.value(forKey: "skill") as! Int
-        let localDungeonVersion = v.value(forKey: "dungeon") as! Int
-        
-        return newVersions["monster"]! > localMonsterVersion || newVersions["skill"]! > localSkillVersion || newVersions["dungeon"]! > localDungeonVersion || monsters.count == 0
+        let localMonsterVersion = v.value(forKey: "monster") as! Int        
+        return newVersions["monster"]! > localMonsterVersion
     }
     
     private func isMissingData() -> Bool {
