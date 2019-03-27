@@ -213,7 +213,6 @@
 		787DF38721FA767C001FB99C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				789EA54C22023199004F9A68 /* EncounterUtils.swift */,
 				787DF38821FA7693001FB99C /* DungeonTableUtils.swift */,
 			);
 			path = Utils;
@@ -223,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				789EA54A22022F60004F9A68 /* EncounterView.swift */,
+				789EA54C22023199004F9A68 /* EncounterUtils.swift */,
 			);
 			path = Encounters;
 			sourceTree = "<group>";

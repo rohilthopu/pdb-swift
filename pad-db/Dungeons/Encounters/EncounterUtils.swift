@@ -284,7 +284,7 @@ extension EncounterView {
                 // I can force unwrap here because I can guarantee the data existence on the server side
                 let cardID = encounter["card_id"]!.intValue
                 let dropMonsters = encounter["drop_monsters"]!.arrayValue
-                let portraitImage = makeImgView(forImg: getPortraitURL(id: cardID), ofSize: 60)
+                let portraitImage = makeImgView(forImg: getPortraitURL(id: validateCardID(forID: cardID)), ofSize: 60)
                 
                 con.addSubview(portraitImage)
                 portraitImage.setTop(to: .top, of: con, withSpacing: 0)
