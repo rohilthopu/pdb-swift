@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DungeonTableViewController: UITableViewController {
+class FloorTable: UITableViewController {
     
     var dungeon_floors = [NSManagedObject]()
     
@@ -18,7 +18,7 @@ class DungeonTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.rowHeight = 100
-        self.tableView.register(DungeonFloorCell.self, forCellReuseIdentifier: cellid)
+        self.tableView.register(FloorCell.self, forCellReuseIdentifier: cellid)
     }
 
     // MARK: - Table view data source
@@ -33,13 +33,13 @@ class DungeonTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath) as! DungeonFloorCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath) as! FloorCell
         cell.floor = dungeon_floors[indexPath.row]
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let floorVC = DungeonWaveTable()
+        let floorVC = WaveTable()
         floorVC.floor =  dungeon_floors[indexPath.row]
         floorVC.navigationItem.title = "Enemy Waves"
         self.navigationController?.pushViewController(floorVC, animated: true)

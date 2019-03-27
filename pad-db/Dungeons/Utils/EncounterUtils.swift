@@ -11,7 +11,7 @@ import UIKit
 import CoreData
 import SwiftyJSON
 
-extension DungeonFloorViewController {
+extension EncounterView {
     
     func makeInfoView() {
         
@@ -283,6 +283,7 @@ extension DungeonFloorViewController {
                 let con = makeView()
                 // I can force unwrap here because I can guarantee the data existence on the server side
                 let cardID = encounter["card_id"]!.intValue
+                let dropMonsters = encounter["drop_monsters"]!.arrayValue
                 let portraitImage = makeImgView(forImg: getPortraitURL(id: cardID), ofSize: 60)
                 
                 con.addSubview(portraitImage)
@@ -297,7 +298,9 @@ extension DungeonFloorViewController {
                     
                     idLabel.setTop(to: .top, of: portraitImage, withSpacing: 0)
                     idLabel.setLeft(to: .trailing, of: portraitImage, withSpacing: 10)
+                    
                     idLabel.setRight(to: con, withSpacing: 0)
+                    
                     
                     nameLabel.setTop(to: .bottom, of: idLabel, withSpacing: 10)
                     nameLabel.setLeft(to: .trailing, of: portraitImage, withSpacing: 10)
@@ -462,7 +465,7 @@ extension DungeonFloorViewController {
     func openMonsterPage(sender: UITapGestureRecognizer) {
         
         if let currentMonster = getMonster(forID: sender.view!.tag) {
-            let monsterVC = MonsterVC()
+            let monsterVC = MonsterView()
             monsterVC.monster = currentMonster
             
             let activeSkill = skills.filter({

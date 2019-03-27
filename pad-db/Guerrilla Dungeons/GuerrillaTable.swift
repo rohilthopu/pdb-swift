@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import CoreData
 
-class GuerrillaTableViewController: UITableViewController {
+class GuerrillaTable: UITableViewController {
     
     let cellid = "guerrillacell"
     let vc = LoadDataVC()
@@ -82,7 +82,7 @@ class GuerrillaTableViewController: UITableViewController {
         let currentDungeon = getDungeon(forID: gDungeon.dungeon_id!)
         
         if let currentDungeon = currentDungeon {
-            let floorListTable = DungeonTableViewController()
+            let floorListTable = FloorTable()
             floorListTable.dungeon_floors = getFloors(for: currentDungeon)
             floorListTable.navigationItem.title = (currentDungeon.value(forKey: "name") as! String)
             self.navigationController?.pushViewController(floorListTable, animated: true)

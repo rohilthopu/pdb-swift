@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-extension MonsterTableController {
+extension MonsterTable {
     
     @objc
     func changeSort() {

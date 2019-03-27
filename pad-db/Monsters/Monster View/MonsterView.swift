@@ -11,7 +11,7 @@ import CoreData
 import CoreGraphics
 
 
-class MonsterVC: UIViewController {
+class MonsterView: UIViewController {
     
     var spacing:CGFloat = 0
     

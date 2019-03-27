@@ -11,7 +11,7 @@ import UIKit
 import SwiftyJSON
 import CoreData
 
-extension GuerrillaTableViewController {
+extension GuerrillaTable {
     
     func setupNavBar() {
         if #available(iOS 11, *) {

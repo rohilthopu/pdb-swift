@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension MonsterVC {
+extension MonsterView {
     public func setupSkills() {
         setupActiveSkill()
         setupLeaderSkill()

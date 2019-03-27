@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-extension DungeonListTableViewController {
+extension DungeonTable {
     func setupView() {
         self.navigationItem.title = "Dungeons"
         if #available(iOS 11.0, *) {

@@ -13,10 +13,10 @@ class TabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let guerrillaVC = GuerrillaTableViewController()
-        let monsterNAVC = MonsterTableController()
-        let skillVC = SkillTableVC()
-        let dungeonVC = DungeonListTableViewController()
+        let guerrillaVC = GuerrillaTable()
+        let monsterNAVC = MonsterTable()
+        let skillVC = SkillTable()
+        let dungeonVC = DungeonTable()
         let leaderVC = LeaderboardTableVC()
         
         guerrillaVC.tabBarItem = UITabBarItem(title: "Events", image: UIImage(named: "calendar"), tag: 0)

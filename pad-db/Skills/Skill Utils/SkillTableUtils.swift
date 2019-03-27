@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-extension SkillTableVC {
+extension SkillTable {
     func setupNavBar() {
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true

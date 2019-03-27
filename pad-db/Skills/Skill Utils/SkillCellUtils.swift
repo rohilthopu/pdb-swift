@@ -42,7 +42,7 @@ extension SkillCell {
     }
     
     func anchorNameContainer() {
-        nameContainer.centerYAnchor.constraint(equalTo: portraitImg.centerYAnchor).isActive = true
+        nameContainer.topAnchor.constraint(equalTo: portraitImg.topAnchor).isActive = true
         nameContainer.leadingAnchor.constraint(equalTo: portraitImg.trailingAnchor, constant: 10).isActive = true
         nameContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
     }

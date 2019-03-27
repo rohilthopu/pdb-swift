@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension MonsterVC {
+extension MonsterView {
     public func setupAwakenings() {
         let size = CGFloat(20)
         let size_int = 20

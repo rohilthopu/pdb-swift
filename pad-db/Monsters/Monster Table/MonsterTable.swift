@@ -12,14 +12,14 @@ import Kingfisher
 import CoreData
 
 
-extension MonsterTableController: UISearchResultsUpdating {
+extension MonsterTable: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForText(searchController.searchBar.text!)
     }
 }
 
-class MonsterTableController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
+class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
     let cellid = "monsterid"
     
@@ -129,7 +129,7 @@ class MonsterTableController: UITableViewController, UISearchControllerDelegate,
             currentMonster = goodMonsters[index]
         }
         
-        let monsterVC = MonsterVC()
+        let monsterVC = MonsterView()
         monsterVC.monster = currentMonster
         
         let activeSkill = skills.filter({

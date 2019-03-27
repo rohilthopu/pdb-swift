@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DungeonWaveCell: UITableViewCell {
+class WaveCell: UITableViewCell {
     
     var numEncounters:Int?
     var waveNumber:Int?

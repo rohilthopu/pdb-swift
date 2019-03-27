@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DungeonFloorViewController: UIViewController {
+class EncounterView: UIViewController {
     
     var dungeonFloor:NSManagedObject?
     var waveNumber:Int?

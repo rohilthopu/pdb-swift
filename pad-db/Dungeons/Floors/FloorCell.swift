@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DungeonFloorCell: UITableViewCell {
+class FloorCell: UITableViewCell {
     
     var floor:NSManagedObject?
     

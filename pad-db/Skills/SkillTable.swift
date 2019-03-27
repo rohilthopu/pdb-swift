@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-extension SkillTableVC: UISearchResultsUpdating {
+extension SkillTable: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
@@ -18,7 +18,7 @@ extension SkillTableVC: UISearchResultsUpdating {
 
 
 
-class SkillTableVC: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
+class SkillTable: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
     let cellid = "skillcell"
     var filteredSkills = [NSManagedObject]()
@@ -90,7 +90,7 @@ class SkillTableVC: UITableViewController, UISearchControllerDelegate, UISearchB
         else {
             currentSkill = goodSkills[index]
         }
-        let monsterVC = MonsterVC()
+        let monsterVC = MonsterView()
         let skillID = currentSkill.value(forKey: "skillID") as! Int
         if let currentMonster = getMonster(forSkillID: skillID) {
         

@@ -148,3 +148,10 @@ func updateGuerrillaViewJP() {
 func getTokenList(forSearchQuery text:String) -> Set<String> {
     return Set(text.lowercased().split(separator: " ").map{ String($0) })
 }
+
+func validateCardID(forID cardID:Int) -> Int {
+    if cardID / 100000 > 0 {
+        return cardID % 100000
+    }
+    return cardID
+}

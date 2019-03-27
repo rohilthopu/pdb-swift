@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-extension MonsterVC {
+extension MonsterView {
     
     public func generateViewsFromMultiplers(_ multipliers:[Float], _ str:String) -> [UILabel] {
         

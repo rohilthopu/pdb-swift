@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-extension MonsterVC {
+extension MonsterView {
     func setupEnemySkills() {
         let eSkills = getEnemySkills(forMonster: monster!)
         let header = makeLabel(ofSize: 20, withText: "Enemy Skills")

@@ -10,14 +10,14 @@ import UIKit
 import CoreData
 import Kingfisher
 
-extension DungeonListTableViewController: UISearchResultsUpdating {
+extension DungeonTable: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
 }
 
-class DungeonListTableViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
+class DungeonTable: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
     let cellid = "dungeoncell"
     var filteredDungeons = [NSManagedObject]()
@@ -75,7 +75,7 @@ class DungeonListTableViewController: UITableViewController, UISearchControllerD
             currentDungeon = dungeons[index]
         }
         
-        let floorListTable = DungeonTableViewController()
+        let floorListTable = FloorTable()
         floorListTable.dungeon_floors = getFloors(for: currentDungeon)
 //        let titleLabel = makeLabel(ofSize: 16, withText: (currentDungeon.value(forKey: "name") as! String))
 //        floorListTable.navigationItem.titleView = titleLabel

@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import CoreData
 
-class DungeonWaveTable: UITableViewController {
+class WaveTable: UITableViewController {
     
     var floor:NSManagedObject?
     
@@ -18,7 +18,7 @@ class DungeonWaveTable: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(DungeonWaveCell.self, forCellReuseIdentifier: cellid)
+        self.tableView.register(WaveCell.self, forCellReuseIdentifier: cellid)
         self.tableView.rowHeight = 100
     }
     
@@ -36,14 +36,14 @@ class DungeonWaveTable: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath) as! DungeonWaveCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath) as! WaveCell
         cell.waveNumber = indexPath.row + 1
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let floor = floor {
-            let floorVC = DungeonFloorViewController()
+            let floorVC = EncounterView()
             floorVC.dungeonFloor = floor
             floorVC.waveNumber = indexPath.row + 1
             floorVC.navigationItem.title = "Wave \(indexPath.row + 1)"

@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 import CoreData
 
-extension MonsterVC {
+extension MonsterView {
 
     @objc
     func openMonsterPage(sender: UITapGestureRecognizer) {
         
         if let currentMonster = getMonster(forID: sender.view!.tag) {
             
-            let monsterVC = MonsterVC()
+            let monsterVC = MonsterView()
             monsterVC.monster = currentMonster
             
             let activeSkill = skills.filter({
@@ -62,7 +62,7 @@ extension MonsterVC {
         let currentDungeon:NSManagedObject = getDungeon(forID: sender.view!.tag)!
     
         
-        let floorListTable = DungeonTableViewController()
+        let floorListTable = FloorTable()
         floorListTable.dungeon_floors = getFloors(for: currentDungeon)
         floorListTable.navigationItem.title = (currentDungeon.value(forKey: "name") as! String)
         self.navigationController?.pushViewController(floorListTable, animated: true)

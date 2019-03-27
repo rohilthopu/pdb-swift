@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-extension MonsterVC {
+extension MonsterView {
     func setupRelatedDungeons() {
         let relatedDungeons = getRelatedDungeons(forMonster: monster!)
         
