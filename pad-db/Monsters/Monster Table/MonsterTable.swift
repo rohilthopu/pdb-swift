@@ -45,12 +45,19 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
     }
     
     private func filterGoodMonsters() {
-        goodMonsters = monsters.filter{
-            let name = $0.value(forKey: "name") as! String
-            if naFilter {
-                return !name.contains("Alt.") && !name.contains("*") && !name.contains("?") && $0.value(forKey: "server") as! String == "na"
+        if naFilter {
+            goodMonsters = monsters.filter{
+                let name = $0.value(forKey: "name") as! String
+                if let server = $0.value(forKey: "server") as! String? {
+                    return !name.contains("Alt.") && !name.contains("*") && !name.contains("?") && server == "na"
+                }
+                return !name.contains("Alt.") && !name.contains("*") && !name.contains("?")
             }
-            return !name.contains("Alt.") && !name.contains("*") && !name.contains("?")
+        } else {
+            goodMonsters = monsters.filter{
+                let name = $0.value(forKey: "name") as! String
+                return !name.contains("Alt.") && !name.contains("*") && !name.contains("?")
+            }
         }
     }
     

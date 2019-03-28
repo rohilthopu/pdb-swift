@@ -27,7 +27,8 @@ func getDungeonData() {
                 item.setValue(dungeon["dungeonID"].intValue, forKey: "dungeonID")
                 item.setValue(dungeon["dungeonType"].stringValue, forKey: "dungeonType")
                 item.setValue(dungeon["floorCount"].intValue, forKey: "floorCount")
-                item.setValue(dungeon["imageID"].intValue, forKey: "imageID")                
+                item.setValue(dungeon["imageID"].intValue, forKey: "imageID")
+                item.setValue(dungeon["server"].stringValue, forKey: "server")
             }
         }
     }

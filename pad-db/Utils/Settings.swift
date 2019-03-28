@@ -38,7 +38,7 @@ final class SettingsViewController: QuickTableViewController {
             
             Section(title: "Rebuild Data", rows: [
                 TapActionRow(text: "Press Me", action: { [weak self] in self?.clearDB($0) })
-                ], footer: "Deletes all database items and rebuilds it with the most recent data.\n This helpful when JP cards are brought over to NA, but the local app data doesn't reflect the official English name translation."),
+                ], footer: "Deletes all database items and rebuilds it with the most recent data.\nThis helpful when JP cards are brought over to NA, but the local app data doesn't reflect the official English name translation."),
         ]
     }
     

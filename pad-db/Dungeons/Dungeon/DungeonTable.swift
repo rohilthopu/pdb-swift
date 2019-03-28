@@ -22,6 +22,7 @@ class DungeonTable: UITableViewController, UISearchControllerDelegate, UISearchB
     let cellid = "dungeoncell"
     var filteredDungeons = [NSManagedObject]()
     var dungeonSearch:UISearchController!
+    var goodDungeons = [NSManagedObject]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,22 +30,38 @@ class DungeonTable: UITableViewController, UISearchControllerDelegate, UISearchB
         setupSearch()
         self.tableView.register(DungeonCell.self, forCellReuseIdentifier: cellid)
         self.tableView.rowHeight = 80
+        getGoodDungeons()
         
     }
-
-    // MARK: - Table view data source
+    
+    private func getGoodDungeons() {
+        if naFilter {
+            goodDungeons = dungeons.filter {
+                if let server = $0.value(forKey: "server") as! String? {
+                    return server == "na"
+                }
+                return true
+            }
+        } else {
+            goodDungeons = dungeons
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if changeSettings {
+            getGoodDungeons()
+        }
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         if isFiltering() {
             return filteredDungeons.count
         }
-        return dungeons.count
+        return goodDungeons.count
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +76,7 @@ class DungeonTable: UITableViewController, UISearchControllerDelegate, UISearchB
         if isFiltering() {
             cell.dungeon = filteredDungeons[indexPath.row]
         } else {
-            cell.dungeon = dungeons[indexPath.row]
+            cell.dungeon = goodDungeons[indexPath.row]
 
         }
         return cell
@@ -72,16 +89,11 @@ class DungeonTable: UITableViewController, UISearchControllerDelegate, UISearchB
         if isFiltering() {
             currentDungeon = filteredDungeons[index]
         } else {
-            currentDungeon = dungeons[index]
+            currentDungeon = goodDungeons[index]
         }
-        
         let floorListTable = FloorTable()
         floorListTable.dungeon_floors = getFloors(for: currentDungeon)
-//        let titleLabel = makeLabel(ofSize: 16, withText: (currentDungeon.value(forKey: "name") as! String))
-//        floorListTable.navigationItem.titleView = titleLabel
         floorListTable.navigationItem.title = (currentDungeon.value(forKey: "name") as! String)
         self.navigationController?.pushViewController(floorListTable, animated: true)
-        
     }
-
 }

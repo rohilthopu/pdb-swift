@@ -199,39 +199,76 @@ extension EncounterView {
         
         if !possibleDrops.isEmpty {
             for key in possibleDrops.keys {
-                let monster = getMonster(forID: Int(key)!)!
-                let rarity = possibleDrops[key]!.stringValue
+                if let monster = getMonster(forID: Int(key)!) {
+                    let rarity = possibleDrops[key]!.stringValue
+                    
+                    let dropView = makeView()
+                    
+                    let img = makeImgView(forImg: getPortraitURL(id: monster.value(forKey: "cardID") as! Int), ofSize: 50)
+                    let nameLabel = makeLabel(ofSize: 16, withText: monster.value(forKey: "name") as! String)
+                    let rarityLabel = makeLabel(ofSize: 16, withText: rarity)
+                    
+                    img.isUserInteractionEnabled = true
+                    img.addGestureRecognizer(makeTapRecognizer())
+                    img.tag = monster.value(forKey: "cardID") as! Int
+                    
+                    
+                    dropView.addSubview(img)
+                    dropView.addSubview(nameLabel)
+                    dropView.addSubview(rarityLabel)
+                    
+                    img.leadingAnchor.constraint(equalTo: dropView.leadingAnchor).isActive = true
+                    img.topAnchor.constraint(equalTo: dropView.topAnchor).isActive = true
+                    img.bottomAnchor.constraint(equalTo: dropView.bottomAnchor).isActive = true
+                    
+                    
+                    nameLabel.leadingAnchor.constraint(equalTo: img.trailingAnchor, constant: 10).isActive = true
+                    nameLabel.trailingAnchor.constraint(equalTo: rarityLabel.leadingAnchor, constant: -10).isActive = true
+                    nameLabel.centerYAnchor.constraint(equalTo: img.centerYAnchor).isActive = true
+                    nameLabel.adjustsFontSizeToFitWidth = true
+                    
+                    rarityLabel.trailingAnchor.constraint(equalTo: dropView.trailingAnchor).isActive = true
+                    rarityLabel.centerYAnchor.constraint(equalTo: img.centerYAnchor).isActive = true
+                    rarityLabel.textAlignment = .right
+                    
+                    dropViews.append(dropView)
                 
-                let dropView = makeView()
-                
-                let img = makeImgView(forImg: getPortraitURL(id: monster.value(forKey: "cardID") as! Int), ofSize: 50)
-                let nameLabel = makeLabel(ofSize: 16, withText: monster.value(forKey: "name") as! String)
-                let rarityLabel = makeLabel(ofSize: 16, withText: rarity)
-                
-                img.isUserInteractionEnabled = true
-                img.addGestureRecognizer(makeTapRecognizer())
-                img.tag = monster.value(forKey: "cardID") as! Int
-                
-                
-                dropView.addSubview(img)
-                dropView.addSubview(nameLabel)
-                dropView.addSubview(rarityLabel)
-                
-                img.leadingAnchor.constraint(equalTo: dropView.leadingAnchor).isActive = true
-                img.topAnchor.constraint(equalTo: dropView.topAnchor).isActive = true
-                img.bottomAnchor.constraint(equalTo: dropView.bottomAnchor).isActive = true
-                
-                
-                nameLabel.leadingAnchor.constraint(equalTo: img.trailingAnchor, constant: 10).isActive = true
-                nameLabel.trailingAnchor.constraint(equalTo: rarityLabel.leadingAnchor, constant: -10).isActive = true
-                nameLabel.centerYAnchor.constraint(equalTo: img.centerYAnchor).isActive = true
-                nameLabel.adjustsFontSizeToFitWidth = true
-                
-                rarityLabel.trailingAnchor.constraint(equalTo: dropView.trailingAnchor).isActive = true
-                rarityLabel.centerYAnchor.constraint(equalTo: img.centerYAnchor).isActive = true
-                rarityLabel.textAlignment = .right
-                
-                dropViews.append(dropView)
+                } else {
+                    let monster = getMonster(forID: 4014)!
+
+                    let rarity = "Broken drop"
+                    
+                    let dropView = makeView()
+                    
+                    let img = makeImgView(forImg: getPortraitURL(id: monster.value(forKey: "cardID") as! Int), ofSize: 50)
+                    let nameLabel = makeLabel(ofSize: 16, withText: monster.value(forKey: "name") as! String)
+                    let rarityLabel = makeLabel(ofSize: 16, withText: rarity)
+                    
+                    img.isUserInteractionEnabled = true
+                    img.addGestureRecognizer(makeTapRecognizer())
+                    img.tag = monster.value(forKey: "cardID") as! Int
+                    
+                    
+                    dropView.addSubview(img)
+                    dropView.addSubview(nameLabel)
+                    dropView.addSubview(rarityLabel)
+                    
+                    img.leadingAnchor.constraint(equalTo: dropView.leadingAnchor).isActive = true
+                    img.topAnchor.constraint(equalTo: dropView.topAnchor).isActive = true
+                    img.bottomAnchor.constraint(equalTo: dropView.bottomAnchor).isActive = true
+                    
+                    
+                    nameLabel.leadingAnchor.constraint(equalTo: img.trailingAnchor, constant: 10).isActive = true
+                    nameLabel.trailingAnchor.constraint(equalTo: rarityLabel.leadingAnchor, constant: -10).isActive = true
+                    nameLabel.centerYAnchor.constraint(equalTo: img.centerYAnchor).isActive = true
+                    nameLabel.adjustsFontSizeToFitWidth = true
+                    
+                    rarityLabel.trailingAnchor.constraint(equalTo: dropView.trailingAnchor).isActive = true
+                    rarityLabel.centerYAnchor.constraint(equalTo: img.centerYAnchor).isActive = true
+                    rarityLabel.textAlignment = .right
+                    
+                    dropViews.append(dropView)
+                }
             }
             
             for i in 0...dropViews.count - 1 {

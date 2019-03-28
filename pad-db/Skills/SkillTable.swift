@@ -16,8 +16,6 @@ extension SkillTable: UISearchResultsUpdating {
     }
 }
 
-
-
 class SkillTable: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
     let cellid = "skillcell"

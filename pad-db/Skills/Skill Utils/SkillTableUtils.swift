@@ -30,7 +30,7 @@ extension SkillTable {
         skillSearch.obscuresBackgroundDuringPresentation = false
         skillSearch.searchBar.placeholder = "Search Skills"
         skillSearch.searchBar.barStyle = UIBarStyle.blackTranslucent
-
+        
         if #available(iOS 11.0, *) {
             navigationItem.searchController = skillSearch
         } else {
@@ -47,10 +47,15 @@ extension SkillTable {
     }
     
     func filterUsableSkills() -> [NSManagedObject] {
-        return skills.filter{
-            if naFilter {
-                return $0.value(forKey: "cSkill1") as! Int != -1 && $0.value(forKey: "server") as! String == "na"
+        if naFilter {
+            return skills.filter{
+                if let server = $0.value(forKey: "server") as! String? {
+                    return $0.value(forKey: "cSkill1") as! Int != -1 && server == "na"
+                }
+                return $0.value(forKey: "cSkill1") as! Int != -1
             }
+        }
+        return skills.filter{
             return $0.value(forKey: "cSkill1") as! Int != -1
         }
     }
