@@ -80,6 +80,7 @@
 		7888153421ED8B02004981D2 /* SkillTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTable.swift; sourceTree = "<group>"; };
 		7888153621ED8CAB004981D2 /* SkillTableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableUtils.swift; sourceTree = "<group>"; };
 		7888153821ED8D8F004981D2 /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
+		788D2E1F224C43C200968A3B /* pad_db 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "pad_db 3.xcdatamodel"; sourceTree = "<group>"; };
 		789EA54A22022F60004F9A68 /* EncounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterView.swift; sourceTree = "<group>"; };
 		789EA54C22023199004F9A68 /* EncounterUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterUtils.swift; sourceTree = "<group>"; };
 		789EA54F22023238004F9A68 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -414,7 +415,7 @@
 				TargetAttributes = {
 					78B00302211CA296001F246E = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -688,7 +689,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Rohil-Thopu.pad-db";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -708,7 +709,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Rohil-Thopu.pad-db";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -740,10 +741,11 @@
 		7828280A220D06BD0089F1F9 /* pad_db.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				788D2E1F224C43C200968A3B /* pad_db 3.xcdatamodel */,
 				7846563E221F42A900B5B593 /* pad_db 2.xcdatamodel */,
 				7828280B220D06BD0089F1F9 /* pad_db.xcdatamodel */,
 			);
-			currentVersion = 7846563E221F42A900B5B593 /* pad_db 2.xcdatamodel */;
+			currentVersion = 788D2E1F224C43C200968A3B /* pad_db 3.xcdatamodel */;
 			path = pad_db.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

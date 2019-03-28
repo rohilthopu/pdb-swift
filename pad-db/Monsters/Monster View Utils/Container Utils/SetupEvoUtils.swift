@@ -30,7 +30,7 @@ extension MonsterView {
         scrollView.addSubview(evoMaterialsContainer)
         
         
-        evoMaterialsContainer.topAnchor.constraint(equalTo: enemySkillContainer.bottomAnchor, constant: 20).isActive = true
+        evoMaterialsContainer.topAnchor.constraint(equalTo: leaderSkillContainer.bottomAnchor, constant: 20).isActive = true
         evoMaterialsContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: spacing).isActive = true
         evoMaterialsContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -spacing).isActive = true
         

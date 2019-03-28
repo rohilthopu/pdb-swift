@@ -23,9 +23,11 @@ extension GuerrillaTable {
         let server = UIBarButtonItem(image: UIImage(named: "world")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(swapServer))
         let settings = UIBarButtonItem(image: UIImage(named: "settings")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(showSettings))
         
-        let items = [server, settings]
+//        let items = [server, settings]
+//        navigationItem.rightBarButtonItems = items
         
-        navigationItem.rightBarButtonItems = items
+        navigationItem.leftBarButtonItem = server
+        navigationItem.rightBarButtonItem = settings
     }
     
     @objc

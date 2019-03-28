@@ -283,12 +283,15 @@ extension EncounterView {
                 let con = makeView()
                 // I can force unwrap here because I can guarantee the data existence on the server side
                 let cardID = encounter["card_id"]!.intValue
-                let dropMonsters = encounter["drop_monsters"]!.arrayValue
                 let portraitImage = makeImgView(forImg: getPortraitURL(id: validateCardID(forID: cardID)), ofSize: 60)
                 
                 con.addSubview(portraitImage)
                 portraitImage.setTop(to: .top, of: con, withSpacing: 0)
                 portraitImage.setLeft(to: .leading, of: con, withSpacing: 0)
+                
+                portraitImage.isUserInteractionEnabled = true
+                portraitImage.addGestureRecognizer(makeTapRecognizer())
+                portraitImage.tag = cardID
                 
                 if let monster = getMonster(forID: cardID) {
                     let nameLabel = makeLabel(ofSize: 16, withText: monster.value(forKey: "name") as! String)

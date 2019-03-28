@@ -29,7 +29,7 @@ class LoadDataVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if !newVersions.isEmpty {
+        if !newVersions.isEmpty || versions.isEmpty {
             getNewData()
         } else {
             runUpdate = false
@@ -41,6 +41,7 @@ class LoadDataVC: UIViewController {
         if let v = versions.first {
             if isNewVersion(currentVersion: v) || isMissingData() {
                 // force rebuild for now. saves effort and guarantees most recent data
+                print("am here")
                 getData()
             }
         }
@@ -52,9 +53,7 @@ class LoadDataVC: UIViewController {
     private func getData() {
         goodSkills.removeAll()
         goodMonsters.removeAll()
-        
         wipeDatabase()
-        
         getMonsterData()
         getEnemySkillData()
         getSkillData()

@@ -216,7 +216,7 @@ class MonsterView: UIViewController {
         setupAwakenings()
         setupSuperAwakenings()
         setupSkills()
-        setupEnemySkills()
+//        setupEnemySkills()
         setupEvoMaterials()
         setupDevoMaterials()
         setupRelatedDungeons()

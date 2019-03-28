@@ -28,7 +28,7 @@ class DungeonTable: UITableViewController, UISearchControllerDelegate, UISearchB
         setupView()
         setupSearch()
         self.tableView.register(DungeonCell.self, forCellReuseIdentifier: cellid)
-        self.tableView.rowHeight = 100
+        self.tableView.rowHeight = 80
         
     }
 
