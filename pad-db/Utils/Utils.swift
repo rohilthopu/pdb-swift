@@ -112,6 +112,9 @@ func getJPGroup() -> String? {
     return UserDefaults.standard.string(forKey: "jpgroup")
 }
 
+func getRegion() -> String? {
+    return UserDefaults.standard.string(forKey: "region")
+}
 func checkVersion() {
     if let url = URL(string: version_api_url) {
         if let data = try? String(contentsOf: url) {

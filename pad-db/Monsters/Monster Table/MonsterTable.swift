@@ -38,7 +38,7 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if goodMonsters.count == 0 {
+        if goodMonsters.count == 0 || changeSettings {
             filterGoodMonsters()
         }
         self.tableView.reloadData()
@@ -47,6 +47,9 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
     private func filterGoodMonsters() {
         goodMonsters = monsters.filter{
             let name = $0.value(forKey: "name") as! String
+            if naFilter {
+                return !name.contains("Alt.") && !name.contains("*") && !name.contains("?") && $0.value(forKey: "server") as! String == "na"
+            }
             return !name.contains("Alt.") && !name.contains("*") && !name.contains("?")
         }
     }

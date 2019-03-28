@@ -37,6 +37,6 @@ var encounterSets = [NSManagedObject]()
 
 var currGroupNA = ""
 var currGroupJP = ""
-var changeGroup = false
+var changeSettings = false
 
 var naFilter = false

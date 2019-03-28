@@ -33,6 +33,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             currGroupJP = "None"
         }
         
+        if let region = getRegion() {
+            if region == "NA" {
+                naFilter = true
+            }
+        } else {
+            UserDefaults.standard.set("NA + JP", forKey: "region")
+        }
+        
         return true
     }
 

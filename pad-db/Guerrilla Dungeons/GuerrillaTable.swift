@@ -46,7 +46,7 @@ class GuerrillaTable: UITableViewController {
             self.present(vc, animated: true, completion: nil)
         }
         
-        if changeGroup {
+        if changeSettings {
             updateGuerrillaViewNA()
             updateGuerrillaViewJP()
         }

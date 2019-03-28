@@ -42,11 +42,13 @@ class LoadDataVC: UIViewController {
             if isNewVersion(currentVersion: v) || isMissingData() {
                 // force rebuild for now. saves effort and guarantees most recent data
                 getData()
-                updateVersionIdentifier()
-                loadFromDB()
-            }
-        }
 
+            }
+        } else if isMissingData() {
+            getData()
+        }
+        updateVersionIdentifier()
+        loadFromDB()
         runUpdate = false
     }
     

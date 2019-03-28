@@ -32,8 +32,8 @@ final class SettingsViewController: QuickTableViewController {
                 ], footer: "Groups are determined by your starter dragon color."),
             
             RadioSection(title: "Region", options: [
-                OptionRow(text: "NA", isSelected: isRegionSelected(forRegion: "na"), action: didSelectRegion()),
-                OptionRow(text: "NA + JP", isSelected: isRegionSelected(forRegion: "all"), action: didSelectRegion()),
+                OptionRow(text: "NA", isSelected: isRegionSelected(forRegion: "NA"), action: didSelectRegion()),
+                OptionRow(text: "NA + JP", isSelected: isRegionSelected(forRegion: "NA + JP"), action: didSelectRegion()),
                 ], footer: "Region selector to display data based on your region."),
             
             Section(title: "Rebuild Data", rows: [
@@ -48,7 +48,7 @@ final class SettingsViewController: QuickTableViewController {
                 if option.isSelected {
                     UserDefaults.standard.set(option.text, forKey: "nagroup")
                     currGroupNA = option.text
-                    changeGroup = true
+                    changeSettings = true
                 }
             }
         }
@@ -60,7 +60,7 @@ final class SettingsViewController: QuickTableViewController {
                 if option.isSelected {
                     UserDefaults.standard.set(option.text, forKey: "jpgroup")
                     currGroupJP = option.text
-                    changeGroup = true
+                    changeSettings = true
                 }
             }
         }
@@ -76,6 +76,7 @@ final class SettingsViewController: QuickTableViewController {
                     } else {
                         naFilter = false
                     }
+                    changeSettings = true
                 }
             }
         }
