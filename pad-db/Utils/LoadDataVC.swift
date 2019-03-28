@@ -29,7 +29,7 @@ class LoadDataVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if !newVersions.isEmpty || versions.isEmpty {
+        if !newVersions.isEmpty {
             getNewData()
         } else {
             runUpdate = false
@@ -41,12 +41,12 @@ class LoadDataVC: UIViewController {
         if let v = versions.first {
             if isNewVersion(currentVersion: v) || isMissingData() {
                 // force rebuild for now. saves effort and guarantees most recent data
-                print("am here")
                 getData()
+                updateVersionIdentifier()
+                loadFromDB()
             }
         }
-        updateVersionIdentifier()
-        loadFromDB()
+
         runUpdate = false
     }
     
@@ -68,6 +68,6 @@ class LoadDataVC: UIViewController {
     }
     
     private func isMissingData() -> Bool {
-        return monsters.isEmpty || skills.isEmpty || enemySkills.isEmpty || dungeons.isEmpty || floors.isEmpty || encounterSets.isEmpty
+        return monsters.isEmpty || skills.isEmpty || enemySkills.isEmpty || dungeons.isEmpty || floors.isEmpty || encounterSets.isEmpty || versions.isEmpty
     }
 }

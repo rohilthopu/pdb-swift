@@ -81,6 +81,7 @@
 		7888153621ED8CAB004981D2 /* SkillTableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableUtils.swift; sourceTree = "<group>"; };
 		7888153821ED8D8F004981D2 /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
 		788D2E1F224C43C200968A3B /* pad_db 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "pad_db 3.xcdatamodel"; sourceTree = "<group>"; };
+		788D2E20224C5DC800968A3B /* pad_db 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "pad_db 4.xcdatamodel"; sourceTree = "<group>"; };
 		789EA54A22022F60004F9A68 /* EncounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterView.swift; sourceTree = "<group>"; };
 		789EA54C22023199004F9A68 /* EncounterUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterUtils.swift; sourceTree = "<group>"; };
 		789EA54F22023238004F9A68 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -741,11 +742,12 @@
 		7828280A220D06BD0089F1F9 /* pad_db.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				788D2E20224C5DC800968A3B /* pad_db 4.xcdatamodel */,
 				788D2E1F224C43C200968A3B /* pad_db 3.xcdatamodel */,
 				7846563E221F42A900B5B593 /* pad_db 2.xcdatamodel */,
 				7828280B220D06BD0089F1F9 /* pad_db.xcdatamodel */,
 			);
-			currentVersion = 788D2E1F224C43C200968A3B /* pad_db 3.xcdatamodel */;
+			currentVersion = 788D2E20224C5DC800968A3B /* pad_db 4.xcdatamodel */;
 			path = pad_db.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

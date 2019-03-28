@@ -31,6 +31,11 @@ final class SettingsViewController: QuickTableViewController {
                 OptionRow(text: "None", isSelected: isUserSelectedGroupJP(forGroup: "None"), action: didSelectJPGroup()),
                 ], footer: "Groups are determined by your starter dragon color."),
             
+            RadioSection(title: "Region", options: [
+                OptionRow(text: "NA", isSelected: isRegionSelected(forRegion: "na"), action: didSelectRegion()),
+                OptionRow(text: "NA + JP", isSelected: isRegionSelected(forRegion: "all"), action: didSelectRegion()),
+                ], footer: "Region selector to display data based on your region."),
+            
             Section(title: "Rebuild Data", rows: [
                 TapActionRow(text: "Press Me", action: { [weak self] in self?.clearDB($0) })
                 ], footer: "Deletes all database items and rebuilds it with the most recent data. This helpful when JP cards are brought over to NA, but the local app data doesn't reflect the official English name translation."),
@@ -61,6 +66,22 @@ final class SettingsViewController: QuickTableViewController {
         }
     }
     
+    private func didSelectRegion() -> (Row) -> Void {
+        return { [weak self] row in
+            if let option = row as? OptionRowCompatible {
+                if option.isSelected {
+                    UserDefaults.standard.set(option.text, forKey: "region")
+                    if option.text == "NA" {
+                        naFilter = true
+                    } else {
+                        naFilter = false
+                    }
+                }
+            }
+        }
+    }
+
+    
     func makeBackButton() -> UIButton {
         let backButtonImage = UIImage(named: "down-arrow")
         let backButton = UIButton(type: .custom)
@@ -80,6 +101,10 @@ final class SettingsViewController: QuickTableViewController {
     
     private func isUserSelectedGroupJP(forGroup group:String) -> Bool {
         return UserDefaults.standard.string(forKey: "jpgroup") == group
+    }
+    
+    private func isRegionSelected(forRegion region:String) -> Bool {
+        return UserDefaults.standard.string(forKey: "region") == region
     }
     
     func clearDB(_ sender: Row) {
