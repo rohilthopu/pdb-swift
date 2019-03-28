@@ -232,7 +232,6 @@
 		789EA54E2202322A004F9A68 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				789EA5562203AE0F004F9A68 /* Data Download Utils */,
 				78D6885B21E5459F001C0DEF /* TabController.swift */,
 				78AC396921F1475A0094CCA7 /* LoadDataVC.swift */,
 				78B54A6B22011AA10076EEA7 /* Constants.swift */,
@@ -297,6 +296,7 @@
 				78F0374C21ED89D9002B7468 /* Skills */,
 				787DF38321FA75C1001FB99C /* Dungeons */,
 				78D1EAFE21EC27FF002D4197 /* Leaderboard */,
+				789EA5562203AE0F004F9A68 /* Data Download Utils */,
 				789EA54E2202322A004F9A68 /* Utils */,
 				78B00306211CA297001F246E /* AppDelegate.swift */,
 				78B00310211CA297001F246E /* Assets.xcassets */,

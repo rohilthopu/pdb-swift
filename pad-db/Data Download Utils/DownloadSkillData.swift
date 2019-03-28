@@ -37,6 +37,7 @@ func getSkillData() {
                 item.setValue(skill["levels"].intValue, forKey: "levels")
                 item.setValue(skill["minTurns"].intValue, forKey: "minTurns")
                 item.setValue(skill["maxTurns"].intValue, forKey: "maxTurns")
+                item.setValue(skill["server"].stringValue, forKey: "server")
             }
         }
         do {

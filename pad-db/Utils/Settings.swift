@@ -34,11 +34,11 @@ final class SettingsViewController: QuickTableViewController {
             RadioSection(title: "Region", options: [
                 OptionRow(text: "NA", isSelected: isRegionSelected(forRegion: "NA"), action: didSelectRegion()),
                 OptionRow(text: "NA + JP", isSelected: isRegionSelected(forRegion: "NA + JP"), action: didSelectRegion()),
-                ], footer: "Region selector to display data based on your region."),
+                ], footer: "Display all or only NA available data throughout the app."),
             
             Section(title: "Rebuild Data", rows: [
                 TapActionRow(text: "Press Me", action: { [weak self] in self?.clearDB($0) })
-                ], footer: "Deletes all database items and rebuilds it with the most recent data. This helpful when JP cards are brought over to NA, but the local app data doesn't reflect the official English name translation."),
+                ], footer: "Deletes all database items and rebuilds it with the most recent data.\n This helpful when JP cards are brought over to NA, but the local app data doesn't reflect the official English name translation."),
         ]
     }
     

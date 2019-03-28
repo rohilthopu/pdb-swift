@@ -47,7 +47,12 @@ extension SkillTable {
     }
     
     func filterUsableSkills() -> [NSManagedObject] {
-        return skills.filter{ $0.value(forKey: "cSkill1") as! Int != -1 }
+        return skills.filter{
+            if naFilter {
+                return $0.value(forKey: "cSkill1") as! Int != -1 && $0.value(forKey: "server") as! String == "na"
+            }
+            return $0.value(forKey: "cSkill1") as! Int != -1
+        }
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
