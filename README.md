@@ -45,7 +45,7 @@ Contributions are more than welcome, but I expect Pull Requests to follow good p
 
 ## Small Disclaimer
 
-This app and repository is in need of massive refactoring and is very much still a work in progress. I will be updating the documentation and contributing information shortly. I'll also be adding in a couple images for viewing without downloading the app.
+Just a heads up, but this app and repository is in need of massive refactoring and is very much still a work in progress. The codebase will probably be subject to a whole lot of change over time.
 
 
 
