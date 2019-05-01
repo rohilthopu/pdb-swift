@@ -5,7 +5,7 @@ mobile implementation of the project that runs on devices running iOS 10+.
 
 The app provides access to Guerrilla Dungeons, Monsters, Dungeon information, and an arbitrary Reddit karma leaderboard for the PAD subreddit.
 
-![Home](https://github.com/rohilthopu/pdb-swift/tree/master/pad-db/Images/iphone_max_home.png) | ![Monster](https://github.com/rohilthopu/pdb-swift/tree/master/pad-db/Images/ney_1.png)
+![Home](Images/iphone_max_home.png) | ![Monster](Images/ney_1.png)
 
 ## Languages and Technologies
 
