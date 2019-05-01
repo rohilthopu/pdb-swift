@@ -12,8 +12,7 @@ The app was initially written entirely in Swift 4 but has now been upgraded to S
 
 I try to keep the number of dependencies to a minimum.
 
-Here is a list of technologies the app uses
-
+Here is a list of technologies the app uses:
 1. Swift 4/5
 2. CoreData
 3. SwiftyJSON - Easier JSON parsing (similar to Python)
@@ -22,10 +21,16 @@ Here is a list of technologies the app uses
 
 ## Installation
 
-If you want to install official releases, you can download them on [TestFlight](!https://testflight.apple.com/join/JcBpe6eL) currently (AppStore version pending).
+If you want to install official releases, which I encourage, you can download them on [TestFlight](https://testflight.apple.com/join/JcBpe6eL). Hopefully I can get around to putting this on the App Store in the next month.
 
 If you want to install directly to device from source, you're free to clone this repository and install via Xcode, however, there is one file missing that contains references to my own API endpoints, which currently are not public. It will effectively render the app useless without them. I will provide them if you plan on contributing, but because the backend is still pretty much under construction, the data structure
 might change more often than I'd like, hence why it's not public.
+
+Assuming you have CocoaPods installed, these can easily be installed via the Podfile provided by running
+
+    pod install
+
+from the root directory of the project in your choice of terminal. You will need to install these to run
 
 ## Disclaimer
 
