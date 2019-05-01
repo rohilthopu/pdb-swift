@@ -7,6 +7,9 @@ The app provides access to Guerrilla Dungeons, Monsters, Dungeon information, an
 
 **The entire app was developed programatically so there is no storyboard involvement here. This was necessary to dynamicize the content as much as I could. Not all pages have the same information so constraints needed to be set accordingly, a place where Interface Builder falls short. Tread carefully reading through the sludge of loops that set auto-layout constraints**
 
+
+Some example images can be seen below:
+
 <div display="flex" align="center">
     <img src="Images/iphone_max_home.png" height="30%" width="30%">
     <img src="Images/ney_1.png" height="30%" width="30%">
