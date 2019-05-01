@@ -9,6 +9,7 @@ The app provides access to Guerrilla Dungeons, Monsters, Dungeon information, an
 <div display="flex" align="center">
     <img src="Images/iphone_max_home.png" height="30%" width="30%">
     <img src="Images/ney_1.png" height="30%" width="30%">
+    <img src="Images/ney_2.png" height="30%" width="30%">
 </div>
 
 
