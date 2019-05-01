@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7828280C220D06BD0089F1F9 /* pad_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7828280A220D06BD0089F1F9 /* pad_db.xcdatamodeld */; };
+		782885D6227A2217009AD9B4 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 782885D5227A2217009AD9B4 /* Images */; };
 		7828D0742208E3CD0004E6CD /* SetupRelatedDungeons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828D0732208E3CD0004E6CD /* SetupRelatedDungeons.swift */; };
 		7846563D221F427700B5B593 /* DownloadEncounterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7846563C221F427700B5B593 /* DownloadEncounterData.swift */; };
 		78465643222087F100B5B593 /* WaveTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78465642222087F100B5B593 /* WaveTable.swift */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		7828280B220D06BD0089F1F9 /* pad_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pad_db.xcdatamodel; sourceTree = "<group>"; };
+		782885D5227A2217009AD9B4 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		7828D0732208E3CD0004E6CD /* SetupRelatedDungeons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRelatedDungeons.swift; sourceTree = "<group>"; };
 		7846563C221F427700B5B593 /* DownloadEncounterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadEncounterData.swift; sourceTree = "<group>"; };
 		7846563E221F42A900B5B593 /* pad_db 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "pad_db 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 		78B00305211CA296001F246E /* pad-db */ = {
 			isa = PBXGroup;
 			children = (
+				782885D5227A2217009AD9B4 /* Images */,
 				78D6885721CB4D86001C0DEF /* Guerrilla Dungeons */,
 				78D6885A21D6FF43001C0DEF /* Monsters */,
 				78F0374C21ED89D9002B7468 /* Skills */,
@@ -449,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78B00311211CA297001F246E /* Assets.xcassets in Resources */,
+				782885D6227A2217009AD9B4 /* Images in Resources */,
 				78F0374B21EC5666002B7468 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

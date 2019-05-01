@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <Group
-      location = "container:"
-      name = "images">
-      <FileRef
-         location = "group:dungeon_list.png">
-      </FileRef>
-      <FileRef
-         location = "group:dungeons.png">
-      </FileRef>
-      <FileRef
-         location = "group:iphone_max_home.png">
-      </FileRef>
-      <FileRef
-         location = "group:iphone_max_monsters.png">
-      </FileRef>
-      <FileRef
-         location = "group:ney_1.png">
-      </FileRef>
-      <FileRef
-         location = "group:ney_2.png">
-      </FileRef>
-   </Group>
    <FileRef
       location = "group:README.md">
    </FileRef>
