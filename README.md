@@ -7,9 +7,9 @@ The app provides access to Guerrilla Dungeons, Monsters, Dungeon information, an
 
 
 <style>
-.img {
-margin-right: 5%;
-}
+    img {
+        margin-right: 5%;
+        }
 </style>
 
 <div display="flex" align="center">
