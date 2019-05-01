@@ -5,19 +5,11 @@ mobile implementation of the project that runs on devices running iOS 10+.
 
 The app provides access to Guerrilla Dungeons, Monsters, Dungeon information, and an arbitrary Reddit karma leaderboard for the PAD subreddit.
 
-
-<style>
-    img {
-        margin-right: 5%;
-        }
-</style>
-
 <div display="flex" align="center">
     <img src="Images/iphone_max_home.png" height="30%" width="30%">
     <img src="Images/ney_1.png" height="30%" width="30%">
     <img src="Images/ney_2.png" height="30%" width="30%">
 </div>
-
 
 ## Languages and Technologies
 
@@ -45,7 +37,13 @@ Assuming you have CocoaPods installed, these can easily be installed via the Pod
 
 from the root directory of the project in your choice of terminal. You will need to install these for the project to build in Xcode.
 
-## Disclaimer
+## Contributions
+
+If you would like to contribute, please open an issue first to discuss what you'd like to change so that I have a heads up. I will need to provide access to my API endpoints for you to run the app on your local machine as well.
+
+Contributions are more than welcome, but I expect Pull Requests to follow good programming practices and try to adhere to the style that the project is currently in. 
+
+## Small Disclaimer
 
 This app and repository is in need of massive refactoring and is very much still a work in progress. I will be updating the documentation and contributing information shortly. I'll also be adding in a couple images for viewing without downloading the app.
 
