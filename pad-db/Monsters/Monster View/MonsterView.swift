@@ -16,8 +16,8 @@ class MonsterView: UIViewController {
     var spacing:CGFloat = 0
     
     var monster:Monster?
-    var activeSkill:NSManagedObject?
-    var leaderSkill:NSManagedObject?
+    var activeSkill:Skill?
+    var leaderSkill:Skill?
     
     let type_base:String = "type_"
     var awakenings = [UIImageView]()

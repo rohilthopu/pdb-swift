@@ -23,12 +23,12 @@ var newVersions:[String: Int] = [:]
 
 var monsters = [Monster]()
 var goodMonsters = [Monster]()
-var skills = [NSManagedObject]()
+var skills = [Skill]()
+var goodSkills = [Skill]()
 var enemySkills = [NSManagedObject]()
 
 var users = [User]()
 
-var goodSkills = [NSManagedObject]()
 
 var dungeons = [NSManagedObject]()
 var floors = [NSManagedObject]()

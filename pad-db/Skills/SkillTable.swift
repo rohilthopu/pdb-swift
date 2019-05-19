@@ -19,7 +19,7 @@ extension SkillTable: UISearchResultsUpdating {
 class SkillTable: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
     let cellid = "skillcell"
-    var filteredSkills = [NSManagedObject]()
+    var filteredSkills = [Skill]()
     var skillSearch:UISearchController!
 
 
@@ -60,7 +60,7 @@ class SkillTable: UITableViewController, UISearchControllerDelegate, UISearchBar
         let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath) as! SkillCell
         
         if isFiltering() {
-            let currID = filteredSkills[indexPath.row].value(forKey: "skillID") as! Int
+            let currID = filteredSkills[indexPath.row].skillID
             cell.skill = filteredSkills[indexPath.row]
             if let mon = getMonster(forSkillID: currID) {
                 cell.monster = mon
@@ -68,7 +68,7 @@ class SkillTable: UITableViewController, UISearchControllerDelegate, UISearchBar
             return cell
         }
 
-        let currID = goodSkills[indexPath.row].value(forKey: "skillID") as! Int
+        let currID = goodSkills[indexPath.row].skillID
         cell.skill = goodSkills[indexPath.row]
         if let mon = getMonster(forSkillID: currID) {
             cell.monster = mon
@@ -80,7 +80,7 @@ class SkillTable: UITableViewController, UISearchControllerDelegate, UISearchBar
         let index = indexPath.row
         // returns an NSManagedObject
         
-        let currentSkill:NSManagedObject
+        let currentSkill:Skill
         
         if isFiltering() {
             currentSkill = filteredSkills[index]
@@ -89,20 +89,20 @@ class SkillTable: UITableViewController, UISearchControllerDelegate, UISearchBar
             currentSkill = goodSkills[index]
         }
         let monsterVC = MonsterView()
-        let skillID = currentSkill.value(forKey: "skillID") as! Int
+        let skillID = currentSkill.skillID
         if let currentMonster = getMonster(forSkillID: skillID) {
         
             monsterVC.monster = currentMonster
             
             let activeSkill = skills.filter({
-                let skillID = $0.value(forKey: "skillID") as! Int
+                let skillID = $0.skillID
                 let aSkill = currentMonster.activeSkillID
                 
                 return skillID == aSkill
             }).first
             
             let leaderSkill = skills.filter({
-                let skillID = $0.value(forKey: "skillID") as! Int
+                let skillID = $0.skillID
                 let lSkill = currentMonster.leaderSkillID
                 
                 return skillID == lSkill

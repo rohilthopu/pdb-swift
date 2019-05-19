@@ -34,13 +34,13 @@ extension MonsterView {
         
         if let activeSkill = activeSkill {
 
-            let minTurns = "Min: " + String(activeSkill.value(forKey: "minTurns") as! Int) + "/"
-            let maxTurns = "Max: " + String(activeSkill.value(forKey: "maxTurns") as! Int)
+            let minTurns = "Min: " + String(activeSkill.turnMin) + "/"
+            let maxTurns = "Max: " + String(activeSkill.turnMax)
             let turns = minTurns + maxTurns
             
             
-            let nameLabel = makeLabel(ofSize: 18, withText: activeSkill.value(forKey: "name") as! String)
-            let descriptionLabel = makeLabel(ofSize: 16, withText: activeSkill.value(forKey: "desc") as! String)
+            let nameLabel = makeLabel(ofSize: 18, withText: activeSkill.name)
+            let descriptionLabel = makeLabel(ofSize: 16, withText: activeSkill.description)
             let turnLabel = makeLabel(ofSize: 14, withText: turns)
             activeSkillContainer.addSubview(nameLabel)
             activeSkillContainer.addSubview(descriptionLabel)
@@ -101,8 +101,8 @@ extension MonsterView {
             
             
             
-            let nameLabel = makeLabel(ofSize: 18, withText: leaderSkill.value(forKey: "name") as! String)
-            let descriptionLabel = makeLabel(ofSize: 16, withText: leaderSkill.value(forKey: "desc") as! String)
+            let nameLabel = makeLabel(ofSize: 18, withText: leaderSkill.name)
+            let descriptionLabel = makeLabel(ofSize: 16, withText: leaderSkill.description)
             
             let multContainer = generateContainerForMultipliers(multipliers, pairMults)
             

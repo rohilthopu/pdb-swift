@@ -509,7 +509,7 @@ extension EncounterView {
             monsterVC.monster = currentMonster
             
             let activeSkill = skills.filter({
-                let skillID = $0.value(forKey: "skillID") as! Int
+                let skillID = $0.skillID
                 let aSkill = currentMonster.activeSkillID
                 
                 if skillID == aSkill {
@@ -521,7 +521,7 @@ extension EncounterView {
             }).first
             
             let leaderSkill = skills.filter({
-                let skillID = $0.value(forKey: "skillID") as! Int
+                let skillID = $0.skillID
                 let lSkill = currentMonster.leaderSkillID
                 
                 if skillID == lSkill {

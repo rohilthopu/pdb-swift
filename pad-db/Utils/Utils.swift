@@ -25,9 +25,9 @@ func getMonster(forSkillID id:Int) -> Monster? {
     }).last
 }
 
-func getSkill(forSkill id:Int) -> NSManagedObject {
+func getSkill(forSkill id:Int) -> Skill {
     return skills.filter({
-        return id == $0.value(forKey: "skillID") as! Int
+        return id == $0.skillID
     }).first!
 }
 

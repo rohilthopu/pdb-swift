@@ -46,17 +46,14 @@ extension SkillTable {
         
     }
     
-    func filterUsableSkills() -> [NSManagedObject] {
+    func filterUsableSkills() -> [Skill] {
         if naFilter {
             return skills.filter{
-                if let server = $0.value(forKey: "server") as! String? {
-                    return $0.value(forKey: "cSkill1") as! Int != -1 && server == "na"
-                }
-                return $0.value(forKey: "cSkill1") as! Int != -1
+                return $0.skillPart1_ID != -1 && $0.server == "NA"
             }
         }
         return skills.filter{
-            return $0.value(forKey: "cSkill1") as! Int != -1
+            return $0.skillPart1_ID != -1
         }
     }
     
@@ -64,10 +61,10 @@ extension SkillTable {
         
         let searchTextAsTokenList = getTokenList(forSearchQuery: searchText)
         filteredSkills = goodSkills.filter({
-            let val = getTokenList(forSearchQuery: $0.value(forKey: "name") as! String)
-            let skillID = $0.value(forKey: "skillID") as! Int
+            let val = getTokenList(forSearchQuery: $0.name)
+            let skillID = $0.skillID
             let id = String(skillID)
-            let desc = ($0.value(forKey: "desc") as! String).lowercased()
+            let desc = ($0.description).lowercased()
             return searchTextAsTokenList.isSubset(of: val) || id.contains(searchText.lowercased()) || desc.contains(searchText.lowercased())
         })
         tableView.reloadData()

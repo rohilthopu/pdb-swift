@@ -19,10 +19,6 @@ func loadFromDB() {
     
     let managedContext = appDelegate.persistentContainer.viewContext
     
-    let skillRequest = NSFetchRequest<NSManagedObject>(entityName: "SkillNA")
-    let skillRequestSort = NSSortDescriptor(key: "skillID", ascending: false)
-    skillRequest.sortDescriptors = [skillRequestSort]
-    
     let versionRequest = NSFetchRequest<NSManagedObject>(entityName: "Version")
     let dungeonRequest = NSFetchRequest<NSManagedObject>(entityName: "Dungeon")
     dungeonRequest.sortDescriptors = [NSSortDescriptor(key: "dungeonID", ascending: false)]
@@ -33,7 +29,6 @@ func loadFromDB() {
     let encounterRequest = NSFetchRequest<NSManagedObject>(entityName: "EncounterSet")
     
     do {
-        skills = try managedContext.fetch(skillRequest)
         versions = try managedContext.fetch(versionRequest)
         dungeons = try managedContext.fetch(dungeonRequest)
         floors = try managedContext.fetch(floorRequest)

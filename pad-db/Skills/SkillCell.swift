@@ -12,7 +12,7 @@ import CoreData
 class SkillCell: UITableViewCell {
 
     
-    var skill:NSManagedObject?
+    var skill:Skill?
     var monster:Monster?
     
     var portraitImg:UIImageView = {
@@ -71,9 +71,9 @@ class SkillCell: UITableViewCell {
         super.layoutSubviews()
         
         if let skill = skill {
-            skillIDLabel.text = "No." + String(skill.value(forKey: "skillID") as! Int)
-            skillNameLabel.text = (skill.value(forKey: "name") as! String)
-            skillDescriptionLabel.text = (skill.value(forKey: "desc") as! String)
+            skillIDLabel.text = "No." + String(skill.skillID)
+            skillNameLabel.text = (skill.name)
+            skillDescriptionLabel.text = (skill.description)
         }
         if let monster = monster {
             let url = URL(string: getPortraitURL(id: monster.cardID))
