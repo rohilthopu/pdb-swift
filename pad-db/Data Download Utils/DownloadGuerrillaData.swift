@@ -11,7 +11,7 @@ import UIKit
 import SwiftyJSON
 
 func loadGuerrilla() {
-    let url = "https://www.pad-db.com/api/guerrilla"
+    let url = "https://www.pad-db.com/api/live/guerrilla"
     let timeInMS = NSDate().timeIntervalSince1970
     
     allGuerrillaDungeons.removeAll()
@@ -23,8 +23,8 @@ func loadGuerrilla() {
                 var dungeon:Guerrilla = Guerrilla()
                 
                 
-                let endSecs = item["endSecs"].doubleValue
-                let startSecs = item["startSecs"].doubleValue
+                let endSecs = item["end_secs"].doubleValue
+                let startSecs = item["start_secs"].doubleValue
                 
                 
                 if ((timeInMS >= startSecs) && (timeInMS <= endSecs)) {
@@ -41,14 +41,18 @@ func loadGuerrilla() {
                 
                 if dungeon.remainingTime! != 0 {
                     dungeon.name = item["name"].stringValue
-                    dungeon.startTime = item["startTime"].stringValue
-                    dungeon.endTime = item["endTime"].stringValue
-                    dungeon.startSecs = item["startSecs"].floatValue
-                    dungeon.endSecs = item["endSecs"].floatValue
+                    dungeon.startTime = item["start_time"].stringValue
+                    dungeon.endTime = item["end_time"].stringValue
+                    dungeon.startSecs = item["start_secs"].floatValue
+                    dungeon.endSecs = item["end_secs"].floatValue
                     dungeon.server = item["server"].stringValue
                     dungeon.group = item["group"].stringValue
                     dungeon.dungeon_id = item["dungeon_id"].intValue
-                    dungeon.imgLink = getPortraitURL(id: item["image_id"].intValue)
+                    
+                    // TODO: Fix this later in the pdb-processor to get the image id or have a local method to do so.
+//                    dungeon.imgLink = getPortraitURL(id: item["image_id"].intValue)
+                    dungeon.imgLink = getPortraitURL(id: 1)
+
                     allGuerrillaDungeons.append(dungeon)
                 }
             }
