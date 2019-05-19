@@ -205,7 +205,7 @@ class MonsterView: UIViewController {
         scrollView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
         
         
-        let m_id = monster!.value(forKey: "cardID") as! Int
+        let m_id = monster!.cardID
         self.navigationItem.title = String(m_id)
         
         setupImageView()

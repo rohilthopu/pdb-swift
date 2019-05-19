@@ -28,8 +28,8 @@ extension MonsterTable {
     
     func sortMonstersDescending() {
         goodMonsters.sort{
-            let first = $0.value(forKey: "cardID") as! Int
-            let second = $1.value(forKey: "cardID") as! Int
+            let first = $0.cardID
+            let second = $1.cardID
             
             return first > second
         }
@@ -37,9 +37,8 @@ extension MonsterTable {
     
     func sortMonstersAscending() {
         goodMonsters.sort{
-            let first = $0.value(forKey: "cardID") as! Int
-            let second = $1.value(forKey: "cardID") as! Int
-            
+            let first = $0.cardID
+            let second = $1.cardID
             return first < second
         }
     }
@@ -52,8 +51,8 @@ extension MonsterTable {
     func filterContentForText(_ searchText: String, scope: String = "All") {
         let tokenText = getTokenList(forSearchQuery: searchText)
         filteredMonsters = goodMonsters.filter({
-            let val = getTokenList(forSearchQuery: $0.value(forKey: "name") as! String)
-            let id = String($0.value(forKey: "cardID") as! Int)
+            let val = getTokenList(forSearchQuery: $0.name)
+            let id = String($0.cardID)
             return tokenText.isSubset(of: val) || id.contains(searchText.lowercased())
         })
         tableView.reloadData()

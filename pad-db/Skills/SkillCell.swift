@@ -13,7 +13,7 @@ class SkillCell: UITableViewCell {
 
     
     var skill:NSManagedObject?
-    var monster:NSManagedObject?
+    var monster:Monster?
     
     var portraitImg:UIImageView = {
         let img = UIImageView()
@@ -76,7 +76,7 @@ class SkillCell: UITableViewCell {
             skillDescriptionLabel.text = (skill.value(forKey: "desc") as! String)
         }
         if let monster = monster {
-            let url = URL(string: getPortraitURL(id: monster.value(forKey: "cardID") as! Int))
+            let url = URL(string: getPortraitURL(id: monster.cardID))
             portraitImg.kf.setImage(with: url)
         }
     }

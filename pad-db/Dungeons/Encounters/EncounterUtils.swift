@@ -204,13 +204,13 @@ extension EncounterView {
                     
                     let dropView = makeView()
                     
-                    let img = makeImgView(forImg: getPortraitURL(id: monster.value(forKey: "cardID") as! Int), ofSize: 50)
-                    let nameLabel = makeLabel(ofSize: 16, withText: monster.value(forKey: "name") as! String)
+                    let img = makeImgView(forImg: getPortraitURL(id: monster.cardID), ofSize: 50)
+                    let nameLabel = makeLabel(ofSize: 16, withText: monster.name)
                     let rarityLabel = makeLabel(ofSize: 16, withText: rarity)
                     
                     img.isUserInteractionEnabled = true
                     img.addGestureRecognizer(makeTapRecognizer())
-                    img.tag = monster.value(forKey: "cardID") as! Int
+                    img.tag = monster.cardID
                     
                     
                     dropView.addSubview(img)
@@ -240,13 +240,13 @@ extension EncounterView {
                     
                     let dropView = makeView()
                     
-                    let img = makeImgView(forImg: getPortraitURL(id: monster.value(forKey: "cardID") as! Int), ofSize: 50)
-                    let nameLabel = makeLabel(ofSize: 16, withText: monster.value(forKey: "name") as! String)
+                    let img = makeImgView(forImg: getPortraitURL(id: monster.cardID), ofSize: 50)
+                    let nameLabel = makeLabel(ofSize: 16, withText: monster.name)
                     let rarityLabel = makeLabel(ofSize: 16, withText: rarity)
                     
                     img.isUserInteractionEnabled = true
                     img.addGestureRecognizer(makeTapRecognizer())
-                    img.tag = monster.value(forKey: "cardID") as! Int
+                    img.tag = monster.cardID
                     
                     
                     dropView.addSubview(img)
@@ -331,7 +331,7 @@ extension EncounterView {
                 portraitImage.tag = cardID
                 
                 if let monster = getMonster(forID: cardID) {
-                    let nameLabel = makeLabel(ofSize: 16, withText: monster.value(forKey: "name") as! String)
+                    let nameLabel = makeLabel(ofSize: 16, withText: monster.name)
                     let idLabel = makeLabel(ofSize: 16, withText: "No.\(cardID)")
                     con.addSubview(nameLabel)
                     con.addSubview(idLabel)
@@ -510,7 +510,7 @@ extension EncounterView {
             
             let activeSkill = skills.filter({
                 let skillID = $0.value(forKey: "skillID") as! Int
-                let aSkill = currentMonster.value(forKey: "activeSkillID") as! Int
+                let aSkill = currentMonster.activeSkillID
                 
                 if skillID == aSkill {
                     return true
@@ -522,7 +522,7 @@ extension EncounterView {
             
             let leaderSkill = skills.filter({
                 let skillID = $0.value(forKey: "skillID") as! Int
-                let lSkill = currentMonster.value(forKey: "leaderSkillID") as! Int
+                let lSkill = currentMonster.leaderSkillID
                 
                 if skillID == lSkill {
                     return true

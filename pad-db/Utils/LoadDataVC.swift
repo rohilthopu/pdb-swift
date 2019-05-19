@@ -48,7 +48,7 @@ class LoadDataVC: UIViewController {
             getData()
         }
         updateVersionIdentifier()
-        loadFromDB()
+//        loadFromDB()
         runUpdate = false
     }
     
