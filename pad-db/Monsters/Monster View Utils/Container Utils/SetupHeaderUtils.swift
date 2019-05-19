@@ -13,7 +13,7 @@ extension MonsterView {
     
     public func setupImageView() {
         
-        let url = URL(string: getFullURL(id: monster!.value(forKey: "cardID") as! Int))
+        let url = URL(string: getFullURL(id: monster!.cardID))
         imageContainer.kf.setImage(with: url)
         
         
@@ -26,7 +26,7 @@ extension MonsterView {
     
     public func setupPortraitView() {
         
-        let url = URL(string: getPortraitURL(id:(monster!.value(forKey: "cardID") as! Int)))
+        let url = URL(string: getPortraitURL(id:monster!.cardID))
         portraitContainer.kf.setImage(with: url)
         
         scrollView.addSubview(portraitContainer)
@@ -54,19 +54,18 @@ extension MonsterView {
         
         let rarityCountLabel = makeLabel(ofSize: 12, withText: "")
         
-        let id = monster!.value(forKey: "cardID") as! Int
-        IDLabel.text = "No. " + String(id)
+        IDLabel.text = "No. " + String(monster!.cardID)
         
-        nameLabel.text = monster!.value(forKey: "name") as? String
+        nameLabel.text = monster!.name
         
         var rarity = ""
-        let rare = monster!.value(forKey: "rarity") as! Int
+        let rare = monster!.rarity
         
         for _ in 0...rare-1 {
             rarity.append("*")
         }
         
-        let cost = monster!.value(forKey: "cost") as! Int
+        let cost = monster!.cost
         
         rarityLabel.text = rarity
         rarityCountLabel.text = " (" + String(rare) + ")/ Cost " + String(cost)
@@ -100,9 +99,9 @@ extension MonsterView {
         rarityCountLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
         
         
-        let type1 = monster!.value(forKey: "type1") as! Int
-        let type2 = monster!.value(forKey: "type2") as! Int
-        let type3 = monster!.value(forKey: "type3") as! Int
+        let type1 = monster!.type1_ID
+        let type2 = monster!.type2_ID
+        let type3 = monster!.type3_ID
         
         
         if type1 != 0 {
