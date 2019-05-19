@@ -43,7 +43,7 @@ extension MonsterView {
         let label297 = makeLabel(ofSize: 16, withText: noString)
         
         minLevelLabel.text = "1"
-        maxLevelLabel.text = String(monster!.value(forKey: "maxLevel") as! Int)
+        maxLevelLabel.text = String(monster!.maxLevel)
         label297.text = "+297"
         
         levelLabel.text = "lvl"
@@ -123,9 +123,9 @@ extension MonsterView {
         }()
         
         
-        minHPLabel.text = String(monster!.value(forKey: "minHP") as! Int)
-        maxHPLabel.text = String(monster!.value(forKey: "maxHP") as! Int)
-        hp297.text = String((monster!.value(forKey: "maxHP") as! Int) + 990)
+        minHPLabel.text = String(monster!.minHP)
+        maxHPLabel.text = String(monster!.maxHP)
+        hp297.text = String(monster!.maxHP + 990)
         
         HPLabel.text = "hp"
         
@@ -201,10 +201,10 @@ extension MonsterView {
         }()
         
         
-        minATKLabel.text = String(monster!.value(forKey: "minATK") as! Int)
-        maxATKLabel.text = String(monster!.value(forKey: "maxATK") as! Int)
+        minATKLabel.text = String(monster!.minAtk)
+        maxATKLabel.text = String(monster!.maxAtk)
         
-        atk297.text = String((monster!.value(forKey: "maxATK") as! Int) + 495)
+        atk297.text = String(monster!.maxAtk + 495)
         ATKLabel.text = "atk"
         
         

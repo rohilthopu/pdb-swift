@@ -11,16 +11,16 @@ import UIKit
 import CoreData
 import SwiftyJSON
 
-func getMonster(forID id:Int) -> NSManagedObject? {
+func getMonster(forID id:Int) -> Monster? {
     return monsters.filter({
-        return id == $0.value(forKey: "cardID") as! Int
+        return id == $0.cardID
     }).first
 }
 
-func getMonster(forSkillID id:Int) -> NSManagedObject? {
+func getMonster(forSkillID id:Int) -> Monster? {
     return monsters.filter({
-        let aSkill = $0.value(forKey: "activeSkillID") as! Int
-        let lSkill = $0.value(forKey: "leaderSkillID") as! Int
+        let aSkill = $0.activeSkillID
+        let lSkill = $0.leaderSkillID
         return id == aSkill || id == lSkill
     }).last
 }

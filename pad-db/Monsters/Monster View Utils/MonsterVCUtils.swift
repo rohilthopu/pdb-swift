@@ -22,26 +22,16 @@ extension MonsterView {
             
             let activeSkill = skills.filter({
                 let skillID = $0.value(forKey: "skillID") as! Int
-                let aSkill = currentMonster.value(forKey: "activeSkillID") as! Int
+                let aSkill = currentMonster.activeSkillID
                 
-                if skillID == aSkill {
-                    return true
-                }
-                else {
-                    return false
-                }
+                return skillID == aSkill
             }).first
             
             let leaderSkill = skills.filter({
                 let skillID = $0.value(forKey: "skillID") as! Int
-                let lSkill = currentMonster.value(forKey: "leaderSkillID") as! Int
+                let lSkill = currentMonster.leaderSkillID
                 
-                if skillID == lSkill {
-                    return true
-                }
-                else {
-                    return false
-                }
+                return skillID == lSkill
             }).first
             
             monsterVC.activeSkill = activeSkill
