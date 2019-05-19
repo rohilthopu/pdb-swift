@@ -22,7 +22,7 @@ extension MonsterView {
         let smallSize:CGFloat = spacing * 4
         let smallerSize:CGFloat = spacing * 2
         
-        let evolutions = getEvoList(forMonster: monster!)
+        let evolutions = monster!.evoList
         
         
         evoMaterialsContainer.addSubview(evoMaterialsLabel)
@@ -54,7 +54,7 @@ extension MonsterView {
                     if let evoMonster = getMonster(forID: evo) {
                         
                         let view = makeView()
-                        let portraitURL = getPortraitURL(id: monster!.value(forKey: "cardID") as! Int)
+                        let portraitURL = getPortraitURL(id: monster!.cardID)
                         let portraitImg = makeImgView(forImg: portraitURL, ofSize: size)
                         let plusImg = makeImgView(fromIconName: "add", ofSize: smallerSize)
                         let equalsImg = makeImgView(fromIconName: "equal", ofSize: smallerSize)
@@ -70,18 +70,18 @@ extension MonsterView {
                         plusImg.leadingAnchor.constraint(equalTo: portraitImg.trailingAnchor, constant: spacing).isActive = true
                         plusImg.centerYAnchor.constraint(equalTo: portraitImg.centerYAnchor).isActive = true
                         
-                        let evoPortraitURL = getPortraitURL(id: evoMonster.value(forKey: "cardID") as! Int)
+                        let evoPortraitURL = getPortraitURL(id: evoMonster.cardID)
                         let monsterImg = makeImgView(forImg: evoPortraitURL, ofSize: size)
                         monsterImg.isUserInteractionEnabled = true
                         monsterImg.addGestureRecognizer(makeTapRecognizer())
-                        monsterImg.tag = evoMonster.value(forKey: "cardID") as! Int
+                        monsterImg.tag = evoMonster.cardID
                         
                         
-                        let e1 = evoMonster.value(forKey: "evomat1") as! Int
-                        let e2 = evoMonster.value(forKey: "evomat2") as! Int
-                        let e3 = evoMonster.value(forKey: "evomat3") as! Int
-                        let e4 = evoMonster.value(forKey: "evomat4") as! Int
-                        let e5 = evoMonster.value(forKey: "evomat5") as! Int
+                        let e1 = evoMonster.evoMatID1
+                        let e2 = evoMonster.evoMatID2
+                        let e3 = evoMonster.evoMatID3
+                        let e4 = evoMonster.evoMatID4
+                        let e5 = evoMonster.evoMatID5
                         
                         let evomats = [e1, e2, e3, e4, e5]
                         
@@ -92,7 +92,7 @@ extension MonsterView {
                             
                             if evo != 0 {
                                 let evoMaterial = getMonster(forID: evo)!
-                                let img = makeImgView(forImg: getPortraitURL(id: evoMaterial.value(forKey: "cardID") as! Int), ofSize: smallSize)
+                                let img = makeImgView(forImg: getPortraitURL(id: evoMaterial.cardID), ofSize: smallSize)
                                 img.tag = evoMaterial.value(forKey: "cardID") as! Int
                                 img.isUserInteractionEnabled = true
                                 img.addGestureRecognizer(makeTapRecognizer())
@@ -179,7 +179,7 @@ extension MonsterView {
         let smallSize:CGFloat = spacing * 4
         let smallerSize:CGFloat = spacing * 2
         
-        let devolution = monster!.value(forKey: "ancestorID") as! Int
+        let devolution = monster!.ancestorID
         
         
         devoMaterialsContainer.addSubview(devoMaterialsLabel)
@@ -197,14 +197,14 @@ extension MonsterView {
         separator.bottomAnchor.constraint(equalTo: devoMaterialsContainer.bottomAnchor).isActive = true
         separator.centerXAnchor.constraint(equalTo: devoMaterialsContainer.centerXAnchor).isActive = true
         
-        let isUlt = monster!.value(forKey: "isUlt") as! Bool
+        let isUlt = monster!.isUlt
         
         if devolution > 0 && isUlt {
             
-            if devolution != self.monster!.value(forKey: "cardID") as! Int {
+            if devolution != self.monster!.cardID {
                 
                 let view = makeView()
-                let portraitImg = makeImgView(forImg: getPortraitURL(id: monster!.value(forKey: "cardID") as! Int), ofSize: size)
+                let portraitImg = makeImgView(forImg: getPortraitURL(id: monster!.cardID), ofSize: size)
                 
                 let plusImg = makeImgView(fromIconName: "add", ofSize: smallerSize)
                 let equalsImg = makeImgView(fromIconName: "equal", ofSize: smallerSize)
@@ -222,11 +222,11 @@ extension MonsterView {
                 plusImg.centerYAnchor.constraint(equalTo: portraitImg.centerYAnchor).isActive = true
                 
                 
-                if let d_mon = getMonster(forID: monster!.value(forKey: "ancestorID") as! Int) {
+                if let d_mon = getMonster(forID: monster!.ancestorID) {
                  
                     
-                    let monsterImg = makeImgView(forImg: getPortraitURL(id: d_mon.value(forKey: "cardID") as! Int), ofSize: size)
-                    monsterImg.tag = d_mon.value(forKey: "cardID") as! Int
+                    let monsterImg = makeImgView(forImg: getPortraitURL(id: d_mon.cardID), ofSize: size)
+                    monsterImg.tag = d_mon.cardID
                     monsterImg.isUserInteractionEnabled = true
                     
                     monsterImg.addGestureRecognizer(makeTapRecognizer())
@@ -236,11 +236,11 @@ extension MonsterView {
                     monsterImg.centerYAnchor.constraint(equalTo: portraitImg.centerYAnchor).isActive = true
                     
                     
-                    let e1 = monster!.value(forKey: "unevomat1") as! Int
-                    let e2 = monster!.value(forKey: "unevomat2") as! Int
-                    let e3 = monster!.value(forKey: "unevomat3") as! Int
-                    let e4 = monster!.value(forKey: "unevomat4") as! Int
-                    let e5 = monster!.value(forKey: "unevomat5") as! Int
+                    let e1 = monster!.unEvoMat1
+                    let e2 = monster!.unEvoMat2
+                    let e3 = monster!.unEvoMat3
+                    let e4 = monster!.unEvoMat4
+                    let e5 = monster!.unEvoMat5
                     
                     let devomats = [e1, e2, e3, e4, e5]
                     
@@ -249,8 +249,8 @@ extension MonsterView {
                     for i in 0...devomats.count - 1 {
                         let devo = devomats[i]
                         let devoMaterial = getMonster(forID: devo)!
-                        let img = makeImgView(forImg: getPortraitURL(id: devoMaterial.value(forKey: "cardID") as! Int), ofSize: smallSize)
-                        img.tag = devoMaterial.value(forKey: "cardID") as! Int
+                        let img = makeImgView(forImg: getPortraitURL(id: devoMaterial.cardID), ofSize: smallSize)
+                        img.tag = devoMaterial.cardID
                         img.isUserInteractionEnabled = true
                         img.addGestureRecognizer(makeTapRecognizer())
                         devoViews.append(img)
@@ -292,7 +292,7 @@ extension MonsterView {
         else if devolution > 0 {
             let noneUltLabel = makeLabel(ofSize: 16, withText: "This monster cannot be devolved.")
             let prevEvoLabel = makeLabel(ofSize: 16, withText: "Ancestor is")
-            let ancestorImg = makeImgView(forImg: getPortraitURL(id: getMonster(forID: devolution)!.value(forKey: "cardID") as! Int), ofSize: size)
+            let ancestorImg = makeImgView(forImg: getPortraitURL(id: getMonster(forID: devolution)!.cardID), ofSize: size)
             ancestorImg.tag = devolution
             ancestorImg.isUserInteractionEnabled = true
             ancestorImg.addGestureRecognizer(makeTapRecognizer())
