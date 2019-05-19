@@ -10,7 +10,7 @@ import Foundation
 
 struct Monster: Codable {
     let cardID: Int
-    let name: String
+    let name, server: String
     let attrID, subAttrID: Int
     let isUlt: Bool
     let type1_ID, type2_ID, rarity, cost: Int
@@ -27,12 +27,11 @@ struct Monster: Codable {
     let evoMatID1, evoMatID2, evoMatID3, evoMatID4: Int
     let evoMatID5, unEvoMat1, unEvoMat2, unEvoMat3: Int
     let unEvoMat4, unEvoMat5, enemyTurnsAlt, enemySkillEffect: Int
-    let enemySkillRefs, awakenings, superAwakenings: [Int]
+    let enemySkillRefs, awakenings, superAwakenings, evoList: [Int]
     let baseID, type3_ID, sellMp, latentOnFeed: Int
     let collabID: Int
     let inheritable, isCollab: Bool
     let limitMult, voiceID: Int
-    let evoList: [Int]
     
     enum CodingKeys: String, CodingKey {
         case cardID = "card_id"
@@ -99,5 +98,6 @@ struct Monster: Codable {
         case limitMult = "limit_mult"
         case voiceID = "voice_id"
         case evoList = "evo_list"
+        case server = "server"
     }
 }

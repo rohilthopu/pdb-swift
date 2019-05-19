@@ -23,7 +23,7 @@ class GuerrillaTable: UITableViewController {
         self.definesPresentationContext = true
         
         setupNavBar()
-        loadFromDB()
+//        loadFromDB()
         loadGuerrilla()
         
         vc.view.backgroundColor = UIColor.black

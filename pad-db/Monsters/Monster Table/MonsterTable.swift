@@ -24,7 +24,7 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
     let cellid = "monsterid"
     
     
-    var filteredMonsters = [NSManagedObject]()
+    var filteredMonsters = [Monster]()
     var monsterSearchController:UISearchController!
     
     var isDescendedSort:Bool = true
@@ -33,29 +33,31 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
         super.viewDidLoad()
         setupTableView()
         setupView()
-        filterGoodMonsters()
+//        filterGoodMonsters()
         tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if goodMonsters.count == 0 || changeSettings {
-            filterGoodMonsters()
-        }
+//        if goodMonsters.count == 0 || changeSettings {
+//            filterGoodMonsters()
+//        }
         self.tableView.reloadData()
     }
     
     private func filterGoodMonsters() {
         if naFilter {
             goodMonsters = monsters.filter{
-                let name = $0.value(forKey: "name") as! String
-                if let server = $0.value(forKey: "server") as! String? {
+                let name = $0.name
+                let server = $0.server
+                
+                if server == "na" {
                     return !name.contains("Alt.") && !name.contains("*") && !name.contains("?") && server == "na"
                 }
                 return !name.contains("Alt.") && !name.contains("*") && !name.contains("?")
             }
         } else {
             goodMonsters = monsters.filter{
-                let name = $0.value(forKey: "name") as! String
+                let name = $0.name
                 return !name.contains("Alt.") && !name.contains("*") && !name.contains("?")
             }
         }
@@ -130,7 +132,7 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
         let index = indexPath.row
         // returns an NSManagedObject
         
-        let currentMonster:NSManagedObject
+        let currentMonster:Monster
         
         if isFiltering() {
             currentMonster = filteredMonsters[index]
@@ -144,26 +146,14 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
         
         let activeSkill = skills.filter({
             let skillID = $0.value(forKey: "skillID") as! Int
-            let aSkill = currentMonster.value(forKey: "activeSkillID") as! Int
-            
-            if skillID == aSkill {
-                return true
-            }
-            else {
-                return false
-            }
+            let aSkill = currentMonster.activeSkillID
+            return skillID == aSkill {
         }).first
         
         let leaderSkill = skills.filter({
             let skillID = $0.value(forKey: "skillID") as! Int
-            let lSkill = currentMonster.value(forKey: "leaderSkillID") as! Int
-            
-            if skillID == lSkill {
-                return true
-            }
-            else {
-                return false
-            }
+            let lSkill = currentMonster.leaderSkillID
+            return skillID == lSkill
         }).first
         
         monsterVC.activeSkill = activeSkill
