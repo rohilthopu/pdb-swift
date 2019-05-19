@@ -15,11 +15,7 @@ Some example images can be seen below:
     <img src="Images/ney_2.png" height="30%" width="30%">
 </div>
 
-## Languages and Technologies
-
-The app was initially written entirely in Swift 4 but has now been upgraded to Swift 5. 
-
-I try to keep the number of dependencies to a minimum.
+## Tech
 
 Here is a list of technologies the app uses:
 1. Swift 4/5
