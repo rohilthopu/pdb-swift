@@ -23,7 +23,6 @@ class SkillTable: UITableViewController, UISearchControllerDelegate, UISearchBar
     var skillSearch:UISearchController!
 
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(SkillCell.self, forCellReuseIdentifier: cellid)
@@ -33,11 +32,21 @@ class SkillTable: UITableViewController, UISearchControllerDelegate, UISearchBar
         setupTableView()
         setupSearch()
         goodSkills = filterUsableSkills()
+        sortSkillsDescending()
+    }
+    
+    private func sortSkillsDescending() {
+        goodSkills.sort{
+            let first = $0.skillID
+            let second = $1.skillID
+            return first > second
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if goodSkills.count == 0 || changeSettings {
             goodSkills = filterUsableSkills()
+            sortSkillsDescending()
         }
         self.tableView.reloadData()
     }

@@ -22,7 +22,7 @@ func getMonster(forSkillID id:Int) -> Monster? {
         let aSkill = $0.activeSkillID
         let lSkill = $0.leaderSkillID
         return id == aSkill || id == lSkill
-    }).last
+    }).first
 }
 
 func getSkill(forSkill id:Int) -> Skill {

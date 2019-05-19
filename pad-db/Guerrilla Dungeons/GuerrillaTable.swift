@@ -26,6 +26,7 @@ class GuerrillaTable: UITableViewController {
 //        loadFromDB()
         loadGuerrilla()
         getLiveMonsterData()
+        getLiveSkillData()
         
         vc.view.backgroundColor = UIColor.black
         vc.view.alpha = CGFloat(0.75)

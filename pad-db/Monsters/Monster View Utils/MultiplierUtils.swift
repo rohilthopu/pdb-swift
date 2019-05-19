@@ -110,7 +110,7 @@ extension MonsterView {
     
     public func getMultipliers(_ skill:Skill) -> [Double] {
         var skill_list = [Skill]()
-        var multipliers:[Double] = [1, 1, 1, 0, 0]
+        var multipliers:[Double] = [1.0, 1.0, 1.0, 0.0, 0.0]
         var shield_calc:Double = 1.0
         var shields = [Double]()
         
@@ -144,19 +144,19 @@ extension MonsterView {
             }
             
             for shield in shields {
-                shield_calc *= (1-shield)
+                shield_calc *= (1.0-shield)
             }
             
-            multipliers[3] = Double(1-shield_calc)*Double(100)
-            multipliers[4] = Double(1 - shield_calc)
+            multipliers[3] = (1.0-shield_calc)*100.0
+            multipliers[4] = (1.0 - shield_calc)
         }
             
         else {
             multipliers[0] = skill.hpMult
             multipliers[1] = skill.atkMult
             multipliers[2] = skill.rcvMult
-            multipliers[3] = Double(skill.shield) * 100
-            multipliers[4] = Double(skill.shield)
+            multipliers[3] = skill.shield * 100.0
+            multipliers[4] = skill.shield
         }
         
         return multipliers
@@ -169,9 +169,9 @@ extension MonsterView {
         newMults.append(pow(multipliers[1], 2))
         newMults.append(pow(multipliers[2], 2))
         
-        let base_val = pow((1-multipliers[4]), 2)
+        let base_val = pow((1.0-multipliers[4]), 2)
         
-        newMults.append((1 - base_val)*100)
+        newMults.append((1.0 - base_val)*100)
         
         return newMults
     }

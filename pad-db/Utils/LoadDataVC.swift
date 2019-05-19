@@ -57,7 +57,6 @@ class LoadDataVC: UIViewController {
         goodMonsters.removeAll()
         wipeDatabase()
         getEnemySkillData()
-        getSkillData()
         getDungeonData()
         getFloorData()
         getEncounterData()
@@ -69,6 +68,6 @@ class LoadDataVC: UIViewController {
     }
     
     private func isMissingData() -> Bool {
-        return skills.isEmpty || enemySkills.isEmpty || dungeons.isEmpty || floors.isEmpty || encounterSets.isEmpty || versions.isEmpty
+        return enemySkills.isEmpty || dungeons.isEmpty || floors.isEmpty || encounterSets.isEmpty || versions.isEmpty
     }
 }
