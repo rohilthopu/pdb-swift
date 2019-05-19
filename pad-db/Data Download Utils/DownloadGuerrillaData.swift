@@ -11,12 +11,11 @@ import UIKit
 import SwiftyJSON
 
 func loadGuerrilla() {
-    let url = "https://www.pad-db.com/api/live/guerrilla"
     let timeInMS = NSDate().timeIntervalSince1970
     
     allGuerrillaDungeons.removeAll()
     
-    if let url = URL(string: url) {
+    if let url = URL(string: guerrilla_api_url) {
         if let data = try? String(contentsOf: url) {
             let json = JSON(parseJSON: data)
             for item in json.arrayValue {
