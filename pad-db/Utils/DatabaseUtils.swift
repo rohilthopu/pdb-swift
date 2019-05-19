@@ -10,44 +10,39 @@ import Foundation
 import UIKit
 import CoreData
 
-//func loadFromDB() {
-//    
-//    guard let appDelegate =
-//        UIApplication.shared.delegate as? AppDelegate else {
-//            return
-//    }
-//    
-//    let managedContext = appDelegate.persistentContainer.viewContext
-//    
-//    let monsterRequest = NSFetchRequest<NSManagedObject>(entityName: "MonsterNA")
-//    let monsterRequestSort = NSSortDescriptor(key: "cardID", ascending: false)
-//    monsterRequest.sortDescriptors = [monsterRequestSort]
-//    
-//    let skillRequest = NSFetchRequest<NSManagedObject>(entityName: "SkillNA")
-//    let skillRequestSort = NSSortDescriptor(key: "skillID", ascending: false)
-//    skillRequest.sortDescriptors = [skillRequestSort]
-//    
-//    let versionRequest = NSFetchRequest<NSManagedObject>(entityName: "Version")
-//    let dungeonRequest = NSFetchRequest<NSManagedObject>(entityName: "Dungeon")
-//    dungeonRequest.sortDescriptors = [NSSortDescriptor(key: "dungeonID", ascending: false)]
-//    
-//    let floorRequest = NSFetchRequest<NSManagedObject>(entityName: "Floor")
-//    let enemySkillRequest = NSFetchRequest<NSManagedObject>(entityName: "EnemySkill")
-//    
-//    let encounterRequest = NSFetchRequest<NSManagedObject>(entityName: "EncounterSet")
-//    
-//    do {
-//        monsters = try managedContext.fetch(monsterRequest)
-//        skills = try managedContext.fetch(skillRequest)
-//        versions = try managedContext.fetch(versionRequest)
-//        dungeons = try managedContext.fetch(dungeonRequest)
-//        floors = try managedContext.fetch(floorRequest)
-//        enemySkills = try managedContext.fetch(enemySkillRequest)
-//        encounterSets = try managedContext.fetch(encounterRequest)
-//    } catch _ as NSError {
-//        print("Could not fetch.")
-//    }
-//}
+func loadFromDB() {
+    
+    guard let appDelegate =
+        UIApplication.shared.delegate as? AppDelegate else {
+            return
+    }
+    
+    let managedContext = appDelegate.persistentContainer.viewContext
+    
+    let skillRequest = NSFetchRequest<NSManagedObject>(entityName: "SkillNA")
+    let skillRequestSort = NSSortDescriptor(key: "skillID", ascending: false)
+    skillRequest.sortDescriptors = [skillRequestSort]
+    
+    let versionRequest = NSFetchRequest<NSManagedObject>(entityName: "Version")
+    let dungeonRequest = NSFetchRequest<NSManagedObject>(entityName: "Dungeon")
+    dungeonRequest.sortDescriptors = [NSSortDescriptor(key: "dungeonID", ascending: false)]
+    
+    let floorRequest = NSFetchRequest<NSManagedObject>(entityName: "Floor")
+    let enemySkillRequest = NSFetchRequest<NSManagedObject>(entityName: "EnemySkill")
+    
+    let encounterRequest = NSFetchRequest<NSManagedObject>(entityName: "EncounterSet")
+    
+    do {
+        skills = try managedContext.fetch(skillRequest)
+        versions = try managedContext.fetch(versionRequest)
+        dungeons = try managedContext.fetch(dungeonRequest)
+        floors = try managedContext.fetch(floorRequest)
+        enemySkills = try managedContext.fetch(enemySkillRequest)
+        encounterSets = try managedContext.fetch(encounterRequest)
+    } catch _ as NSError {
+        print("Could not fetch.")
+    }
+}
 
 
 func wipeDatabase() {

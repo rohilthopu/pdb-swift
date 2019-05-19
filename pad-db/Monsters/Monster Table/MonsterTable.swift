@@ -33,14 +33,14 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
         super.viewDidLoad()
         setupTableView()
         setupView()
-//        filterGoodMonsters()
+        filterGoodMonsters()
         tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        if goodMonsters.count == 0 || changeSettings {
-//            filterGoodMonsters()
-//        }
+        if goodMonsters.count == 0 || changeSettings {
+            filterGoodMonsters()
+        }
         self.tableView.reloadData()
     }
     
@@ -50,15 +50,15 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
                 let name = $0.name
                 let server = $0.server
                 
-                if server == "na" {
-                    return !name.contains("Alt.") && !name.contains("*") && !name.contains("?") && server == "na"
+                if server == "NA" {
+                    return !name.contains("Alt.") && !name.contains("*") && !name.contains("?") && server == "NA" && $0.cardID < 100000
                 }
                 return !name.contains("Alt.") && !name.contains("*") && !name.contains("?")
             }
         } else {
             goodMonsters = monsters.filter{
                 let name = $0.name
-                return !name.contains("Alt.") && !name.contains("*") && !name.contains("?")
+                return !name.contains("Alt.") && !name.contains("*") && !name.contains("?") && $0.cardID < 100000
             }
         }
     }

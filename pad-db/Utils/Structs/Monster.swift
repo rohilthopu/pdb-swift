@@ -16,13 +16,13 @@ struct Monster: Codable {
     let type1_ID, type2_ID, rarity, cost: Int
     let maxLevel, feedXPAtLvl4: Int
     let releasedStatus: Bool
-    let sellPriceAtLvl10, minHP, maxHP, hpScale: Int
-    let minAtk, maxAtk, atkScale, minRcv: Int
-    let maxRcv, rcvScale, xpMax: Int
-    let xpScale: Double
+    let sellPriceAtLvl10, minHP, maxHP: Int
+    let minAtk, maxAtk, minRcv: Int
+    let maxRcv, xpMax: Int
+    let xpScale, atkScale, rcvScale, hpScale, enemyAtkScale, enemyDefScale, enemyHPScale: Double
     let activeSkillID, leaderSkillID, enemyTurns, enemyHPMin: Int
-    let enemyHPMax, enemyHPScale, enemyAtkMin, enemyAtkMax: Int
-    let enemyAtkScale, enemyDefMin, enemyDefMax, enemyDefScale: Int
+    let enemyHPMax, enemyAtkMin, enemyAtkMax: Int
+    let enemyDefMin, enemyDefMax: Int
     let enemyMaxLevel, enemyCoinsAtLvl2, enemyXPAtLvl2, ancestorID: Int
     let evoMatID1, evoMatID2, evoMatID3, evoMatID4: Int
     let evoMatID5, unEvoMat1, unEvoMat2, unEvoMat3: Int
@@ -98,6 +98,6 @@ struct Monster: Codable {
         case limitMult = "limit_mult"
         case voiceID = "voice_id"
         case evoList = "evo_list"
-        case server = "server"
+        case server
     }
 }

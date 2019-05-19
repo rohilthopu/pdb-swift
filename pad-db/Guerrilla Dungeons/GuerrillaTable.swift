@@ -25,6 +25,7 @@ class GuerrillaTable: UITableViewController {
         setupNavBar()
 //        loadFromDB()
         loadGuerrilla()
+        getLiveMonsterData()
         
         vc.view.backgroundColor = UIColor.black
         vc.view.alpha = CGFloat(0.75)

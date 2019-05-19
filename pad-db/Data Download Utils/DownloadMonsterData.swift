@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import SwiftyJSON
 import CoreData
-
 func getMonsterData() {
     
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return }
@@ -25,7 +24,7 @@ func getMonsterData() {
                 
                 let name = card["name"].stringValue
                 if !name.isEmpty {
-
+                    
                     let item = NSManagedObject(entity: entity, insertInto: managedContext)
                     item.setValue(card["activeSkillID"].intValue, forKey: "activeSkillID")
                     item.setValue(card["ancestorID"].intValue, forKey: "ancestorID")
@@ -80,4 +79,41 @@ func getMonsterData() {
         }
     }
     
+}
+
+func getLiveMonsterData() {
+    
+    let url = URL(string: monster_url)!
+    
+    let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        
+        // ensure there is no error for this HTTP response
+        guard error == nil else {
+            print ("error: \(error!)")
+            return
+        }
+        
+        // ensure there is data returned from this HTTP response
+        guard let data = data else {
+            print("No data")
+            return
+        }
+        
+        do {
+            monsters = try JSONDecoder().decode([Monster].self, from: data)
+        } catch let error as NSError{
+            print(error)
+        }
+        
+//        guard let monster_data = try? JSONDecoder().decode([Monster].self, from: data) else {
+//            print("Error: Couldn't decode data into monsters array")
+//            return
+//        }
+        
+        
+//        monsters = monster_data
+    }
+    
+    // execute the HTTP request
+    task.resume()
 }
