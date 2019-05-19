@@ -71,9 +71,8 @@ func getEvoList(forMonster monster:NSManagedObject) -> [Int] {
     return JSON(parseJSON: monster.value(forKey: "evolutions") as! String).arrayValue.map{ $0.intValue }
 }
 
-func getEnemySkills(forMonster monster:NSManagedObject) -> [NSManagedObject] {
-    let eSkillsRaw = monster.value(forKey: "enemySkills") as! String
-    let eSkills = JSON(parseJSON: eSkillsRaw).arrayValue.map{$0.intValue}.reversed()
+func getEnemySkills(forMonster monster:Monster) -> [NSManagedObject] {
+    let eSkills = monster.enemySkillRefs.reversed()
     return enemySkills.filter { eSkills.contains($0.value(forKey: "enemy_skill_id") as! Int) }
 }
 
