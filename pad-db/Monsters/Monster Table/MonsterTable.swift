@@ -147,7 +147,7 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
         let activeSkill = skills.filter({
             let skillID = $0.value(forKey: "skillID") as! Int
             let aSkill = currentMonster.activeSkillID
-            return skillID == aSkill {
+            return skillID == aSkill
         }).first
         
         let leaderSkill = skills.filter({
