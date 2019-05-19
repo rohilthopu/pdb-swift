@@ -34,6 +34,7 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
         setupTableView()
         setupView()
         filterGoodMonsters()
+
         tableView.reloadData()
     }
     
@@ -53,7 +54,7 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
                 if server == "NA" {
                     return !name.contains("Alt.") && !name.contains("*") && !name.contains("?") && server == "NA" && $0.cardID < 100000
                 }
-                return !name.contains("Alt.") && !name.contains("*") && !name.contains("?")
+                return !name.contains("Alt.") && !name.contains("*") && !name.contains("?") && $0.cardID < 100000
             }
         } else {
             goodMonsters = monsters.filter{
@@ -61,6 +62,9 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
                 return !name.contains("Alt.") && !name.contains("*") && !name.contains("?") && $0.cardID < 100000
             }
         }
+        
+        sortMonstersDescending()
+
     }
     
     private func setupTableView() {

@@ -26,7 +26,7 @@ extension MonsterTable {
         }
     }
     
-    func sortMonstersDescending() {
+func sortMonstersDescending() {
         goodMonsters.sort{
             let first = $0.cardID
             let second = $1.cardID

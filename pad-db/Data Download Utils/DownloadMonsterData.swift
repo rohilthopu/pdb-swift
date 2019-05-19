@@ -104,14 +104,6 @@ func getLiveMonsterData() {
         } catch let error as NSError{
             print(error)
         }
-        
-//        guard let monster_data = try? JSONDecoder().decode([Monster].self, from: data) else {
-//            print("Error: Couldn't decode data into monsters array")
-//            return
-//        }
-        
-        
-//        monsters = monster_data
     }
     
     // execute the HTTP request
