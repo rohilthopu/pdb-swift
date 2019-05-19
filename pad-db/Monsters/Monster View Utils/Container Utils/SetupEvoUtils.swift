@@ -93,7 +93,7 @@ extension MonsterView {
                             if evo != 0 {
                                 let evoMaterial = getMonster(forID: evo)!
                                 let img = makeImgView(forImg: getPortraitURL(id: evoMaterial.cardID), ofSize: smallSize)
-                                img.tag = evoMaterial.value(forKey: "cardID") as! Int
+                                img.tag = evoMaterial.cardID
                                 img.isUserInteractionEnabled = true
                                 img.addGestureRecognizer(makeTapRecognizer())
                                 evoViews.append(img)

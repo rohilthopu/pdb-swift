@@ -100,7 +100,7 @@ extension MonsterView {
             
             
         } else {
-            let noneLabel = makeLabel(ofSize: 16, withText: "This monster does not drop in dungeons")
+            let noneLabel = makeLabel(ofSize: 16, withText: "This monster does not drop or appear in dungeons")
             relatedDungeonContainer.addSubview(noneLabel)
             noneLabel.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20).isActive = true
             noneLabel.bottomAnchor.constraint(equalTo: relatedDungeonContainer.bottomAnchor, constant: -20).isActive = true

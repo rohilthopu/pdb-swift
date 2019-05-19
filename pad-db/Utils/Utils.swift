@@ -77,9 +77,9 @@ func getEnemySkills(forMonster monster:NSManagedObject) -> [NSManagedObject] {
     return enemySkills.filter { eSkills.contains($0.value(forKey: "enemy_skill_id") as! Int) }
 }
 
-func getRelatedDungeons(forMonster monster:NSManagedObject) -> [NSManagedObject] {
+func getRelatedDungeons(forMonster monster:Monster) -> [NSManagedObject] {
     var relatedDungeons = [NSManagedObject]()
-    let id = monster.value(forKey: "cardID") as! Int
+    let id = monster.cardID
     for floor in floors {
         let drops = getPossibleDrops(forFloor: floor)
         if let _ = drops[id.description] {
