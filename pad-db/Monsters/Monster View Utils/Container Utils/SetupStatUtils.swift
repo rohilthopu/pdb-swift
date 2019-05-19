@@ -16,7 +16,6 @@ extension MonsterView {
         setupHPStatus()
         setupATKStatus()
         setupRCVStatus()
-//        setupXPStatus()
         setupWeightedStats()
         
         
@@ -281,10 +280,10 @@ extension MonsterView {
             return textView
         }()
         
-        minRCVLabel.text = String(monster!.value(forKey: "minRCV") as! Int)
-        maxRCVLabel.text = String(monster!.value(forKey: "maxRCV") as! Int)
+        minRCVLabel.text = String(monster!.minRcv)
+        maxRCVLabel.text = String(monster!.maxRcv)
         RCVLabel.text = "rcv"
-        rcv297.text = String((monster!.value(forKey: "maxRCV") as! Int) + 297)
+        rcv297.text = String(monster!.maxRcv + 297)
         
         RCVContainer.addSubview(RCVLabel)
         RCVContainer.addSubview(minRCVLabel)
@@ -322,71 +321,10 @@ extension MonsterView {
         
     }
     
-    public func setupXPStatus() {
-        
-        let XPLabel: UILabel = {
-            let textView = UILabel()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.font = UIFont(name: "Futura-CondensedMedium", size: 20)
-            return textView
-        }()
-        
-        let minXPLabel: UILabel = {
-            let textView = UILabel()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
-            
-            return textView
-        }()
-        
-        let maxXPLabel: UILabel = {
-            let textView = UILabel()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
-            
-            return textView
-        }()
-        
-        
-        minXPLabel.text = String(0)
-        maxXPLabel.text = String(monster!.value(forKey: "maxXP") as! Int)
-        XPLabel.text = "xp"
-        
-        
-        XPContainer.addSubview(XPLabel)
-        XPContainer.addSubview(minXPLabel)
-        XPContainer.addSubview(maxXPLabel)
-        
-        statContainer.addSubview(XPContainer)
-        // add constraints to the level container object first
-        
-        XPContainer.leadingAnchor.constraint(equalTo: RCVContainer.trailingAnchor, constant: spacing*8).isActive = true
-        XPContainer.topAnchor.constraint(equalTo: statContainer.topAnchor).isActive = true
-        
-        // add constraints to the level items/values
-        XPLabel.leadingAnchor.constraint(equalTo: XPContainer.leadingAnchor).isActive = true
-        XPLabel.trailingAnchor.constraint(equalTo: XPContainer.trailingAnchor).isActive = true
-        XPLabel.topAnchor.constraint(equalTo: XPContainer.topAnchor).isActive = true
-        
-        // add constraint to the min level
-        
-        minXPLabel.leadingAnchor.constraint(equalTo: XPContainer.leadingAnchor).isActive = true
-        minXPLabel.trailingAnchor.constraint(equalTo: XPContainer.trailingAnchor).isActive = true
-        minXPLabel.topAnchor.constraint(equalTo: XPLabel.bottomAnchor, constant: 20).isActive = true
-        
-        
-        // add constraint to the max level
-        
-        maxXPLabel.leadingAnchor.constraint(equalTo: XPContainer.leadingAnchor).isActive = true
-        maxXPLabel.topAnchor.constraint(equalTo:     minXPLabel.bottomAnchor, constant: 20).isActive = true
-        maxXPLabel.bottomAnchor.constraint(equalTo: XPContainer.bottomAnchor).isActive = true
-        
-    }
-    
     public func setupWeightedStats() {
-        let hp = (monster!.value(forKey: "maxHP") as! Double)/10
-        let atk = (monster!.value(forKey: "maxATK") as! Double)/5
-        let rcv = (monster!.value(forKey: "maxRCV") as! Double)/3
+        let hp = Double(monster!.maxHP)/10
+        let atk = Double(monster!.maxAtk)/5
+        let rcv = Double(monster!.maxRcv)/3
         
         let weighted = hp + atk + rcv
         
