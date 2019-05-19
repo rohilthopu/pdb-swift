@@ -13,7 +13,7 @@ import Kingfisher
 
 class MonsterCell: UITableViewCell {
     
-    var monster:NSManagedObject?
+    var monster:Monster?
     
     var nameLabel: UILabel = {
         var textView = UILabel()
@@ -90,12 +90,12 @@ class MonsterCell: UITableViewCell {
         super.layoutSubviews()
         
         if let monster = monster {
-            nameLabel.text = monster.value(forKey: "name") as? String
+            nameLabel.text = monster.name
             
-            let id = monster.value(forKey: "cardID") as! Int
+            let id = monster.cardID
             monsterIDLabel.text = "No. " + String(id)
             // Get the portrait image using Kingfisher
-            let url = URL(string: getPortraitURL(id: (monster.value(forKey: "cardID") as! Int)))
+            let url = URL(string: getPortraitURL(id: monster.cardID))
             portraitContainer.kf.setImage(with: url)
         }
     }

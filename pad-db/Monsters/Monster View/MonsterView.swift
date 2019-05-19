@@ -15,7 +15,7 @@ class MonsterView: UIViewController {
     
     var spacing:CGFloat = 0
     
-    var monster:NSManagedObject?
+    var monster:Monster?
     var activeSkill:NSManagedObject?
     var leaderSkill:NSManagedObject?
     
@@ -33,7 +33,6 @@ class MonsterView: UIViewController {
         view.backgroundColor = UIColor.white
         return view
     }()
-    
     
     let imageContainer: UIImageView =  {
         let img = UIImageView()
