@@ -128,7 +128,6 @@ final class SettingsViewController: QuickTableViewController {
         vc.modalTransitionStyle = .crossDissolve
         vc.view.backgroundColor = UIColor.white
         vc.view.center = self.tableView.center
-        checkVersion()
         self.present(vc, animated: true, completion: nil)
         
     }

@@ -41,6 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set("NA + JP", forKey: "region")
         }
         
+        getLiveGuerrillaData()
+        getLiveMonsterData()
+        getLiveSkillData()
+        
         return true
     }
 

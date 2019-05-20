@@ -60,7 +60,7 @@ extension GuerrillaTable {
         tableView.reloadData()
         
         DispatchQueue.global(qos: .background).async {
-            loadGuerrilla()
+            getLiveGuerrillaData()
             
             DispatchQueue.main.async {
                 self.tableView.refreshControl!.endRefreshing()

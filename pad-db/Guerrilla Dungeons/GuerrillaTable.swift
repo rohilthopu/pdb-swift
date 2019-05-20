@@ -23,10 +23,6 @@ class GuerrillaTable: UITableViewController {
         self.definesPresentationContext = true
         
         setupNavBar()
-//        loadFromDB()
-        getLiveGuerrillaData()
-        getLiveMonsterData()
-        getLiveSkillData()
         
         vc.view.backgroundColor = UIColor.black
         vc.view.alpha = CGFloat(0.75)
@@ -43,9 +39,9 @@ class GuerrillaTable: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if downloadData {
-            self.present(vc, animated: true, completion: nil)
-        }
+//        if downloadData {
+//            self.present(vc, animated: true, completion: nil)
+//        }
         
         if changeSettings {
             updateGuerrillaViewNA()

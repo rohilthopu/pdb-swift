@@ -29,11 +29,10 @@ class LoadDataVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if !newVersions.isEmpty {
-            getNewData()
-        } else {
-            downloadData = false
-        }
+        getLiveGuerrillaData()
+        getLiveMonsterData()
+        getLiveSkillData()
+        downloadData = false
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -47,7 +46,6 @@ class LoadDataVC: UIViewController {
         } else if isMissingData() {
             getData()
         }
-        updateVersionIdentifier()
         loadFromDB()
         downloadData = false
     }
