@@ -114,16 +114,6 @@ func getJPGroup() -> String? {
 func getRegion() -> String? {
     return UserDefaults.standard.string(forKey: "region")
 }
-func checkVersion() {
-    if let url = URL(string: version_api_url) {
-        if let data = try? String(contentsOf: url) {
-            let json = JSON(parseJSON: data).arrayValue
-            for v in json {
-                newVersions["monster"] = v["monster"].intValue
-            }
-        }
-    }
-}
 
 func updateGuerrillaViewNA() {
     if currGroupNA != "None" {

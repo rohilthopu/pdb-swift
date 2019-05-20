@@ -16,7 +16,7 @@ var jpDungeons = [Guerrilla]()
 var allGuerrillaDungeons = [Guerrilla]()
 var displayDungeons = [Guerrilla]()
 var showingNA = true
-var runUpdate = true
+var downloadData = true
 
 var versions = [NSManagedObject]()
 var newVersions:[String: Int] = [:]

@@ -24,7 +24,7 @@ class GuerrillaTable: UITableViewController {
         
         setupNavBar()
 //        loadFromDB()
-        loadGuerrilla()
+        getLiveGuerrillaData()
         getLiveMonsterData()
         getLiveSkillData()
         
@@ -43,8 +43,7 @@ class GuerrillaTable: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if runUpdate {
-            checkVersion()
+        if downloadData {
             self.present(vc, animated: true, completion: nil)
         }
         

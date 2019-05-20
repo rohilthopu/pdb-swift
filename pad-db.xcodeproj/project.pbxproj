@@ -24,7 +24,7 @@
 		789EA54B22022F60004F9A68 /* EncounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA54A22022F60004F9A68 /* EncounterView.swift */; };
 		789EA54D22023199004F9A68 /* EncounterUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA54C22023199004F9A68 /* EncounterUtils.swift */; };
 		789EA55022023238004F9A68 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA54F22023238004F9A68 /* Utils.swift */; };
-		789EA55422038C75004F9A68 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA55322038C75004F9A68 /* Structs.swift */; };
+		789EA55422038C75004F9A68 /* Guerrilla.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA55322038C75004F9A68 /* Guerrilla.swift */; };
 		789EA5582203AE40004F9A68 /* DownloadLeaderboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA5572203AE40004F9A68 /* DownloadLeaderboardData.swift */; };
 		789EA55A2203AE77004F9A68 /* DownloadMonsterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA5592203AE77004F9A68 /* DownloadMonsterData.swift */; };
 		789EA55C2203AEE2004F9A68 /* DownloadSkillData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA55B2203AEE2004F9A68 /* DownloadSkillData.swift */; };
@@ -87,7 +87,7 @@
 		789EA54A22022F60004F9A68 /* EncounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterView.swift; sourceTree = "<group>"; };
 		789EA54C22023199004F9A68 /* EncounterUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterUtils.swift; sourceTree = "<group>"; };
 		789EA54F22023238004F9A68 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		789EA55322038C75004F9A68 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
+		789EA55322038C75004F9A68 /* Guerrilla.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guerrilla.swift; sourceTree = "<group>"; };
 		789EA5572203AE40004F9A68 /* DownloadLeaderboardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadLeaderboardData.swift; sourceTree = "<group>"; };
 		789EA5592203AE77004F9A68 /* DownloadMonsterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadMonsterData.swift; sourceTree = "<group>"; };
 		789EA55B2203AEE2004F9A68 /* DownloadSkillData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadSkillData.swift; sourceTree = "<group>"; };
@@ -263,13 +263,13 @@
 		789EA5562203AE0F004F9A68 /* Data Download Utils */ = {
 			isa = PBXGroup;
 			children = (
-				789EA5572203AE40004F9A68 /* DownloadLeaderboardData.swift */,
+				789EA5612203B01C004F9A68 /* DownloadGuerrillaData.swift */,
 				789EA5592203AE77004F9A68 /* DownloadMonsterData.swift */,
 				789EA55B2203AEE2004F9A68 /* DownloadSkillData.swift */,
 				789EA55D2203AF27004F9A68 /* DownloadDungeonData.swift */,
 				789EA55F2203AF64004F9A68 /* DownloadVersionIdentifier.swift */,
-				789EA5612203B01C004F9A68 /* DownloadGuerrillaData.swift */,
 				7846563C221F427700B5B593 /* DownloadEncounterData.swift */,
+				789EA5572203AE40004F9A68 /* DownloadLeaderboardData.swift */,
 			);
 			path = "Data Download Utils";
 			sourceTree = "<group>";
@@ -277,7 +277,7 @@
 		78A348212291D98700C6151F /* Structs */ = {
 			isa = PBXGroup;
 			children = (
-				789EA55322038C75004F9A68 /* Structs.swift */,
+				789EA55322038C75004F9A68 /* Guerrilla.swift */,
 				78A348222291D9B400C6151F /* Monster.swift */,
 				78A348242292178400C6151F /* Skill.swift */,
 			);
@@ -531,7 +531,7 @@
 				784656452220886A00B5B593 /* WaveCell.swift in Sources */,
 				78A348232291D9B400C6151F /* Monster.swift in Sources */,
 				789EA55E2203AF27004F9A68 /* DownloadDungeonData.swift in Sources */,
-				789EA55422038C75004F9A68 /* Structs.swift in Sources */,
+				789EA55422038C75004F9A68 /* Guerrilla.swift in Sources */,
 				7846563D221F427700B5B593 /* DownloadEncounterData.swift in Sources */,
 				789EA5642204A404004F9A68 /* GlobalVars.swift in Sources */,
 				7846564B2220E8D300B5B593 /* ConstraintWrapper.swift in Sources */,

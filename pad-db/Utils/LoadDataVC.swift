@@ -32,7 +32,7 @@ class LoadDataVC: UIViewController {
         if !newVersions.isEmpty {
             getNewData()
         } else {
-            runUpdate = false
+            downloadData = false
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -49,7 +49,7 @@ class LoadDataVC: UIViewController {
         }
         updateVersionIdentifier()
         loadFromDB()
-        runUpdate = false
+        downloadData = false
     }
     
     private func getData() {

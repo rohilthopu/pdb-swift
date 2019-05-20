@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SwiftyJSON
 
-func loadGuerrilla() {
+func getLiveGuerrillaData() {
     let timeInMS = NSDate().timeIntervalSince1970
     
     allGuerrillaDungeons.removeAll()
