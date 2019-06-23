@@ -15,7 +15,6 @@ import Just
 class GuerrillaTable: UITableViewController {
     
     let cellid = "guerrillacell"
-    let vc = LoadDataVC()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.refreshControl = UIRefreshControl()
@@ -27,14 +26,6 @@ class GuerrillaTable: UITableViewController {
         setupNavBar()
         getLiveGuerrillaData()
         getLiveMonsterData()
-        
-        vc.view.backgroundColor = UIColor.black
-        vc.view.alpha = CGFloat(0.75)
-        vc.view.isOpaque = false
-        vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .crossDissolve
-        vc.view.backgroundColor = UIColor.white
-        vc.view.center = self.tableView.center
         
     }
     
