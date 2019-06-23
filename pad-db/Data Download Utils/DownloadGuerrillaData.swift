@@ -21,7 +21,6 @@ func getLiveGuerrillaData() {
             for item in json.arrayValue {
                 var dungeon:Guerrilla = Guerrilla()
                 
-                
                 let endSecs = item["end_secs"].doubleValue
                 let startSecs = item["start_secs"].doubleValue
                 
@@ -46,11 +45,9 @@ func getLiveGuerrillaData() {
                     dungeon.endSecs = item["end_secs"].floatValue
                     dungeon.server = item["server"].stringValue
                     dungeon.group = item["group"].stringValue
-                    dungeon.dungeon_id = item["dungeon_id"].intValue
-                    
-                    // TODO: Fix this later in the pdb-processor to get the image id or have a local method to do so.
-//                    dungeon.imgLink = getPortraitURL(id: item["image_id"].intValue)
-                    dungeon.imgLink = getPortraitURL(id: 1)
+                    dungeon.dungeonID = item["dungeon_id"].intValue
+                    dungeon.imgID = item["image_id"].intValue
+                    dungeon.imgLink = getPortraitURL(id: dungeon.imgID!)
 
                     allGuerrillaDungeons.append(dungeon)
                 }
@@ -58,7 +55,6 @@ func getLiveGuerrillaData() {
         }
         updateGuerrillaViewNA()
         updateGuerrillaViewJP()
-
     }
     
     if showingNA {

@@ -10,19 +10,34 @@ import Foundation
 import UIKit
 import CoreData
 import SwiftyJSON
+import Just
 
-func getMonster(forID id:Int) -> Monster? {
+func getMonster(forID id:Int) -> MonsterListItem? {
     return monsters.filter({
         return id == $0.cardID
     }).first
 }
 
-func getMonster(forSkillID id:Int) -> Monster? {
+func getMonster(forSkillID id:Int) -> MonsterListItem? {
     return monsters.filter({
         let aSkill = $0.activeSkillID
         let lSkill = $0.leaderSkillID
         return id == aSkill || id == lSkill
     }).first
+}
+
+func getMonsterFromAPI(cardID:Int) -> Monster? {
+    var monster:Monster?
+    let monsterURL = "http://192.168.1.102:8000/api/monster/" + String(cardID)
+    if let data = Just.get(monsterURL).content {
+        do {
+            monster = try JSONDecoder().decode(Monster.self, from: data)
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    return monster
 }
 
 func getSkill(forSkill id:Int) -> Skill {
@@ -67,13 +82,18 @@ func getSuperAwakenings(forMonster monster:NSManagedObject) -> [Int] {
     return JSON(parseJSON: monster.value(forKey: "superAwakenings") as! String).arrayValue.map{ $0.intValue }
 }
 
-func getEvoList(forMonster monster:NSManagedObject) -> [Int] {
-    return JSON(parseJSON: monster.value(forKey: "evolutions") as! String).arrayValue.map{ $0.intValue }
+func getEvoList(forMonster monster:Monster) -> [Dictionary<String, JSON>] {
+    print(JSON(parseJSON: monster.evolutions).arrayValue)
+    return JSON(parseJSON: monster.evolutions).arrayValue.map{ $0.dictionaryValue }
 }
 
 func getEnemySkills(forMonster monster:Monster) -> [NSManagedObject] {
-    let eSkills = monster.enemySkillRefs.reversed()
+    let eSkills = JSON(parseJSON: monster.enemySkills).arrayValue.map{ $0.intValue }.reversed()
     return enemySkills.filter { eSkills.contains($0.value(forKey: "enemy_skill_id") as! Int) }
+}
+
+func parseJsonIntList(forString data:String) -> [Int] {
+    return JSON(parseJSON: data).arrayValue.map{ $0.intValue }
 }
 
 func getRelatedDungeons(forMonster monster:Monster) -> [NSManagedObject] {

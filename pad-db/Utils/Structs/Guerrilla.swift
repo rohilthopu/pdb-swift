@@ -25,9 +25,10 @@ struct Guerrilla {
     var endSecs:Float?
     var server:String?
     var group:String?
-    var dungeon_id:Int?
+    var dungeonID:Int?
     var remainingTime:Double?
     var status:String?
+    var imgID:Int?
     var imgLink:String?
 }
 

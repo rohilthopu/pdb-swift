@@ -77,7 +77,7 @@ class EncounterView: UIViewController {
 //        makeDungeonMessages()
         makeFixedTeam()
         makePossibleDrops()
-        makeEncounters()
+//        makeEncounters()
     }
 
 }

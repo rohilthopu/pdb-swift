@@ -13,7 +13,7 @@ import Kingfisher
 
 class MonsterCell: UITableViewCell {
     
-    var monster:Monster?
+    var monster:MonsterListItem?
     
     var nameLabel: UILabel = {
         var textView = UILabel()

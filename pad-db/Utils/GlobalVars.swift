@@ -21,8 +21,8 @@ var downloadData = true
 var versions = [NSManagedObject]()
 var newVersions:[String: Int] = [:]
 
-var monsters = [Monster]()
-var goodMonsters = [Monster]()
+var monsters = [MonsterListItem]()
+var goodMonsters = [MonsterListItem]()
 var skills = [Skill]()
 var goodSkills = [Skill]()
 var enemySkills = [NSManagedObject]()

@@ -31,6 +31,7 @@ class SkillTable: UITableViewController, UISearchControllerDelegate, UISearchBar
         setupNavBar()
         setupTableView()
         setupSearch()
+        getLiveSkillData()
         goodSkills = filterUsableSkills()
         sortSkillsDescending()
     }
@@ -101,7 +102,7 @@ class SkillTable: UITableViewController, UISearchControllerDelegate, UISearchBar
         let skillID = currentSkill.skillID
         if let currentMonster = getMonster(forSkillID: skillID) {
         
-            monsterVC.monster = currentMonster
+            monsterVC.monster = getMonsterFromAPI(cardID: currentMonster.cardID)
             
             let activeSkill = skills.filter({
                 let skillID = $0.skillID

@@ -99,9 +99,9 @@ extension MonsterView {
         rarityCountLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
         
         
-        let type1 = monster!.type1_ID
-        let type2 = monster!.type2_ID
-        let type3 = monster!.type3_ID
+        let type1 = monster!.type1
+        let type2 = monster!.type2
+        let type3 = monster!.type3
         
         
         if type1 != 0 {

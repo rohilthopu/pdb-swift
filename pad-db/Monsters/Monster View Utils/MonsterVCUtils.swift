@@ -18,7 +18,7 @@ extension MonsterView {
         if let currentMonster = getMonster(forID: sender.view!.tag) {
             
             let monsterVC = MonsterView()
-            monsterVC.monster = currentMonster
+            monsterVC.monster = getMonsterFromAPI(cardID: currentMonster.cardID)
             
             let activeSkill = skills.filter({
                 let skillID = $0.skillID

@@ -24,7 +24,7 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
     let cellid = "monsterid"
     
     
-    var filteredMonsters = [Monster]()
+    var filteredMonsters = [MonsterListItem]()
     var monsterSearchController:UISearchController!
     
     var isDescendedSort:Bool = true
@@ -49,13 +49,11 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
     private func filterGoodMonsters() {
         if naFilter {
             goodMonsters = monsters.filter{
-                let name = $0.name
-                return !name.contains("Alt.") && !name.contains("*") && !name.contains("?") && $0.cardID < 100000 && $0.server == "NA"
+                return $0.cardID < 100000 && $0.server == "NA"
             }
         } else {
             goodMonsters = monsters.filter{
-                let name = $0.name
-                return !name.contains("Alt.") && !name.contains("*") && !name.contains("?") && $0.cardID < 100000
+                return $0.cardID < 100000
             }
         }
         
@@ -132,7 +130,7 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
         let index = indexPath.row
         // returns an NSManagedObject
         
-        let currentMonster:Monster
+        let currentMonster:MonsterListItem
         
         if isFiltering() {
             currentMonster = filteredMonsters[index]
@@ -142,7 +140,8 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
         }
         
         let monsterVC = MonsterView()
-        monsterVC.monster = currentMonster
+        
+        monsterVC.monster = getMonsterFromAPI(cardID: currentMonster.cardID)
         
         let activeSkill = skills.filter({
             let skillID = $0.skillID

@@ -9,6 +9,8 @@
 import UIKit
 import SwiftyJSON
 import CoreData
+import Just
+
 
 class GuerrillaTable: UITableViewController {
     
@@ -23,6 +25,8 @@ class GuerrillaTable: UITableViewController {
         self.definesPresentationContext = true
         
         setupNavBar()
+        getLiveGuerrillaData()
+        getLiveMonsterData()
         
         vc.view.backgroundColor = UIColor.black
         vc.view.alpha = CGFloat(0.75)
@@ -76,7 +80,7 @@ class GuerrillaTable: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
         let gDungeon = displayDungeons[index]
-        let currentDungeon = getDungeon(forID: gDungeon.dungeon_id!)
+        let currentDungeon = getDungeon(forID: gDungeon.dungeonID!)
         
         if let currentDungeon = currentDungeon {
             let floorListTable = FloorTable()

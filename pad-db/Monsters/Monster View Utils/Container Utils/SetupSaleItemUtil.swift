@@ -57,7 +57,7 @@ extension MonsterView {
     public func setupSaleCoin() {
         
         
-        let value = monster!.sellPriceAtLvl10
+        let value = monster!.sellCoin
         let valueAsString = String(value)
         
         let headerLabel = makeLabel(ofSize: 20, withText: "Coin Value")

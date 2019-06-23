@@ -205,8 +205,7 @@ class MonsterView: UIViewController {
         scrollView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
         
         
-        let m_id = monster!.cardID
-        self.navigationItem.title = String(m_id)
+        self.navigationItem.title = String(monster!.cardID)
         
         setupImageView()
         setupPortraitView()
@@ -215,12 +214,10 @@ class MonsterView: UIViewController {
         setupAwakenings()
         setupSuperAwakenings()
         setupSkills()
-//        setupEnemySkills()
+        //        setupEnemySkills()
         setupEvoMaterials()
         setupDevoMaterials()
         setupRelatedDungeons()
         setupSaleItems()
-        
     }
-    
 }

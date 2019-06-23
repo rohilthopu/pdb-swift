@@ -13,7 +13,7 @@ class SkillCell: UITableViewCell {
 
     
     var skill:Skill?
-    var monster:Monster?
+    var monster:MonsterListItem?
     
     var portraitImg:UIImageView = {
         let img = UIImageView()

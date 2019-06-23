@@ -10,32 +10,17 @@ import Foundation
 import UIKit
 import SwiftyJSON
 import CoreData
+import Just
 
 func getLiveMonsterData() {
     
-    let url = URL(string: monster_url)!
+    let data = Just.get(monster_url).content
     
-    let task = URLSession.shared.dataTask(with: url) { data, response, error in
-        
-        // ensure there is no error for this HTTP response
-        guard error == nil else {
-            print ("error: \(error!)")
-            return
-        }
-        
-        // ensure there is data returned from this HTTP response
-        guard let data = data else {
-            print("No data")
-            return
-        }
-        
+    if let data = data {
         do {
-            monsters = try JSONDecoder().decode([Monster].self, from: data)
-        } catch let error as NSError{
+            monsters = try JSONDecoder().decode([MonsterListItem].self, from: data)
+        } catch let error as NSError {
             print(error)
         }
     }
-    
-    // execute the HTTP request
-    task.resume()
 }

@@ -8,96 +8,80 @@
 
 import Foundation
 
-struct Monster: Codable {
+struct MonsterListItem: Codable {
     let cardID: Int
     let name, server: String
-    let attrID, subAttrID: Int
-    let isUlt: Bool
-    let type1_ID, type2_ID, rarity, cost: Int
-    let maxLevel, feedXPAtLvl4: Int
-    let releasedStatus: Bool
-    let sellPriceAtLvl10, minHP, maxHP: Int
-    let minAtk, maxAtk, minRcv: Int
-    let maxRcv, xpMax: Int
-    let xpScale, atkScale, rcvScale, hpScale, enemyAtkScale, enemyDefScale, enemyHPScale: Double
-    let activeSkillID, leaderSkillID, enemyTurns, enemyHPMin: Int
-    let enemyHPMax, enemyAtkMin, enemyAtkMax: Int
-    let enemyDefMin, enemyDefMax: Int
-    let enemyMaxLevel, enemyCoinsAtLvl2, enemyXPAtLvl2, ancestorID: Int
-    let evoMatID1, evoMatID2, evoMatID3, evoMatID4: Int
-    let evoMatID5, unEvoMat1, unEvoMat2, unEvoMat3: Int
-    let unEvoMat4, unEvoMat5, enemyTurnsAlt, enemySkillEffect: Int
-    let enemySkillRefs, awakenings, superAwakenings, evoList: [Int]
-    let baseID, type3_ID, sellMp, latentOnFeed: Int
-    let collabID: Int
-    let inheritable, isCollab: Bool
-    let limitMult, voiceID: Int
+    let activeSkillID, leaderSkillID: Int
+
     
     enum CodingKeys: String, CodingKey {
         case cardID = "card_id"
         case name
-        case attrID = "attr_id"
-        case subAttrID = "sub_attr_id"
-        case isUlt = "is_ult"
-        case type1_ID = "type_1_id"
-        case type2_ID = "type_2_id"
-        case rarity, cost
-        case maxLevel = "max_level"
-        case feedXPAtLvl4 = "feed_xp_at_lvl_4"
-        case releasedStatus = "released_status"
-        case sellPriceAtLvl10 = "sell_price_at_lvl_10"
-        case minHP = "min_hp"
-        case maxHP = "max_hp"
-        case hpScale = "hp_scale"
-        case minAtk = "min_atk"
-        case maxAtk = "max_atk"
-        case atkScale = "atk_scale"
-        case minRcv = "min_rcv"
-        case maxRcv = "max_rcv"
-        case rcvScale = "rcv_scale"
-        case xpMax = "xp_max"
-        case xpScale = "xp_scale"
         case activeSkillID = "active_skill_id"
         case leaderSkillID = "leader_skill_id"
-        case enemyTurns = "enemy_turns"
-        case enemyHPMin = "enemy_hp_min"
-        case enemyHPMax = "enemy_hp_max"
-        case enemyHPScale = "enemy_hp_scale"
-        case enemyAtkMin = "enemy_atk_min"
-        case enemyAtkMax = "enemy_atk_max"
-        case enemyAtkScale = "enemy_atk_scale"
-        case enemyDefMin = "enemy_def_min"
-        case enemyDefMax = "enemy_def_max"
-        case enemyDefScale = "enemy_def_scale"
-        case enemyMaxLevel = "enemy_max_level"
-        case enemyCoinsAtLvl2 = "enemy_coins_at_lvl_2"
-        case enemyXPAtLvl2 = "enemy_xp_at_lvl_2"
+        case server
+    }
+}
+
+struct Monster: Codable {
+    let id, activeSkillID, ancestorID, attributeID: Int
+    let attribute, awakenings, awakeningsRaw: String
+    let cardID, cost: Int
+    let inheritable, isCollab, isReleased, isUlt: Bool
+    let leaderSkillID, maxAtk, maxHP, maxLevel: Int
+    let maxRcv, minAtk, minHP, minRcv: Int
+    let maxXP: Int
+    let name: String
+    let rarity, subAttributeID: Int
+    let subAttribute, superAwakenings, evolutions: String
+    let evoMat1, evoMat2, evoMat3, evoMat4: Int
+    let evoMat5, unEvoMat1, unEvoMat2, unEvoMat3: Int
+    let unEvoMat4, unEvoMat5, type1, type2: Int
+    let type3, sellMp, sellCoin: Int
+    let enemySkills, server: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case activeSkillID = "active_skill_id"
         case ancestorID = "ancestor_id"
-        case evoMatID1 = "evo_mat_id_1"
-        case evoMatID2 = "evo_mat_id_2"
-        case evoMatID3 = "evo_mat_id_3"
-        case evoMatID4 = "evo_mat_id_4"
-        case evoMatID5 = "evo_mat_id_5"
+        case attributeID = "attribute_id"
+        case attribute, awakenings
+        case awakeningsRaw = "awakenings_raw"
+        case cardID = "card_id"
+        case cost, inheritable
+        case isCollab = "is_collab"
+        case isReleased = "is_released"
+        case isUlt = "is_ult"
+        case leaderSkillID = "leader_skill_id"
+        case maxAtk = "max_atk"
+        case maxHP = "max_hp"
+        case maxLevel = "max_level"
+        case maxRcv = "max_rcv"
+        case minAtk = "min_atk"
+        case minHP = "min_hp"
+        case minRcv = "min_rcv"
+        case maxXP = "max_xp"
+        case name, rarity
+        case subAttributeID = "sub_attribute_id"
+        case subAttribute = "sub_attribute"
+        case superAwakenings = "super_awakenings"
+        case evolutions
+        case evoMat1 = "evo_mat_1"
+        case evoMat2 = "evo_mat_2"
+        case evoMat3 = "evo_mat_3"
+        case evoMat4 = "evo_mat_4"
+        case evoMat5 = "evo_mat_5"
         case unEvoMat1 = "un_evo_mat_1"
         case unEvoMat2 = "un_evo_mat_2"
         case unEvoMat3 = "un_evo_mat_3"
         case unEvoMat4 = "un_evo_mat_4"
         case unEvoMat5 = "un_evo_mat_5"
-        case enemyTurnsAlt = "enemy_turns_alt"
-        case enemySkillEffect = "enemy_skill_effect"
-        case enemySkillRefs = "enemy_skill_refs"
-        case awakenings
-        case superAwakenings = "super_awakenings"
-        case baseID = "base_id"
-        case type3_ID = "type_3_id"
+        case type1 = "type_1"
+        case type2 = "type_2"
+        case type3 = "type_3"
         case sellMp = "sell_mp"
-        case latentOnFeed = "latent_on_feed"
-        case collabID = "collab_id"
-        case inheritable
-        case isCollab = "is_collab"
-        case limitMult = "limit_mult"
-        case voiceID = "voice_id"
-        case evoList = "evo_list"
+        case sellCoin = "sell_coin"
+        case enemySkills = "enemy_skills"
         case server
     }
 }
