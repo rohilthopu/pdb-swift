@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 import SwiftyJSON
+import Just
 
 func getLiveGuerrillaData() {
     let timeInMS = NSDate().timeIntervalSince1970
     
     allGuerrillaDungeons.removeAll()
-    
     if let url = URL(string: guerrilla_api_url) {
         if let data = try? String(contentsOf: url) {
             let json = JSON(parseJSON: data)

@@ -35,10 +35,6 @@ final class SettingsViewController: QuickTableViewController {
                 OptionRow(text: "NA", isSelected: isRegionSelected(forRegion: "NA"), action: didSelectRegion()),
                 OptionRow(text: "NA + JP", isSelected: isRegionSelected(forRegion: "NA + JP"), action: didSelectRegion()),
                 ], footer: "Display all or only NA available data throughout the app."),
-            
-            Section(title: "Rebuild Data", rows: [
-                TapActionRow(text: "Press Me", action: { [weak self] in self?.clearDB($0) })
-                ], footer: "Deletes all database items and rebuilds it with the most recent data.\nThis helpful when JP cards are brought over to NA, but the local app data doesn't reflect the official English name translation."),
         ]
     }
     
@@ -107,30 +103,4 @@ final class SettingsViewController: QuickTableViewController {
     private func isRegionSelected(forRegion region:String) -> Bool {
         return UserDefaults.standard.string(forKey: "region") == region
     }
-    
-    func clearDB(_ sender: Row) {
-        
-        monsters.removeAll()
-        skills.removeAll()
-        dungeons.removeAll()
-        enemySkills.removeAll()
-        floors.removeAll()
-        goodSkills.removeAll()
-        goodMonsters.removeAll()
-
-        wipeDatabase()
-        
-        let vc = LoadDataVC()
-        vc.view.backgroundColor = UIColor.black
-        vc.view.alpha = CGFloat(0.75)
-        vc.view.isOpaque = false
-        vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .crossDissolve
-        vc.view.backgroundColor = UIColor.white
-        vc.view.center = self.tableView.center
-        self.present(vc, animated: true, completion: nil)
-        
-    }
-    
- 
 }
