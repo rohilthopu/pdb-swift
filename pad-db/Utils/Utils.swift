@@ -83,7 +83,6 @@ func getSuperAwakenings(forMonster monster:NSManagedObject) -> [Int] {
 }
 
 func getEvoList(forMonster monster:Monster) -> [Dictionary<String, JSON>] {
-    print(JSON(parseJSON: monster.evolutions).arrayValue)
     return JSON(parseJSON: monster.evolutions).arrayValue.map{ $0.dictionaryValue }
 }
 

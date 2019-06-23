@@ -21,20 +21,11 @@ extension GuerrillaTable {
     
         navigationItem.title = "NA Calendar"
         let server = UIBarButtonItem(image: UIImage(named: "world")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(swapServer))
-        let settings = UIBarButtonItem(image: UIImage(named: "settings")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(showSettings))
-        
-//        let items = [server, settings]
-//        navigationItem.rightBarButtonItems = items
-        
+  
         navigationItem.leftBarButtonItem = server
         navigationItem.rightBarButtonItem = settings
     }
-    
-    @objc
-    func showSettings() {
-        let settings = SettingsViewController()
-        self.navigationController?.pushViewController(settings, animated: true)
-    }
+
     
     @objc
     func swapServer() {
