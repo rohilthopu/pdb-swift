@@ -23,7 +23,6 @@ extension GuerrillaTable {
         let server = UIBarButtonItem(image: UIImage(named: "world")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(swapServer))
   
         navigationItem.leftBarButtonItem = server
-        navigationItem.rightBarButtonItem = settings
     }
 
     
