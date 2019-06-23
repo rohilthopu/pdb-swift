@@ -77,7 +77,7 @@ final class SettingsViewController: QuickTableViewController {
             }
         }
     }
-
+    
     
     func makeBackButton() -> UIButton {
         let backButtonImage = UIImage(named: "down-arrow")
