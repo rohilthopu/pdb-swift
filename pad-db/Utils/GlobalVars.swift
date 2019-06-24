@@ -23,8 +23,8 @@ var newVersions:[String: Int] = [:]
 
 var monsters = [MonsterListItem]()
 var goodMonsters = [MonsterListItem]()
-var skills = [Skill]()
-var goodSkills = [Skill]()
+var skills = [SkillListItem]()
+var goodSkills = [SkillListItem]()
 var enemySkills = [NSManagedObject]()
 
 var users = [User]()

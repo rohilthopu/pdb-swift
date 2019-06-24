@@ -15,7 +15,7 @@ func getLiveGuerrillaData() {
     let timeInMS = NSDate().timeIntervalSince1970
     
     allGuerrillaDungeons.removeAll()
-    if let url = URL(string: guerrilla_api_url) {
+    if let url = URL(string: guerrilla_api_hook) {
         if let data = try? String(contentsOf: url) {
             let json = JSON(parseJSON: data)
             for item in json.arrayValue {

@@ -109,71 +109,11 @@ extension MonsterView {
     }
     
     public func getMultipliers(_ skill:Skill) -> [Double] {
-        var skill_list = [Skill]()
-        var multipliers:[Double] = [1.0, 1.0, 1.0, 0.0, 0.0]
-        var shield_calc:Double = 1.0
-        var shields = [Double]()
-        
-        
-        let s1 = skill.skillPart1_ID
-        let s2 = skill.skillPart2_ID
-        let s3 = skill.skillPart3_ID
-        
-        
-        if s1 != -1 {
-            skill_list.append(getSkill(forSkill: s1))
-            
-            if s2 != -1 {
-                skill_list.append(getSkill(forSkill: s2))
-            }
-            if s3 != -1 {
-                skill_list.append(getSkill(forSkill: s3))
-            }
-            
-            for skill in skill_list {
-                multipliers[0] *= skill.hpMult
-                multipliers[1] *= skill.atkMult
-                multipliers[2] *= skill.rcvMult
-                
-                
-                let shield = skill.shield
-                
-                if shield != 0 {
-                    shields.append(shield)
-                }
-            }
-            
-            for shield in shields {
-                shield_calc *= (1.0-shield)
-            }
-            
-            multipliers[3] = (1.0-shield_calc)*100.0
-            multipliers[4] = (1.0 - shield_calc)
-        }
-            
-        else {
-            multipliers[0] = skill.hpMult
-            multipliers[1] = skill.atkMult
-            multipliers[2] = skill.rcvMult
-            multipliers[3] = skill.shield * 100.0
-            multipliers[4] = skill.shield
-        }
-        
-        return multipliers
+        return [skill.hpMult, skill.atkMult, skill.rcvMult, skill.shield]
     }
     
-    public func getPairMultipliers(multipliersSet multipliers:[Double]) -> [Double] {
-        
-        var newMults = [Double]()
-        newMults.append(pow(multipliers[0], 2))
-        newMults.append(pow(multipliers[1], 2))
-        newMults.append(pow(multipliers[2], 2))
-        
-        let base_val = pow((1.0-multipliers[4]), 2)
-        
-        newMults.append((1.0 - base_val)*100)
-        
-        return newMults
+    public func getPairMultipliers(_ skill: Skill) -> [Double] {
+        return [skill.hpMultFull, skill.atkMultFull, skill.rcvMultFull, skill.shieldFull]
     }
     
 }

@@ -14,9 +14,9 @@ import Just
 
 func getLiveSkillData() {
     
-    if let data = Just.get(skill_api_link).content {
+    if let data = Just.get(skills_list_api_hook).content {
         do {
-            skills = try JSONDecoder().decode([Skill].self, from: data)
+            skills = try JSONDecoder().decode([SkillListItem].self, from: data)
         } catch let error as NSError {
             print(error)
         }

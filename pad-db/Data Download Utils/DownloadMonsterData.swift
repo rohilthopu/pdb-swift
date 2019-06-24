@@ -14,7 +14,7 @@ import Just
 
 func getLiveMonsterData() {
     
-    let data = Just.get(monster_url).content
+    let data = Just.get(monster_list_api_hook).content
     
     if let data = data {
         do {

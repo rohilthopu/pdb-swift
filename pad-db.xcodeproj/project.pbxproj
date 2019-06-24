@@ -25,7 +25,6 @@
 		789EA54D22023199004F9A68 /* EncounterUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA54C22023199004F9A68 /* EncounterUtils.swift */; };
 		789EA55022023238004F9A68 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA54F22023238004F9A68 /* Utils.swift */; };
 		789EA55422038C75004F9A68 /* Guerrilla.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA55322038C75004F9A68 /* Guerrilla.swift */; };
-		789EA5582203AE40004F9A68 /* DownloadLeaderboardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA5572203AE40004F9A68 /* DownloadLeaderboardData.swift */; };
 		789EA55A2203AE77004F9A68 /* DownloadMonsterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA5592203AE77004F9A68 /* DownloadMonsterData.swift */; };
 		789EA55C2203AEE2004F9A68 /* DownloadSkillData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA55B2203AEE2004F9A68 /* DownloadSkillData.swift */; };
 		789EA55E2203AF27004F9A68 /* DownloadDungeonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA55D2203AF27004F9A68 /* DownloadDungeonData.swift */; };
@@ -51,9 +50,6 @@
 		78D1EAF921EBF2FA002D4197 /* SetupSkillUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EAF821EBF2FA002D4197 /* SetupSkillUtils.swift */; };
 		78D1EAFB21EBF31D002D4197 /* SetupEvoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EAFA21EBF31D002D4197 /* SetupEvoUtils.swift */; };
 		78D1EAFD21EC0ACA002D4197 /* SetupSaleItemUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EAFC21EC0ACA002D4197 /* SetupSaleItemUtil.swift */; };
-		78D1EB0021EC291A002D4197 /* LeaderboardTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EAFF21EC291A002D4197 /* LeaderboardTableVC.swift */; };
-		78D1EB0221EC295E002D4197 /* LeaderboardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EB0121EC295E002D4197 /* LeaderboardUtils.swift */; };
-		78D1EB0621EC2CFD002D4197 /* LeaderboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1EB0521EC2CFD002D4197 /* LeaderboardCell.swift */; };
 		78D6885621CB07BD001C0DEF /* GuerrillaTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6885521CB07BD001C0DEF /* GuerrillaTable.swift */; };
 		78D6885921CB4DAC001C0DEF /* GuerrillaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6885821CB4DAC001C0DEF /* GuerrillaCell.swift */; };
 		78D6885C21E5459F001C0DEF /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D6885B21E5459F001C0DEF /* TabController.swift */; };
@@ -87,7 +83,6 @@
 		789EA54C22023199004F9A68 /* EncounterUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterUtils.swift; sourceTree = "<group>"; };
 		789EA54F22023238004F9A68 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		789EA55322038C75004F9A68 /* Guerrilla.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guerrilla.swift; sourceTree = "<group>"; };
-		789EA5572203AE40004F9A68 /* DownloadLeaderboardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadLeaderboardData.swift; sourceTree = "<group>"; };
 		789EA5592203AE77004F9A68 /* DownloadMonsterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadMonsterData.swift; sourceTree = "<group>"; };
 		789EA55B2203AEE2004F9A68 /* DownloadSkillData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadSkillData.swift; sourceTree = "<group>"; };
 		789EA55D2203AF27004F9A68 /* DownloadDungeonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadDungeonData.swift; sourceTree = "<group>"; };
@@ -115,9 +110,6 @@
 		78D1EAF821EBF2FA002D4197 /* SetupSkillUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupSkillUtils.swift; sourceTree = "<group>"; };
 		78D1EAFA21EBF31D002D4197 /* SetupEvoUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupEvoUtils.swift; sourceTree = "<group>"; };
 		78D1EAFC21EC0ACA002D4197 /* SetupSaleItemUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupSaleItemUtil.swift; sourceTree = "<group>"; };
-		78D1EAFF21EC291A002D4197 /* LeaderboardTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableVC.swift; sourceTree = "<group>"; };
-		78D1EB0121EC295E002D4197 /* LeaderboardUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardUtils.swift; sourceTree = "<group>"; };
-		78D1EB0521EC2CFD002D4197 /* LeaderboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardCell.swift; sourceTree = "<group>"; };
 		78D6885521CB07BD001C0DEF /* GuerrillaTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuerrillaTable.swift; sourceTree = "<group>"; };
 		78D6885821CB4DAC001C0DEF /* GuerrillaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuerrillaCell.swift; sourceTree = "<group>"; };
 		78D6885B21E5459F001C0DEF /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
@@ -266,7 +258,6 @@
 				789EA55D2203AF27004F9A68 /* DownloadDungeonData.swift */,
 				789EA55F2203AF64004F9A68 /* DownloadVersionIdentifier.swift */,
 				7846563C221F427700B5B593 /* DownloadEncounterData.swift */,
-				789EA5572203AE40004F9A68 /* DownloadLeaderboardData.swift */,
 			);
 			path = "Data Download Utils";
 			sourceTree = "<group>";
@@ -306,7 +297,6 @@
 				78D6885A21D6FF43001C0DEF /* Monsters */,
 				78F0374C21ED89D9002B7468 /* Skills */,
 				787DF38321FA75C1001FB99C /* Dungeons */,
-				78D1EAFE21EC27FF002D4197 /* Leaderboard */,
 				789EA5562203AE0F004F9A68 /* Data Download Utils */,
 				789EA54E2202322A004F9A68 /* Utils */,
 				78B00306211CA297001F246E /* AppDelegate.swift */,
@@ -351,16 +341,6 @@
 				78D12D4521E95E6900F4971A /* MonsterTableUtils.swift */,
 			);
 			path = "Monster Table Utils";
-			sourceTree = "<group>";
-		};
-		78D1EAFE21EC27FF002D4197 /* Leaderboard */ = {
-			isa = PBXGroup;
-			children = (
-				78D1EAFF21EC291A002D4197 /* LeaderboardTableVC.swift */,
-				78D1EB0121EC295E002D4197 /* LeaderboardUtils.swift */,
-				78D1EB0521EC2CFD002D4197 /* LeaderboardCell.swift */,
-			);
-			path = Leaderboard;
 			sourceTree = "<group>";
 		};
 		78D6885721CB4D86001C0DEF /* Guerrilla Dungeons */ = {
@@ -525,7 +505,6 @@
 				789EA54B22022F60004F9A68 /* EncounterView.swift in Sources */,
 				78A64676220A2B1C0043429F /* Settings.swift in Sources */,
 				78B0031C211CA2FC001F246E /* MonsterTable.swift in Sources */,
-				789EA5582203AE40004F9A68 /* DownloadLeaderboardData.swift in Sources */,
 				784656452220886A00B5B593 /* WaveCell.swift in Sources */,
 				78A348232291D9B400C6151F /* Monster.swift in Sources */,
 				789EA55E2203AF27004F9A68 /* DownloadDungeonData.swift in Sources */,
@@ -538,15 +517,12 @@
 				78B54A6F2201263A0076EEA7 /* FloorCell.swift in Sources */,
 				78D6886621E6F431001C0DEF /* MultiplierUtils.swift in Sources */,
 				787DF38E21FA8048001FB99C /* DungeonCell.swift in Sources */,
-				78D1EB0021EC291A002D4197 /* LeaderboardTableVC.swift in Sources */,
 				78D6886421E6B357001C0DEF /* MonsterView.swift in Sources */,
 				78D1EAF721EBF2CA002D4197 /* SetupAwakeningUtils.swift in Sources */,
 				78B00307211CA297001F246E /* AppDelegate.swift in Sources */,
 				789EA54D22023199004F9A68 /* EncounterUtils.swift in Sources */,
 				787DF38621FA7601001FB99C /* DungeonTable.swift in Sources */,
-				78D1EB0221EC295E002D4197 /* LeaderboardUtils.swift in Sources */,
 				78D1EAF921EBF2FA002D4197 /* SetupSkillUtils.swift in Sources */,
-				78D1EB0621EC2CFD002D4197 /* LeaderboardCell.swift in Sources */,
 				78465643222087F100B5B593 /* WaveTable.swift in Sources */,
 				78D6885921CB4DAC001C0DEF /* GuerrillaCell.swift in Sources */,
 				789EA55A2203AE77004F9A68 /* DownloadMonsterData.swift in Sources */,

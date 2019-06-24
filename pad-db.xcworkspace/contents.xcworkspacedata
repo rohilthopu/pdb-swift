@@ -4,6 +4,22 @@
    <Group
       location = "container:"
       name = "Deprecated">
+      <Group
+         location = "group:pad-db/../Leaderboard"
+         name = "Leaderboard">
+         <FileRef
+            location = "group:Leaderboard/LeaderboardTableVC.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Leaderboard/LeaderboardUtils.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Leaderboard/LeaderboardCell.swift">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:pad-db/Data Download Utils/../../DownloadLeaderboardData.swift">
+      </FileRef>
       <FileRef
          location = "group:LoadDataVC.swift">
       </FileRef>

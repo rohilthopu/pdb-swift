@@ -46,15 +46,13 @@ extension SkillTable {
         
     }
     
-    func filterUsableSkills() -> [Skill] {
+    func filterUsableSkills() -> [SkillListItem] {
         if naFilter {
             return skills.filter{
-                return $0.skillPart1_ID != -1 && $0.server == "NA"
+                return $0.server == "NA"
             }
         }
-        return skills.filter{
-            return $0.skillPart1_ID != -1
-        }
+        return skills
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {

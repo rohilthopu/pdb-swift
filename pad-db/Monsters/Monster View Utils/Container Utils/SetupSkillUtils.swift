@@ -34,8 +34,8 @@ extension MonsterView {
         
         if let activeSkill = activeSkill {
 
-            let minTurns = "Min: " + String(activeSkill.turnMin) + "/"
-            let maxTurns = "Max: " + String(activeSkill.turnMax)
+            let minTurns = "Min: " + String(activeSkill.minTurns) + "/"
+            let maxTurns = "Max: " + String(activeSkill.maxTurns)
             let turns = minTurns + maxTurns
             
             
@@ -97,9 +97,7 @@ extension MonsterView {
             
             
             let multipliers = getMultipliers(leaderSkill)
-            let pairMults = getPairMultipliers(multipliersSet: multipliers)
-            
-            
+            let pairMults = getPairMultipliers(leaderSkill)
             
             let nameLabel = makeLabel(ofSize: 18, withText: leaderSkill.name)
             let descriptionLabel = makeLabel(ofSize: 16, withText: leaderSkill.description)

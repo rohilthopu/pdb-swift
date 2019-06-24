@@ -12,7 +12,7 @@ import CoreData
 class SkillCell: UITableViewCell {
 
     
-    var skill:Skill?
+    var skill:SkillListItem?
     var monster:MonsterListItem?
     
     var portraitImg:UIImageView = {

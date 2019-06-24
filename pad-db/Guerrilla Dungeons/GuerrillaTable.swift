@@ -26,6 +26,7 @@ class GuerrillaTable: UITableViewController {
         setupNavBar()
         getLiveGuerrillaData()
         getLiveMonsterData()
+        getLiveSkillData()
         
     }
     
@@ -34,9 +35,6 @@ class GuerrillaTable: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        if downloadData {
-//            self.present(vc, animated: true, completion: nil)
-//        }
         
         if changeSettings {
             updateGuerrillaViewNA()

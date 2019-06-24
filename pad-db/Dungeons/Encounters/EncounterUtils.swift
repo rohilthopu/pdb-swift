@@ -507,33 +507,8 @@ extension EncounterView {
         if let currentMonster = getMonster(forID: sender.view!.tag) {
             let monsterVC = MonsterView()
             monsterVC.monster = getMonsterFromAPI(cardID: currentMonster.cardID)
-            
-            let activeSkill = skills.filter({
-                let skillID = $0.skillID
-                let aSkill = currentMonster.activeSkillID
-                
-                if skillID == aSkill {
-                    return true
-                }
-                else {
-                    return false
-                }
-            }).first
-            
-            let leaderSkill = skills.filter({
-                let skillID = $0.skillID
-                let lSkill = currentMonster.leaderSkillID
-                
-                if skillID == lSkill {
-                    return true
-                }
-                else {
-                    return false
-                }
-            }).first
-            
-            monsterVC.activeSkill = activeSkill
-            monsterVC.leaderSkill = leaderSkill
+            monsterVC.activeSkill = getSkill(forSkill: currentMonster.activeSkillID)
+            monsterVC.leaderSkill = getSkill(forSkill: currentMonster.leaderSkillID)
             
             self.navigationController?.pushViewController(monsterVC, animated: true)
         }

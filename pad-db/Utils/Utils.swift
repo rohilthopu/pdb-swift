@@ -40,10 +40,18 @@ func getMonsterFromAPI(cardID:Int) -> Monster? {
     return monster
 }
 
-func getSkill(forSkill id:Int) -> Skill {
-    return skills.filter({
-        return id == $0.skillID
-    }).first!
+func getSkill(forSkill id:Int) -> Skill? {
+    let skillURL = "http://192.168.1.102:8000/api/skill/" + String(id)
+    var skill:Skill?
+    if let data = Just.get(skillURL).content {
+        do {
+            skill = try JSONDecoder().decode(Skill.self, from: data)
+            return skill
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    return skill
 }
 
 func getFloors(for dungeon: NSManagedObject) -> [NSManagedObject] {

@@ -140,23 +140,11 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
         }
         
         let monsterVC = MonsterView()
+        let monster = getMonsterFromAPI(cardID: currentMonster.cardID)
+        monsterVC.monster = monster
         
-        monsterVC.monster = getMonsterFromAPI(cardID: currentMonster.cardID)
-        
-        let activeSkill = skills.filter({
-            let skillID = $0.skillID
-            let aSkill = currentMonster.activeSkillID
-            return skillID == aSkill
-        }).first
-        
-        let leaderSkill = skills.filter({
-            let skillID = $0.skillID
-            let lSkill = currentMonster.leaderSkillID
-            return skillID == lSkill
-        }).first
-        
-        monsterVC.activeSkill = activeSkill
-        monsterVC.leaderSkill = leaderSkill
+        monsterVC.activeSkill = getSkill(forSkill: monster!.activeSkillID )
+        monsterVC.leaderSkill = getSkill(forSkill: monster!.leaderSkillID)
         
         self.navigationController?.pushViewController(monsterVC, animated: true)
         
