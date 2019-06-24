@@ -38,15 +38,12 @@ extension MonsterView {
             let maxTurns = "Max: " + String(activeSkill.maxTurns)
             let turns = minTurns + maxTurns
             
-            
             let nameLabel = makeLabel(ofSize: 18, withText: activeSkill.name)
             let descriptionLabel = makeLabel(ofSize: 16, withText: activeSkill.description)
             let turnLabel = makeLabel(ofSize: 14, withText: turns)
             activeSkillContainer.addSubview(nameLabel)
             activeSkillContainer.addSubview(descriptionLabel)
             activeSkillContainer.addSubview(turnLabel)
-            
-
             
             nameLabel.topAnchor.constraint(equalTo: activeSkillLabel.bottomAnchor, constant: 20).isActive = true
             nameLabel.leadingAnchor.constraint(equalTo: activeSkillContainer.leadingAnchor).isActive = true

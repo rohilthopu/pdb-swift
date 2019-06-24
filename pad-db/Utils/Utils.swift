@@ -82,14 +82,6 @@ func getFixedTeam(forFloor floor:NSManagedObject) -> [String:JSON] {
     return JSON(parseJSON: floor.value(forKey: "fixedTeam") as! String).dictionaryValue
 }
 
-func getAwakenings(forMonster monster:NSManagedObject) -> [Int] {
-    return JSON(parseJSON: monster.value(forKey: "awakenings") as! String).arrayValue.map{ $0.intValue }
-}
-
-func getSuperAwakenings(forMonster monster:NSManagedObject) -> [Int] {
-    return JSON(parseJSON: monster.value(forKey: "superAwakenings") as! String).arrayValue.map{ $0.intValue }
-}
-
 func getEvoList(forMonster monster:Monster) -> [Dictionary<String, JSON>] {
     return JSON(parseJSON: monster.evolutions).arrayValue.map{ $0.dictionaryValue }
 }
@@ -166,11 +158,4 @@ func updateGuerrillaViewJP() {
 
 func getTokenList(forSearchQuery text:String) -> Set<String> {
     return Set(text.lowercased().split(separator: " ").map{ String($0) })
-}
-
-func validateCardID(forID cardID:Int) -> Int {
-    if cardID / 100000 > 0 {
-        return cardID % 100000
-    }
-    return cardID
 }

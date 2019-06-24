@@ -4,6 +4,9 @@
    <Group
       location = "container:"
       name = "Deprecated">
+      <FileRef
+         location = "group:pad-db/Utils/../../DatabaseUtils.swift">
+      </FileRef>
       <Group
          location = "group:pad-db/../Leaderboard"
          name = "Leaderboard">

@@ -12,7 +12,6 @@
 		7846563D221F427700B5B593 /* DownloadEncounterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7846563C221F427700B5B593 /* DownloadEncounterData.swift */; };
 		78465643222087F100B5B593 /* WaveTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78465642222087F100B5B593 /* WaveTable.swift */; };
 		784656452220886A00B5B593 /* WaveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784656442220886A00B5B593 /* WaveCell.swift */; };
-		7846564722209CE900B5B593 /* DatabaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7846564622209CE900B5B593 /* DatabaseUtils.swift */; };
 		7846564922209D1100B5B593 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7846564822209D1100B5B593 /* ViewUtils.swift */; };
 		7846564B2220E8D300B5B593 /* ConstraintWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7846564A2220E8D300B5B593 /* ConstraintWrapper.swift */; };
 		787DF38621FA7601001FB99C /* DungeonTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38521FA7600001FB99C /* DungeonTable.swift */; };
@@ -68,7 +67,6 @@
 		7846563E221F42A900B5B593 /* pad_db 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "pad_db 2.xcdatamodel"; sourceTree = "<group>"; };
 		78465642222087F100B5B593 /* WaveTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveTable.swift; sourceTree = "<group>"; };
 		784656442220886A00B5B593 /* WaveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveCell.swift; sourceTree = "<group>"; };
-		7846564622209CE900B5B593 /* DatabaseUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUtils.swift; sourceTree = "<group>"; };
 		7846564822209D1100B5B593 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
 		7846564A2220E8D300B5B593 /* ConstraintWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintWrapper.swift; sourceTree = "<group>"; };
 		787DF38521FA7600001FB99C /* DungeonTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonTable.swift; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 				789EA5632204A404004F9A68 /* GlobalVars.swift */,
 				78A64675220A2B1C0043429F /* Settings.swift */,
 				789EA54F22023238004F9A68 /* Utils.swift */,
-				7846564622209CE900B5B593 /* DatabaseUtils.swift */,
 				7846564822209D1100B5B593 /* ViewUtils.swift */,
 				7846564A2220E8D300B5B593 /* ConstraintWrapper.swift */,
 			);
@@ -501,7 +498,6 @@
 				789EA55C2203AEE2004F9A68 /* DownloadSkillData.swift in Sources */,
 				78D6885C21E5459F001C0DEF /* TabController.swift in Sources */,
 				789EA55022023238004F9A68 /* Utils.swift in Sources */,
-				7846564722209CE900B5B593 /* DatabaseUtils.swift in Sources */,
 				789EA54B22022F60004F9A68 /* EncounterView.swift in Sources */,
 				78A64676220A2B1C0043429F /* Settings.swift in Sources */,
 				78B0031C211CA2FC001F246E /* MonsterTable.swift in Sources */,
