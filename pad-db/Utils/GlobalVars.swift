@@ -16,18 +16,12 @@ var jpDungeons = [Guerrilla]()
 var allGuerrillaDungeons = [Guerrilla]()
 var displayDungeons = [Guerrilla]()
 var showingNA = true
-var downloadData = true
-
-var versions = [NSManagedObject]()
-var newVersions:[String: Int] = [:]
 
 var monsters = [MonsterListItem]()
 var goodMonsters = [MonsterListItem]()
 var skills = [SkillListItem]()
 var goodSkills = [SkillListItem]()
 var enemySkills = [NSManagedObject]()
-
-var users = [User]()
 
 
 var dungeons = [NSManagedObject]()

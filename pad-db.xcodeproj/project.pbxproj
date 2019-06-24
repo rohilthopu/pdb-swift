@@ -27,7 +27,6 @@
 		789EA55A2203AE77004F9A68 /* DownloadMonsterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA5592203AE77004F9A68 /* DownloadMonsterData.swift */; };
 		789EA55C2203AEE2004F9A68 /* DownloadSkillData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA55B2203AEE2004F9A68 /* DownloadSkillData.swift */; };
 		789EA55E2203AF27004F9A68 /* DownloadDungeonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA55D2203AF27004F9A68 /* DownloadDungeonData.swift */; };
-		789EA5602203AF64004F9A68 /* DownloadVersionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA55F2203AF64004F9A68 /* DownloadVersionIdentifier.swift */; };
 		789EA5622203B01C004F9A68 /* DownloadGuerrillaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA5612203B01C004F9A68 /* DownloadGuerrillaData.swift */; };
 		789EA5642204A404004F9A68 /* GlobalVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EA5632204A404004F9A68 /* GlobalVars.swift */; };
 		78A348232291D9B400C6151F /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A348222291D9B400C6151F /* Monster.swift */; };
@@ -84,7 +83,6 @@
 		789EA5592203AE77004F9A68 /* DownloadMonsterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadMonsterData.swift; sourceTree = "<group>"; };
 		789EA55B2203AEE2004F9A68 /* DownloadSkillData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadSkillData.swift; sourceTree = "<group>"; };
 		789EA55D2203AF27004F9A68 /* DownloadDungeonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadDungeonData.swift; sourceTree = "<group>"; };
-		789EA55F2203AF64004F9A68 /* DownloadVersionIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadVersionIdentifier.swift; sourceTree = "<group>"; };
 		789EA5612203B01C004F9A68 /* DownloadGuerrillaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadGuerrillaData.swift; sourceTree = "<group>"; };
 		789EA5632204A404004F9A68 /* GlobalVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVars.swift; sourceTree = "<group>"; };
 		78A348222291D9B400C6151F /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
@@ -253,7 +251,6 @@
 				789EA5592203AE77004F9A68 /* DownloadMonsterData.swift */,
 				789EA55B2203AEE2004F9A68 /* DownloadSkillData.swift */,
 				789EA55D2203AF27004F9A68 /* DownloadDungeonData.swift */,
-				789EA55F2203AF64004F9A68 /* DownloadVersionIdentifier.swift */,
 				7846563C221F427700B5B593 /* DownloadEncounterData.swift */,
 			);
 			path = "Data Download Utils";
@@ -494,7 +491,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				78B54A6C22011AA10076EEA7 /* Constants.swift in Sources */,
-				789EA5602203AF64004F9A68 /* DownloadVersionIdentifier.swift in Sources */,
 				789EA55C2203AEE2004F9A68 /* DownloadSkillData.swift in Sources */,
 				78D6885C21E5459F001C0DEF /* TabController.swift in Sources */,
 				789EA55022023238004F9A68 /* Utils.swift in Sources */,

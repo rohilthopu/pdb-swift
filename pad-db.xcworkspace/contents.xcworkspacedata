@@ -5,6 +5,9 @@
       location = "container:"
       name = "Deprecated">
       <FileRef
+         location = "group:pad-db/Data Download Utils/../../DownloadVersionIdentifier.swift">
+      </FileRef>
+      <FileRef
          location = "group:pad-db/Utils/../../DatabaseUtils.swift">
       </FileRef>
       <Group
