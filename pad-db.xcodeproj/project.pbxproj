@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7828280C220D06BD0089F1F9 /* pad_db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7828280A220D06BD0089F1F9 /* pad_db.xcdatamodeld */; };
 		7828D0742208E3CD0004E6CD /* SetupRelatedDungeons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828D0732208E3CD0004E6CD /* SetupRelatedDungeons.swift */; };
 		7846563D221F427700B5B593 /* DownloadEncounterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7846563C221F427700B5B593 /* DownloadEncounterData.swift */; };
 		78465643222087F100B5B593 /* WaveTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78465642222087F100B5B593 /* WaveTable.swift */; };
@@ -60,10 +59,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7828280B220D06BD0089F1F9 /* pad_db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = pad_db.xcdatamodel; sourceTree = "<group>"; };
 		7828D0732208E3CD0004E6CD /* SetupRelatedDungeons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRelatedDungeons.swift; sourceTree = "<group>"; };
 		7846563C221F427700B5B593 /* DownloadEncounterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadEncounterData.swift; sourceTree = "<group>"; };
-		7846563E221F42A900B5B593 /* pad_db 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "pad_db 2.xcdatamodel"; sourceTree = "<group>"; };
 		78465642222087F100B5B593 /* WaveTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveTable.swift; sourceTree = "<group>"; };
 		784656442220886A00B5B593 /* WaveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveCell.swift; sourceTree = "<group>"; };
 		7846564822209D1100B5B593 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
@@ -74,8 +71,6 @@
 		7888153421ED8B02004981D2 /* SkillTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTable.swift; sourceTree = "<group>"; };
 		7888153621ED8CAB004981D2 /* SkillTableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableUtils.swift; sourceTree = "<group>"; };
 		7888153821ED8D8F004981D2 /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
-		788D2E1F224C43C200968A3B /* pad_db 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "pad_db 3.xcdatamodel"; sourceTree = "<group>"; };
-		788D2E20224C5DC800968A3B /* pad_db 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "pad_db 4.xcdatamodel"; sourceTree = "<group>"; };
 		789EA54A22022F60004F9A68 /* EncounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterView.swift; sourceTree = "<group>"; };
 		789EA54C22023199004F9A68 /* EncounterUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterUtils.swift; sourceTree = "<group>"; };
 		789EA54F22023238004F9A68 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -297,7 +292,6 @@
 				78B00310211CA297001F246E /* Assets.xcassets */,
 				78B00315211CA297001F246E /* Info.plist */,
 				78F0374A21EC5666002B7468 /* Storyboard.storyboard */,
-				7828280A220D06BD0089F1F9 /* pad_db.xcdatamodeld */,
 			);
 			path = "pad-db";
 			sourceTree = "<group>";
@@ -523,7 +517,6 @@
 				78D1EAF521EBF2A7002D4197 /* SetupHeaderUtils.swift in Sources */,
 				78D1EAEF21EA97BC002D4197 /* MonsterVCUtils.swift in Sources */,
 				78A348252292178400C6151F /* Skill.swift in Sources */,
-				7828280C220D06BD0089F1F9 /* pad_db.xcdatamodeld in Sources */,
 				78AC396821F13CF10094CCA7 /* GuerrillaUtils.swift in Sources */,
 				78B54A6A21FF9E030076EEA7 /* FloorTable.swift in Sources */,
 				78A64674220A10870043429F /* SetupEnemySkills.swift in Sources */,
@@ -719,22 +712,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		7828280A220D06BD0089F1F9 /* pad_db.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				788D2E20224C5DC800968A3B /* pad_db 4.xcdatamodel */,
-				788D2E1F224C43C200968A3B /* pad_db 3.xcdatamodel */,
-				7846563E221F42A900B5B593 /* pad_db 2.xcdatamodel */,
-				7828280B220D06BD0089F1F9 /* pad_db.xcdatamodel */,
-			);
-			currentVersion = 788D2E20224C5DC800968A3B /* pad_db 4.xcdatamodel */;
-			path = pad_db.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 78B002FB211CA296001F246E /* Project object */;
 }
