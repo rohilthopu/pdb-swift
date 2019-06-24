@@ -27,12 +27,12 @@ extension MonsterView {
         if !relatedDungeons.isEmpty {
             var allViews = [UILabel?]()
             for dungeon in relatedDungeons {
-                let label = makeLabel(ofSize: 14, withText: (dungeon.value(forKey: "name") as! String))
+                let label = makeLabel(ofSize: 14, withText: String(dungeon))
                 label.adjustsFontSizeToFitWidth = true
                 label.textAlignment = .center
                 label.isUserInteractionEnabled = true
                 label.addGestureRecognizer(makeTapRecognizerDungeon())
-                label.tag = dungeon.value(forKey: "dungeonID") as! Int
+                label.tag = dungeon
                 label.layer.borderWidth = 0.25
                 label.layer.cornerRadius = 3
                 allViews.append(label)

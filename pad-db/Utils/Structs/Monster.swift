@@ -39,6 +39,7 @@ struct Monster: Codable {
     let unEvoMat4, unEvoMat5, type1, type2: Int
     let type3, sellMp, sellCoin: Int
     let enemySkills, server: String
+    let relatedDungeons: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -83,5 +84,6 @@ struct Monster: Codable {
         case sellCoin = "sell_coin"
         case enemySkills = "enemy_skills"
         case server
+        case relatedDungeons = "related_dungeons"
     }
 }

@@ -95,23 +95,8 @@ func parseJsonIntList(forString data:String) -> [Int] {
     return JSON(parseJSON: data).arrayValue.map{ $0.intValue }
 }
 
-func getRelatedDungeons(forMonster monster:Monster) -> [NSManagedObject] {
-    var relatedDungeons = [NSManagedObject]()
-    let id = monster.cardID
-    for floor in floors {
-        let drops = getPossibleDrops(forFloor: floor)
-        if let _ = drops[id.description] {
-            let d = dungeons.filter{
-                return $0.value(forKey: "dungeonID") as! Int == floor.value(forKey: "dungeonID") as! Int
-                }.first
-            if let d = d {
-                if !relatedDungeons.contains(d) {
-                    relatedDungeons.append(d)
-                }
-            }
-        }
-    }
-    return relatedDungeons
+func getRelatedDungeons(forMonster monster:Monster) -> [Int] {
+    return JSON(parseJSON: monster.relatedDungeons).arrayValue.map{ $0.intValue }
 }
 
 func getPortraitURL(id:Int) -> String {
