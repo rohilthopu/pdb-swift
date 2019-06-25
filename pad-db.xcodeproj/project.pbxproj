@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78123A3A22C1A7A500BF768A /* Dungeon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78123A3922C1A7A500BF768A /* Dungeon.swift */; };
 		7828D0742208E3CD0004E6CD /* SetupRelatedDungeons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828D0732208E3CD0004E6CD /* SetupRelatedDungeons.swift */; };
 		7846563D221F427700B5B593 /* DownloadEncounterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7846563C221F427700B5B593 /* DownloadEncounterData.swift */; };
 		78465643222087F100B5B593 /* WaveTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78465642222087F100B5B593 /* WaveTable.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		78123A3922C1A7A500BF768A /* Dungeon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dungeon.swift; sourceTree = "<group>"; };
 		7828D0732208E3CD0004E6CD /* SetupRelatedDungeons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRelatedDungeons.swift; sourceTree = "<group>"; };
 		7846563C221F427700B5B593 /* DownloadEncounterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadEncounterData.swift; sourceTree = "<group>"; };
 		78465642222087F100B5B593 /* WaveTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveTable.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				789EA55322038C75004F9A68 /* Guerrilla.swift */,
 				78A348222291D9B400C6151F /* Monster.swift */,
 				78A348242292178400C6151F /* Skill.swift */,
+				78123A3922C1A7A500BF768A /* Dungeon.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				78A64674220A10870043429F /* SetupEnemySkills.swift in Sources */,
 				78D1EAF321EBF261002D4197 /* SetupStatUtils.swift in Sources */,
 				7888153921ED8D8F004981D2 /* SkillCell.swift in Sources */,
+				78123A3A22C1A7A500BF768A /* Dungeon.swift in Sources */,
 				78D12D4621E95E6900F4971A /* MonsterTableUtils.swift in Sources */,
 				7888153721ED8CAB004981D2 /* SkillTableUtils.swift in Sources */,
 				78D6885621CB07BD001C0DEF /* GuerrillaTable.swift in Sources */,

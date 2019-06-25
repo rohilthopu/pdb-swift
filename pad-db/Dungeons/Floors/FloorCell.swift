@@ -11,7 +11,7 @@ import CoreData
 
 class FloorCell: UITableViewCell {
     
-    var floor:NSManagedObject?
+    var floor:FloorListItem?
     
     var floorImage:UIImageView = {
         let img = UIImageView()
@@ -69,13 +69,13 @@ class FloorCell: UITableViewCell {
         super.layoutSubviews()
         
         if let floor = floor {
-            floorNameLabel.text = (floor.value(forKey: "name") as! String)
-            floorWavesLabel.text = "Waves: " + String(floor.value(forKey: "waves") as! Int)
+            floorNameLabel.text = (floor.name)
+            floorWavesLabel.text = "Waves: " + String(floor.waves)
             
-            let imageLinkFromID = URL(string: portrait_url + String(floor.value(forKey: "imageID") as! Int) + pngEngding)
+            let imageLinkFromID = URL(string: portrait_url + String(floor.imageID) + pngEngding)
             floorImage.kf.setImage(with: imageLinkFromID)
             
-            staminaLabel.text = "Stamina: " + String(floor.value(forKey: "stamina") as! Int)
+            staminaLabel.text = "Stamina: " + String(floor.stamina)
         }
     }
     

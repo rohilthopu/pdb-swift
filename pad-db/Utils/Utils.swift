@@ -54,21 +54,25 @@ func getSkill(forSkill id:Int) -> Skill? {
     return skill
 }
 
-func getFloors(for dungeon: NSManagedObject) -> [NSManagedObject] {
-    return floors.filter{ ($0.value(forKey: "dungeonID") as! Int) == (dungeon.value(forKey: "dungeonID") as! Int) }.sorted {
-        let first = $0.value(forKey: "floorNumber") as! Int
-        let second = $1.value(forKey: "floorNumber") as! Int
-        return first > second
+func getFloors(for dungeon: Dungeon) -> [FloorListItem] {
+    if let data = Just.get(floor_list_api_hook + String(dungeon.dungeonID)).content {
+        do {
+            let floors = try JSONDecoder().decode([FloorListItem].self, from: data)
+            return floors.reversed()
+        } catch let error as NSError {
+            print(error)
+        }
     }
+    return []
 }
 
-func getDungeon(forID id:Int) -> NSManagedObject? {
-    return dungeons.filter{($0.value(forKey: "dungeonID") as! Int) == id}.first
+func getDungeon(forID id:Int) -> Dungeon? {
+    return dungeons.filter{($0.dungeonID) == id}.first
 }
 
-func getFloor(forID id:Int, floorNumber num:Int) -> NSManagedObject? {
-    return floors.filter{($0.value(forKey: "dungeonID") as! Int) == id && ($0.value(forKey: "floorNumber") as! Int) == num }.first
-}
+//func getFloor(forID id:Int, floorNumber num:Int) -> NSManagedObject? {
+//    return floors.filter{($0.value(forKey: "dungeonID") as! Int) == id && ($0.value(forKey: "floorNumber") as! Int) == num }.first
+//}
 
 func getMessages(forFloor floor:NSManagedObject) -> [JSON] {
     return JSON(parseJSON: floor.value(forKey: "messages") as! String).arrayValue

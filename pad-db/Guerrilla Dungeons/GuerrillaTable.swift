@@ -27,6 +27,7 @@ class GuerrillaTable: UITableViewController {
         getLiveGuerrillaData()
         getLiveMonsterData()
         getLiveSkillData()
+        getLiveDungeonData()
         
     }
     
@@ -74,7 +75,7 @@ class GuerrillaTable: UITableViewController {
         if let currentDungeon = currentDungeon {
             let floorListTable = FloorTable()
             floorListTable.dungeon_floors = getFloors(for: currentDungeon)
-            floorListTable.navigationItem.title = (currentDungeon.value(forKey: "name") as! String)
+            floorListTable.navigationItem.title = (currentDungeon.name)
             self.navigationController?.pushViewController(floorListTable, animated: true)
         }
     }

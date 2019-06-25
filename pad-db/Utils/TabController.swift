@@ -17,15 +17,15 @@ class TabController: UITabBarController {
         let guerrillaVC = GuerrillaTable()
         let monsterVC = MonsterTable()
         let skillVC = SkillTable()
-//        let dungeonVC = DungeonTable()
+        let dungeonVC = DungeonTable()
         let settingsVC = SettingsViewController()
         
         guerrillaVC.tabBarItem = UITabBarItem(title: "Events", image: UIImage(named: "calendar"), tag: 0)
         monsterVC.tabBarItem = UITabBarItem(title: "Monsters", image: UIImage(named: "list"), tag: 1)
         skillVC.tabBarItem = UITabBarItem(title: "Skills", image: UIImage(named: "swords"), tag: 2)
-//        dungeonVC.tabBarItem = UITabBarItem(title: "Dungeons", image: UIImage(named: "list"), tag: 3)
-        settingsVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 3)
-        let tabViews = [guerrillaVC, monsterVC, skillVC, settingsVC]
+        dungeonVC.tabBarItem = UITabBarItem(title: "Dungeons", image: UIImage(named: "list"), tag: 3)
+        settingsVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 4)
+        let tabViews = [guerrillaVC, monsterVC, skillVC, dungeonVC, settingsVC]
                 
         viewControllers = tabViews.map{UINavigationController(rootViewController: $0)}
     }

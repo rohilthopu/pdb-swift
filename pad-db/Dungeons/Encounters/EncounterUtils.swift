@@ -48,48 +48,6 @@ extension EncounterView {
         
     }
     
-    func makeRequiredDungeonView() {
-        
-        let separator = makeSeparator()
-        let header = makeLabel(ofSize: 20, withText: "Required Dungeon")
-        makeHeader(forContainer: requiredDungeonContainer, withHeader: header, withSeparator: separator)
-        
-        
-        let dungeonID = dungeonFloor!.value(forKey: "requiredDungeon") as! Int
-        let floorID = dungeonFloor!.value(forKey: "requiredFloor") as! Int
-        if let requiredDungeon = getDungeon(forID: dungeonID) {
-            let dungeonName = requiredDungeon.value(forKey: "name") as! String
-            if let floor = getFloor(forID: dungeonID, floorNumber: floorID) {
-                let floorName = floor.value(forKey: "name") as! String
-                let requiredDungeonLabel = makeLabel(ofSize: 16, withText: "Dungeon: \(dungeonName)")
-                let requiredFloorLabel = makeLabel(ofSize: 16, withText: "Floor: \(floorName)")
-                requiredDungeonContainer.addSubview(requiredDungeonLabel)
-                requiredDungeonContainer.addSubview(requiredFloorLabel)
-                
-                requiredDungeonLabel.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 10).isActive = true
-                requiredDungeonLabel.centerXAnchor.constraint(equalTo: requiredDungeonContainer.centerXAnchor).isActive = true
-                
-                requiredFloorLabel.topAnchor.constraint(equalTo: requiredDungeonLabel.bottomAnchor, constant: 10).isActive = true
-                requiredFloorLabel.centerXAnchor.constraint(equalTo: requiredDungeonContainer.centerXAnchor).isActive = true
-                requiredFloorLabel.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
-                
-            }
-        } else {
-            let noneLabel = makeLabel(ofSize: 16, withText: "No required dungeon completion")
-            requiredDungeonContainer.addSubview(noneLabel)
-            noneLabel.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 20).isActive = true
-            noneLabel.centerXAnchor.constraint(equalTo: requiredDungeonContainer.centerXAnchor).isActive = true
-            noneLabel.bottomAnchor.constraint(equalTo: separator.topAnchor, constant: -20).isActive = true
-        }
-        
-        scrollView.addSubview(requiredDungeonContainer)
-        
-        requiredDungeonContainer.topAnchor.constraint(equalTo: infoContainer.bottomAnchor, constant: 20).isActive = true
-        requiredDungeonContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
-        requiredDungeonContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
-        
-    }
-    
     func makeDungeonMessages() {
         let separator = makeSeparator()
         messageContainer.addSubview(separator)
@@ -132,7 +90,7 @@ extension EncounterView {
         scrollView.addSubview(messageContainer)
         messageContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
         messageContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
-        messageContainer.topAnchor.constraint(equalTo: requiredDungeonContainer.bottomAnchor, constant: 20).isActive = true
+        messageContainer.topAnchor.constraint(equalTo: infoContainer.bottomAnchor, constant: 20).isActive = true
         
     }
     

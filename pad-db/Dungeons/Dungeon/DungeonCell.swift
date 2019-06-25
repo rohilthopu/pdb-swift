@@ -12,7 +12,7 @@ import CoreData
 class DungeonCell: UITableViewCell {
     
     
-    var dungeon:NSManagedObject?
+    var dungeon:Dungeon?
     
     var dungeonImage:UIImageView = {
         let img = UIImageView()
@@ -70,11 +70,11 @@ class DungeonCell: UITableViewCell {
         super.layoutSubviews()
         
         if let dungeon = dungeon {
-            dungeonNameLabel.text = (dungeon.value(forKey: "name") as! String)
-            dungeonIDLabel.text = "No. " + String((dungeon.value(forKey: "dungeonID") as! Int))
-            floorCountLabel.text = "Floors: " + String(dungeon.value(forKey: "floorCount") as! Int)
+            dungeonNameLabel.text = (dungeon.name)
+            dungeonIDLabel.text = "No. " + String(dungeon.dungeonID)
+            floorCountLabel.text = "Floors: " + String(dungeon.floorCount)
             
-            let imageLinkFromID = URL(string: portrait_url + String(dungeon.value(forKey: "imageID") as! Int) + pngEngding)
+            let imageLinkFromID = URL(string: portrait_url + String(dungeon.imageID) + pngEngding)
             dungeonImage.kf.setImage(with: imageLinkFromID)
         }
     }

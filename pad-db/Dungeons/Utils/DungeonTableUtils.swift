@@ -52,8 +52,7 @@ extension DungeonTable {
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         filteredDungeons = goodDungeons.filter{
-            let name = $0.value(forKey: "name") as! String
-            return name.lowercased().contains(searchText.lowercased())
+            return $0.name.lowercased().contains(searchText.lowercased())
         }
         tableView.reloadData()
     }

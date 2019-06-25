@@ -33,12 +33,12 @@ extension MonsterView {
     
     @objc
     func openDungeonPage(sender: UITapGestureRecognizer) {
-        let currentDungeon:NSManagedObject = getDungeon(forID: sender.view!.tag)!
+        let currentDungeon:Dungeon = getDungeon(forID: sender.view!.tag)!
     
         
         let floorListTable = FloorTable()
         floorListTable.dungeon_floors = getFloors(for: currentDungeon)
-        floorListTable.navigationItem.title = (currentDungeon.value(forKey: "name") as! String)
+        floorListTable.navigationItem.title = (currentDungeon.name)
         self.navigationController?.pushViewController(floorListTable, animated: true)
     }
     

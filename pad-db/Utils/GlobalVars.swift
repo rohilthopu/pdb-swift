@@ -21,11 +21,9 @@ var monsters = [MonsterListItem]()
 var goodMonsters = [MonsterListItem]()
 var skills = [SkillListItem]()
 var goodSkills = [SkillListItem]()
+var dungeons = [Dungeon]()
+
 var enemySkills = [NSManagedObject]()
-
-
-var dungeons = [NSManagedObject]()
-var floors = [NSManagedObject]()
 var encounterSets = [NSManagedObject]()
 
 var currGroupNA = ""

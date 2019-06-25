@@ -20,9 +20,9 @@ extension DungeonTable: UISearchResultsUpdating {
 class DungeonTable: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate {
     
     let cellid = "dungeoncell"
-    var filteredDungeons = [NSManagedObject]()
+    var filteredDungeons = [Dungeon]()
     var dungeonSearch:UISearchController!
-    var goodDungeons = [NSManagedObject]()
+    var goodDungeons = [Dungeon]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +37,7 @@ class DungeonTable: UITableViewController, UISearchControllerDelegate, UISearchB
     private func getGoodDungeons() {
         if naFilter {
             goodDungeons = dungeons.filter {
-                if let server = $0.value(forKey: "server") as! String? {
-                    return server == "na"
-                }
-                return true
+                return $0.server == "NA"
             }
         } else {
             goodDungeons = dungeons
@@ -84,7 +81,7 @@ class DungeonTable: UITableViewController, UISearchControllerDelegate, UISearchB
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
-        var currentDungeon:NSManagedObject
+        var currentDungeon:Dungeon
         
         if isFiltering() {
             currentDungeon = filteredDungeons[index]
@@ -93,7 +90,7 @@ class DungeonTable: UITableViewController, UISearchControllerDelegate, UISearchB
         }
         let floorListTable = FloorTable()
         floorListTable.dungeon_floors = getFloors(for: currentDungeon)
-        floorListTable.navigationItem.title = (currentDungeon.value(forKey: "name") as! String)
+        floorListTable.navigationItem.title = (currentDungeon.name)
         self.navigationController?.pushViewController(floorListTable, animated: true)
     }
 }
