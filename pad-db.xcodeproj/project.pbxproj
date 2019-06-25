@@ -185,7 +185,6 @@
 				78B54A6D2201219F0076EEA7 /* Floors */,
 				7846563F222087C000B5B593 /* Waves */,
 				789EA54922022F3C004F9A68 /* Encounters */,
-				787DF38721FA767C001FB99C /* Utils */,
 			);
 			path = Dungeons;
 			sourceTree = "<group>";
@@ -193,18 +192,11 @@
 		787DF38421FA75DA001FB99C /* Dungeon */ = {
 			isa = PBXGroup;
 			children = (
+				787DF38821FA7693001FB99C /* DungeonTableUtils.swift */,
 				787DF38521FA7600001FB99C /* DungeonTable.swift */,
 				787DF38D21FA8048001FB99C /* DungeonCell.swift */,
 			);
 			path = Dungeon;
-			sourceTree = "<group>";
-		};
-		787DF38721FA767C001FB99C /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				787DF38821FA7693001FB99C /* DungeonTableUtils.swift */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		789EA54922022F3C004F9A68 /* Encounters */ = {

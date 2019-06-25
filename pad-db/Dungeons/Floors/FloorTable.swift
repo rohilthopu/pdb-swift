@@ -38,11 +38,11 @@ class FloorTable: UITableViewController {
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let floorVC = WaveTable()
-//        floorVC.floor =  dungeon_floors[indexPath.row]
-//        floorVC.navigationItem.title = "Enemy Waves"
-//        self.navigationController?.pushViewController(floorVC, animated: true)
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let floorVC = WaveTable()
+        floorVC.floor =  getFloor(forID: dungeon_floors[indexPath.row].dungeonID, floorNumber: indexPath.row + 1)
+        floorVC.navigationItem.title = "Enemy Waves"
+        self.navigationController?.pushViewController(floorVC, animated: true)
+    }
 
 }

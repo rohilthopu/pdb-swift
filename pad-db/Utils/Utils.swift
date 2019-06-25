@@ -70,20 +70,33 @@ func getDungeon(forID id:Int) -> Dungeon? {
     return dungeons.filter{($0.dungeonID) == id}.first
 }
 
-//func getFloor(forID id:Int, floorNumber num:Int) -> NSManagedObject? {
-//    return floors.filter{($0.value(forKey: "dungeonID") as! Int) == id && ($0.value(forKey: "floorNumber") as! Int) == num }.first
-//}
-
-func getMessages(forFloor floor:NSManagedObject) -> [JSON] {
-    return JSON(parseJSON: floor.value(forKey: "messages") as! String).arrayValue
+func getFloor(forID id:Int, floorNumber num:Int) -> Floor? {
+    var floor:Floor?
+    if let data = Just.get(getFloorHook(for: id, onFloor: num)).content {
+        do {
+             floor = try JSONDecoder().decode(Floor.self, from: data)
+            return floor
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    return floor
 }
 
-func getPossibleDrops(forFloor floor:NSManagedObject) -> [String:JSON] {
-    return JSON(parseJSON: floor.value(forKey: "possibleDrops") as! String).dictionaryValue
+func getFloorHook(for dungeonID:Int, onFloor floorNumber:Int) -> String {
+    return floor_api_hook + String(dungeonID) + "/" + String(floorNumber)
 }
 
-func getFixedTeam(forFloor floor:NSManagedObject) -> [String:JSON] {
-    return JSON(parseJSON: floor.value(forKey: "fixedTeam") as! String).dictionaryValue
+func getMessages(forFloor floor:Floor) -> [String] {
+    return JSON(parseJSON: floor.messages).arrayValue.map{ $0.stringValue }
+}
+
+func getPossibleDrops(forFloor floor:Floor) -> [String:JSON] {
+    return JSON(parseJSON: floor.possibleDrops).dictionaryValue
+}
+
+func getFixedTeam(forFloor floor:Floor) -> [[String:JSON]] {
+    return JSON(parseJSON: floor.fixedTeam).arrayValue.map{$0.dictionaryValue}
 }
 
 func getEvoList(forMonster monster:Monster) -> [Dictionary<String, JSON>] {

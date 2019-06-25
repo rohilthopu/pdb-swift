@@ -41,15 +41,15 @@ class WaveTable: UITableViewController {
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let floor = floor {
-//            let floorVC = EncounterView()
-//            floorVC.dungeonFloor = floor
-//            floorVC.waveNumber = indexPath.row + 1
-//            floorVC.navigationItem.title = "Wave \(indexPath.row + 1)"
-//            self.navigationController?.pushViewController(floorVC, animated: true)
-//        }
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let floor = floor {
+            let floorVC = EncounterView()
+            floorVC.dungeonFloor = floor
+            floorVC.waveNumber = indexPath.row + 1
+            floorVC.navigationItem.title = "Wave \(indexPath.row + 1)"
+            self.navigationController?.pushViewController(floorVC, animated: true)
+        }
+    }
     
     
 }

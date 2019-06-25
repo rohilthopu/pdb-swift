@@ -19,22 +19,22 @@ extension EncounterView {
         let header = makeLabel(ofSize: 20, withText: "Floor Information")
         makeHeader(forContainer: infoContainer, withHeader: header, withSeparator: separator)
         
-        let nameLabel = makeLabel(ofSize: 16, withText: dungeonFloor!.value(forKey: "name") as! String)
+        let nameLabel = makeLabel(ofSize: 16, withText: dungeonFloor!.name)
         infoContainer.addSubview(nameLabel)
         nameLabel.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 10).isActive = true
         nameLabel.centerXAnchor.constraint(equalTo: infoContainer.centerXAnchor).isActive = true
         
-        let staminaLabel = makeLabel(ofSize: 16, withText: "Stamina: " + String(dungeonFloor!.value(forKey: "stamina") as! Int))
+        let staminaLabel = makeLabel(ofSize: 16, withText: "Stamina: " + String(dungeonFloor!.stamina))
         infoContainer.addSubview(staminaLabel)
         staminaLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10).isActive = true
         staminaLabel.centerXAnchor.constraint(equalTo: infoContainer.centerXAnchor).isActive = true
         
-        let wavesLabel = makeLabel(ofSize: 16, withText: "Waves: " + String(dungeonFloor!.value(forKey: "waves") as! Int))
+        let wavesLabel = makeLabel(ofSize: 16, withText: "Waves: " + String(dungeonFloor!.waves))
         infoContainer.addSubview(wavesLabel)
         wavesLabel.topAnchor.constraint(equalTo: staminaLabel.bottomAnchor, constant: 10).isActive = true
         wavesLabel.centerXAnchor.constraint(equalTo: infoContainer.centerXAnchor).isActive = true
         
-        let scoreLabel = makeLabel(ofSize: 16, withText: "Score: " + String(dungeonFloor!.value(forKey: "score") as! Int))
+        let scoreLabel = makeLabel(ofSize: 16, withText: "Score: " + String(dungeonFloor!.score))
         infoContainer.addSubview(scoreLabel)
         scoreLabel.topAnchor.constraint(equalTo: wavesLabel.bottomAnchor, constant: 10).isActive = true
         scoreLabel.centerXAnchor.constraint(equalTo: infoContainer.centerXAnchor).isActive = true
@@ -65,7 +65,7 @@ extension EncounterView {
         
         if messages.count > 0 {
             for i in 0...messages.count-1 {
-                let message = messages[i].stringValue
+                let message = messages[i]
                 let messageLabel = makeLabel(ofSize: 16, withText: message)
                 
                 messageContainer.addSubview(messageLabel)
@@ -102,12 +102,17 @@ extension EncounterView {
         let fixedTeam = getFixedTeam(forFloor: dungeonFloor!)
         
         if !fixedTeam.isEmpty {
-            let teamMonsters = fixedTeam.keys
+            var teamMonsters = [Int]()
+            
+            for dict in fixedTeam {
+                teamMonsters.append(dict["card_id"]!.intValue)
+            }
+            
             let teamView = makeView()
             
             var images = [UIImageView]()
             for key in teamMonsters {
-                let monsterImg = makeImgView(forImg: portrait_url + key + pngEngding, ofSize: 50)
+                let monsterImg = makeImgView(forImg: portrait_url + String(key) + pngEngding, ofSize: 50)
                 teamView.addSubview(monsterImg)
                 images.append(monsterImg)
             }
@@ -258,7 +263,8 @@ extension EncounterView {
         possibleDropContainer.topAnchor.constraint(equalTo: fixedTeamContainer.bottomAnchor, constant: 20).isActive = true
         possibleDropContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
         possibleDropContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
-        
+        possibleDropContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -50).isActive = true
+
     }
     
 //    func makeEncounters() {

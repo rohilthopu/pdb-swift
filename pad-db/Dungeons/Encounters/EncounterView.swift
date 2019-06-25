@@ -11,7 +11,7 @@ import CoreData
 
 class EncounterView: UIViewController {
     
-    var dungeonFloor:NSManagedObject?
+    var dungeonFloor:Floor?
     var waveNumber:Int?
     
     let scrollView:UIScrollView = {
