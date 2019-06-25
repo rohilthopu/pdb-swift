@@ -58,7 +58,7 @@ func getFloors(for dungeon: Dungeon) -> [FloorListItem] {
     if let data = Just.get(floor_list_api_hook + String(dungeon.dungeonID)).content {
         do {
             let floors = try JSONDecoder().decode([FloorListItem].self, from: data)
-            return floors.reversed()
+            return floors
         } catch let error as NSError {
             print(error)
         }

@@ -145,7 +145,7 @@ extension EncounterView {
         scrollView.addSubview(fixedTeamContainer)
         fixedTeamContainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10).isActive = true
         fixedTeamContainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
-        fixedTeamContainer.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20).isActive = true
+        fixedTeamContainer.topAnchor.constraint(equalTo: messageContainer.bottomAnchor, constant: 20).isActive = true
         
     }
     
@@ -161,7 +161,7 @@ extension EncounterView {
         var dropViews = [UIView]()
         
         if !possibleDrops.isEmpty {
-            for key in possibleDrops.keys {
+            for key in possibleDrops.keys.sorted() {
                 if let monster = getMonster(forID: Int(key)!) {
                     let rarity = possibleDrops[key]!.stringValue
                     
