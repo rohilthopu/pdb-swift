@@ -22,3 +22,17 @@ func getLiveSkillData() {
         }
     }
 }
+
+func getSkill(forSkill id:Int) -> Skill? {
+    let skillURL = skill_api_url + String(id)
+    var skill:Skill?
+    if let data = Just.get(skillURL).content {
+        do {
+            skill = try JSONDecoder().decode(Skill.self, from: data)
+            return skill
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    return skill
+}

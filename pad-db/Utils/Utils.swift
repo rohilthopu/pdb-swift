@@ -26,65 +26,8 @@ func getMonster(forSkillID id:Int) -> MonsterListItem? {
     }).first
 }
 
-func getMonsterFromAPI(cardID:Int) -> Monster? {
-    var monster:Monster?
-    let monsterURL = "http://192.168.1.102:8000/api/monster/" + String(cardID)
-    if let data = Just.get(monsterURL).content {
-        do {
-            monster = try JSONDecoder().decode(Monster.self, from: data)
-        } catch let error as NSError {
-            print(error)
-        }
-    }
-    
-    return monster
-}
-
-func getSkill(forSkill id:Int) -> Skill? {
-    let skillURL = "http://192.168.1.102:8000/api/skill/" + String(id)
-    var skill:Skill?
-    if let data = Just.get(skillURL).content {
-        do {
-            skill = try JSONDecoder().decode(Skill.self, from: data)
-            return skill
-        } catch let error as NSError {
-            print(error)
-        }
-    }
-    return skill
-}
-
-func getFloors(for dungeon: Dungeon) -> [FloorListItem] {
-    if let data = Just.get(floor_list_api_hook + String(dungeon.dungeonID)).content {
-        do {
-            let floors = try JSONDecoder().decode([FloorListItem].self, from: data)
-            return floors
-        } catch let error as NSError {
-            print(error)
-        }
-    }
-    return []
-}
-
 func getDungeon(forID id:Int) -> Dungeon? {
     return dungeons.filter{($0.dungeonID) == id}.first
-}
-
-func getFloor(forID id:Int, floorNumber num:Int) -> Floor? {
-    var floor:Floor?
-    if let data = Just.get(getFloorHook(for: id, onFloor: num)).content {
-        do {
-             floor = try JSONDecoder().decode(Floor.self, from: data)
-            return floor
-        } catch let error as NSError {
-            print(error)
-        }
-    }
-    return floor
-}
-
-func getFloorHook(for dungeonID:Int, onFloor floorNumber:Int) -> String {
-    return floor_api_hook + String(dungeonID) + "/" + String(floorNumber)
 }
 
 func getMessages(forFloor floor:Floor) -> [String] {
