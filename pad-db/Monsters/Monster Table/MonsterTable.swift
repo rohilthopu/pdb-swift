@@ -56,9 +56,7 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
                 return $0.cardID < 100000
             }
         }
-        
         sortMonstersDescending()
-
     }
     
     private func setupTableView() {
