@@ -12,7 +12,7 @@ import CoreData
 
 extension MonsterView {
     func setupRelatedDungeons() {
-        let relatedDungeons = getRelatedDungeons(forMonster: monster!)
+        let relatedDungeons = [Int]()
         
         let header = makeLabel(ofSize: 20, withText: "Related Dungeons")
         relatedDungeonContainer.addSubview(header)

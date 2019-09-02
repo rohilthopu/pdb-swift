@@ -4,6 +4,9 @@
    <Group
       location = "container:"
       name = "Deprecated">
+      <FileRef
+         location = "group:pad-db/Monsters/Monster View Utils/Container Utils/../../../../SetupEnemySkills.swift">
+      </FileRef>
       <Group
          location = "group:pad-db/../pad_db.xcdatamodeld"
          name = "pad_db.xcdatamodeld">

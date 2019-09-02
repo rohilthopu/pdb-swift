@@ -13,7 +13,7 @@ let api_base_link = "https://api.pad-db.com/rest/"
 
 
 let api_endpoint = "https://api.pad-db.com/"
-let monster_api_url = api_endpoint + "monster/"
+let monster_api_url = api_endpoint + "monsters/"
 
 
 let guerrilla_api_hook = api_base_link + "guerrilla"

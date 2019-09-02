@@ -12,7 +12,7 @@ import CoreData
 
 extension MonsterView {
     func setupEnemySkills() {
-        let eSkills = getEnemySkills(forMonster: monster!)
+        let eSkills = []
         let header = makeLabel(ofSize: 20, withText: "Enemy Skills")
         let separator = makeSeparator()
         

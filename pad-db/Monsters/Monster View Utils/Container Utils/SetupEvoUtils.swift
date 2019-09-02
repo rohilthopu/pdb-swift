@@ -72,7 +72,7 @@ extension MonsterView {
                     let monsterImg = makeImgView(forImg: evoPortraitURL, ofSize: size)
                     monsterImg.isUserInteractionEnabled = true
                     monsterImg.addGestureRecognizer(makeTapRecognizer())
-                    monsterImg.tag = evoMonster["card_id"]!.intValue
+                    monsterImg.tag = evoMonster.cardID
                     
                     
                     let e1 = evoMonster.evoMat1
@@ -177,7 +177,7 @@ extension MonsterView {
         let smallSize:CGFloat = spacing * 4
         let smallerSize:CGFloat = spacing * 2
         
-        let devolution = monster!.ancestorID
+        let devolution = monster.ancestorID
         
         
         devoMaterialsContainer.addSubview(devoMaterialsLabel)
@@ -195,14 +195,14 @@ extension MonsterView {
         separator.bottomAnchor.constraint(equalTo: devoMaterialsContainer.bottomAnchor).isActive = true
         separator.centerXAnchor.constraint(equalTo: devoMaterialsContainer.centerXAnchor).isActive = true
         
-        let isUlt = monster!.isUlt
+        let isUlt = monster.isUlt
         
         if devolution > 0 && isUlt {
             
-            if devolution != self.monster!.cardID {
+            if devolution != monster.cardID {
                 
                 let view = makeView()
-                let portraitImg = makeImgView(forImg: getPortraitURL(id: monster!.cardID), ofSize: size)
+                let portraitImg = makeImgView(forImg: getPortraitURL(id: monster.cardID), ofSize: size)
                 
                 let plusImg = makeImgView(fromIconName: "add", ofSize: smallerSize)
                 let equalsImg = makeImgView(fromIconName: "equal", ofSize: smallerSize)
@@ -233,11 +233,11 @@ extension MonsterView {
                 monsterImg.centerYAnchor.constraint(equalTo: portraitImg.centerYAnchor).isActive = true
                 
                 
-                let e1 = monster!.unEvoMat1
-                let e2 = monster!.unEvoMat2
-                let e3 = monster!.unEvoMat3
-                let e4 = monster!.unEvoMat4
-                let e5 = monster!.unEvoMat5
+                let e1 = monster.unEvoMat1
+                let e2 = monster.unEvoMat2
+                let e3 = monster.unEvoMat3
+                let e4 = monster.unEvoMat4
+                let e5 = monster.unEvoMat5
                 
                 let devomats = [e1, e2, e3, e4, e5]
                 

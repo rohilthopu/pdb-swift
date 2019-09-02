@@ -469,8 +469,9 @@ extension EncounterView {
     func openMonsterPage(sender: UITapGestureRecognizer) {
         
         if let currentMonster = getMonster(forID: sender.view!.tag) {
-            let monsterVC = MonsterView()
-            monsterVC.monster = getMonsterFromAPI(cardID: currentMonster.cardID)
+            let monster = getMonsterFromAPI(cardID: currentMonster.cardID)!
+            let monsterVC = MonsterView(monster: monster)
+
             monsterVC.activeSkill = getSkill(forSkill: currentMonster.activeSkillID)
             monsterVC.leaderSkill = getSkill(forSkill: currentMonster.leaderSkillID)
             
