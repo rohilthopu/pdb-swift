@@ -29,7 +29,6 @@ func getSkill(forSkill id:Int) -> Skill? {
     if let data = Just.get(skillURL).content {
         do {
             skill = try JSONDecoder().decode(Skill.self, from: data)
-            return skill
         } catch let error as NSError {
             print(error)
         }

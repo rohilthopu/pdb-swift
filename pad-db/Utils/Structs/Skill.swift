@@ -21,7 +21,6 @@ struct SkillListItem: Codable {
 }
 
 struct Skill: Codable {
-    let id: Int
     let name, description: String
     let skillID: Int
     let skillType: String
@@ -33,7 +32,7 @@ struct Skill: Codable {
     let server: String
     
     enum CodingKeys: String, CodingKey {
-        case id, name, shield
+        case name, shield
         case description = "description"
         case skillID = "skill_id"
         case skillType = "skill_type"

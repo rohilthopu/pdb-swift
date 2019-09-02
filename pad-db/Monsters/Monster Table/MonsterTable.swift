@@ -143,7 +143,6 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
         if let monster = monster {
             let monsterVC = MonsterView(monster: monster)
             monsterVC.monster = monster
-            print(monster)
             monsterVC.activeSkill = getSkill(forSkill: monster.activeSkillID)
             monsterVC.leaderSkill = getSkill(forSkill: monster.leaderSkillID)
             
