@@ -33,6 +33,9 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
         super.viewDidLoad()
         setupTableView()
         setupView()
+        getLiveMonsterData()
+        getLiveSkillData()
+        getLiveDungeonData()
         filterGoodMonsters()
 
         tableView.reloadData()
