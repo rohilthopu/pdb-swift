@@ -25,7 +25,7 @@ class TabController: UITabBarController {
         skillVC.tabBarItem = UITabBarItem(title: "Skills", image: UIImage(named: "swords"), tag: 2)
         dungeonVC.tabBarItem = UITabBarItem(title: "Dungeons", image: UIImage(named: "list"), tag: 3)
         settingsVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 4)
-        let tabViews = [guerrillaVC, monsterVC, skillVC, dungeonVC, settingsVC]
+        let tabViews = [guerrillaVC]
                 
         viewControllers = tabViews.map{UINavigationController(rootViewController: $0)}
     }
