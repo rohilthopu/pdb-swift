@@ -85,7 +85,7 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
         monsterSearchController.searchResultsUpdater = self
         monsterSearchController.obscuresBackgroundDuringPresentation = false
         monsterSearchController.searchBar.placeholder = "Search Monsters"
-        monsterSearchController.searchBar.barStyle = UIBarStyle.blackTranslucent
+//        monsterSearchController.searchBar.barStyle = UIBarStyle.blackTranslucent
 
         if #available(iOS 11.0, *) {
             navigationItem.searchController = monsterSearchController
@@ -145,7 +145,6 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
         
         if let monster = monster {
             let monsterVC = MonsterView(monster: monster)
-            monsterVC.monster = monster
             monsterVC.activeSkill = getSkill(forSkill: monster.activeSkillID)
             monsterVC.leaderSkill = getSkill(forSkill: monster.leaderSkillID)
             

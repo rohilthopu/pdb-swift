@@ -42,11 +42,9 @@ func getFixedTeam(forFloor floor:Floor) -> [[String:JSON]] {
     return JSON(parseJSON: floor.fixedTeam).arrayValue.map{$0.dictionaryValue}
 }
 
-
 func parseJsonIntList(forString data:String) -> [Int] {
     return JSON(parseJSON: data).arrayValue.map{ $0.intValue }
 }
-
 
 func getPortraitURL(id:Int) -> String {
     return portrait_url + String(id) + pngEngding
