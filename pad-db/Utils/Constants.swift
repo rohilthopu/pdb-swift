@@ -8,7 +8,7 @@
 
 import Foundation
 
-let api_base_link = "https://www.pad-db.com/api/"
+let api_base_link = "https://api.pad-db.com/rest/"
 
 let guerrilla_api_hook = api_base_link + "guerrilla"
 let monster_list_api_hook:String = api_base_link + "monsters"
