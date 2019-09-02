@@ -31,10 +31,10 @@ struct Monster: Codable {
     let type1_ID, type2_ID, type3_ID, rarity: Int
     let cost, maxLevel, feedXPAtLvl4: Int
     let releasedStatus: Bool
-    let sellPriceAtLvl10, minHP, maxHP, hpScale: Int
-    let minAtk, maxAtk, atkScale, minRcv: Int
-    let maxRcv, rcvScale, xpMax: Int
-    let xpScale: Double
+    let sellPriceAtLvl10, minHP, maxHP: Int
+    let minAtk, maxAtk, minRcv: Int
+    let maxRcv, xpMax: Int
+    let xpScale, hpScale, rcvScale, atkScale: Double
     let activeSkillID, leaderSkillID, ancestorID, evoMat1: Int
     let evoMat2, evoMat3, evoMat4, evoMat5: Int
     let unEvoMat1, unEvoMat2, unEvoMat3, unEvoMat4: Int

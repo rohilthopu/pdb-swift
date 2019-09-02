@@ -72,7 +72,7 @@ class MonsterTable: UITableViewController, UISearchControllerDelegate, UISearchB
             navigationController?.navigationBar.prefersLargeTitles = true
         }
         navigationItem.title = "Monsters"
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
+//        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "order")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.plain, target: self, action: #selector(changeSort))
     }
     
