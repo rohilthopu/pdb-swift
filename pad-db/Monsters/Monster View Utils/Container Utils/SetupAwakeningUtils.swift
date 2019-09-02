@@ -14,7 +14,7 @@ extension MonsterView {
         let size = CGFloat(20)
         let size_int = 20
         
-        let awks = parseJsonIntList(forString: monster!.awakenings)
+        let awks = monster.awakeningsRaw
         
         var diff:CGFloat = 0
         
@@ -70,7 +70,7 @@ extension MonsterView {
         
         let size = CGFloat(20)
         
-        let sawks = parseJsonIntList(forString: monster!.superAwakenings)
+        let sawks = monster.superAwakeningsRaw
         
         for a in sawks {
             let img = makeImgView(fromIconName:  String(a + 2), ofSize: size)

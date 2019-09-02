@@ -42,22 +42,11 @@ func getFixedTeam(forFloor floor:Floor) -> [[String:JSON]] {
     return JSON(parseJSON: floor.fixedTeam).arrayValue.map{$0.dictionaryValue}
 }
 
-func getEvoList(forMonster monster:Monster) -> [Dictionary<String, JSON>] {
-    return JSON(parseJSON: monster.evolutions).arrayValue.map{ $0.dictionaryValue }
-}
-
-func getEnemySkills(forMonster monster:Monster) -> [NSManagedObject] {
-    let eSkills = JSON(parseJSON: monster.enemySkills).arrayValue.map{ $0.intValue }.reversed()
-    return enemySkills.filter { eSkills.contains($0.value(forKey: "enemy_skill_id") as! Int) }
-}
 
 func parseJsonIntList(forString data:String) -> [Int] {
     return JSON(parseJSON: data).arrayValue.map{ $0.intValue }
 }
 
-func getRelatedDungeons(forMonster monster:Monster) -> [Int] {
-    return JSON(parseJSON: monster.relatedDungeons).arrayValue.map{ $0.intValue }
-}
 
 func getPortraitURL(id:Int) -> String {
     return portrait_url + String(id) + pngEngding

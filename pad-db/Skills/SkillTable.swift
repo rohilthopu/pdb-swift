@@ -97,11 +97,10 @@ class SkillTable: UITableViewController, UISearchControllerDelegate, UISearchBar
         else {
             currentSkill = goodSkills[index]
         }
-        let monsterVC = MonsterView()
         let skillID = currentSkill.skillID
         if let currentMonster = getMonster(forSkillID: skillID) {
-        
-            monsterVC.monster = getMonsterFromAPI(cardID: currentMonster.cardID)
+            let monster = getMonsterFromAPI(cardID: currentMonster.cardID)!
+            let monsterVC = MonsterView(monster: monster)
             monsterVC.activeSkill = getSkill(forSkill: currentMonster.activeSkillID)
             monsterVC.leaderSkill = getSkill(forSkill: currentMonster.leaderSkillID)
             self.navigationController?.pushViewController(monsterVC, animated: true)

@@ -22,7 +22,7 @@ extension MonsterView {
         let smallSize:CGFloat = spacing * 4
         let smallerSize:CGFloat = spacing * 2
         
-        let evolutions = getEvoList(forMonster: monster!)
+        let evolutions = monster.evolutionList
         
         evoMaterialsContainer.addSubview(evoMaterialsLabel)
         evoMaterialsContainer.addSubview(separator)
@@ -47,12 +47,12 @@ extension MonsterView {
         if evolutions.count > 0 {
             for i in 0...evolutions.count - 1 {
                 
-                if evolutions[i]["card_id"]!.intValue < 10000 {
+                if evolutions[i].cardID < 10000 {
                     let evoMonster = evolutions[i]
                     
                     
                     let view = makeView()
-                    let portraitURL = getPortraitURL(id: monster!.cardID)
+                    let portraitURL = getPortraitURL(id: monster.cardID)
                     let portraitImg = makeImgView(forImg: portraitURL, ofSize: size)
                     let plusImg = makeImgView(fromIconName: "add", ofSize: smallerSize)
                     let equalsImg = makeImgView(fromIconName: "equal", ofSize: smallerSize)
@@ -68,18 +68,18 @@ extension MonsterView {
                     plusImg.leadingAnchor.constraint(equalTo: portraitImg.trailingAnchor, constant: spacing).isActive = true
                     plusImg.centerYAnchor.constraint(equalTo: portraitImg.centerYAnchor).isActive = true
                     
-                    let evoPortraitURL = getPortraitURL(id: evoMonster["card_id"]!.intValue)
+                    let evoPortraitURL = getPortraitURL(id: evoMonster.cardID)
                     let monsterImg = makeImgView(forImg: evoPortraitURL, ofSize: size)
                     monsterImg.isUserInteractionEnabled = true
                     monsterImg.addGestureRecognizer(makeTapRecognizer())
                     monsterImg.tag = evoMonster["card_id"]!.intValue
                     
                     
-                    let e1 = evoMonster["evo_mat_1"]!.intValue
-                    let e2 = evoMonster["evo_mat_2"]!.intValue
-                    let e3 = evoMonster["evo_mat_3"]!.intValue
-                    let e4 = evoMonster["evo_mat_4"]!.intValue
-                    let e5 = evoMonster["evo_mat_5"]!.intValue
+                    let e1 = evoMonster.evoMat1
+                    let e2 = evoMonster.evoMat2
+                    let e3 = evoMonster.evoMat3
+                    let e4 = evoMonster.evoMat4
+                    let e5 = evoMonster.evoMat5
                     
                     let evomats = [e1, e2, e3, e4, e5]
                     

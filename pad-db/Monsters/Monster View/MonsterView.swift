@@ -15,7 +15,7 @@ class MonsterView: UIViewController {
     
     var spacing:CGFloat = 0
     
-    var monster:Monster?
+    var monster:Monster
     var activeSkill:Skill?
     var leaderSkill:Skill?
     
@@ -188,6 +188,16 @@ class MonsterView: UIViewController {
         return vw
     }()
     
+    init(monster:Monster) {
+        self.monster = monster
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -205,7 +215,7 @@ class MonsterView: UIViewController {
         scrollView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
         
         
-        self.navigationItem.title = String(monster!.cardID)
+        self.navigationItem.title = String(monster.cardID)
         
         setupImageView()
         setupPortraitView()
@@ -217,7 +227,7 @@ class MonsterView: UIViewController {
         //        setupEnemySkills()
         setupEvoMaterials()
         setupDevoMaterials()
-        setupRelatedDungeons()
+//        setupRelatedDungeons()
         setupSaleItems()
     }
 }

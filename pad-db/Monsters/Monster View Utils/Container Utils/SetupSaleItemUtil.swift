@@ -19,7 +19,7 @@ extension MonsterView {
     public func setupSaleMP() {
         
         
-        let value = monster!.sellMp
+        let value = monster.sellMp
         let valueAsString = String(value)
         
         let headerLabel = makeLabel(ofSize: 20, withText: "MP Value")
@@ -57,7 +57,7 @@ extension MonsterView {
     public func setupSaleCoin() {
         
         
-        let value = monster!.sellCoin
+        let value = monster.sellPriceAtLvl10
         let valueAsString = String(value)
         
         let headerLabel = makeLabel(ofSize: 20, withText: "Coin Value")

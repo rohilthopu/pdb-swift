@@ -42,7 +42,7 @@ extension MonsterView {
         let label297 = makeLabel(ofSize: 16, withText: noString)
         
         minLevelLabel.text = "1"
-        maxLevelLabel.text = String(monster!.maxLevel)
+        maxLevelLabel.text = String(monster.maxLevel)
         label297.text = "+297"
         
         levelLabel.text = "lvl"
@@ -122,9 +122,9 @@ extension MonsterView {
         }()
         
         
-        minHPLabel.text = String(monster!.minHP)
-        maxHPLabel.text = String(monster!.maxHP)
-        hp297.text = String(monster!.maxHP + 990)
+        minHPLabel.text = String(monster.minHP)
+        maxHPLabel.text = String(monster.maxHP)
+        hp297.text = String(monster.maxHP + 990)
         
         HPLabel.text = "hp"
         
@@ -200,10 +200,10 @@ extension MonsterView {
         }()
         
         
-        minATKLabel.text = String(monster!.minAtk)
-        maxATKLabel.text = String(monster!.maxAtk)
+        minATKLabel.text = String(monster.minAtk)
+        maxATKLabel.text = String(monster.maxAtk)
         
-        atk297.text = String(monster!.maxAtk + 495)
+        atk297.text = String(monster.maxAtk + 495)
         ATKLabel.text = "atk"
         
         
@@ -280,10 +280,10 @@ extension MonsterView {
             return textView
         }()
         
-        minRCVLabel.text = String(monster!.minRcv)
-        maxRCVLabel.text = String(monster!.maxRcv)
+        minRCVLabel.text = String(monster.minRcv)
+        maxRCVLabel.text = String(monster.maxRcv)
         RCVLabel.text = "rcv"
-        rcv297.text = String(monster!.maxRcv + 297)
+        rcv297.text = String(monster.maxRcv + 297)
         
         RCVContainer.addSubview(RCVLabel)
         RCVContainer.addSubview(minRCVLabel)
@@ -322,9 +322,9 @@ extension MonsterView {
     }
     
     public func setupWeightedStats() {
-        let hp = Double(monster!.maxHP)/10
-        let atk = Double(monster!.maxAtk)/5
-        let rcv = Double(monster!.maxRcv)/3
+        let hp = Double(monster.maxHP)/10
+        let atk = Double(monster.maxAtk)/5
+        let rcv = Double(monster.maxRcv)/3
         
         let weighted = hp + atk + rcv
         
