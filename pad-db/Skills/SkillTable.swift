@@ -31,7 +31,6 @@ class SkillTable: UITableViewController, UISearchControllerDelegate, UISearchBar
         setupNavBar()
         setupTableView()
         setupSearch()
-        getLiveSkillData()
         goodSkills = filterUsableSkills()
         sortSkillsDescending()
     }
