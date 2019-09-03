@@ -90,44 +90,10 @@ extension MonsterView {
     public func setupHPStatus() {
         
         // hp labels
-        let HPLabel: UILabel = {
-            let textView = UILabel()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.font = UIFont(name: "Futura-CondensedMedium", size: 20)
-            return textView
-        }()
-        
-        let minHPLabel: UILabel = {
-            let textView = UILabel()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
-            
-            return textView
-        }()
-        
-        let maxHPLabel: UILabel = {
-            let textView = UILabel()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
-            
-            return textView
-        }()
-        
-        let hp297: UILabel = {
-            let textView = UILabel()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
-            
-            return textView
-        }()
-        
-        
-        minHPLabel.text = String(monster.minHP)
-        maxHPLabel.text = String(monster.maxHP)
-        hp297.text = String(monster.maxHP + 990)
-        
-        HPLabel.text = "hp"
-        
+        let HPLabel: UILabel = makeLabel(ofSize: 20, withText: "hp")
+        let minHPLabel: UILabel = makeLabel(ofSize: 16, withText: String(monster.minHP))
+        let maxHPLabel: UILabel = makeLabel(ofSize: 16, withText: String(monster.maxHP))
+        let hp297: UILabel = makeLabel(ofSize: 16, withText: String(monster.maxHP + 990))
         
         HPContainer.addSubview(HPLabel)
         HPContainer.addSubview(minHPLabel)
@@ -166,40 +132,12 @@ extension MonsterView {
     }
     
     public func setupATKStatus() {
-        
-        
-        let ATKLabel: UILabel = {
-            let textView = UILabel()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.font = UIFont(name: "Futura-CondensedMedium", size: 20)
-            return textView
-        }()
-        
-        let minATKLabel: UILabel = {
-            let textView = UILabel()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
-            
-            return textView
-        }()
-        
-        let maxATKLabel: UILabel = {
-            let textView = UILabel()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
-            
-            return textView
-        }()
-        
-        let atk297: UILabel = {
-            let textView = UILabel()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
-            
-            return textView
-        }()
-        
-        
+    
+        let ATKLabel: UILabel = makeLabel(ofSize: 20)
+        let minATKLabel: UILabel = makeLabel(ofSize: 16)
+        let maxATKLabel: UILabel = makeLabel(ofSize: 16)
+        let atk297: UILabel = makeLabel(ofSize: 16)
+
         minATKLabel.text = String(monster.minAtk)
         maxATKLabel.text = String(monster.maxAtk)
         

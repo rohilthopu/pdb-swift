@@ -59,6 +59,14 @@ func makeLabel(ofSize size: CGFloat, withText text: String) -> UILabel {
     return textView
 }
 
+func makeLabel(ofSize size: CGFloat) -> UILabel {
+    let textView = UILabel()
+    textView.translatesAutoresizingMaskIntoConstraints = false
+    textView.font = UIFont(name: "Futura-CondensedMedium", size: size)
+    textView.clipsToBounds = true
+    return textView
+}
+
 func makeHeader(forContainer container:UIView, withHeader header:UILabel, withSeparator separator:UIView) {
     container.addSubview(header)
     header.topAnchor.constraint(equalTo: container.topAnchor).isActive = true

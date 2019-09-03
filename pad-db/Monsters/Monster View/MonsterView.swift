@@ -40,7 +40,6 @@ class MonsterView: UIViewController {
         img.clipsToBounds = true
         img.contentMode = .scaleAspectFit
         img.backgroundColor = UIColor.black
-        
         return img
     }()
     
@@ -58,16 +57,8 @@ class MonsterView: UIViewController {
     let HPContainer: UIView = makeView()
     let ATKContainer: UIView = makeView()
     let RCVContainer: UIView = makeView()
-    // xp labels
     let XPContainer: UIView = makeView()
-    // weighted stats label
-    let weightedStatsLabel: UILabel = {
-        let textView = UILabel()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
-        return textView
-    }()
-    
+    let weightedStatsLabel: UILabel = makeLabel(ofSize: 16)
     let awakeningContainer: UIView = makeView()
     let sawakeningContainer: UIView = makeView()
     let evoMaterialsContainer: UIView = makeView()
