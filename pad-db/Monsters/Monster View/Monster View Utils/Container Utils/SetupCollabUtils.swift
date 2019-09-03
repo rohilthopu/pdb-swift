@@ -52,18 +52,18 @@ extension MonsterView {
             var currentImgCount = 0
             var currIndex = 0
             // a horizontal image container
-            var imgContainer = makeView()
+            var horizontalImageRow = makeView()
             var prevImage = collabMonsters[0]
             while (currIndex < collabMonsters.count) {
                 let currentImage = collabMonsters[currIndex]
-                imgContainer.addSubview(currentImage)
-                currentImage.setTopAnchor(to: .top, of: imgContainer)
-                currentImage.setBottomAnchor(to: .bottom, of: imgContainer)
-                if currentImage != prevImage {
-                    currentImage.setLeftAnchor(to: .trailing, of: prevImage, withSpacing: 5)
+                horizontalImageRow.addSubview(currentImage)
+                currentImage.setTopAnchor(to: .top, of: horizontalImageRow)
+                currentImage.setBottomAnchor(to: .bottom, of: horizontalImageRow)
+                if currentImgCount == 0 {
+                    currentImage.setLeftAnchor(to: .leading, of: horizontalImageRow)
                 } else {
                     // we are on the first image?
-                    currentImage.setLeftAnchor(to: .leading, of: imgContainer)
+                    currentImage.setLeftAnchor(to: .trailing, of: prevImage, withSpacing: 5)
                 }
                 // store the previous image
                 prevImage = currentImage
@@ -72,9 +72,9 @@ extension MonsterView {
                 
                 if currentImgCount == 5 || currIndex == collabMonsters.count {
                     currentImgCount = 0
-                    imageContainers.append(imgContainer)
-                    imgContainer = makeView()
-                    currentImage.setRightAnchor(to: imageContainer)
+                    imageContainers.append(horizontalImageRow)
+                    horizontalImageRow = makeView()
+                    currentImage.setRightAnchor(to: horizontalImageRow)
                 }
             }
             
