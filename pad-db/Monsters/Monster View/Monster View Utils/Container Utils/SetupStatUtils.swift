@@ -210,11 +210,9 @@ extension MonsterView {
         let hp = Double(monster.maxHP)/10
         let atk = Double(monster.maxAtk)/5
         let rcv = Double(monster.maxRcv)/3
-        
         let weighted = hp + atk + rcv
         
-        weightedStatsLabel.text = "Weighted stats: " + String(format: "%.2f", weighted)
-        
+        let weightedStatsLabel: UILabel = makeLabel(ofSize: 16, withText: "Weighted stats: " + String(format: "%.2f", weighted))
         statContainer.addSubview(weightedStatsLabel)
         weightedStatsLabel.leadingAnchor.constraint(equalTo: statContainer.leadingAnchor).isActive = true
         weightedStatsLabel.trailingAnchor.constraint(equalTo: statContainer.trailingAnchor).isActive = true

@@ -58,7 +58,6 @@ class MonsterView: UIViewController {
     let ATKContainer: UIView = makeView()
     let RCVContainer: UIView = makeView()
     let XPContainer: UIView = makeView()
-    let weightedStatsLabel: UILabel = makeLabel(ofSize: 16)
     let awakeningContainer: UIView = makeView()
     let sawakeningContainer: UIView = makeView()
     let evoMaterialsContainer: UIView = makeView()
