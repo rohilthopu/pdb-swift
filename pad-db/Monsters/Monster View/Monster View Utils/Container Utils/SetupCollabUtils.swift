@@ -24,7 +24,7 @@ extension MonsterView {
         let collabLabel = makeLabel(ofSize: 16)
 
         
-        let imgSize = CGFloat(50)
+        let imgSize = CGFloat(60)
         
         collabContainer.addSubview(header)
         collabContainer.addSubview(separator)
@@ -36,6 +36,9 @@ extension MonsterView {
         
         if monster.collabID == 0 {
             collabLabel.text = monster.name + " is not part of any collab series"
+            collabLabel.lineBreakMode = .byWordWrapping
+            collabLabel.numberOfLines = 0
+            
             collabLabel.setBottomAnchor(to: .top, of: separator, withSpacing: verticalAnchorSpacing)
         } else {
             collabLabel.text = monster.collab
@@ -91,14 +94,14 @@ extension MonsterView {
                 currentImage.setLeftAnchor(to: .leading, of: horizontalImageRow)
             } else {
                 // we are on the first image?
-                currentImage.setLeftAnchor(to: .trailing, of: prevImage, withSpacing: 5)
+                currentImage.setLeftAnchor(to: .trailing, of: prevImage, withSpacing: 10)
             }
             // store the previous image
             prevImage = currentImage
             currentImgCount += 1
             currIndex += 1
             
-            if currentImgCount == 7 || currIndex == collabMonsters.count {
+            if currentImgCount == 5 || currIndex == collabMonsters.count {
                 currentImgCount = 0
                 imageContainers.append(horizontalImageRow)
                 currentImage.setRightAnchor(to: horizontalImageRow)

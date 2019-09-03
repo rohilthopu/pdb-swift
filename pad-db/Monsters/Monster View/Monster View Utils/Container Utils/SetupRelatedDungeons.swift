@@ -38,7 +38,7 @@ extension MonsterView {
                 allViews.append(label)
             }
             
-            var pairs = stride(from: 0, to: allViews.count, by: 2).map{ind -> (UILabel?, UILabel?) in
+            let pairs = stride(from: 0, to: allViews.count, by: 2).map{ind -> (UILabel?, UILabel?) in
                 let first = allViews[ind]
                 let second = ind+1 < allViews.count ? allViews[ind+1] : nil
                 return (first, second)
