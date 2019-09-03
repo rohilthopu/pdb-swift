@@ -13,10 +13,10 @@ extension MonsterView {
     func setupCollabContainer() {
         // setup the main container constraints first
         scrollView.addSubview(collabContainer)
-        collabContainer.setLeft(to: .leading, of: self.view, withSpacing: 0)
-        collabContainer.setRight(to: self.view, withSpacing: 0)
-        collabContainer.setTop(to: .bottom, of: saleCoinContainer, withSpacing: verticalAnchorSpacing)
-        collabContainer.setBottom(to: .bottom, of: scrollView, withSpacing: -20)
+        collabContainer.setMyLeft(to: .leading, of: self.view, withSpacing: 0)
+        collabContainer.setMyRight(to: self.view, withSpacing: 0)
+        collabContainer.setMyTop(to: .bottom, of: saleCoinContainer, withSpacing: verticalAnchorSpacing)
+        collabContainer.setMyBottom(to: .bottom, of: scrollView, withSpacing: -20)
         
         
         let header = makeLabel(ofSize: 20, withText: "Collab")
@@ -26,8 +26,8 @@ extension MonsterView {
         collabContainer.addSubview(header)
         collabContainer.addSubview(separator)
         
-        header.setCenterX(to: collabContainer)
-        header.setTop(to: .top, of: collabContainer, withSpacing: 0)
+        header.setMyCenterX(to: collabContainer)
+        header.setMyTop(to: .top, of: collabContainer, withSpacing: 0)
         
         
         if monster.collabID == 0 {
@@ -37,13 +37,13 @@ extension MonsterView {
         }
         
         collabContainer.addSubview(collabLabel)
-        collabLabel.setTop(to: .bottom, of: header, withSpacing: verticalAnchorSpacing)
-        collabLabel.setCenterX(to: collabContainer)
+        collabLabel.setMyTop(to: .bottom, of: header, withSpacing: verticalAnchorSpacing)
+        collabLabel.setMyCenterX(to: collabContainer)
         
         
-        separator.setCenterX(to: collabContainer)
-        separator.setTop(to: .bottom, of: collabLabel, withSpacing: verticalAnchorSpacing)
-        separator.setBottom(to: .bottom, of: collabContainer, withSpacing: 0)
+        separator.setMyCenterX(to: collabContainer)
+        separator.setMyTop(to: .bottom, of: collabLabel, withSpacing: verticalAnchorSpacing)
+        separator.setMyBottom(to: .bottom, of: collabContainer, withSpacing: 0)
     
     }
     
