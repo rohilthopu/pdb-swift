@@ -9,7 +9,7 @@
 import Foundation
 
 struct MonsterListItem: Codable {
-    let cardID: Int
+    let cardID, collabID: Int
     let name, server: String
     let activeSkillID, leaderSkillID: Int
 
@@ -20,6 +20,7 @@ struct MonsterListItem: Codable {
         case activeSkillID = "active_skill_id"
         case leaderSkillID = "leader_skill_id"
         case server
+        case collabID = "collab_id"
     }
 }
 

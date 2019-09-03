@@ -14,6 +14,7 @@ import CoreGraphics
 class MonsterView: UIViewController {
     
     var spacing:CGFloat = 0
+    let verticalAnchorSpacing: CGFloat = 20
     
     var monster:Monster
     var activeSkill:Skill?
@@ -25,7 +26,6 @@ class MonsterView: UIViewController {
     var types = [UIImageView]()
     var evoImgs = [UIImageView]()
     var devoImgs = [UIImageView]()
-    let noString = ""
     
     let scrollView:UIScrollView = {
         let view = UIScrollView()
@@ -111,5 +111,6 @@ class MonsterView: UIViewController {
         setupDevoMaterials()
 //        setupRelatedDungeons()
         setupSaleItems()
+        setupCollabContainer()
     }
 }

@@ -76,7 +76,7 @@ extension MonsterView {
         saleCoinContainer.leadingAnchor.constraint(equalTo: devoMaterialsContainer.leadingAnchor).isActive = true
         saleCoinContainer.trailingAnchor.constraint(equalTo: devoMaterialsContainer.trailingAnchor).isActive = true
         saleCoinContainer.topAnchor.constraint(equalTo: saleMPContainer.bottomAnchor, constant: 20).isActive = true
-        saleCoinContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -50).isActive = true
+//        saleCoinContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -50).isActive = true
         
         headerLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         headerLabel.topAnchor.constraint(equalTo: saleCoinContainer.topAnchor).isActive = true
