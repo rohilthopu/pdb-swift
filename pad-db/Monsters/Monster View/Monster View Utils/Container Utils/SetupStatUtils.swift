@@ -164,45 +164,11 @@ extension MonsterView {
     }
     
     public func setupRCVStatus() {
-        
-        
         // rcv labels
-        
-        let RCVLabel: UILabel = {
-            let textView = UILabel()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.font = UIFont(name: "Futura-CondensedMedium", size: 20)
-            return textView
-        }()
-        
-        let minRCVLabel: UILabel = {
-            let textView = UILabel()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
-            
-            return textView
-        }()
-        
-        let maxRCVLabel: UILabel = {
-            let textView = UILabel()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
-            
-            return textView
-        }()
-        
-        let rcv297: UILabel = {
-            let textView = UILabel()
-            textView.translatesAutoresizingMaskIntoConstraints = false
-            textView.font = UIFont(name: "Futura-CondensedMedium", size: 16)
-            
-            return textView
-        }()
-        
-        minRCVLabel.text = String(monster.minRcv)
-        maxRCVLabel.text = String(monster.maxRcv)
-        RCVLabel.text = "rcv"
-        rcv297.text = String(monster.maxRcv + 297)
+        let RCVLabel: UILabel = makeLabel(ofSize: 20, withText: "rcv")
+        let minRCVLabel: UILabel = makeLabel(ofSize: 16, withText: String(monster.minRcv))
+        let maxRCVLabel: UILabel = makeLabel(ofSize: 16, withText: String(monster.maxRcv))
+        let rcv297: UILabel = makeLabel(ofSize: 16, withText: String(monster.maxRcv + 297))
         
         RCVContainer.addSubview(RCVLabel)
         RCVContainer.addSubview(minRCVLabel)
