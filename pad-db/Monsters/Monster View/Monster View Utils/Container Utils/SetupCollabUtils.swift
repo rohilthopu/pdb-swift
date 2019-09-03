@@ -26,8 +26,7 @@ extension MonsterView {
         
         
         let widthOfContainer = UIScreen.main.bounds.width - 20
-        let imgSize = widthOfContainer - 25 / 5
-        
+        let imgSize = CGFloat(50)
         
         collabContainer.addSubview(header)
         collabContainer.addSubview(separator)
@@ -70,7 +69,7 @@ extension MonsterView {
                 currentImgCount += 1
                 currIndex += 1
                 
-                if currentImgCount == 5 || currIndex == collabMonsters.count {
+                if currentImgCount == 7 || currIndex == collabMonsters.count {
                     currentImgCount = 0
                     imageContainers.append(horizontalImageRow)
                     currentImage.setRightAnchor(to: horizontalImageRow)
@@ -86,8 +85,6 @@ extension MonsterView {
             while (currIndex < imageContainers.count) {
                 let currentContainer = imageContainers[currIndex]
                 otherCollabMonstersContainer.addSubview(currentContainer)
-                currentContainer.setLeftAnchor(to: .leading, of: otherCollabMonstersContainer)
-                currentContainer.setRightAnchor(to: otherCollabMonstersContainer)
                 currentContainer.setCenterXAnchor(to: otherCollabMonstersContainer)
                 
                 
@@ -130,7 +127,7 @@ extension MonsterView {
         if collab_id == 0 {
             return []
         }
-        return monsters.filter{
+        return goodMonsters.filter{
             $0.collabID == collab_id
         }
     }
