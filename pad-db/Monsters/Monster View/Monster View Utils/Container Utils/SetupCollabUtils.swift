@@ -24,8 +24,6 @@ extension MonsterView {
         let collabLabel = makeLabel(ofSize: 16)
 
         
-        
-        let widthOfContainer = UIScreen.main.bounds.width - 20
         let imgSize = CGFloat(50)
         
         collabContainer.addSubview(header)
@@ -46,64 +44,8 @@ extension MonsterView {
                 return makeImgView(forImg: getPortraitURL(id: $0.cardID), ofSize: imgSize)
             }
             
-            var imageContainers = [UIView]()
-            
-            var currentImgCount = 0
-            var currIndex = 0
-            // a horizontal image container
-            var horizontalImageRow = makeView()
-            var prevImage = collabMonsters[0]
-            while (currIndex < collabMonsters.count) {
-                let currentImage = collabMonsters[currIndex]
-                horizontalImageRow.addSubview(currentImage)
-                currentImage.setTopAnchor(to: .top, of: horizontalImageRow)
-                currentImage.setBottomAnchor(to: .bottom, of: horizontalImageRow)
-                if currentImgCount == 0 {
-                    currentImage.setLeftAnchor(to: .leading, of: horizontalImageRow)
-                } else {
-                    // we are on the first image?
-                    currentImage.setLeftAnchor(to: .trailing, of: prevImage, withSpacing: 5)
-                }
-                // store the previous image
-                prevImage = currentImage
-                currentImgCount += 1
-                currIndex += 1
-                
-                if currentImgCount == 7 || currIndex == collabMonsters.count {
-                    currentImgCount = 0
-                    imageContainers.append(horizontalImageRow)
-                    currentImage.setRightAnchor(to: horizontalImageRow)
-
-                    horizontalImageRow = makeView()
-                }
-            }
-            
-            let otherCollabMonstersContainer = makeView()
-
-            currIndex = 0
-            var prevContainer = imageContainers[0]
-            while (currIndex < imageContainers.count) {
-                let currentContainer = imageContainers[currIndex]
-                otherCollabMonstersContainer.addSubview(currentContainer)
-                currentContainer.setCenterXAnchor(to: otherCollabMonstersContainer)
-                
-                
-                if currIndex == 0 {
-                    // set the main anchors
-                    currentContainer.setTopAnchor(to: .top, of: otherCollabMonstersContainer)
-                    
-                } else {
-                    currentContainer.setTopAnchor(to: .bottom, of: prevContainer, withSpacing: 10)
-                }
-                
-                currIndex += 1
-                prevContainer = currentContainer
-                
-                if currIndex == imageContainers.count {
-                    currentContainer.setBottomAnchor(to: .bottom, of: otherCollabMonstersContainer)
-                }
-            }
-            
+            let imageContainers = makeHorizontalImageRows(forCollabMonsters: collabMonsters)
+            let otherCollabMonstersContainer = makeLargeContainer(forImageRows: imageContainers)
             
             collabContainer.addSubview(otherCollabMonstersContainer)
             
@@ -130,5 +72,69 @@ extension MonsterView {
         return goodMonsters.filter{
             $0.collabID == collab_id
         }
+    }
+    
+    private func makeHorizontalImageRows(forCollabMonsters collabMonsters: [UIImageView]) -> [UIView] {
+        var imageContainers = [UIView]()
+        
+        var currentImgCount = 0
+        var currIndex = 0
+        // a horizontal image container
+        var horizontalImageRow = makeView()
+        var prevImage = collabMonsters[0]
+        while (currIndex < collabMonsters.count) {
+            let currentImage = collabMonsters[currIndex]
+            horizontalImageRow.addSubview(currentImage)
+            currentImage.setTopAnchor(to: .top, of: horizontalImageRow)
+            currentImage.setBottomAnchor(to: .bottom, of: horizontalImageRow)
+            if currentImgCount == 0 {
+                currentImage.setLeftAnchor(to: .leading, of: horizontalImageRow)
+            } else {
+                // we are on the first image?
+                currentImage.setLeftAnchor(to: .trailing, of: prevImage, withSpacing: 5)
+            }
+            // store the previous image
+            prevImage = currentImage
+            currentImgCount += 1
+            currIndex += 1
+            
+            if currentImgCount == 7 || currIndex == collabMonsters.count {
+                currentImgCount = 0
+                imageContainers.append(horizontalImageRow)
+                currentImage.setRightAnchor(to: horizontalImageRow)
+                
+                horizontalImageRow = makeView()
+            }
+        }
+        return imageContainers
+    }
+    
+    private func makeLargeContainer(forImageRows imageContainers: [UIView]) -> UIView {
+        let otherCollabMonstersContainer = makeView()
+        
+        var currIndex = 0
+        var prevContainer = imageContainers[0]
+        while (currIndex < imageContainers.count) {
+            let currentContainer = imageContainers[currIndex]
+            otherCollabMonstersContainer.addSubview(currentContainer)
+            currentContainer.setCenterXAnchor(to: otherCollabMonstersContainer)
+            
+            
+            if currIndex == 0 {
+                // set the main anchors
+                currentContainer.setTopAnchor(to: .top, of: otherCollabMonstersContainer)
+                
+            } else {
+                currentContainer.setTopAnchor(to: .bottom, of: prevContainer, withSpacing: 10)
+            }
+            
+            currIndex += 1
+            prevContainer = currentContainer
+            
+            if currIndex == imageContainers.count {
+                currentContainer.setBottomAnchor(to: .bottom, of: otherCollabMonstersContainer)
+            }
+        }
+        return otherCollabMonstersContainer
     }
 }
