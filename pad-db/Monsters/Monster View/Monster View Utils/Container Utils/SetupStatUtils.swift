@@ -36,18 +36,10 @@ extension MonsterView {
         
         // labels for the status
         
-        let levelLabel = makeLabel(ofSize: 20, withText: noString)
-        let minLevelLabel = makeLabel(ofSize: 16, withText: noString)
-        let maxLevelLabel = makeLabel(ofSize: 16, withText: noString)
-        let label297 = makeLabel(ofSize: 16, withText: noString)
-        
-        minLevelLabel.text = "1"
-        maxLevelLabel.text = String(monster.maxLevel)
-        label297.text = "+297"
-        
-        levelLabel.text = "lvl"
-        
-        
+        let levelLabel = makeLabel(ofSize: 20, withText: "lvl")
+        let minLevelLabel = makeLabel(ofSize: 16, withText: "1")
+        let maxLevelLabel = makeLabel(ofSize: 16, withText: String(monster.maxLevel))
+        let label297 = makeLabel(ofSize: 16, withText: "+297")
         
         levelContainer.addSubview(levelLabel)
         levelContainer.addSubview(minLevelLabel)
@@ -133,18 +125,10 @@ extension MonsterView {
     
     public func setupATKStatus() {
     
-        let ATKLabel: UILabel = makeLabel(ofSize: 20)
-        let minATKLabel: UILabel = makeLabel(ofSize: 16)
-        let maxATKLabel: UILabel = makeLabel(ofSize: 16)
-        let atk297: UILabel = makeLabel(ofSize: 16)
-
-        minATKLabel.text = String(monster.minAtk)
-        maxATKLabel.text = String(monster.maxAtk)
-        
-        atk297.text = String(monster.maxAtk + 495)
-        ATKLabel.text = "atk"
-        
-        
+        let ATKLabel: UILabel = makeLabel(ofSize: 20, withText: "atk")
+        let minATKLabel: UILabel = makeLabel(ofSize: 16, withText: String(monster.minAtk))
+        let maxATKLabel: UILabel = makeLabel(ofSize: 16, withText: String(monster.maxAtk))
+        let atk297: UILabel = makeLabel(ofSize: 16, withText: String(monster.maxAtk + 495))
         
         ATKContainer.addSubview(ATKLabel)
         ATKContainer.addSubview(minATKLabel)
@@ -172,14 +156,11 @@ extension MonsterView {
         maxATKLabel.centerXAnchor.constraint(equalTo: ATKLabel.centerXAnchor).isActive = true
 
         
-        
         atk297.leadingAnchor.constraint(equalTo: ATKContainer.leadingAnchor).isActive = true
         atk297.topAnchor.constraint(equalTo: maxATKLabel.bottomAnchor, constant: 20).isActive = true
         atk297.trailingAnchor.constraint(equalTo: ATKContainer.trailingAnchor).isActive = true
         atk297.bottomAnchor.constraint(equalTo: ATKContainer.bottomAnchor).isActive = true
         atk297.centerXAnchor.constraint(equalTo: ATKLabel.centerXAnchor).isActive = true
-
-        
     }
     
     public func setupRCVStatus() {
