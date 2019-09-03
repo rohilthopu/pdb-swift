@@ -73,8 +73,9 @@ extension MonsterView {
                 if currentImgCount == 5 || currIndex == collabMonsters.count {
                     currentImgCount = 0
                     imageContainers.append(horizontalImageRow)
-                    horizontalImageRow = makeView()
                     currentImage.setRightAnchor(to: horizontalImageRow)
+
+                    horizontalImageRow = makeView()
                 }
             }
             
