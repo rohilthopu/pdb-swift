@@ -13,6 +13,7 @@
 		784656452220886A00B5B593 /* WaveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784656442220886A00B5B593 /* WaveCell.swift */; };
 		7846564922209D1100B5B593 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7846564822209D1100B5B593 /* ViewUtils.swift */; };
 		7846564B2220E8D300B5B593 /* ConstraintWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7846564A2220E8D300B5B593 /* ConstraintWrapper.swift */; };
+		7870DAEC231DE2FE0038746D /* MonsterContainers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7870DAEB231DE2FE0038746D /* MonsterContainers.swift */; };
 		787DF38621FA7601001FB99C /* DungeonTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38521FA7600001FB99C /* DungeonTable.swift */; };
 		787DF38921FA7693001FB99C /* DungeonTableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38821FA7693001FB99C /* DungeonTableUtils.swift */; };
 		787DF38E21FA8048001FB99C /* DungeonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38D21FA8048001FB99C /* DungeonCell.swift */; };
@@ -64,6 +65,7 @@
 		784656442220886A00B5B593 /* WaveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveCell.swift; sourceTree = "<group>"; };
 		7846564822209D1100B5B593 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
 		7846564A2220E8D300B5B593 /* ConstraintWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintWrapper.swift; sourceTree = "<group>"; };
+		7870DAEB231DE2FE0038746D /* MonsterContainers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterContainers.swift; sourceTree = "<group>"; };
 		787DF38521FA7600001FB99C /* DungeonTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonTable.swift; sourceTree = "<group>"; };
 		787DF38821FA7693001FB99C /* DungeonTableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonTableUtils.swift; sourceTree = "<group>"; };
 		787DF38D21FA8048001FB99C /* DungeonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonCell.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				7828D0722208E3AA0004E6CD /* Container Utils */,
+				7870DAEB231DE2FE0038746D /* MonsterContainers.swift */,
 				78D6886521E6F431001C0DEF /* MultiplierUtils.swift */,
 				78D1EAEE21EA97BC002D4197 /* MonsterVCUtils.swift */,
 			);
@@ -297,6 +300,7 @@
 		78D12D4721E95E8F00F4971A /* Monster View */ = {
 			isa = PBXGroup;
 			children = (
+				789EA55522038CAD004F9A68 /* Monster View Utils */,
 				78D6886321E6B357001C0DEF /* MonsterView.swift */,
 			);
 			path = "Monster View";
@@ -335,7 +339,6 @@
 			children = (
 				78D12D4821E95EAD00F4971A /* Monster Table */,
 				78D12D4721E95E8F00F4971A /* Monster View */,
-				789EA55522038CAD004F9A68 /* Monster View Utils */,
 			);
 			path = Monsters;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				789EA55022023238004F9A68 /* Utils.swift in Sources */,
 				789EA54B22022F60004F9A68 /* EncounterView.swift in Sources */,
 				78A64676220A2B1C0043429F /* Settings.swift in Sources */,
+				7870DAEC231DE2FE0038746D /* MonsterContainers.swift in Sources */,
 				78B0031C211CA2FC001F246E /* MonsterTable.swift in Sources */,
 				784656452220886A00B5B593 /* WaveCell.swift in Sources */,
 				78A348232291D9B400C6151F /* Monster.swift in Sources */,

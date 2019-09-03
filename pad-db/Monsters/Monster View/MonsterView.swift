@@ -52,64 +52,15 @@ class MonsterView: UIViewController {
         return img
     }()
     
-    let statContainer: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.clipsToBounds = true // this will make sure its children do not go out of the boundary
-        return view
-    }()
-    
-    let nameContainer: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.clipsToBounds = true // this will make sure its children do not go out of the boundary
-        return view
-    }()
-    
-    
-    let levelContainer: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.clipsToBounds = true // this will make sure its children do not go out of the boundary
-        return view
-    }()
-    
-    
-    let HPContainer: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.clipsToBounds = true // this will make sure its children do not go out of the boundary
-        return view
-    }()
-    
-    
-    let ATKContainer: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.clipsToBounds = true // this will make sure its children do not go out of the boundary
-        return view
-    }()
-    
-    
-    let RCVContainer: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.clipsToBounds = true // this will make sure its children do not go out of the boundary
-        return view
-    }()
-    
-    
+    let statContainer: UIView = makeView()
+    let nameContainer: UIView = makeView()
+    let levelContainer: UIView = makeView()
+    let HPContainer: UIView = makeView()
+    let ATKContainer: UIView = makeView()
+    let RCVContainer: UIView = makeView()
     // xp labels
-    
-    let XPContainer: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.clipsToBounds = true // this will make sure its children do not go out of the boundary
-        return view
-    }()
-    
+    let XPContainer: UIView = makeView()
     // weighted stats label
-    
     let weightedStatsLabel: UILabel = {
         let textView = UILabel()
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -117,76 +68,17 @@ class MonsterView: UIViewController {
         return textView
     }()
     
-    
-    let awakeningContainer: UIView = {
-        let vw = UIView()
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.clipsToBounds = true
-        return vw
-    }()
-    
-    let sawakeningContainer: UIView = {
-        let vw = UIView()
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.clipsToBounds = true
-        return vw
-    }()
-    
-    let evoMaterialsContainer: UIView = {
-        let vw = UIView()
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.clipsToBounds = true
-        return vw
-    }()
-    
-    let devoMaterialsContainer: UIView = {
-        let vw = UIView()
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.clipsToBounds = true
-        return vw
-    }()
-    
-    let activeSkillContainer: UIView = {
-        let vw = UIView()
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.clipsToBounds = true
-        return vw
-    }()
-    
-    let leaderSkillContainer: UIView = {
-        let vw = UIView()
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.clipsToBounds = true
-        return vw
-    }()
-    
-    let saleMPContainer: UIView = {
-        let vw = UIView()
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.clipsToBounds = true
-        return vw
-    }()
-    
-    let saleCoinContainer: UIView = {
-        let vw = UIView()
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.clipsToBounds = true
-        return vw
-    }()
-    
-    let relatedDungeonContainer: UIView = {
-        let vw = UIView()
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.clipsToBounds = true
-        return vw
-    }()
-    
-    let enemySkillContainer: UIView = {
-        let vw = UIView()
-        vw.translatesAutoresizingMaskIntoConstraints = false
-        vw.clipsToBounds = true
-        return vw
-    }()
+    let awakeningContainer: UIView = makeView()
+    let sawakeningContainer: UIView = makeView()
+    let evoMaterialsContainer: UIView = makeView()
+    let devoMaterialsContainer: UIView = makeView()
+    let activeSkillContainer: UIView = makeView()
+    let leaderSkillContainer: UIView = makeView()
+    let saleMPContainer: UIView = makeView()
+    let saleCoinContainer: UIView = makeView()
+    let relatedDungeonContainer: UIView = makeView()
+    let enemySkillContainer: UIView = makeView()
+    let collabContainer: UIView = makeView()
     
     init(monster:Monster) {
         self.monster = monster
