@@ -1,54 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <Group
-      location = "container:"
-      name = "Deprecated">
-      <FileRef
-         location = "group:pad-db/Monsters/Monster View Utils/Container Utils/../../../../SetupEnemySkills.swift">
-      </FileRef>
-      <Group
-         location = "group:pad-db/../pad_db.xcdatamodeld"
-         name = "pad_db.xcdatamodeld">
-         <FileRef
-            location = "group:pad_db.xcdatamodeld/pad_db 4.xcdatamodel">
-         </FileRef>
-         <FileRef
-            location = "group:pad_db.xcdatamodeld/pad_db 3.xcdatamodel">
-         </FileRef>
-         <FileRef
-            location = "group:pad_db.xcdatamodeld/pad_db 2.xcdatamodel">
-         </FileRef>
-         <FileRef
-            location = "group:pad_db.xcdatamodeld/pad_db.xcdatamodel">
-         </FileRef>
-      </Group>
-      <FileRef
-         location = "group:pad-db/Data Download Utils/../../DownloadVersionIdentifier.swift">
-      </FileRef>
-      <FileRef
-         location = "group:pad-db/Utils/../../DatabaseUtils.swift">
-      </FileRef>
-      <Group
-         location = "group:pad-db/../Leaderboard"
-         name = "Leaderboard">
-         <FileRef
-            location = "group:Leaderboard/LeaderboardTableVC.swift">
-         </FileRef>
-         <FileRef
-            location = "group:Leaderboard/LeaderboardUtils.swift">
-         </FileRef>
-         <FileRef
-            location = "group:Leaderboard/LeaderboardCell.swift">
-         </FileRef>
-      </Group>
-      <FileRef
-         location = "group:pad-db/Data Download Utils/../../DownloadLeaderboardData.swift">
-      </FileRef>
-      <FileRef
-         location = "group:LoadDataVC.swift">
-      </FileRef>
-   </Group>
    <FileRef
       location = "group:README.md">
    </FileRef>
