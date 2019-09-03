@@ -39,10 +39,10 @@ extension MonsterView {
         collabContainer.addSubview(collabLabel)
         collabLabel.setTop(to: .bottom, of: header, withSpacing: verticalAnchorSpacing)
         collabLabel.setCenterX(to: collabContainer)
-        collabLabel.setBottom(to: .top, of: separator, withSpacing: 20)
         
         
         separator.setCenterX(to: collabContainer)
+        separator.setTop(to: .bottom, of: collabLabel, withSpacing: verticalAnchorSpacing)
         separator.setBottom(to: .bottom, of: collabContainer, withSpacing: 0)
     
     }
