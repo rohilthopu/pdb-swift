@@ -33,7 +33,7 @@ extension UIView {
     func setBottomAnchor(to location:VerticalAnchor, of view:UIView, withSpacing spacing:CGFloat) {
         switch location {
         case .top:
-            self.bottomAnchor.constraint(equalTo: view.topAnchor, constant: spacing).isActive = true
+            self.bottomAnchor.constraint(equalTo: view.topAnchor, constant: -1 * spacing).isActive = true
         case .bottom:
             self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: spacing).isActive = true
         }
