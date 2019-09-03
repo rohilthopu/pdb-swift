@@ -20,8 +20,8 @@ enum HorizontalAnchor {
 }
 
 extension UIView {
-
-    func setMyTop(to location:VerticalAnchor, of view:UIView, withSpacing spacing:CGFloat) {
+    
+    func setTopAnchor(to location:VerticalAnchor, of view:UIView, withSpacing spacing:CGFloat) {
         switch location {
         case .top:
             self.topAnchor.constraint(equalTo: view.topAnchor, constant: spacing).isActive = true
@@ -30,7 +30,7 @@ extension UIView {
         }
     }
     
-    func setMyBottom(to location:VerticalAnchor, of view:UIView, withSpacing spacing:CGFloat) {
+    func setBottomAnchor(to location:VerticalAnchor, of view:UIView, withSpacing spacing:CGFloat) {
         switch location {
         case .top:
             self.bottomAnchor.constraint(equalTo: view.topAnchor, constant: spacing).isActive = true
@@ -39,7 +39,7 @@ extension UIView {
         }
     }
     
-    func setMyLeft(to location:HorizontalAnchor, of view:UIView, withSpacing spacing:CGFloat) {
+    func setLeftAnchor(to location:HorizontalAnchor, of view:UIView, withSpacing spacing:CGFloat) {
         switch location {
         case .leading:
             self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: spacing).isActive = true
@@ -48,15 +48,46 @@ extension UIView {
         }
     }
     
-    func setMyRight(to view:UIView, withSpacing spacing:CGFloat) {
+    func setRightAnchor(to view:UIView, withSpacing spacing:CGFloat) {
         self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -1 * spacing).isActive = true
     }
     
-    func setMyCenterX(to view:UIView) {
+    func setTopAnchor(to location:VerticalAnchor, of view:UIView) {
+        switch location {
+        case .top:
+            self.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        case .bottom:
+            self.topAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        }
+    }
+    
+    func setBottomAnchor(to location:VerticalAnchor, of view:UIView) {
+        switch location {
+        case .top:
+            self.bottomAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        case .bottom:
+            self.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        }
+    }
+    
+    func setLeftAnchor(to location:HorizontalAnchor, of view:UIView) {
+        switch location {
+        case .leading:
+            self.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        case .trailing:
+            self.leadingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        }
+    }
+    
+    func setRightAnchor(to view:UIView) {
+        self.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    }
+    
+    func setCenterXAnchor(to view:UIView) {
         self.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
-    func setMyCenterY(to view:UIView) {
+    func setCenterYAnchor(to view:UIView) {
         self.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 }
