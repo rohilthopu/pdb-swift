@@ -1,11 +1,9 @@
 #  PAD DB (iOS)
 
 PAD DB is a resource to access Puzzle and Dragons (PAD) data in a mobile friendly form. This specific repository refers to the
-mobile implementation of the project that runs on devices running iOS 10+. 
+mobile implementation of the project that runs on devices running iOS 11+. 
 
-The app provides access to Guerrilla Dungeons, Monsters, Dungeon information, and an arbitrary Reddit karma leaderboard for the PAD subreddit.
-
-**The entire app was developed programatically so there is no storyboard involvement here. Tread carefully reading through the sludge of loops that set auto-layout constraints**
+The app provides access to Guerrilla Dungeons, Monsters, and Dungeon information.
 
 Some example images can be seen below:
 
