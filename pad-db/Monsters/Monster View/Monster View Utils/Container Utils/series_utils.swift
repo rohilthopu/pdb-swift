@@ -42,11 +42,11 @@ extension MonsterView {
         } else {
             seriesLabel.text = monster.series
             
-            let collabMonsters = getMonstersFromSeries(usingSeriesID: monster.seriesID).map{
+            let seriesMonsters = getMonstersFromSeries(usingSeriesID: monster.seriesID).map{
                 return makeImgView(forImg: getPortraitURL(id: $0.cardID), ofSize: imgSize)
             }
             
-            let imageContainers = makeHorizontalImageRows(forCollabMonsters: collabMonsters)
+            let imageContainers = makeHorizontalImageRows(forMonsters: seriesMonsters)
             let otherSeriesMonstersContainer = makeLargeContainer(forImageRows: imageContainers)
             
             seriesContainer.addSubview(otherSeriesMonstersContainer)
