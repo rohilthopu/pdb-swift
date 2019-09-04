@@ -12,59 +12,71 @@ import UIKit
 extension MonsterView {
     func setupCollabContainer() {
         // setup the main container constraints first
-        scrollView.addSubview(collabContainer)
-        collabContainer.setLeftAnchor(to: .leading, of: self.view, withSpacing: 0)
-        collabContainer.setRightAnchor(to: self.view, withSpacing: 0)
-        collabContainer.setTopAnchor(to: .bottom, of: saleCoinContainer, withSpacing: verticalAnchorSpacing)
+        scrollView.addSubview(seriesContainer)
+        seriesContainer.setLeftAnchor(to: .leading, of: self.view, withSpacing: 0)
+        seriesContainer.setRightAnchor(to: self.view, withSpacing: 0)
+        seriesContainer.setTopAnchor(to: .bottom, of: saleCoinContainer, withSpacing: verticalAnchorSpacing)
+        seriesContainer.setBottomAnchor(to: .bottom, of: scrollView, withSpacing: verticalAnchorSpacing)
         
         
-        let header = makeLabel(ofSize: 20, withText: "Collab")
+        let header = makeLabel(ofSize: 20, withText: "Series")
         let separator = makeSeparator()
-        let collabLabel = makeLabel(ofSize: 16)
-
+        let seriesLabel = makeLabel(ofSize: 16)
+        
         
         let imgSize = CGFloat(60)
         
-        collabContainer.addSubview(header)
-        collabContainer.addSubview(separator)
-        collabContainer.addSubview(collabLabel)
-
-        header.setCenterXAnchor(to: collabContainer)
-        header.setTopAnchor(to: .top, of: collabContainer, withSpacing: 0)
+        seriesContainer.addSubview(header)
+        seriesContainer.addSubview(separator)
+        seriesContainer.addSubview(seriesLabel)
+        
+        header.setCenterXAnchor(to: seriesContainer)
+        header.setTopAnchor(to: .top, of: seriesContainer, withSpacing: 0)
         
         
         if monster.collabID == 0 {
-            collabLabel.text = monster.name + " is not part of any collab series"
-            collabLabel.lineBreakMode = .byWordWrapping
-            collabLabel.numberOfLines = 0
+            seriesLabel.text = monster.name + " is not part of any series"
+            seriesLabel.lineBreakMode = .byWordWrapping
+            seriesLabel.numberOfLines = 0
             
-            collabLabel.setBottomAnchor(to: .top, of: separator, withSpacing: verticalAnchorSpacing)
-        } else {
-            collabLabel.text = monster.collab
+            seriesLabel.setBottomAnchor(to: .top, of: separator, withSpacing: verticalAnchorSpacing)
+        }  else {
+            var seriesMonsters = [UIImageView]()
             
-            let collabMonsters = getMonstersFromCollab(usingCollabID: monster.collabID).map{
-                return makeImgView(forImg: getPortraitURL(id: $0.cardID), ofSize: imgSize)
+            
+            if monster.seriesID != 0 {
+                seriesLabel.text = monster.series
+                seriesMonsters = getMonstersFromSeries(usingSeriesID: monster.seriesID).map{
+                    return makeImgView(forImg: getPortraitURL(id: $0.cardID), ofSize: imgSize)
+                }
+                
+            } else {
+                seriesLabel.text = monster.collab
+                seriesMonsters = getMonstersFromCollab(usingCollabID: monster.collabID).map{
+                    return makeImgView(forImg: getPortraitURL(id: $0.cardID), ofSize: imgSize)
+                }
             }
             
-            let imageContainers = makeHorizontalImageRows(forMonsters: collabMonsters)
+            
+            let imageContainers = makeHorizontalImageRows(forMonsters: seriesMonsters)
             let otherCollabMonstersContainer = makeLargeContainer(forImageRows: imageContainers)
             
-            collabContainer.addSubview(otherCollabMonstersContainer)
+            seriesContainer.addSubview(otherCollabMonstersContainer)
             
-            otherCollabMonstersContainer.setTopAnchor(to: .bottom, of: collabLabel, withSpacing: 20)
-            otherCollabMonstersContainer.setLeftAnchor(to: .leading, of: collabContainer)
-            otherCollabMonstersContainer.setRightAnchor(to: collabContainer)
+            otherCollabMonstersContainer.setTopAnchor(to: .bottom, of: seriesLabel, withSpacing: 20)
+            otherCollabMonstersContainer.setLeftAnchor(to: .leading, of: seriesContainer)
+            otherCollabMonstersContainer.setRightAnchor(to: seriesContainer)
             otherCollabMonstersContainer.setBottomAnchor(to: .top, of: separator, withSpacing: verticalAnchorSpacing)
-        
+            
         }
         
-        collabLabel.setTopAnchor(to: .bottom, of: header, withSpacing: verticalAnchorSpacing)
-        collabLabel.setCenterXAnchor(to: collabContainer)
+        seriesLabel.setTopAnchor(to: .bottom, of: header, withSpacing: verticalAnchorSpacing)
+        seriesLabel.setCenterXAnchor(to: seriesContainer)
         
         
-        separator.setCenterXAnchor(to: collabContainer)
-        separator.setBottomAnchor(to: .bottom, of: collabContainer, withSpacing: 0)
-    
+        separator.setCenterXAnchor(to: seriesContainer)
+        separator.setBottomAnchor(to: .bottom, of: seriesContainer, withSpacing: 0)
+        
     }
     
     private func getMonstersFromCollab(usingCollabID collab_id:Int) -> [MonsterListItem] {
@@ -73,6 +85,15 @@ extension MonsterView {
         }
         return goodMonsters.filter{
             $0.collabID == collab_id
+        }
+    }
+    
+    private func getMonstersFromSeries(usingSeriesID seriesID:Int) -> [MonsterListItem]{
+        if seriesID == 0 {
+            return []
+        }
+        return goodMonsters.filter{
+            $0.seriesID == seriesID
         }
     }
     

@@ -68,8 +68,7 @@ class MonsterView: UIViewController {
     let saleCoinContainer: UIView = makeView()
     let relatedDungeonContainer: UIView = makeView()
     let enemySkillContainer: UIView = makeView()
-    let collabContainer: UIView = makeView()
-    let seriesContainer:UIView = makeView()
+    let seriesContainer: UIView = makeView()
     
     init(monster:Monster) {
         self.monster = monster
@@ -113,6 +112,5 @@ class MonsterView: UIViewController {
 //        setupRelatedDungeons()
         setupSaleItems()
         setupCollabContainer()
-        setupSeriesContainer()
     }
 }
