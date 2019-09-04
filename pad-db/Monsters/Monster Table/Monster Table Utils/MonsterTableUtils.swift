@@ -53,7 +53,7 @@ extension MonsterTable {
         filteredMonsters = goodMonsters.filter({
             let val = getTokenList(forSearchQuery: $0.name)
             let id = String($0.cardID)
-            return tokenText.isSubset(of: val) || id.contains(searchText.lowercased())
+            return id.contains(searchText.lowercased()) || $0.name.lowercased().contains(searchText.lowercased()) || tokenText.isSubset(of: val)
         })
         tableView.reloadData()
     }

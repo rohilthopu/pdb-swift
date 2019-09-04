@@ -28,6 +28,7 @@ func getLiveMonsterData() {
 func getMonsterFromAPI(cardID:Int) -> Monster? {
     var monster:Monster?
     let monsterURL = monster_api_url + String(cardID)
+    
     if let data = Just.get(monsterURL).content {
         do {
             monster = try JSONDecoder().decode(Monster.self, from: data)
@@ -35,6 +36,6 @@ func getMonsterFromAPI(cardID:Int) -> Monster? {
             print(error)
         }
     }
-    
+
     return monster
 }

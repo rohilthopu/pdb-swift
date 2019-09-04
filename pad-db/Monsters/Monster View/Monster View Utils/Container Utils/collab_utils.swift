@@ -34,7 +34,7 @@ extension MonsterView {
         header.setTopAnchor(to: .top, of: seriesContainer, withSpacing: 0)
         
         
-        if monster.collabID == 0 {
+        if monster.collabID == 0 && monster.seriesID == 0 {
             seriesLabel.text = monster.name + " is not part of any series"
             seriesLabel.lineBreakMode = .byWordWrapping
             seriesLabel.numberOfLines = 0
