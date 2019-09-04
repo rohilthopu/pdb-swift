@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		78123A3A22C1A7A500BF768A /* Dungeon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78123A3922C1A7A500BF768A /* Dungeon.swift */; };
-		7828D0742208E3CD0004E6CD /* SetupRelatedDungeons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828D0732208E3CD0004E6CD /* SetupRelatedDungeons.swift */; };
+		7828D0742208E3CD0004E6CD /* related_dungeon_utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7828D0732208E3CD0004E6CD /* related_dungeon_utils.swift */; };
+		7833A117231F69DD00F1DB4A /* series_utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7833A116231F69DD00F1DB4A /* series_utils.swift */; };
 		78465643222087F100B5B593 /* WaveTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78465642222087F100B5B593 /* WaveTable.swift */; };
 		784656452220886A00B5B593 /* WaveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784656442220886A00B5B593 /* WaveCell.swift */; };
 		7846564922209D1100B5B593 /* ViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7846564822209D1100B5B593 /* ViewUtils.swift */; };
 		7846564B2220E8D300B5B593 /* ConstraintWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7846564A2220E8D300B5B593 /* ConstraintWrapper.swift */; };
-		7870DAEE231DE97B0038746D /* SetupCollabUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7870DAED231DE97B0038746D /* SetupCollabUtils.swift */; };
+		7870DAEE231DE97B0038746D /* collab_utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7870DAED231DE97B0038746D /* collab_utils.swift */; };
 		787DF38621FA7601001FB99C /* DungeonTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38521FA7600001FB99C /* DungeonTable.swift */; };
 		787DF38921FA7693001FB99C /* DungeonTableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38821FA7693001FB99C /* DungeonTableUtils.swift */; };
 		787DF38E21FA8048001FB99C /* DungeonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787DF38D21FA8048001FB99C /* DungeonCell.swift */; };
@@ -60,12 +61,13 @@
 
 /* Begin PBXFileReference section */
 		78123A3922C1A7A500BF768A /* Dungeon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dungeon.swift; sourceTree = "<group>"; };
-		7828D0732208E3CD0004E6CD /* SetupRelatedDungeons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRelatedDungeons.swift; sourceTree = "<group>"; };
+		7828D0732208E3CD0004E6CD /* related_dungeon_utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = related_dungeon_utils.swift; sourceTree = "<group>"; };
+		7833A116231F69DD00F1DB4A /* series_utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = series_utils.swift; sourceTree = "<group>"; };
 		78465642222087F100B5B593 /* WaveTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveTable.swift; sourceTree = "<group>"; };
 		784656442220886A00B5B593 /* WaveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveCell.swift; sourceTree = "<group>"; };
 		7846564822209D1100B5B593 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
 		7846564A2220E8D300B5B593 /* ConstraintWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintWrapper.swift; sourceTree = "<group>"; };
-		7870DAED231DE97B0038746D /* SetupCollabUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCollabUtils.swift; sourceTree = "<group>"; };
+		7870DAED231DE97B0038746D /* collab_utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collab_utils.swift; sourceTree = "<group>"; };
 		787DF38521FA7600001FB99C /* DungeonTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonTable.swift; sourceTree = "<group>"; };
 		787DF38821FA7693001FB99C /* DungeonTableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonTableUtils.swift; sourceTree = "<group>"; };
 		787DF38D21FA8048001FB99C /* DungeonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonCell.swift; sourceTree = "<group>"; };
@@ -161,8 +163,9 @@
 				78D1EAF821EBF2FA002D4197 /* SetupSkillUtils.swift */,
 				78D1EAFA21EBF31D002D4197 /* SetupEvoUtils.swift */,
 				78D1EAFC21EC0ACA002D4197 /* SetupSaleItemUtil.swift */,
-				7828D0732208E3CD0004E6CD /* SetupRelatedDungeons.swift */,
-				7870DAED231DE97B0038746D /* SetupCollabUtils.swift */,
+				7828D0732208E3CD0004E6CD /* related_dungeon_utils.swift */,
+				7870DAED231DE97B0038746D /* collab_utils.swift */,
+				7833A116231F69DD00F1DB4A /* series_utils.swift */,
 			);
 			path = "Container Utils";
 			sourceTree = "<group>";
@@ -496,7 +499,7 @@
 				787DF38E21FA8048001FB99C /* DungeonCell.swift in Sources */,
 				78D6886421E6B357001C0DEF /* MonsterView.swift in Sources */,
 				78D1EAF721EBF2CA002D4197 /* SetupAwakeningUtils.swift in Sources */,
-				7870DAEE231DE97B0038746D /* SetupCollabUtils.swift in Sources */,
+				7870DAEE231DE97B0038746D /* collab_utils.swift in Sources */,
 				78B00307211CA297001F246E /* AppDelegate.swift in Sources */,
 				789EA54D22023199004F9A68 /* EncounterUtils.swift in Sources */,
 				787DF38621FA7601001FB99C /* DungeonTable.swift in Sources */,
@@ -504,8 +507,9 @@
 				78465643222087F100B5B593 /* WaveTable.swift in Sources */,
 				78D6885921CB4DAC001C0DEF /* GuerrillaCell.swift in Sources */,
 				789EA55A2203AE77004F9A68 /* DownloadMonsterData.swift in Sources */,
+				7833A117231F69DD00F1DB4A /* series_utils.swift in Sources */,
 				78F0782321ED990300F0DE1B /* SkillCellUtils.swift in Sources */,
-				7828D0742208E3CD0004E6CD /* SetupRelatedDungeons.swift in Sources */,
+				7828D0742208E3CD0004E6CD /* related_dungeon_utils.swift in Sources */,
 				78D1EAF521EBF2A7002D4197 /* SetupHeaderUtils.swift in Sources */,
 				78D1EAEF21EA97BC002D4197 /* MonsterVCUtils.swift in Sources */,
 				78A348252292178400C6151F /* Skill.swift in Sources */,

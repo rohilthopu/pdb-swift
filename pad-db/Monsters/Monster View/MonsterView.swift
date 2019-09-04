@@ -69,6 +69,7 @@ class MonsterView: UIViewController {
     let relatedDungeonContainer: UIView = makeView()
     let enemySkillContainer: UIView = makeView()
     let collabContainer: UIView = makeView()
+    let seriesContainer:UIView = makeView()
     
     init(monster:Monster) {
         self.monster = monster

@@ -9,7 +9,7 @@
 import Foundation
 
 struct MonsterListItem: Codable {
-    let cardID, collabID: Int
+    let cardID, collabID, seriesID: Int
     let name, server: String
     let activeSkillID, leaderSkillID: Int
 
@@ -21,6 +21,7 @@ struct MonsterListItem: Codable {
         case leaderSkillID = "leader_skill_id"
         case server
         case collabID = "collab_id"
+        case seriesID = "series_id"
     }
 }
 
@@ -42,11 +43,11 @@ struct Monster: Codable {
     let unEvoMat5: Int
     let awakeningsRaw, superAwakeningsRaw: [Int]
     let awakenings, superAwakenings: [String]
-    let sellMp, latentOnFeed, collabID: Int
+    let sellMp, latentOnFeed, collabID, seriesID: Int
     let isInheritable, isCollab: Bool
     let limitMult: Int
     let evolutionList: [EvolutionList]
-    let server: String
+    let server, series: String
     let evolutionMaterialsRaw, unEvolutionMaterialsRaw: [Int]
     let evolutionMaterials, unEvolutionMaterials, type: [String]
     let attribute, subAttribute, collab: String
@@ -108,6 +109,8 @@ struct Monster: Codable {
         case type, attribute
         case subAttribute = "sub_attribute"
         case collab
+        case seriesID = "series_id"
+        case series
     }
 }
 

@@ -77,7 +77,7 @@ extension MonsterView {
         }
     }
     
-    private func makeHorizontalImageRows(forCollabMonsters collabMonsters: [UIImageView]) -> [UIView] {
+    func makeHorizontalImageRows(forCollabMonsters collabMonsters: [UIImageView]) -> [UIView] {
         var imageContainers = [UIView]()
         
         var currentImgCount = 0
@@ -112,7 +112,7 @@ extension MonsterView {
         return imageContainers
     }
     
-    private func makeLargeContainer(forImageRows imageContainers: [UIView]) -> UIView {
+    func makeLargeContainer(forImageRows imageContainers: [UIView]) -> UIView {
         let otherCollabMonstersContainer = makeView()
         
         var currIndex = 0
