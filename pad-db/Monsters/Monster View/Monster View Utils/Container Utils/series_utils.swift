@@ -15,8 +15,8 @@ extension MonsterView {
         scrollView.addSubview(seriesContainer)
         seriesContainer.setLeftAnchor(to: .leading, of: self.view, withSpacing: 0)
         seriesContainer.setRightAnchor(to: self.view, withSpacing: 0)
-        seriesContainer.setTopAnchor(to: .bottom, of: saleCoinContainer, withSpacing: verticalAnchorSpacing)
-        seriesContainer.setBottomAnchor(to: .bottom, of: scrollView, withSpacing: -20)
+        seriesContainer.setTopAnchor(to: .bottom, of: collabContainer, withSpacing: verticalAnchorSpacing)
+        seriesContainer.setBottomAnchor(to: .bottom, of: scrollView, withSpacing: verticalAnchorSpacing)
         
         
         let header = makeLabel(ofSize: 20, withText: "Series")

@@ -16,7 +16,6 @@ extension MonsterView {
         collabContainer.setLeftAnchor(to: .leading, of: self.view, withSpacing: 0)
         collabContainer.setRightAnchor(to: self.view, withSpacing: 0)
         collabContainer.setTopAnchor(to: .bottom, of: saleCoinContainer, withSpacing: verticalAnchorSpacing)
-        collabContainer.setBottomAnchor(to: .bottom, of: scrollView, withSpacing: -20)
         
         
         let header = makeLabel(ofSize: 20, withText: "Collab")

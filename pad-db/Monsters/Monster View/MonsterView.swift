@@ -113,5 +113,6 @@ class MonsterView: UIViewController {
 //        setupRelatedDungeons()
         setupSaleItems()
         setupCollabContainer()
+        setupSeriesContainer()
     }
 }

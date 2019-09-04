@@ -35,7 +35,7 @@ extension UIView {
         case .top:
             self.bottomAnchor.constraint(equalTo: view.topAnchor, constant: -1 * spacing).isActive = true
         case .bottom:
-            self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: spacing).isActive = true
+            self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -1 * spacing).isActive = true
         }
     }
     
